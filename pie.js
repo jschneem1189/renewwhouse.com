@@ -44,12 +44,19 @@ Raphael.fn.pieChart = function (cx, cy, r, values, labels, stroke) {
 };
 
 $(function () {
-    var values = [],
-        labels = [];
-    $("#tabs-2 tr").each(function () {
-        values.push(parseInt($("td", this).text(), 10));
-        labels.push($("th", this).text());
-    });
-    $("#tabs-2 table").hide();
-    Raphael("holder_pie", 700, 700).pieChart(350, 350, 200, values, labels, "#fff");
+    var values = [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8],
+        labels = ["Vic1", "Nsw1", "Wa1", "Nt1", "Sa1", "qld1", "Tas1", "Vic2", "Nsw2", "Wa2", "Nt2", "Sa2", "Qld2", "Tas2"],
+        map = {vic1:0,nsw1:1,wa1:2,nt1:3,sa1:4,qld1:5,tas1:6,vic2:7,nsw2:8,wa2:9,nt2:10,sa2:11,qld2:12,tas2:13};
+    //Raphael("holder_pie", 700, 700).pieChart(350, 350, 200, values, labels, "#fff");
 });
+
+// $(function () {
+//     var values = [],
+//         labels = [];
+//     $("#tabs-2 tr").each(function () {
+//         values.push(parseInt($("td", this).text(), 10));
+//         labels.push($("th", this).text());
+//     });
+//     $("#tabs-2 table").hide();
+//     Raphael("holder_pie", 700, 700).pieChart(350, 350, 200, values, labels, "#fff");
+// });

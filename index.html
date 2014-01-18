@@ -12,22 +12,45 @@
   <script src="popup.js"></script>
   <script src="analytics.js"></script>
   <script src="house-hover.js"></script>
-  <script src="EventTarget.js"></script>
   <script>
   $(function() {
+    // initialize pie
+    var values = [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8],
+      labels = ["Vic1", "Nsw1", "Wa1", "Nt1", "Sa1", "qld1", "Tas1", "Vic2", "Nsw2", "Wa2", "Nt2", "Sa2", "Qld2", "Tas2"],
+      map = {vic1:0,nsw1:1,wa1:2,nt1:3,sa1:4,qld1:5,tas1:6,vic2:7,nsw2:8,wa2:9,nt2:10,sa2:11,qld2:12,tas2:13};
+    var chart = Raphael("holder_pie", 700, 700).pieChart(350, 350, 200, values, labels, "#fff");
+
     $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
     /*$( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );*/
     $( "#tabs ul" ).removeClass( "ui-corner-all" );
-    $( "#tabs li" ).removeClass( "ui-corner-top" );
-    window.onload = function() {
-      var R1 = Raphael("paper1", 300, 300)
-      var R2 = Raphael("paper2", 300, 300)
-      analytics.init();
-      var australia = new HouseHover(R1);
-      var australia2 = new HouseHover(R2);
-      australia2.addListener("hover", function() {alert("This just happened...")});
-      //hover.init(R2);
-    }
+    $( "#tabs li" ).removeClass( "ui-corner-top" );    
+
+    // initialize australia 1 and 2
+    var R1 = Raphael("paper1", 300, 300);
+    var R2 = Raphael("paper2", 300, 300);
+    analytics.init();
+    var australia = new HouseHover(R1);
+    var australia2 = new HouseHover(R2);
+    //hover.init(R2);
+    var tab2 = $('#tabs-2');
+    $(tab2).on("sectionover",function(evt) {
+      var i = (australia === evt.target) ? 1 : 2;
+      var index = map[evt.section + i];
+      var p = chart[index*2];
+      var txt = chart[index*2+1];
+      var ms = 500;
+      p.stop().animate({transform: "s1.1 1.1 " + 350 + " " + 350}, ms, "elastic");
+      txt.stop().animate({opacity: 1}, ms, "elastic");
+    });
+    $(tab2).on("sectionout",function(evt) {
+      var i = (australia === evt.target) ? 1 : 2;
+      var index = map[evt.section + i];
+      var p = chart[index*2];
+      var txt = chart[index*2+1];
+      var ms = 500;
+      p.stop().animate({transform: ""}, ms, "elastic");
+      txt.stop().animate({opacity: 0}, ms);
+    });
   });
   </script>
   <style>
@@ -144,34 +167,6 @@
     <h1>% of Energy Usage by Room</h1>
     <div id="paper1"></div>
     <div id="paper2"></div>
-    <table>
-        <tbody>
-            <tr>
-                <th scope="row">Kitchen</th>
-                <td>30%</td>
-            </tr>
-            <tr>
-                <th scope="row">Basement</th>
-                <td>13%</td>
-            </tr>
-            <tr>
-                <th scope="row">Laundary Room</th>
-                <td>5%</td>
-            </tr>
-            <tr>
-                <th scope="row">Bedroom 1</th>
-                <td>12%</td>
-            </tr>
-            <tr>
-                <th scope="row">Bedroom 2</th>
-                <td>5%</td>
-            </tr>
-            <tr>
-                <th scope="row">Living Room</th>
-                <td>35%</td>
-            </tr>
-        </tbody>
-    </table>
     <div id="holder_pie"></div>
   </div>
   <div id="tabs-3">
