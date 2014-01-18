@@ -12,16 +12,7 @@ Raphael.fn.drawGrid = function (x, y, w, h, wv, hv, color) {
     return this.path(path.join(",")).attr({stroke: color});
 };
 
-$(function () {
-    $("#data").css({
-        position: "absolute",
-        left: "-9999em",
-        top: "-9999em"
-    });
-});
-
-analytics = {};
-analytics.init = function () {
+function Analytics(labels, data) {
     function getAnchors(p1x, p1y, p2x, p2y, p3x, p3y) {
         var l1 = (p2x - p1x) / 2,
             l2 = (p3x - p2x) / 2,
@@ -41,15 +32,6 @@ analytics.init = function () {
             y2: p2y + dy2
         };
     }
-    // Grab the data
-    var labels = [],
-        data = [];
-    $("#data tfoot th").each(function () {
-        labels.push($(this).html());
-    });
-    $("#data tbody td").each(function () {
-        data.push($(this).html());
-    });
     
     // Draw
     var width = 800,
