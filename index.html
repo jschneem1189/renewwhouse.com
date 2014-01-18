@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>NEWW House Demo Page</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script src="raphael.js"></script>
+  <!-- <link rel="stylesheet" href="demo-print.css"media="print"> -->
+  <script src="pie.js"></script>
+  <script src="popup.js"></script>
+  <script src="analytics.js"></script>
+  <script src="house-hover.js"></script>
+  <script src="EventTarget.js"></script>
+  <script>
+  $(function() {
+    $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+    /*$( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );*/
+    $( "#tabs ul" ).removeClass( "ui-corner-all" );
+    $( "#tabs li" ).removeClass( "ui-corner-top" );
+    window.onload = function() {
+      var R1 = Raphael("paper1", 300, 300)
+      var R2 = Raphael("paper2", 300, 300)
+      analytics.init();
+      var australia = new HouseHover(R1);
+      var australia2 = new HouseHover(R2);
+      australia2.addListener("hover", function() {alert("This just happened...")});
+      //hover.init(R2);
+    }
+  });
+  </script>
+  <style>
+  .ui-tabs-vertical { width: 100%; height: 100em; background: #ffffff; border: 0;}
+  .ui-tabs-vertical .ui-tabs-nav { left:0; top:0; width: 15%; height: 100%; position: fixed; background: #a6a6a6; border: 0; padding: 0;}
+  .ui-tabs-vertical .ui-tabs-nav li { background: #a6a6a6; clear: left; left:0; width: 100%; height:25%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0;}
+  .ui-tabs-vertical .ui-tabs-nav li a { width: 100%; height:100%; padding: 0;}
+  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; background: #ffffff}
+  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float:right; width: 80%;}
+  .tab-name { text-align:center; vertical-align: bottom; bottom: 0; outline:none;}
+
+  #paper {
+      height: 300px;
+      width: 300px;
+      position: relative;
+      /*left: 20%;*/
+      /*top: 20%;*/
+      display:block;      
+  }
+  #holder_pie {
+    height: 480px;
+    right: 0px;
+    margin: 0 0 0 -320px;
+    position: fixed;
+    top: 0;
+    width: 640px;
+  }
+  #holder_analytics {
+      height: 480px;
+      left: 50%;
+      margin: 0 0 0 -320px;
+      position: absolute;
+      top: 10%;
+      width: 640px;
+  }
+  </style>
+</head>
+<body>
+ 
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-0" style="outline:none; background: url(resources/home.jpg) no-repeat top; background-size: 75% 75%"></a></li>
+    <li><a href="#tabs-1" class="tab-name" style="background: url(resources/air.png) no-repeat top;">AIR QUALITY</a></li>
+    <li><a href="#tabs-2" class="tab-name" style="background: url(resources/energy.png) no-repeat top">ENERGY</a></li>
+    <li><a href="#tabs-3" class="tab-name" style="background: url(resources/water.png) no-repeat top">WATER USAGE</a></li>
+  </ul>
+  <div id="tabs-0">
+    <h1>Welcome to the NEWW House by Whirlpool</h1>
+    <img src="resources/house-front.jpg" style="margin: 0px auto; display: block; width: 50%; height: 50%;">
+  </div>
+  <div id="tabs-1">
+    <h1>Indoor Air Temp on Feb 6, 2014</h1>
+    <table id="data">
+            <tfoot>
+                <tr>
+                    <th>0</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>10</th>
+                    <th>11</th>
+                    <th>12</th>
+                    <th>13</th>
+                    <th>14</th>
+                    <th>15</th>
+                    <th>16</th>
+                    <th>17</th>
+                    <th>18</th>
+                    <th>19</th>
+                    <th>19</th>
+                    <th>20</th>
+                    <th>22</th>
+                    <th>23</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr>
+                    <td>8</td>
+                    <td>25</td>
+                    <td>27</td>
+                    <td>25</td>
+                    <td>54</td>
+                    <td>59</td>
+                    <td>79</td>
+                    <td>47</td>
+                    <td>27</td>
+                    <td>44</td>
+                    <td>44</td>
+                    <td>51</td>
+                    <td>56</td>
+                    <td>83</td>
+                    <td>12</td>
+                    <td>91</td>
+                    <td>52</td>
+                    <td>12</td>
+                    <td>40</td>
+                    <td>8</td>
+                    <td>60</td>
+                    <td>29</td>
+                    <td>7</td>
+                    <td>33</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="holder_analytics"></div>
+  </div>
+  <div id="tabs-2">
+    <h1>% of Energy Usage by Room</h1>
+    <div id="paper1"></div>
+    <div id="paper2"></div>
+    <table>
+        <tbody>
+            <tr>
+                <th scope="row">Kitchen</th>
+                <td>30%</td>
+            </tr>
+            <tr>
+                <th scope="row">Basement</th>
+                <td>13%</td>
+            </tr>
+            <tr>
+                <th scope="row">Laundary Room</th>
+                <td>5%</td>
+            </tr>
+            <tr>
+                <th scope="row">Bedroom 1</th>
+                <td>12%</td>
+            </tr>
+            <tr>
+                <th scope="row">Bedroom 2</th>
+                <td>5%</td>
+            </tr>
+            <tr>
+                <th scope="row">Living Room</th>
+                <td>35%</td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="holder_pie"></div>
+  </div>
+  <div id="tabs-3">
+    <h2>Content heading 3</h2>
+    <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+    <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+  </div>
+</div>
+ 
+ 
+</body>
+</html>
