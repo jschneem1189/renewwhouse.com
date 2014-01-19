@@ -12,6 +12,7 @@
   <script src="popup.js"></script>
   <script src="analytics.js"></script>
   <script src="house-hover.js"></script>
+  <script src="stellar.js"></script>
   <script>
   $(function() {
     // initialize pie
@@ -55,6 +56,13 @@
       p.stop().animate({transform: ""}, ms, "elastic");
       txt.stop().animate({opacity: 0}, ms);
     });
+
+    $(function(){
+        $.stellar({
+          horizontalScrolling: false,
+          verticalOffset: 40
+        });
+      });
   });
   </script>
   <style>
@@ -91,6 +99,68 @@
       width: 640px;
   }
   </style>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: helvetica, arial;
+      padding-top: 40px;
+    }
+    h1 {
+      background-color: black;
+      color: white;
+      height: 40px;
+      font-size: 24px;
+      font-weight: normal;
+      left: 0;
+      line-height: 40px;
+      position: fixed;
+      text-align: center;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
+    h1 a {
+      border-bottom: 1px solid white;
+      color: white;
+      display: inline-block;
+      line-height: 30px;
+      text-decoration: none;
+    }
+    .photo {
+      background-attachment: fixed;
+      background-position: 50% 0;
+      background-repeat: no-repeat;
+      height: 450px;
+      position: relative;
+    }
+    .photo span {
+      bottom: 0;
+      color: white;
+      display: block;
+      left: 50%;
+      margin-left: -640px;
+      font-size: 38px;
+      padding: 10px;
+      position: absolute;
+      text-shadow: 0 2px 0 black, 0 0 10px black;
+      width: 1280px;
+    }
+    .summer {
+      background-image: url(images/summer.jpg);
+    }
+    .autumn {
+      background-image: url(images/autumn.jpg);
+    }
+    .winter {
+      background-image: url(images/winter.jpg);
+    }
+    .spring {
+      background-image: url(images/spring.jpg);
+    }
+    </style>
 </head>
 <body>
  
@@ -116,11 +186,18 @@
     <div id="holder_pie"></div>
   </div>
   <div id="tabs-3">
-    <h2>Content heading 3</h2>
-    <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-    <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+
   </div>
 </div>
+<h1><a href="../">Stellar.js</a> Backgrounds Demo</h1>
+    <div class="photo summer" data-stellar-background-ratio="0.5"><span>Summer</span></div>
+    <div class="photo autumn" data-stellar-background-ratio="0.5"><span>Autumn</span></div>
+    <div class="photo winter" data-stellar-background-ratio="0.5"><span>Winter</span></div>
+    <div class="photo spring" data-stellar-background-ratio="0.5"><span>Spring</span></div>
+    <div class="photo summer" data-stellar-background-ratio="0.5"><span>Summer</span></div>
+    <div class="photo autumn" data-stellar-background-ratio="0.5"><span>Autumn</span></div>
+    <div class="photo winter" data-stellar-background-ratio="0.5"><span>Winter</span></div>
+    <div class="photo spring" data-stellar-background-ratio="0.5"><span>Spring</span></div>
  
  
 </body>
