@@ -2,203 +2,214 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>NEWW House Demo Page</title>
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEWW</title>
+  <script src="jquery-1.9.1.js"></script>
   <script src="raphael.js"></script>
-  <!-- <link rel="stylesheet" href="demo-print.css"media="print"> -->
   <script src="pie.js"></script>
   <script src="popup.js"></script>
   <script src="analytics.js"></script>
   <script src="house-hover.js"></script>
+  <script src="AnimatedButton.js"></script>
   <script src="stellar.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
+  <script type="text/javascript" src="FitText.js"></script>
+  <style type="text/css" media="screen">
+    
+    body {
+      width:auto; height:auto;  
+      padding: 0 0 0 0;
+      margin: 0;
+      color: #7d7d7b; 
+      background-color: #fff;  
+    }
+    body {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+    }
+
+    #homeBanner {
+      background-color: #132b2b;
+    } 
+
+    #homeBanner {
+      background-image: url(images/home_banner_mountains_2.jpg);   
+      background-repeat:no-repeat;
+      background-attachment:fixed;
+      background-position:center top;     
+    }
+    #homeBanner { 
+      height: 450px;
+      display: block;
+      margin: 0px auto 0;
+      width: 100%;
+      position: relative;
+      padding-top: 1px;
+      overflow: hidden;
+    }
+
+    #homeBanner h2{ 
+      text-align: center;
+      color:#fff;
+      font-size: 64px;
+      /*text-transform: uppercase;*/
+      display: block;
+      text-shadow: 0 0 8px rgba(0,0,0,.3);
+      position: relative;
+      margin: 0 auto 0px;
+      padding: 0 0px;
+    }
+
+    #bannerText {
+      position: fixed;
+      top: 200px;
+      text-align: center;   
+      width: 100%;  
+    }
+
+    #mainNav{ 
+      right: 2.5%;  
+      /*position:absolute; top:50%; height:30px; margin-top:-10px;    */
+      display: inline-block;  
+    }
+
+    #mainNav {
+      position: relative;     
+      top:0;
+      right: 0; 
+      width: 100%;
+      margin: 0 0 0px 0px;   
+      text-align: right;   
+      padding-top: 5px;    
+    } 
+    #topNav {
+      right: 2.5%;  
+      position:absolute; top:50%; height:30px; margin-top:-10px;    
+      display: inline-block;  
+      position: relative;     
+      top:0;
+      right: 0; 
+      width: 100%;
+      margin: 0 0 0px 0px;   
+      text-align: right;       
+    } 
+
+    #tourButton {
+      height: 40px;
+      width: 90px;
+      position: relative;
+      display:inline;
+      text-decoration: none;
+      padding-left: 10px;
+    }
+
+    #aboutButton {
+      height: 40px;
+      width: 90px;
+      position: relative;
+      display:inline;
+      text-decoration: none;
+      padding-left: 10px;
+    }
+
+    #dataButton {
+      height: 40px;
+      width: 90px;
+      position: relative;
+      display:inline;
+      text-decoration: none;
+      padding-left: 10px;
+    }
+
+    /*@media screen and (min-width: 900px) {
+      #tourButton {
+        display:inline;
+      }
+    }
+
+    @media screen and (max-width: 900px) {
+      #tourButton {
+        display:none;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      #tourButton {
+        display:block;
+      }
+    }*/
+
+
+  </style>
   <script>
-  $(function() {
-    // initialize pie
-    var values = [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8],
-      labels = ["Vic1", "Nsw1", "Wa1", "Nt1", "Sa1", "qld1", "Tas1", "Vic2", "Nsw2", "Wa2", "Nt2", "Sa2", "Qld2", "Tas2"],
-      map = {vic1:0,nsw1:1,wa1:2,nt1:3,sa1:4,qld1:5,tas1:6,vic2:7,nsw2:8,wa2:9,nt2:10,sa2:11,qld2:12,tas2:13};
-    var chart = Raphael("holder_pie", 700, 700).pieChart(350, 350, 200, values, labels, "#fff");
-
-    // Grab the data
-    var labels = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
-        data = [8,25,27,25,54,59,79,47,27,44,44,51,56,83,12,91,52,12,40,8,60,29,7,33];
-    var analytics = new Analytics(labels, data);
-
-    $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
-    /*$( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );*/
-    $( "#tabs ul" ).removeClass( "ui-corner-all" );
-    $( "#tabs li" ).removeClass( "ui-corner-top" );    
-
-    // initialize australia 1 and 2
-    var R1 = Raphael("paper1", 300, 300);
-    var R2 = Raphael("paper2", 300, 300);
-    var australia = new HouseHover(R1);
-    var australia2 = new HouseHover(R2);
-    //hover.init(R2);
-    var tab2 = $('#tabs-2');
-    $(tab2).on("sectionover",function(evt) {
-      var i = (australia === evt.target) ? 1 : 2;
-      var index = map[evt.section + i];
-      var p = chart[index*2];
-      var txt = chart[index*2+1];
-      var ms = 500;
-      p.stop().animate({transform: "s1.1 1.1 " + 350 + " " + 350}, ms, "elastic");
-      txt.stop().animate({opacity: 1}, ms, "elastic");
-    });
-    $(tab2).on("sectionout",function(evt) {
-      var i = (australia === evt.target) ? 1 : 2;
-      var index = map[evt.section + i];
-      var p = chart[index*2];
-      var txt = chart[index*2+1];
-      var ms = 500;
-      p.stop().animate({transform: ""}, ms, "elastic");
-      txt.stop().animate({opacity: 0}, ms);
-    });
-
     $(function(){
         $.stellar({
           horizontalScrolling: false,
           verticalOffset: 40
         });
-      });
-  });
-  </script>
-  <style>
-  .ui-tabs-vertical { width: 100%; height: 100em; background: #ffffff; border: 0;}
-  .ui-tabs-vertical .ui-tabs-nav { left:0; top:0; width: 15%; height: 100%; position: fixed; background: #a6a6a6; border: 0; padding: 0;}
-  .ui-tabs-vertical .ui-tabs-nav li { background: #a6a6a6; clear: left; left:0; width: 100%; height:25%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0;}
-  .ui-tabs-vertical .ui-tabs-nav li a { width: 100%; height:100%; padding: 0;}
-  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; background: #ffffff}
-  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float:right; width: 80%;}
-  .tab-name { text-align:center; vertical-align: bottom; bottom: 0; outline:none;}
 
-  #paper {
-      height: 300px;
-      width: 300px;
-      position: relative;
-      /*left: 20%;*/
-      /*top: 20%;*/
-      display:block;      
-  }
-  #holder_pie {
-    height: 480px;
-    right: 0px;
-    margin: 0 0 0 -320px;
-    position: fixed;
-    top: 0;
-    width: 640px;
-  }
-  #holder_analytics {
-      height: 480px;
-      left: 50%;
-      margin: 0 0 0 -320px;
-      position: absolute;
-      top: 10%;
-      width: 640px;
-  }
-  </style>
-  <style type="text/css">
-    * {
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: helvetica, arial;
-      padding-top: 40px;
-    }
-    h1 {
-      background-color: black;
-      color: white;
-      height: 40px;
-      font-size: 24px;
-      font-weight: normal;
-      left: 0;
-      line-height: 40px;
-      position: fixed;
-      text-align: center;
-      top: 0;
-      width: 100%;
-      z-index: 1;
-    }
-    h1 a {
-      border-bottom: 1px solid white;
-      color: white;
-      display: inline-block;
-      line-height: 30px;
-      text-decoration: none;
-    }
-    .photo {
-      background-attachment: fixed;
-      background-position: 50% 0;
-      background-repeat: no-repeat;
-      height: 450px;
-      position: relative;
-    }
-    .photo span {
-      bottom: 0;
-      color: white;
-      display: block;
-      left: 50%;
-      margin-left: -640px;
-      font-size: 38px;
-      padding: 10px;
-      position: absolute;
-      text-shadow: 0 2px 0 black, 0 0 10px black;
-      width: 1280px;
-    }
-    .summer {
-      background-image: url(images/summer.jpg);
-    }
-    .autumn {
-      background-image: url(images/autumn.jpg);
-    }
-    .winter {
-      background-image: url(images/winter.jpg);
-    }
-    .spring {
-      background-image: url(images/spring.jpg);
-    }
-    </style>
+        ///////////////////////////////
+        // Parallax
+        ///////////////////////////////
+
+        // Calcualte the home banner parallax scrolling
+          function scrollBanner() {
+            //Get the scoll position of the page
+            scrollPos = jQuery(this).scrollTop();
+
+            //Scroll and fade out the banner text
+            jQuery('#bannerText').css({
+              'margin-top' : -(scrollPos/3)+"px",
+              'opacity' : 1-(scrollPos/300)
+            });
+          
+            //Scroll the background of the banner
+            jQuery('#homeBanner').css({
+              'background-position' : 'center ' + (-scrollPos/8)+"px"
+            });    
+            jQuery("#homeBanner h2").fitText(1.7, { minFontSize: '24px', maxFontSize: '64px' });  
+          }
+          $(window).scroll(function() {        
+               scrollBanner();        
+          });
+
+          var R1 = Raphael("dataButton", 90, 40);
+          var R2 = Raphael("tourButton", 90, 40);
+          var R3 = Raphael("aboutButton", 90, 40);
+          var dataButton = new AnimatedButton(R1, "Data", 90, 40);
+          var tourButton = new AnimatedButton(R2, "Tour", 90, 40);
+          var aboutButton = new AnimatedButton(R3, "About", 90, 40);
+      });
+  </script>
 </head>
 <body>
- 
-<div id="tabs">
-  <ul>
-    <li><a href="#tabs-0" style="outline:none; background: url(resources/home.JPG) no-repeat top; background-size: 75% 75%"></a></li>
-    <li><a href="#tabs-1" class="tab-name" style="background: url(resources/air.png) no-repeat top;">AIR QUALITY</a></li>
-    <li><a href="#tabs-2" class="tab-name" style="background: url(resources/energy.png) no-repeat top">ENERGY</a></li>
-    <li><a href="#tabs-3" class="tab-name" style="background: url(resources/water.png) no-repeat top">WATER USAGE</a></li>
-  </ul>
-  <div id="tabs-0">
-    <h1>Welcome to the NEWW House by Whirlpool</h1>
-    <img src="resources/house-front.jpg" style="margin: 0px auto; display: block; width: 50%; height: 50%;">
+  <div id="topNav" class="clearfix" >
   </div>
-  <div id="tabs-1">
-    <h1>Indoor Air Temp on Feb 6, 2014</h1>
-        <div id="holder_analytics"></div>
+  <div id="homeBanner" style="background-position: 50% 0px;">      
+    <div id="bannerText" style="margin-top: 0px; opacity: 1;">
+      <!-- <h2 style="font-size: 64px;">Net Zero Energy Water &amp; Waste</h2> -->
+      <h2 style="font-size: 64px;">Welcome to the NEWW house</h2>
+    </div>    
+  </div>  
+  <div id="mainNav" class="clearfix" >
+    <a href="data.html" id="dataButton"></a>
+    <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
+    <a href="tour.html" id="tourButton"></a>
+    <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
+    <a href="about.html" id="aboutButton"></a>
   </div>
-  <div id="tabs-2">
-    <h1>% of Energy Usage by Room</h1>
-    <div id="paper1"></div>
-    <div id="paper2"></div>
-    <div id="holder_pie"></div>
+  <div id="content" style="width: 90%; left:5%; position: relative;">
+    <div style="width: 55%; position:relative; display: inline-block; left:10%;">
+      <img src="resources/house-front.jpg" style="display: block; position:relative; width: 300px; height: 250px; padding:5px 20px 5px 0px;">
+      <img src="resources/house-front.jpg" style="display: block; position:relative; width: 300px; height: 250px; padding:5px 20px 5px 0px;">
+    </div>
+    <div style="width: 35%; position:relative; text-align:justify; display: inline-block; left:0%">
+      <h1 style="text-align:center;">OUR MISSION!</h1>
+      <p style=""> Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
+Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.
+Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.
+      </p>
+    </div>
   </div>
-  <div id="tabs-3">
-
-  </div>
-</div>
-<h1><a href="../">Stellar.js</a> Backgrounds Demo</h1>
-    <div class="photo summer" data-stellar-background-ratio="0.5"><span>Summer</span></div>
-    <div class="photo autumn" data-stellar-background-ratio="0.5"><span>Autumn</span></div>
-    <div class="photo winter" data-stellar-background-ratio="0.5"><span>Winter</span></div>
-    <div class="photo spring" data-stellar-background-ratio="0.5"><span>Spring</span></div>
-    <div class="photo summer" data-stellar-background-ratio="0.5"><span>Summer</span></div>
-    <div class="photo autumn" data-stellar-background-ratio="0.5"><span>Autumn</span></div>
-    <div class="photo winter" data-stellar-background-ratio="0.5"><span>Winter</span></div>
-    <div class="photo spring" data-stellar-background-ratio="0.5"><span>Spring</span></div>
- 
- 
 </body>
 </html>
