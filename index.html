@@ -21,7 +21,7 @@
       padding: 0 0 0 0;
       margin: 0;
       color: #fff; 
-      background-color: #36EBFF;  
+      /*background-color: #36EBFF;  */
     }
     body {
       font-family: 'Oswald', sans-serif;
@@ -30,7 +30,7 @@
     }
 
     #homeBanner {
-      background-color: #132b2b;
+      /*background-color: #132b2b;*/
     } 
 
     #homeBanner {
@@ -159,22 +159,34 @@
           var tourButton = new AnimatedButton(R2, "Tour", 90, 40);
           var aboutButton = new AnimatedButton(R3, "About", 90, 40);
       });
+
+    window.onresize = function(evt) {
+      document.getElementById('wrapper').style.display = 'none';
+      document.getElementById('wrapper').style.display = 'block';      
+    }
+    $(window).scroll(function() {        
+         document.getElementById('wrapper').style.display = 'none';
+      document.getElementById('wrapper').style.display = 'block'; 
+    });
   </script>
 </head>
 <body>
-  <div style="width=100; height:100%; position:absolute;">
+  <div style="height:100%; position:absolute;">
     <div id="homeBanner">      
       <div id="bannerText" style="margin-top: 0px; opacity: 1;">
         <!-- <h2 style="font-size: 64px;">Net Zero Energy Water &amp; Waste</h2> -->
         <h2 style="font-size: 64px;">Welcome to the NEWW house</h2>
       </div>    
     </div>  
-    <div id="filler">      
-    </div>
+    <div id="wrapper">
+      <div id="filler"> 
+      </div>
 
-    <div id="content">
-      "hello"
+      <div id="content">
+        "helloaaaaaaaaassafffaaaaaaaaaaaaaaaaaaaaaaa               nmmmm                       asdfasdfs"
+      </div>
     </div>
+    
 
     <div id="mainNav" class="clearfix" >
       <a href="data.html" id="dataButton"></a>
