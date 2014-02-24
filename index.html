@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=yes" />
   <title>NEWW</title>
   <script src="jquery-1.9.1.js"></script>
   <script src="raphael.js"></script>
@@ -85,6 +85,7 @@
       width: 100vw; 
       position: relative;
       height:1080px;
+      top:100%;
     }
 #mainNav{ 
       right: 2.5%;  
@@ -165,27 +166,27 @@
       document.getElementById('wrapper').style.display = 'block';      
     }
     $(window).scroll(function() {        
-         document.getElementById('wrapper').style.display = 'none';
-      document.getElementById('wrapper').style.display = 'block'; 
+         document.getElementById('content').style.display = 'none';
+      document.getElementById('content').style.display = 'block'; 
     });
   </script>
 </head>
 <body>
-  <div style="height:100%; position:absolute;">
+  <div style="height:100vh; position:absolute;">
     <div id="homeBanner">      
       <div id="bannerText" style="margin-top: 0px; opacity: 1;">
         <!-- <h2 style="font-size: 64px;">Net Zero Energy Water &amp; Waste</h2> -->
         <h2 style="font-size: 64px;">Welcome to the NEWW house</h2>
       </div>    
     </div>  
-    <div id="wrapper">
-      <div id="filler"> 
-      </div>
+    <!-- <div id="wrapper"> -->
+      <!-- <div id="filler"> 
+      </div> -->
 
       <div id="content">
         "helloaaaaaaaaassafffaaaaaaaaaaaaaaaaaaaaaaa               nmmmm                       asdfasdfs"
       </div>
-    </div>
+    <!-- </div> -->
     
 
     <div id="mainNav" class="clearfix" >
