@@ -29,6 +29,13 @@
       display:block;
     }
 
+    .image {
+      display:inline;
+      /*box-shadow: 10px 10px 5px #888888;*/
+      width:25%;
+      padding: 10px 10px 10px 10px;
+    }
+
     #homeBanner {
       /*background-color: #132b2b;*/
     } 
@@ -60,7 +67,7 @@
       display: block;
     }
 
-    #homeBanner h2{ 
+    #homeBanner h1{ 
       text-align: center;
       color:#fff;
       font-size: 64px;
@@ -70,6 +77,32 @@
       position: relative;
       margin: 0 auto 0px;
       padding: 0 0px;
+      height:100vh;
+    }
+    h2{ 
+      text-align: center;
+      color:#fff;
+      font-size: 20px;
+      text-shadow: 0 0 8px rgba(0,0,0,.3);
+      position: relative;
+      margin: 0 auto 0px;
+      padding: 0 0px;
+      width:100%;
+      padding-top:50px;
+      /*border: 1px dotted #fff;*/
+    }
+    h3{ 
+      text-align: center;
+      color:#fff;
+      font-size: 40px;
+      text-shadow: 0 0 8px rgba(0,0,0,.3);
+      position: relative;
+      margin: 0 auto 0px;
+      padding: 0 0px;
+      width:100%;
+      padding-top:10px;
+      padding-bottom:10px;
+      /*border: 1px dotted #fff;*/
     }
 
     #bannerText {
@@ -85,9 +118,11 @@
       width: 100vw; 
       position: relative;
       height:1080px;
-      top:100%;
+      clear:both;
+      margin-top: 100vh;
     }
-#mainNav{ 
+
+    #mainNav{ 
       right: 2.5%;  
       /*position:absolute; top:50%; height:30px; margin-top:-10px;    */
       display: inline-block;  
@@ -172,22 +207,35 @@
   </script>
 </head>
 <body>
-  <div style="height:100vh; position:absolute;">
+  <!-- <div style="height:100vh; position:absolute;"> -->
     <div id="homeBanner">      
       <div id="bannerText" style="margin-top: 0px; opacity: 1;">
-        <!-- <h2 style="font-size: 64px;">Net Zero Energy Water &amp; Waste</h2> -->
-        <h2 style="font-size: 64px;">Welcome to the NEWW house</h2>
+        <h1 style="font-size: 64px;">Welcome to the NEWW house</h1>
       </div>    
     </div>  
-    <!-- <div id="wrapper"> -->
-      <!-- <div id="filler"> 
-      </div> -->
 
-      <div id="content">
-        "helloaaaaaaaaassafffaaaaaaaaaaaaaaaaaaaaaaa               nmmmm                       asdfasdfs"
+    <!-- <img src="images/greenhouse-logo.jpg" style=""> -->
+    <div id="content">
+      <div style="width=100%">
+        <h2>Our Mission</h2>
+        <h3>To achieve net zero energy, water, and waste over a three year period through thermally connected appliances, rain water collection, and solar energy harvesting. But most of all... to save the world one appliance at a time!</h3>
       </div>
-    <!-- </div> -->
+      <img src="images/greenhouse-logo.jpg" class="image" />
+      <img src="images/greenhouse-logo.jpg" class="image" />
+      <img src="images/greenhouse-logo.jpg" class="image" />
+    </div>
     
+    <div id="footer" style="width:100%; height:200px; background-color:#00f; position:relative; clear:both">
+      <div id="contact" style="width:33%; display:inline; border-right: 1px dotted #fff;">
+        Contact
+      </div>
+      <div id="follow" style="width:33%; display:inline;">
+        Follow
+      </div>
+      <div id="partnership" style="width:33%; display:inline; border-left: 1px dotted #fff;">
+        Partnership
+      </div>
+    </div>
 
     <div id="mainNav" class="clearfix" >
       <a href="data.html" id="dataButton"></a>
@@ -196,6 +244,6 @@
       <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
       <a href="about.html" id="aboutButton"></a>
     </div>
-  </div>
+  <!-- </div> -->
 </body>
 </html>
