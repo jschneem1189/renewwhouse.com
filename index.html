@@ -13,8 +13,15 @@
   <script src="AnimatedButton.js"></script>
   <script src="stellar.js"></script>
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
   <script type="text/javascript" src="FitText.js"></script>
   <style type="text/css" media="screen">
+
+    @font-face
+    {
+    font-family: 'FreeStyle';
+    src: url(fonts/FREESCPT.TTF);
+    }
     
     body {
       width:auto; height:auto;  
@@ -80,15 +87,17 @@
       height:100vh;
     }
     h2{ 
-      text-align: center;
+      text-align: left;
       color:#fff;
-      font-size: 20px;
+      font-size: 40px;
       text-shadow: 0 0 8px rgba(0,0,0,.3);
       position: relative;
       margin: 0 auto 0px;
       padding: 0 0px;
       width:100%;
       padding-top:50px;
+      padding-left: 1em;
+      font-family: 'FreeStyle', sans-serif;
       /*border: 1px dotted #fff;*/
     }
     h3{ 
@@ -113,7 +122,9 @@
     }
 
     #content {
-      background-color: #132b2b;
+      background-image: url(images/backgrounds/canvasbackground3.jpg);
+      background-size: 100% auto;
+      background-repeat: repeat-y;
       display:block;
       width: 100vw; 
       position: relative;
@@ -207,14 +218,15 @@
   </script>
 </head>
 <body>
-  <!-- <div style="height:100vh; position:absolute;"> -->
-    <div id="homeBanner">      
-      <div id="bannerText" style="margin-top: 0px; opacity: 1;">
-        <h1 style="font-size: 64px;">Welcome to the NEWW house</h1>
-      </div>    
-    </div>  
+    <div style="">
+      <div id="homeBanner">      
+        <div id="bannerText" style="margin-top: 0px; opacity: 1;">
+          <h1 style="font-size: 64px;">Welcome to the NEWW house</h1>
+        </div>    
+      </div> 
+      <img src="images/leaf-tab.png" style="width:85px; height:105px; position:absolute; bottom:-30px; left:50%; margin-left: -42.5px; z-index:1000">
+    </div> 
 
-    <!-- <img src="images/greenhouse-logo.jpg" style=""> -->
     <div id="content">
       <div style="width=100%">
         <h2>Our Mission</h2>
@@ -225,15 +237,24 @@
       <img src="images/greenhouse-logo.jpg" class="image" />
     </div>
     
-    <div id="footer" style="width:100%; height:200px; background-color:#00f; position:relative; clear:both">
-      <div id="contact" style="width:33%; display:inline; border-right: 1px dotted #fff;">
-        Contact
+    <div id="footer" style="height:200px; background-color:#00f; position:relative; clear:both">
+      <div id="contact" style="height:200px; width:33%; display:inline-block; border-right: 1px dotted #fff; position:absolute;">
+        <div>Contact</div>
+        <div>phone - 555.123.4567</div>
+        <div>email - blah@whirlpool.com</div>
+        <div>address - 123 McDonald's lane</div>
       </div>
-      <div id="follow" style="width:33%; display:inline;">
-        Follow
+      <div id="follow" style="height:200px; width:33%; display:inline-block; position:absolute; left: 33%">
+        <div>Follow</div>
+        <img src="images/greenhouse-logo.jpg" class="image" style="width:50px; height:50px;"/>
+        <img src="images/greenhouse-logo.jpg" class="image"  style="width:50px; height:50px;"/>
+        <img src="images/greenhouse-logo.jpg" class="image"  style="width:50px; height:50px;"/>
+        <img src="images/greenhouse-logo.jpg" class="image"  style="width:50px; height:50px;"/>
       </div>
-      <div id="partnership" style="width:33%; display:inline; border-left: 1px dotted #fff;">
-        Partnership
+      <div id="partnership" style="height:200px; width:33%; display:inline-block; border-left: 1px dotted #fff; right:0px; position:absolute;">
+        <div>Partnership</div>
+        <img src="images/greenhouse-logo.jpg" class="image"  style="width:100px; height:50px;"/>
+        <img src="images/greenhouse-logo.jpg" class="image"  style="width:100px; height:50px;"/>
       </div>
     </div>
 

@@ -6,7 +6,7 @@ function AnimatedButton (R, label, width, height) {
 	rect.transform("s0.1");
 	touchArea.mouseover(function() {
 		rect.animate({opacity:1, transform:"s1"},200);
-		txt.animate({fill: '#36EBFF'},200);
+		txt.animate({fill: '#7cba2b'},200);
 	});
 	touchArea.mouseout(function() {
 		rect.animate({opacity:0, transform:"s0.1"},200);
