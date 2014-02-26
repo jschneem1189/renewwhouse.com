@@ -23,6 +23,12 @@
     src: url(fonts/FREESCPT.TTF);
     }
     
+    @font-face
+    {
+    font-family: 'Impact';
+    src: url(fonts/impact.ttf);
+    }
+
     body {
       width:auto; height:auto;  
       padding: 0 0 0 0;
@@ -75,16 +81,32 @@
     }
 
     #homeBanner h1{ 
-      text-align: center;
       color:#fff;
-      font-size: 64px;
-      /*text-transform: uppercase;*/
-      display: block;
+      font-size: 200px;
       text-shadow: 0 0 8px rgba(0,0,0,.3);
-      position: relative;
-      margin: 0 auto 0px;
-      padding: 0 0px;
-      height:100vh;
+      position: absolute;
+      left:0.5em;
+      font-family: 'FreeStyle', sans-serif;
+      /*top:0px;*/
+
+      -webkit-margin-before: 0em;
+      -webkit-margin-after: 0em;
+      -webkit-margin-start: 0px;
+      -webkit-margin-end: 0px;
+      font-weight: normal;
+      width:auto;
+    }
+    #homeBanner h2{ 
+      color:#ff0;
+      font-size: 70px;
+      text-shadow: 0 0 8px rgba(0,0,0,.3);
+      position: absolute;
+      left:0.5em;
+      font-family: 'Impact', sans-serif;
+      top:75%;
+      padding-top: 0px;
+      font-weight: normal;
+      width:auto;
     }
     h2{ 
       text-align: left;
@@ -94,7 +116,6 @@
       position: relative;
       margin: 0 auto 0px;
       padding: 0 0px;
-      width:100%;
       padding-top:50px;
       padding-left: 1em;
       font-family: 'FreeStyle', sans-serif;
@@ -116,7 +137,7 @@
 
     #bannerText {
       position: fixed;
-      top: 200px;
+      /*top: 200px;*/
       text-align: center;   
       width: 100%;  
     }
@@ -220,8 +241,9 @@
 <body>
     <div style="">
       <div id="homeBanner">      
-        <div id="bannerText" style="margin-top: 0px; opacity: 1;">
-          <h1 style="font-size: 64px;">Welcome to the NEWW house</h1>
+        <div id="bannerText" style="margin-top: 0px; opacity: 1; top:30%;">
+          <h1 style="position:relative;text-align:left;">Welcome</h1>
+          <h2 style="position:relative; margin-top:-40px">the NEWW house</h2>
         </div>    
       </div> 
       <img src="images/leaf-tab.png" style="width:85px; height:105px; position:absolute; bottom:-30px; left:50%; margin-left: -42.5px; z-index:1000">
