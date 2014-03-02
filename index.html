@@ -76,18 +76,6 @@
       top: 0;
       display: block;
     }
-    #filler {
-      bottom: 0;
-      left: 0;
-      width:100vw;
-      height:100vh;
-      margin: auto;
-      overflow: auto;
-      position: relative;
-      right: 0;
-      top: 0;
-      display: block;
-    }
 
     #homeBanner h1{ 
       color:#fff;
@@ -158,11 +146,11 @@
       background-size: 100% auto;
       background-repeat: repeat-y;
       display:block;
-      width: 100vw; 
+      width: 100%; 
       position: relative;
       height:1080px;
       clear:both;
-      /*margin-top: 100vh;*/
+      margin-top: 100vh;
     }
 
     #secondNav{ 
@@ -280,6 +268,8 @@
         var aboutButton = new AnimatedButton(R3, "About", 90, 40);
       });
 
+    var viewportWidth = $(window).width();
+    var viewportHeight = $(window).height();
     window.onresize = function(evt) {
       // document.getElementById('wrapper').style.display = 'none';
       // document.getElementById('wrapper').style.display = 'block';      
