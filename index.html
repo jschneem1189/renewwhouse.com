@@ -38,8 +38,13 @@
     }
     body {
       font-family: 'Arial', sans-serif;
-      font-size: 20px;
+      font-size:20px;
       display:block;
+    }
+
+    #content p {
+      line-height: 36px; 
+      font-size:36px;
     }
 
     .image {
@@ -49,18 +54,6 @@
       padding: 70px 0px 30px 0px;
       min-width: 300px;
     }
-
-    .footerImage {
-      display:inline;
-      /*box-shadow: 10px 10px 5px #888888;*/
-      width:25%;
-      padding: 30px 10px 10px 10px;
-      /*min-width: 300px;*/
-    }
-
-    #homeBanner {
-      /*background-color: #132b2b;*/
-    } 
 
     #homeBanner {
       background-image: url(images/backgrounds/grass-house.jpg); 
@@ -194,6 +187,7 @@
       display:inline;
       text-decoration: none;
       padding-left: 10px;
+      text-shadow: 0 5px 8px rgba(0,0,0,.4);
     }
 
     #aboutButton {
@@ -203,6 +197,7 @@
       display:inline;
       text-decoration: none;
       padding-left: 10px;
+      text-shadow: 0 5px 8px rgba(0,0,0,.4);
     }
 
     #dataButton {
@@ -212,6 +207,14 @@
       display:inline;
       text-decoration: none;
       padding-left: 10px;
+      text-shadow: 0 5px 8px rgba(0,0,0,.4);
+    }
+
+    .footerImage {
+      display:inline;
+      width:25%;
+      padding: 30px 10px 10px 10px;
+      /*min-width: 300px;*/
     }
 
     #leftImage {
@@ -220,6 +223,13 @@
 
     #rightImage {
       float: right;
+    }
+
+    .highlightedText {
+      font-family:'FreeStyle'; 
+      color:#7cba2b; 
+      font-size:55px; 
+      padding-bottom:-20px;
     }
 
     /*@media screen and (min-width: 900px) {
@@ -235,11 +245,17 @@
     }*/
 
     @media screen and (max-width: 400px) {
+      #content p {
+        line-height: 24px; 
+        font-size:24px;
+      }
+
       #homeBanner {
         position: absolute;
       }
       #homeBanner h1{ 
         font-size: 100px;
+        padding-left: 0.25em;
       }
       #homeBanner h2{ 
         font-size: 50px;
@@ -253,6 +269,7 @@
         clear: both;
         text-align: center;
         float: none;
+        padding-top: 20px;
       }
       h2{ 
         font-size: 50px;
@@ -262,6 +279,9 @@
       }
       #rightImage {
         float: none;
+      }
+      .highlightedText {
+        font-size:44px; 
       }
     }
 
@@ -327,7 +347,7 @@
     <div id="content" style="display:none">
       <div style="width=100%">
         <h2>Our Mission</h2>
-        <p style="background-image:url(images/whitebox.png); background-size:100% 100%; background-repeat:no-repeat; color:#5f5f5f; font-size:36px; padding:1em 1em 1.5em 1.5em; margin: 0px; line-height: 40px; margin-top:-0.5em">Lorem ipsum dolor sit amet, <span style="font-family:'FreeStyle'; color:#7cba2b; font-size:55px; padding-bottom:-20px;">consectetur adipisicing elit</span>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span style="font-family:'FreeStyle'; color:#7cba2b; font-size:55px; padding-top:-20px;">Ut enim ad minim veniam,</span> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p style="background-image:url(images/whitebox.png); background-size:100% 100%; background-repeat:no-repeat; color:#5f5f5f; padding:1em 1em 1.5em 1.5em; margin: 0px; margin-top:-0.5em">Lorem ipsum dolor sit amet, <span class="highlightedText">consectetur adipisicing elit</span>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="highlightedText">Ut enim ad minim veniam,</span> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div>
       <div style="text-align:center; position:relative;">
         <img id="leftImage" src="images/greenhouse-logo.jpg" class="image" />
@@ -355,7 +375,7 @@
         </div>
       </div> -->
     </div>
-    <div id="mainNav" class="clearfix" >
+    <div id="mainNav" class="clearfix" style="z-index:2000">
       <a href="data.html" id="dataButton" ></a>
       <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
       <a href="tour.html" id="tourButton" ></a>
