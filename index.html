@@ -296,6 +296,7 @@
 
     window.onload = function(evt) {
         $('#content').css("margin-top", viewportHeight);
+        $('#content').css("display", "block");
     }
   </script>
 </head>
@@ -310,7 +311,7 @@
       <img src="images/leaf-tab.png" style="width:85px; height:105px; position:absolute; bottom:-30px; left:50%; margin-left: -42.5px; z-index:1000">
     </div> 
 
-    <div id="content">
+    <div id="content" style="display:none">
       <div style="width=100%">
         <h2>Our Mission</h2>
         <p style="background-image:url(images/whitebox.png); background-size:100% 100%; background-repeat:no-repeat; color:#5f5f5f; font-size:36px; padding:1em 1em 1.5em 1.5em; margin: 0px; line-height: 40px; margin-top:-0.5em">Lorem ipsum dolor sit amet, <span style="font-family:'FreeStyle'; color:#7cba2b; font-size:55px; padding-bottom:-20px;">consectetur adipisicing elit</span>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span style="font-family:'FreeStyle'; color:#7cba2b; font-size:55px; padding-top:-20px;">Ut enim ad minim veniam,</span> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -320,35 +321,35 @@
         <img src="images/greenhouse-logo.jpg" class="image" style="display:inline"/>
         <img src="images/greenhouse-logo.jpg" class="image" style="float:right"/>
       </div>
-      <div id="mainNav" class="clearfix" >
-        <a href="data.html" id="dataButton" ></a>
-        <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
-        <a href="tour.html" id="tourButton" ></a>
-        <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
-        <a href="about.html" id="aboutButton" ></a>
+      <div id="footer" style="height:200px; background-color:#00f; position:relative; clear:both">
+        <div id="contact" style="height:200px; width:33%; display:inline-block; border-right: 1px dotted #fff; position:absolute;">
+          <div>Contact</div>
+          <div>phone - 555.123.4567</div>
+          <div>email - blah@whirlpool.com</div>
+          <div>address - 123 McDonald's lane</div>
+        </div>
+        <div id="follow" style="height:200px; width:33%; display:inline-block; position:absolute; left: 33%">
+          <div>Follow</div>
+          <img src="images/greenhouse-logo.jpg" class="footerImage" style="width:50px; height:50px;"/>
+          <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:50px; height:50px;"/>
+          <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:50px; height:50px;"/>
+          <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:50px; height:50px;"/>
+        </div>
+        <div id="partnership" style="height:200px; width:33%; display:inline-block; border-left: 1px dotted #fff; right:0px; position:absolute;">
+          <div>Partnership</div>
+          <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:100px; height:50px;"/>
+          <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:100px; height:50px;"/>
+        </div>
       </div>
+    </div>
+    <div id="mainNav" class="clearfix" >
+      <a href="data.html" id="dataButton" ></a>
+      <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
+      <a href="tour.html" id="tourButton" ></a>
+      <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
+      <a href="about.html" id="aboutButton" ></a>
     </div>
     
-    <div id="footer" style="height:200px; background-color:#00f; position:relative; clear:both">
-      <div id="contact" style="height:200px; width:33%; display:inline-block; border-right: 1px dotted #fff; position:absolute;">
-        <div>Contact</div>
-        <div>phone - 555.123.4567</div>
-        <div>email - blah@whirlpool.com</div>
-        <div>address - 123 McDonald's lane</div>
-      </div>
-      <div id="follow" style="height:200px; width:33%; display:inline-block; position:absolute; left: 33%">
-        <div>Follow</div>
-        <img src="images/greenhouse-logo.jpg" class="footerImage" style="width:50px; height:50px;"/>
-        <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:50px; height:50px;"/>
-        <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:50px; height:50px;"/>
-        <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:50px; height:50px;"/>
-      </div>
-      <div id="partnership" style="height:200px; width:33%; display:inline-block; border-left: 1px dotted #fff; right:0px; position:absolute;">
-        <div>Partnership</div>
-        <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:100px; height:50px;"/>
-        <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:100px; height:50px;"/>
-      </div>
-    </div>
 
 <!--     <div id="mainNav" class="clearfix" >
       <a href="data.html" id="dataButton" class="animatedButton"></a>
