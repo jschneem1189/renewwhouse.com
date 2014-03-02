@@ -150,7 +150,7 @@
       position: relative;
       height:1080px;
       clear:both;
-      margin-top: 100vh;
+      /*margin-top: 100vh;*/
     }
 
     #secondNav{ 
@@ -273,6 +273,7 @@
     window.onresize = function(evt) {
       // document.getElementById('wrapper').style.display = 'none';
       // document.getElementById('wrapper').style.display = 'block';      
+      $('#content').css("margin-top", viewportHeight);
     }
     $(window).scroll(function() {        
         var viewportHeight = jQuery(window).height(),
@@ -292,6 +293,10 @@
         document.getElementById('content').style.display = 'none';
         document.getElementById('content').style.display = 'block'; 
     });
+
+    window.onload = function(evt) {
+        $('#content').css("margin-top", viewportHeight);
+    }
   </script>
 </head>
 <body>
