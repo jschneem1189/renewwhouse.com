@@ -148,7 +148,6 @@
       display:block;
       width: 100%; 
       position: relative;
-      height:1080px;
       clear:both;
       /*margin-top: 100vh;*/
     }
@@ -215,6 +214,14 @@
       padding-left: 10px;
     }
 
+    #leftImage {
+      float: left;
+    }
+
+    #rightImage {
+      float: right;
+    }
+
     /*@media screen and (min-width: 900px) {
       #tourButton {
         display:inline;
@@ -243,21 +250,27 @@
         position: absolute;
       }
       .image {
-        display: block;
         clear: both;
+        text-align: center;
+        float: none;
       }
       h2{ 
         font-size: 50px;
       }
+      #leftImage {
+        float: none;
+      }
+      #rightImage {
+        float: none;
+      }
     }
 
     @media (min-width:320px) { /* smartphones, iPhone, portrait 480x320 phones */ }
-@media (min-width:481px) { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
-@media (min-width:641px) { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
-@media (min-width:961px) { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
-@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
-@media (min-width:1281px) { /* hi-res laptops and desktops */ }
-
+    @media (min-width:481px) { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+    @media (min-width:641px) { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+    @media (min-width:961px) { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+    @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+    @media (min-width:1281px) { /* hi-res laptops and desktops */ }
 
   </style>
   <script>
@@ -270,11 +283,8 @@
         var aboutButton = new AnimatedButton(R3, "About", 90, 40);
       });
 
-    var viewportWidth = $(window).width();
-    var viewportHeight = $(window).height();
     window.onresize = function(evt) {
-      // document.getElementById('wrapper').style.display = 'none';
-      // document.getElementById('wrapper').style.display = 'block';      
+      var viewportHeight = $(window).height();
       $('#content').css("margin-top", viewportHeight);
     }
     $(window).scroll(function() {        
@@ -297,6 +307,7 @@
     });
 
     window.onload = function(evt) {
+        var viewportHeight = $(window).height();
         $('#content').css("margin-top", viewportHeight);
         $('#content').css("display", "block");
     }
@@ -318,12 +329,12 @@
         <h2>Our Mission</h2>
         <p style="background-image:url(images/whitebox.png); background-size:100% 100%; background-repeat:no-repeat; color:#5f5f5f; font-size:36px; padding:1em 1em 1.5em 1.5em; margin: 0px; line-height: 40px; margin-top:-0.5em">Lorem ipsum dolor sit amet, <span style="font-family:'FreeStyle'; color:#7cba2b; font-size:55px; padding-bottom:-20px;">consectetur adipisicing elit</span>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span style="font-family:'FreeStyle'; color:#7cba2b; font-size:55px; padding-top:-20px;">Ut enim ad minim veniam,</span> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div>
-      <div style="text-align:center;">
-        <img src="images/greenhouse-logo.jpg" class="image" style="float:left;"/>
-        <img src="images/greenhouse-logo.jpg" class="image" style="display:inline"/>
-        <img src="images/greenhouse-logo.jpg" class="image" style="float:right"/>
+      <div style="text-align:center; position:relative;">
+        <img id="leftImage" src="images/greenhouse-logo.jpg" class="image" />
+        <img src="images/greenhouse-logo.jpg" class="image" />
+        <img id="rightImage" src="images/greenhouse-logo.jpg" class="image" />
       </div>
-      <div id="footer" style="height:200px; background-color:#00f; position:relative; clear:both">
+      <!-- <div id="footer" style="height:200px; background-color:#00f; position:relative; clear:both">
         <div id="contact" style="height:200px; width:33%; display:inline-block; border-right: 1px dotted #fff; position:absolute;">
           <div>Contact</div>
           <div>phone - 555.123.4567</div>
@@ -342,7 +353,7 @@
           <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:100px; height:50px;"/>
           <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:100px; height:50px;"/>
         </div>
-      </div>
+      </div> -->
     </div>
     <div id="mainNav" class="clearfix" >
       <a href="data.html" id="dataButton" ></a>
