@@ -45,8 +45,17 @@
     .image {
       display:inline;
       /*box-shadow: 10px 10px 5px #888888;*/
+      width:30%;
+      padding: 70px 0px 30px 0px;
+      min-width: 300px;
+    }
+
+    .footerImage {
+      display:inline;
+      /*box-shadow: 10px 10px 5px #888888;*/
       width:25%;
-      padding: 10px 10px 10px 10px;
+      padding: 30px 10px 10px 10px;
+      /*min-width: 300px;*/
     }
 
     #homeBanner {
@@ -85,29 +94,29 @@
       font-size: 225px;
       text-shadow: -5px 5px 8px rgba(0,0,0,.4);
       position: absolute;
-      left:0.65em;
+      /*left:0.65em;*/
       font-family: 'FreeStyle', sans-serif;
       /*top:0px;*/
-
+      padding-left: 1em;
       -webkit-margin-before: 0em;
       -webkit-margin-after: 0em;
       -webkit-margin-start: 0px;
       -webkit-margin-end: 0px;
       font-weight: normal;
-      width:auto;
     }
     #homeBanner h2{ 
       color:#ff0;
       font-size: 100px;
       text-shadow: -5px 5px 8px rgba(0,0,0,.4);
       position: absolute;
-      left:0;
-      padding-left: 0.5em;
+      /*left:0;*/
+      padding-left: 1.25em;
       font-family: 'Oswald', sans-serif;
       top:75%;
       padding-top: 0px;
       font-weight: bold;
       width:auto;
+      margin:-70px 0px 0px 0px;
     }
     h2{ 
       text-align: left;
@@ -234,6 +243,22 @@
       #homeBanner {
         position: absolute;
       }
+      #homeBanner h1{ 
+        font-size: 100px;
+      }
+      #homeBanner h2{ 
+        font-size: 50px;
+        margin: -25px 0px 0px 0px;
+        padding-left: 0.5em;
+      }
+      #bannerText {
+        position: absolute;
+      }
+      .image {
+        display: block;
+        clear: both;
+
+      }
     }
 
 
@@ -277,7 +302,7 @@
       <div id="homeBanner">      
         <div id="bannerText" style="margin-top: 0px; opacity: 1; top:25%;">
           <h1 style="position:relative;text-align:left;">Welcome</h1>
-          <h2 style="position:relative; margin:-70px 0px 0px 0px;">the NEWW house</h2>
+          <h2 style="position:relative; ">the NEWW house</h2>
         </div>    
       </div> 
       <img src="images/leaf-tab.png" style="width:85px; height:105px; position:absolute; bottom:-30px; left:50%; margin-left: -42.5px; z-index:1000">
@@ -288,9 +313,11 @@
         <h2>Our Mission</h2>
         <p style="background-image:url(images/whitebox.png); background-size:100% 100%; background-repeat:no-repeat; color:#5f5f5f; font-size:36px; padding:1em 1em 1.5em 1.5em; margin: 0px; line-height: 40px; margin-top:-0.5em">Lorem ipsum dolor sit amet, <span style="font-family:'FreeStyle'; color:#7cba2b; font-size:55px; padding-bottom:-20px;">consectetur adipisicing elit</span>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span style="font-family:'FreeStyle'; color:#7cba2b; font-size:55px; padding-top:-20px;">Ut enim ad minim veniam,</span> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div>
-      <img src="images/greenhouse-logo.jpg" class="image" />
-      <img src="images/greenhouse-logo.jpg" class="image" />
-      <img src="images/greenhouse-logo.jpg" class="image" />
+      <div style="text-align:center;">
+        <img src="images/greenhouse-logo.jpg" class="image" style="float:left;"/>
+        <img src="images/greenhouse-logo.jpg" class="image" style="display:inline"/>
+        <img src="images/greenhouse-logo.jpg" class="image" style="float:right"/>
+      </div>
       <div id="mainNav" class="clearfix" >
         <a href="data.html" id="dataButton" ></a>
         <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
@@ -309,15 +336,15 @@
       </div>
       <div id="follow" style="height:200px; width:33%; display:inline-block; position:absolute; left: 33%">
         <div>Follow</div>
-        <img src="images/greenhouse-logo.jpg" class="image" style="width:50px; height:50px;"/>
-        <img src="images/greenhouse-logo.jpg" class="image"  style="width:50px; height:50px;"/>
-        <img src="images/greenhouse-logo.jpg" class="image"  style="width:50px; height:50px;"/>
-        <img src="images/greenhouse-logo.jpg" class="image"  style="width:50px; height:50px;"/>
+        <img src="images/greenhouse-logo.jpg" class="footerImage" style="width:50px; height:50px;"/>
+        <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:50px; height:50px;"/>
+        <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:50px; height:50px;"/>
+        <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:50px; height:50px;"/>
       </div>
       <div id="partnership" style="height:200px; width:33%; display:inline-block; border-left: 1px dotted #fff; right:0px; position:absolute;">
         <div>Partnership</div>
-        <img src="images/greenhouse-logo.jpg" class="image"  style="width:100px; height:50px;"/>
-        <img src="images/greenhouse-logo.jpg" class="image"  style="width:100px; height:50px;"/>
+        <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:100px; height:50px;"/>
+        <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:100px; height:50px;"/>
       </div>
     </div>
 
