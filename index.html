@@ -15,7 +15,6 @@
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
   <script type="text/javascript" src="FitText.js"></script>
-  <script type="text/javascript" src="jquery.smoothwheel.js"></script>
   <style type="text/css" media="screen">
 
     @font-face
@@ -308,14 +307,14 @@
       var viewportHeight = $(window).height();
       $('#content').css("margin-top", viewportHeight);
     }
-    $(window).scroll(function() {        
-        var viewportHeight = jQuery(window).height(),
-        documentScrollTop = jQuery(document).scrollTop(),
-        minTop = documentScrollTop,
-        maxTop = documentScrollTop + viewportHeight,
+    // $(window).scroll(function() {        
+        // var viewportHeight = jQuery(window).height(),
+        // documentScrollTop = jQuery(document).scrollTop(),
+        // minTop = documentScrollTop,
+        // maxTop = documentScrollTop + viewportHeight,
 
-        $myElement = jQuery('#content'),
-        elementOffset = $myElement.offset();
+        // $myElement = jQuery('#content'),
+        // elementOffset = $myElement.offset();
         // if (elementOffset.top > minTop ) {
         //   console.debug("visible")
         //   $('#mainNav').css("position","fixed");
@@ -323,9 +322,9 @@
         //   console.debug("not visible")
         //   $('#mainNav').css("position","absolute");
         // }
-        document.getElementById('content').style.display = 'none';
-        document.getElementById('content').style.display = 'block'; 
-    });
+        // document.getElementById('content').style.display = 'none';
+        // document.getElementById('content').style.display = 'block'; 
+    // });
 
     window.onload = function(evt) {
         var viewportHeight = $(window).height();
@@ -333,9 +332,9 @@
         $('#content').css("display", "block");
     }
 
-    $(document).ready(function(){
-        $("body").smoothWheel()
-    });
+    // $(document).ready(function(){
+    //     $("body").smoothWheel()
+    // });
   </script>
 </head>
 <body>
