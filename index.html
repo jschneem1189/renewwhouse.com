@@ -15,6 +15,7 @@
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
   <script type="text/javascript" src="FitText.js"></script>
+  <script type="text/javascript" src="jquery.smoothwheel.js"></script>
   <style type="text/css" media="screen">
 
     @font-face
@@ -251,7 +252,7 @@
       }
 
       #homeBanner {
-        position: absolute;
+        /*position: absolute;*/
       }
       #homeBanner h1{ 
         font-size: 100px;
@@ -331,6 +332,10 @@
         $('#content').css("margin-top", viewportHeight);
         $('#content').css("display", "block");
     }
+
+    $(document).ready(function(){
+        $("body").smoothWheel()
+    });
   </script>
 </head>
 <body>
