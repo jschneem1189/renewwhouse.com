@@ -60,6 +60,7 @@
       background-repeat: no-repeat;
       background-position: center;  
       background-size: cover;
+      -webkit-transform: translate3d(0,0,0);
       bottom: 0;
       left: 0;
       margin: auto;
@@ -307,7 +308,7 @@
       var viewportHeight = $(window).height();
       $('#content').css("margin-top", viewportHeight);
     }
-    // $(window).scroll(function() {        
+    $(window).scroll(function() {        
         // var viewportHeight = jQuery(window).height(),
         // documentScrollTop = jQuery(document).scrollTop(),
         // minTop = documentScrollTop,
@@ -322,9 +323,9 @@
         //   console.debug("not visible")
         //   $('#mainNav').css("position","absolute");
         // }
-        // document.getElementById('content').style.display = 'none';
-        // document.getElementById('content').style.display = 'block'; 
-    // });
+        document.getElementById('content').style.display = 'none';
+        document.getElementById('content').style.display = 'block'; 
+    });
 
     window.onload = function(evt) {
         var viewportHeight = $(window).height();
