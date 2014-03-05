@@ -51,8 +51,10 @@
       display:inline;
       /*box-shadow: 10px 10px 5px #888888;*/
       width:30%;
-      padding: 70px 0px 30px 0px;
+      /*padding: 70px 0px 30px 0px;*/
       min-width: 300px;
+      /*border:2px solid;*/
+      border-radius:25px;
     }
 
     #homeBanner {
@@ -239,6 +241,18 @@
       padding-bottom:-20px;
     }
 
+    #footer {
+      background-image: url(images/footer-bg.png);
+      background-repeat: no-repeat;
+      background-position: center;  
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      /*background-position: left top;*/
+      box-shadow: 0px 3px 25px #5f5f5f;
+    }
+
     /*@media screen and (min-width: 900px) {
       #tourButton {
         display:inline;
@@ -340,14 +354,11 @@
         $('#content').css("display", "block");
     }
 
-    // $(document).ready(function(){
-    //     $("body").smoothWheel()
-    // });
   </script>
 </head>
 <body>
     <div style="">
-      <div id="homeBanner">      
+      <div id="homeBanner">
         <div id="bannerText" style="margin-top: 0px; opacity: 1; top:25%;">
           <h1 style="position:relative;text-align:left;">Welcome</h1>
           <h2 style="position:relative; ">the NEWW house</h2>
@@ -362,31 +373,27 @@
         <h2>Our Mission</h2>
         <p style="background-image:url(images/whitebox.png); background-size:100% 100%; background-repeat:no-repeat; color:#5f5f5f; padding:1em 1em 1.5em 1.5em; margin: 0px; margin-top:-0.5em">Lorem ipsum dolor sit amet, <span class="highlightedText">consectetur adipisicing elit</span>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="highlightedText">Ut enim ad minim veniam,</span> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div>
-      <div style="text-align:center; position:relative;">
+      <div style="text-align:center; position:relative; padding:70px 0px 150px 0px">
         <img id="leftImage" src="images/greenhouse-logo.jpg" class="image" />
         <img src="images/greenhouse-logo.jpg" class="image" />
         <img id="rightImage" src="images/greenhouse-logo.jpg" class="image" />
       </div>
-      <!-- <div id="footer" style="height:200px; background-color:#00f; position:relative; clear:both">
-        <div id="contact" style="height:200px; width:33%; display:inline-block; border-right: 1px dotted #fff; position:absolute;">
-          <div>Contact</div>
-          <div>phone - 555.123.4567</div>
-          <div>email - blah@whirlpool.com</div>
-          <div>address - 123 McDonald's lane</div>
+      <div id="footer" style="height:250px; position:relative; clear:both">
+        <div id="contact" style="height:250px; width:67%; display:inline; position:absolute;">
+          <img src="images/checkout.png" class=""  style="width:auto; height:40%; margin-top:-20px; display:inline-block;"/>
+          <div style="height:60%; display:block">
+            <div style="height:100%; width:25%; margin: 0px 0px 0px 20px; display:inline-block;">
+              <img src="images/email.png" class=""  style="height:50%; display:block; position:relative;"/>
+              <img src="images/facebook.png" class=""  style="height:50%; position:relative; display:inline;"/>
+              <img src="images/twitter.png" class=""  style="height:50%; position:relative; display:inline;"/>
+            </div>
+            <img src="images/contact.png" class=""  style="width:auto; height:100%; position:relative;"/>
+          </div>
         </div>
-        <div id="follow" style="height:200px; width:33%; display:inline-block; position:absolute; left: 33%">
-          <div>Follow</div>
-          <img src="images/greenhouse-logo.jpg" class="footerImage" style="width:50px; height:50px;"/>
-          <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:50px; height:50px;"/>
-          <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:50px; height:50px;"/>
-          <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:50px; height:50px;"/>
+        <div id="partnership" style="height:250px; width:33%; display:inline-block; right:0px; position:absolute;">
+          <img src="images/sponsors.png" class="footerImage"  style="height:90%; width: auto; padding-top:20px;padding-bottom:0px; float:right"/>
         </div>
-        <div id="partnership" style="height:200px; width:33%; display:inline-block; border-left: 1px dotted #fff; right:0px; position:absolute;">
-          <div>Partnership</div>
-          <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:100px; height:50px;"/>
-          <img src="images/greenhouse-logo.jpg" class="footerImage"  style="width:100px; height:50px;"/>
-        </div>
-      </div> -->
+      </div>
     </div>
     <div id="mainNav" class="clearfix" style="z-index:2000">
       <a href="data.html" id="dataButton" ></a>
