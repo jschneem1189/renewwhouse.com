@@ -52,9 +52,12 @@
       /*box-shadow: 10px 10px 5px #888888;*/
       width:30%;
       /*padding: 70px 0px 30px 0px;*/
-      min-width: 300px;
+      /*min-width: 300px;*/
       /*border:2px solid;*/
       border-radius:25px;
+    }
+    #emailImage {
+      display: block;
     }
 
     #homeBanner {
@@ -220,11 +223,14 @@
       text-shadow: 0 5px 8px rgba(0,0,0,.4);
     }
 
-    .footerImage {
+    #footerImage2 {
       display:inline;
-      width:25%;
       padding: 30px 10px 10px 10px;
-      /*min-width: 300px;*/
+      height:90%; 
+      width: auto; 
+      padding-top:20px;
+      padding-bottom:0px; 
+      float:right
     }
 
     #leftImage {
@@ -243,7 +249,7 @@
     }
 
     #footer {
-      background-image: url(images/footer-bg.png);
+      background-image: url(images/backgrounds/footer-bg.png);
       background-repeat: no-repeat;
       background-position: center;  
       -webkit-background-size: cover;
@@ -252,6 +258,50 @@
       background-size: cover;
       /*background-position: left top;*/
       box-shadow: 0px 3px 25px #5f5f5f;
+      height:250px; 
+      position:relative; 
+      clear:both
+    }
+
+    #checkoutMore {
+      width:auto; 
+      height:40%; 
+      margin-top:-20px; 
+      display:inline-block;
+    }
+    #footerLayer1 {
+      height:60%; 
+      /*width:50%;*/
+      display:block
+    }
+    #footerLayer2 {
+      height:100%; 
+      width:33%; 
+      margin: 0px 0px 0px 20px; 
+      display:inline-block;
+    }
+    .footerImage {
+      height:50%; 
+      display:inline; 
+      position:relative;
+    }
+    #footerSection1 {
+      height:250px; 
+      width:75%; 
+      display:inline; 
+      position:absolute;
+    }
+    #footerSection2 {
+      height:250px; 
+      width:25%; 
+      display:inline-block; 
+      right:0px; 
+      position:absolute;
+    }
+    #contact {
+      width:auto; 
+      height:100%; 
+      position:relative;
     }
 
     /*@media screen and (min-width: 900px) {
@@ -273,7 +323,7 @@
       }
 
       #homeBanner {
-        /*position: absolute;*/
+        position: absolute;
       }
       #homeBanner h1{ 
         font-size: 100px;
@@ -291,7 +341,11 @@
         clear: both;
         text-align: center;
         float: none;
-        padding-top: 20px;
+        margin-top: 20px;
+        display: block;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
       }
       h2{ 
         font-size: 50px;
@@ -304,6 +358,59 @@
       }
       .highlightedText {
         font-size:44px; 
+      }
+      #checkoutMore {
+        display:none;
+      }
+      #footer {
+        height:550px;
+      }
+      #footerLayer1 {
+        width:100%;
+        height:auto; 
+        padding-top: 20px;
+      }
+      #footerLayer2 {
+        width:100%; 
+        margin:0px;
+      }
+      .footerImage {
+        width:32%; 
+        /*height:50%;*/
+        height:auto;
+        display:inline-block; 
+        position:relative;
+      }
+      #footerSection1 {
+        height:auto; 
+        width:100%; 
+        display:block; 
+        position:relative;
+        clear: both;
+      }
+      #footerSection2 {
+        height:auto; 
+        width:100%; 
+        display:block; 
+        /*right:0px; */
+        position:relative;
+        clear: both;
+      }
+      #contact {
+        width:100%; 
+        height:auto; 
+      }
+      #footerImage2 {
+        display:block;
+        /*padding: 30px 10px 10px 10px;*/
+        height:auto; 
+        width: 100%; 
+        padding-top:20px;
+        padding-bottom:0px; 
+        /*float:right*/
+      }
+      #emailImage {
+        display: inline;
       }
     }
 
@@ -352,12 +459,13 @@
     window.onload = function(evt) {
         var viewportHeight = $(window).height();
         $('#content').css("margin-top", viewportHeight);
-        $('#content').css("display", "block");
+        // $('#wrapper').css("display", "block");
     }
 
   </script>
 </head>
 <body>
+  <div id="wrapper" style="">
     <div style="">
       <div id="homeBanner">
         <div id="bannerText" style="margin-top: 0px; opacity: 1; top:25%;">
@@ -372,27 +480,27 @@
     <div id="content" style="">
       <div style="width=100%">
         <h2>Our Mission</h2>
-        <p style="background-image:url(images/whitebox.png); background-size:100% 100%; background-repeat:no-repeat; color:#5f5f5f; padding:1em 1em 1.5em 1.5em; margin: 0px; margin-top:-0.5em">Lorem ipsum dolor sit amet, <span class="highlightedText">consectetur adipisicing elit</span>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="highlightedText">Ut enim ad minim veniam,</span> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p style="background-image:url(images/backgrounds/whitebox.png); background-size:100% 100%; background-repeat:no-repeat; color:#5f5f5f; padding:1em 1em 1.5em 1.5em; margin: 0px; margin-top:-0.5em">Lorem ipsum dolor sit amet, <span class="highlightedText">consectetur adipisicing elit</span>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="highlightedText">Ut enim ad minim veniam,</span> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div>
       <div style="text-align:center; position:relative; padding:70px 0px 150px 0px">
         <img id="leftImage" src="images/greenhouse-logo.jpg" class="image" />
         <img src="images/greenhouse-logo.jpg" class="image" />
         <img id="rightImage" src="images/greenhouse-logo.jpg" class="image" />
       </div>
-      <div id="footer" style="height:250px; position:relative; clear:both">
-        <div id="contact" style="height:250px; width:67%; display:inline; position:absolute;">
-          <img src="images/checkout.png" class=""  style="width:auto; height:40%; margin-top:-20px; display:inline-block;"/>
-          <div style="height:60%; display:block">
-            <div style="height:100%; width:25%; margin: 0px 0px 0px 20px; display:inline-block;">
-              <img src="images/email.png" class=""  style="height:50%; display:block; position:relative;"/>
-              <img src="images/facebook.png" class=""  style="height:50%; position:relative; display:inline;"/>
-              <img src="images/twitter.png" class=""  style="height:50%; position:relative; display:inline;"/>
+      <div id="footer">
+        <div id="footerSection1">
+          <img src="images/checkout.png" id="checkoutMore"/>
+          <div id="footerLayer1">
+            <div id="footerLayer2">
+              <img src="images/email.png" class="footerImage" id="emailImage"/>
+              <img src="images/facebook.png" class="footerImage" />
+              <img src="images/twitter.png" class="footerImage" />
             </div>
-            <img src="images/contact.png" class=""  style="width:auto; height:100%; position:relative;"/>
+            <img src="images/contact.png" id="contact"/>
           </div>
         </div>
-        <div id="partnership" style="height:250px; width:33%; display:inline-block; right:0px; position:absolute;">
-          <img src="images/sponsors.png" class="footerImage"  style="height:90%; width: auto; padding-top:20px;padding-bottom:0px; float:right"/>
+        <div id="footerSection2">
+          <img src="images/sponsors.png" id="footerImage2"/>
         </div>
       </div>
     </div>
@@ -412,5 +520,6 @@
       <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
       <a href="about.html" id="aboutButton" class="animatedButton"></a>
     </div> -->
+  </div>
 </body>
 </html>
