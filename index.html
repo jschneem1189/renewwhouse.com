@@ -323,7 +323,7 @@
       }
 
       #homeBanner {
-        position: absolute;
+        /*position: absolute;*/
       }
       #homeBanner h1{ 
         font-size: 100px;
@@ -456,16 +456,16 @@
         document.getElementById('content').style.display = 'block'; 
     });
 
-    window.onload = function(evt) {
+    $(document).ready(function(evt) {
         var viewportHeight = $(window).height();
         $('#content').css("margin-top", viewportHeight);
-        // $('#wrapper').css("display", "block");
-    }
+        $('#wrapper').show();
+    });
 
   </script>
 </head>
 <body>
-  <div id="wrapper" style="">
+  <div id="wrapper" style="display:none">
     <div style="">
       <div id="homeBanner">
         <div id="bannerText" style="margin-top: 0px; opacity: 1; top:25%;">
@@ -504,13 +504,14 @@
         </div>
       </div>
     </div>
-    <div id="mainNav" class="clearfix" style="z-index:2000">
-      <a href="data.html" id="dataButton" ></a>
-      <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
-      <a href="tour.html" id="tourButton" ></a>
-      <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
-      <a href="about.html" id="aboutButton" ></a>
-    </div>
+  </div>
+  <div id="mainNav" class="clearfix" style="z-index:2000">
+    <a href="data.html" id="dataButton" ></a>
+    <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
+    <a href="tour.html" id="tourButton" ></a>
+    <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
+    <a href="about.html" id="aboutButton" ></a>
+  </div>
     
 
 <!--     <div id="mainNav" class="clearfix" >
@@ -520,6 +521,5 @@
       <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
       <a href="about.html" id="aboutButton" class="animatedButton"></a>
     </div> -->
-  </div>
 </body>
 </html>
