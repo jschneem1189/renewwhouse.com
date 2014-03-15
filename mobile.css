@@ -7,7 +7,7 @@
 } 
 
 #homeBanner {
-  position: absolute;
+  /*position: absolute;*/
 }
 #homeBanner h1{ 
   font-size: 100px;
