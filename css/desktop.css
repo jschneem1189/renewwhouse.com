@@ -1,13 +1,13 @@
 @font-face
 {
 font-family: 'FreeStyle';
-src: url(fonts/FREESCPT.TTF);
+src: url(../fonts/FREESCPT.TTF);
 }
 
 @font-face
 {
 font-family: 'Impact';
-src: url(fonts/impact.ttf);
+src: url(../fonts/impact.ttf);
 }
 
 body {
@@ -42,7 +42,7 @@ body {
 }
 
 #homeBanner {
-  background-image: url(images/backgrounds/grass-house.jpg); 
+  background-image: url(../images/backgrounds/grass-house.jpg); 
   background-repeat: no-repeat;
   background-position: center;  
   -webkit-background-size: cover;
@@ -127,7 +127,7 @@ h3{
 }
 
 #content {
-  background-image: url(images/backgrounds/canvasbackground3.jpg);
+  background-image: url(../images/backgrounds/canvasbackground3.jpg);
   background-size: 100% auto;
   background-repeat: repeat-y;
   display:block;
@@ -230,7 +230,7 @@ h3{
 }
 
 #footer {
-  background-image: url(images/backgrounds/footer-bg.png);
+  background-image: url(../images/backgrounds/footer-bg.png);
   background-repeat: no-repeat;
   background-position: center;  
   -webkit-background-size: cover;
