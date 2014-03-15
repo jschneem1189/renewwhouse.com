@@ -64,12 +64,12 @@
   </style>
   <script>
     $(function(){
-        var R1 = Raphael("dataButton", 90, 40);
-        var R2 = Raphael("tourButton", 90, 40);
-        var R3 = Raphael("aboutButton", 90, 40);
-        var dataButton = new AnimatedButton(R1, "Data", 90, 40);
-        var tourButton = new AnimatedButton(R2, "Tour", 90, 40);
-        var aboutButton = new AnimatedButton(R3, "About", 90, 40);
+        var R1 = Raphael("dataButton", 80, 30);
+        var R2 = Raphael("tourButton", 80, 30);
+        var R3 = Raphael("aboutButton", 80, 30);
+        var dataButton = new AnimatedButton(R1, "DATA", 80, 30);
+        var tourButton = new AnimatedButton(R2, "TOUR", 80, 30);
+        var aboutButton = new AnimatedButton(R3, "ABOUT", 80, 30);
       });
 
     window.onresize = function(evt) {
@@ -123,9 +123,9 @@
         <p style="background-image:url(images/backgrounds/whitebox.png); background-size:100% 100%; background-repeat:no-repeat; color:#5f5f5f; padding:1em 1em 1.5em 1.5em; margin: 0px; margin-top:-0.5em">Lorem ipsum dolor sit amet, <span class="highlightedText">consectetur adipisicing elit</span>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <span class="highlightedText">Ut enim ad minim veniam,</span> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div>
       <div style="text-align:center; position:relative; padding:70px 0px 150px 0px">
-        <img id="leftImage" src="images/greenhouse-logo.jpg" class="image" />
-        <img src="images/greenhouse-logo.jpg" class="image" />
-        <img id="rightImage" src="images/greenhouse-logo.jpg" class="image" />
+        <img id="leftImage" src="images/archway.jpg" class="image" />
+        <img src="images/stairway.jpg" class="image" />
+        <img id="rightImage" src="images/light.jpg" class="image" />
       </div>
       <div id="footer">
         <div id="footerLayer2">
@@ -138,12 +138,12 @@
       </div>
     </div>
   </div>
-  <div id="mainNav" class="clearfix" style="z-index:2000">
-    <a href="data.html" id="dataButton" ></a>
-    <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
-    <a href="tour.html" id="tourButton" ></a>
-    <span style="height:50px; position:absolute; top:50%; margin-top:-17px;">|</span>
-    <a href="about.html" id="aboutButton" ></a>
+  <div id="mainNav" class="clearfix" style="z-index:2000;">
+    <div style="padding-top:5px;" >
+      <a href="data.html" id="dataButton" ></a>
+      <a href="tour.html" id="tourButton" ></a>
+      <a href="about.html" id="aboutButton" ></a>
+    </div>
   </div>
     
 </body>
