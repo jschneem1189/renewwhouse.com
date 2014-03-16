@@ -1,6 +1,6 @@
 #content p {
   line-height: 24px; 
-  font-size:24px;
+  font-size:20px;
 }
 #mainNav {
   text-align: center;   
@@ -11,16 +11,21 @@
   background-image: url(../images/backgrounds/mobilewelcome.jpg); 
 }
 #homeBanner h1{ 
-  font-size: 100px;
-  padding-left: 0.25em;
+  font-size: 24px;
+  letter-spacing: 1px;
 }
 #homeBanner h2{ 
-  font-size: 50px;
-  margin: -25px 0px 0px 0px;
-  padding-left: 0.5em;
+  font-size: 40px;
+  margin-top: 10px;
+  /*margin: -25px 0px 0px 0px;*/
+  /*padding-left: 0.5em;*/
 }
 #bannerText {
   position: absolute;
+}
+#houseText {
+  font-size:45px; 
+  letter-spacing:9px;
 }
 .image {
   clear: both;
@@ -33,7 +38,7 @@
   margin-right: auto;
 }
 h2{ 
-  font-size: 50px;
+  font-size: 35px;
 }
 #leftImage {
   float: none;
