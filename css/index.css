@@ -10,6 +10,12 @@ font-family: 'Impact';
 src: url(../fonts/impact.ttf);
 }
 
+@font-face
+{
+font-family: 'SimFang';
+src: url(../fonts/simfang.ttf);
+}
+
 body {
   width:auto; height:auto;  
   padding: 0 0 0 0;
@@ -35,7 +41,7 @@ body {
   /*padding: 70px 0px 30px 0px;*/
   /*min-width: 300px;*/
   /*border:2px solid;*/
-  border-radius:25px;
+  border-radius:5px;
 }
 #emailImage {
   display: block;
@@ -63,35 +69,37 @@ body {
 
 #homeBanner h1{ 
   color:#fff;
-  font-size: 225px;
+  font-size: 24px;
   text-shadow: -5px 5px 8px rgba(0,0,0,.4);
   position: absolute;
+  text-align: center;
   /*left:0.65em;*/
-  font-family: 'FreeStyle', sans-serif;
+  font-family: 'SimFang', sans-serif;
   /*top:0px;*/
-  padding-left: 1em;
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em;
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
   font-weight: normal;
+  letter-spacing: 10px;
+  display: inline-block;
+  width: 100%
 }
 #homeBanner h2{ 
-  color:#ff0;
+  color:#fff;
   font-size: 100px;
   text-shadow: -5px 5px 8px rgba(0,0,0,.4);
   position: absolute;
-  /*left:0;*/
-  padding-left: 1.25em;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Duru Sans', sans-serif;
   top:75%;
-  padding-top: 0px;
-  font-weight: bold;
-  width:auto;
-  margin:-70px 0px 0px 0px;
+  padding-top: 20px;
+  /*font-weight: bold;*/
+  width:100%;
+  letter-spacing:4px;
+  /*margin:-70px 0px 0px 0px;*/
 }
 h2{ 
-  text-align: left;
+  text-align: center;
   color:#fff;
   font-size: 72px;
   text-shadow: 0 5px 8px rgba(0,0,0,.4);
@@ -99,7 +107,7 @@ h2{
   margin: 0 auto 0px;
   padding: 0 0px;
   padding-top:50px;
-  padding-left: 1em;
+  /*padding-left: 1em;*/
   font-family: 'FreeStyle', sans-serif;
   font-weight: normal;
   /*border: 1px dotted #fff;*/
@@ -122,8 +130,9 @@ h3{
   position: fixed;
   -webkit-transform: translateZ(0); 
   /*top: 200px;*/
-  text-align: center;   
+  /*text-align: center;   */
   width: 100%;  
+  top: 45%;
 }
 
 #content {
@@ -291,4 +300,11 @@ h3{
   display: inline-block;
   margin-bottom: auto;
   /*margin-top: 20px;*/
+}
+#homelogo {
+  left: 0;
+  height:35px;
+  width: auto;
+  position: fixed;
+  padding: 2px 0px 0px 5px;
 }
