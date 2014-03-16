@@ -45,15 +45,15 @@
     }
     @media (min-width:481px) { 
     /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
-      #footer {
+     /* #footer {
         height:150px;
-      }
+      }*/
     }
     @media (min-width:641px) { 
     /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 
-      #footer {
+      /*#footer {
         height:200px;
-      }
+      }*/
     }
     @media (min-width:961px) { 
       /* tablet, landscape iPad, lo-res laptops ands desktops */ 
@@ -128,18 +128,31 @@
         <img id="rightImage" src="images/archway.jpg" class="image" />
       </div>
       <div id="footer">
-        <div id="footerLayer2">
-          <img src="images/email.png" class="footerImage" id="emailImage"/>
-          <img src="images/facebook.png" class="footerImage" />
-          <img src="images/twitter.png" class="footerImage" />
+        <div style="width:32%; display:inline-block; height:100%;vertical-align: top;">
+          <img src="images/address.png" class="footerImage" id="contact"/>
         </div>
-        <img src="images/contact.png" id="contact"/>
-        <img src="images/sponsors.png" id="footerImage2"/>
+        <div class="divider">
+        </div>
+        <div style="width:32%; display:inline-block; height:100%;vertical-align: top;">
+          <div style="display:block; position:relative; width:auto; height:100%; text-align:center;">
+            <img src="images/email.png" class="footerImage"/>
+            <img src="images/facebook.png" class="footerImage" />
+            <img src="images/twitter.png" class="footerImage" />
+          </div>
+        </div>
+        <div class="divider">
+        </div>
+        <div style="width:32%; display:inline-block; height:100%;vertical-align: top;">
+          <div style="display:block; position:relative; width:auto; height:100%; text-align:center;">
+            <img src="images/whirlpoollogo.png" class="footerImage" id="whirlpoollogo"/>
+            <img src="images/purduelogo.png" class="footerImage" id="purduelogo"/>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div id="mainNav" class="clearfix" style="z-index:2000;">
-    <img src="images/houselogo_small.png" id="homelogo" />
+    <img src="images/grayhouse.png" id="homelogo" />
     <div style="padding-top:5px;" >
       <a href="data.html" id="dataButton" ></a>
       <a href="tour.html" id="tourButton" ></a>
