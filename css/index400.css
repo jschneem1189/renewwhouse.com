@@ -3,7 +3,7 @@
   font-size:20px;
 }
 #mainNav {
-  text-align: center;   
+  /*text-align: center;   */
 } 
 
 #homeBanner {
@@ -40,6 +40,9 @@
 h2{ 
   font-size: 35px;
 }
+h3 {
+  font-size: 40px;
+}
 #leftImage {
   float: none;
 }
@@ -53,7 +56,7 @@ h2{
   display:none;
 }
 #footer {
-  height:200px;
+  height:180px;
 }
 #footerLayer1 {
   width:100%;
@@ -69,7 +72,7 @@ h2{
   margin-top: 20px;
 }
 .footerImage {
-  max-width:32%; 
+  /*max-width:32%; */
   /*height:50%;*/
   /*height:auto;*/
   width:auto;
@@ -94,14 +97,15 @@ h2{
   clear: none;
 }
 #contact {
-  max-width:100%; 
-  max-height:50%; 
-  display: inline-block;
-  width:65%;
-  left:0;
-  top:50%;
-  margin: 0;
-  margin-top: 5px;
+  /*max-width:100%; */
+  height: 100%;
+  /*position: relative;*/
+  /*display: inline-block;*/
+  width:auto;
+  /*margin: 0;*/
+  /*margin-top: 5px;*/
+  /*top:0px;*/
+  text-align: center;
 }
 #footerImage2 {
   display:inline-block;
@@ -119,4 +123,34 @@ h2{
 }
 #emailImage {
   display: inline;
+}
+.divider {
+  display: none;
+}
+#horizontalDivider {
+  display: block;
+  position: absolute;
+  height:1px;
+  width:75%;
+  background-color: #b2b2b2;
+  left:12.5%;
+}
+.footerSection {
+  display:block; 
+  height: 33%;
+  width: 100%;
+}
+#homelogo {
+  /*left:0px;*/
+  /*padding-left: 7px;*/
+}
+#tourButton {
+  padding-left: 0px;
+}
+#aboutButton {
+  padding-left: 0px;
+}
+
+#dataButton {
+  padding-left: 0px;
 }
