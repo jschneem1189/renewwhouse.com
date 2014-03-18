@@ -129,11 +129,6 @@ h3 {
 }
 #horizontalDivider {
   display: block;
-  position: absolute;
-  height:1px;
-  width:75%;
-  background-color: #b2b2b2;
-  left:12.5%;
 }
 .footerSection {
   display:block; 
