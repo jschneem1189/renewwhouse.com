@@ -141,7 +141,7 @@ h3{
   /*top: 200px;*/
   /*text-align: center;   */
   width: 100%;  
-  top: 45%;
+  top: 40%;
 }
 
 #content {
@@ -356,4 +356,13 @@ h3{
   display:inline-block; 
   height:100%;
   vertical-align: top;
+}
+
+#mission {
+  position:relative; 
+  width:80%; 
+  background-color:white; 
+  left:10%; 
+  top: -80px; 
+  border-radius:30px; 
 }

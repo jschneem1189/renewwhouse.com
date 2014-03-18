@@ -149,3 +149,11 @@ h3 {
 #dataButton {
   padding-left: 0px;
 }
+
+body {
+  font-size: 14px;
+}
+
+#mission {
+  top: -110px; 
+}

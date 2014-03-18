@@ -1,0 +1,27 @@
+#footer3 {
+  display: block;
+  width: 100%;
+}
+#footer {
+  height:120px;
+}
+.footerSection {
+  height: 50%;
+}
+.divider {
+  display: none;
+}
+#footer1 {
+  width: 49%;
+}
+#footer2 {
+  width: 49%;
+}
+#horizontalDivider {
+  display: block;
+  width: 90%;
+  left:5%;
+}
+#homeBanner h2{ 
+  font-size:50px;
+}
