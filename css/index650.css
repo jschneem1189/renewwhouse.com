@@ -22,3 +22,31 @@
   width: 90%;
   left:5%;
 }
+#homeBanner h2{ 
+  font-size:50px;
+}
+/*.image {
+  clear: both;
+  text-align: center;
+  float: none;
+  margin-top: 20px;
+  display: block;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}*/
+#houseText {
+  font-size: 55px;
+}
+h3 {
+  font-size: 36px;
+}
+body {
+  font-size: 14px;
+}
+#mission {
+  top: -88px; 
+}
+#tab {
+  top: -88px; 
+}
