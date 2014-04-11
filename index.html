@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=yes" />
-  <title>reNEWW</title>
+  <title>ReNEWW</title>
   <script src="jquery-1.9.1.js"></script>
   <script src="raphael.js"></script>
   <script src="pie.js"></script>
@@ -26,7 +26,7 @@
         var R1 = Raphael("dataButton", 80, 30);
         var R2 = Raphael("tourButton", 80, 30);
         var R3 = Raphael("aboutButton", 80, 30);
-        var dataButton = new AnimatedButton(R1, "DATA", 80, 30);
+        this._dataButton = new AnimatedButton(R1, "DATA", 80, 30);
         var tourButton = new AnimatedButton(R2, "TOUR", 80, 30);
         var aboutButton = new AnimatedButton(R3, "ABOUT", 80, 30);
       });
@@ -59,6 +59,11 @@
         var viewportHeight = $(window).height();
         $('#content').css("margin-top", viewportHeight);
         $('#wrapper').show();
+        this._dataButton.init();
+    });
+
+    $(window).unload(function(evt) {
+        // for some reason if this function is not implemented the AnimatedButtons get stuck when using the back button in Safari
     });
 
   </script>
@@ -69,7 +74,7 @@
       <div id="homeBanner">
         <div id="bannerText" style="margin-top: 0px; opacity: 1;">
           <h1>welcome to the</h1>
-          <h2><span style="color:#73be44">re</span>NEWW <span id="houseText">HOUSE</span></h2>
+          <h2><span style="color:#73be44">Re</span>NEWW <span id="houseText">HOUSE</span></h2>
         </div>    
       </div> 
     </div> 
