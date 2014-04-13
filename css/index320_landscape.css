@@ -5,7 +5,14 @@
   font-size: 55px;
 }
 h3 {
-  font-size: 36px;
+  font-size: 26px;
+}
+#acronymText {
+  font-size:40px; 
+  line-height:26px;
+}
+#missionTitle {
+  padding-bottom: 5px;
 }
 body {
   font-size: 14px;
