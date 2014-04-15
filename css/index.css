@@ -143,8 +143,22 @@ h3{
   line-height:30px;
 }
 
+#break {
+  display: none;
+}
+
 #missionTitle {
   padding-bottom:10px;
+}
+
+#houseWrapper {
+  display: inline;
+}
+
+#houseLogo {
+  height:3em; 
+  margin-top:0.5em; 
+  margin-right:10px;
 }
 
 #bannerText {

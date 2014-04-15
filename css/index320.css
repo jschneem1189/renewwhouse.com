@@ -41,7 +41,24 @@ h2{
   font-size: 35px;
 }
 h3 {
-  font-size: 40px;
+  font-size: 30px;
+  text-align: left;
+  padding-top: 10px;
+  
+  /*this is a hack - need to figure out how to center based on the top item*/
+  padding-left: 25px;
+}
+#acronymText {
+  font-size: 35px;
+}
+#break {
+  display: inline;
+}
+#houseWrapper {
+  display: block;
+}
+#houseLogo {
+  margin-right:0px;
 }
 #leftImage {
   float: none;
