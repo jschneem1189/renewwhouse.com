@@ -1,32 +1,41 @@
+body {
+  font-size: 14px;
+}
+
 #content p {
   line-height: 24px; 
   font-size:20px;
 }
-#mainNav {
-  /*text-align: center;   */
-} 
 
 #homeBanner {
   position: absolute;
   background-image: url(../images/backgrounds/mobilewelcome.jpg); 
 }
-#homeBanner h1{ 
-  font-size: 24px;
-  letter-spacing: 1px;
-}
-#homeBanner h2{ 
-  font-size: 40px;
-  margin-top: 10px;
-  /*margin: -25px 0px 0px 0px;*/
-  /*padding-left: 0.5em;*/
-}
+  #homeBanner h1{ 
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  #homeBanner h2{ 
+    font-size: 35px;
+    margin-top: 10px;
+  }
+  #homeBanner #houseText {
+    font-size:45px; 
+    letter-spacing:9px;
+  }
+
 #bannerText {
   position: absolute;
 }
-#houseText {
-  font-size:45px; 
-  letter-spacing:9px;
+
+#mission {
+  top: -138px; 
 }
+  #mission h3 {
+    /*this is a hack - need to figure out how to center based on the top item*/
+    padding-left: 25px;
+  }
+
 .image {
   clear: both;
   text-align: center;
@@ -37,143 +46,68 @@
   margin-left: auto;
   margin-right: auto;
 }
-h2{ 
-  font-size: 35px;
-}
+
 h3 {
   font-size: 30px;
   text-align: left;
   padding-top: 10px;
-  
-  /*this is a hack - need to figure out how to center based on the top item*/
-  padding-left: 25px;
 }
+
 #acronymText {
   font-size: 35px;
 }
-#break {
+
+.break {
   display: inline;
 }
+
 #houseWrapper {
   display: block;
 }
-#houseLogo {
-  margin-right:0px;
-}
-#leftImage {
-  float: none;
-}
-#rightImage {
-  float: none;
-}
+  #houseWrapper img {
+    margin-right:0px;
+  }
+
 .highlightedText {
   font-size:44px; 
 }
-#checkoutMore {
-  display:none;
-}
+
 #footer {
   height:180px;
 }
-#footerLayer1 {
-  width:100%;
-  height:100%; 
-  padding-top: 20px;
-}
-#footerLayer2 {
-  width:100%; 
-  height:50%;
-  margin:0px;
-  display:block;
-  text-align: center;
-  margin-top: 20px;
-}
+
 .footerImage {
-  /*max-width:32%; */
-  /*height:50%;*/
-  /*height:auto;*/
   width:auto;
   height:auto;
   max-height:60%;
   display:inline-block; 
   position:relative;
 }
-#footerSection1 {
-  height:50%; 
-  width:100%; 
-  display:block; 
-  position:relative;
-  clear: both;
-}
-#footerSection2 {
-  height:50%; 
-  width:45%; 
-  display:inline-block; 
-  /*right:0px; */
-  position:relative;
-  clear: none;
-}
+
 #contact {
-  /*max-width:100%; */
   height: 100%;
-  /*position: relative;*/
-  /*display: inline-block;*/
   width:auto;
-  /*margin: 0;*/
-  /*margin-top: 5px;*/
-  /*top:0px;*/
   text-align: center;
 }
-#footerImage2 {
-  display:inline-block;
-  /*padding: 30px 10px 10px 10px;*/
-  max-height:50%; 
-  max-width: 35%;
-  padding: 0;
-  margin: 0;
-  float:none;
-  height:auto;
-  width:auto;
-  position: absolute;
-  top:50%;
-  right:0;
-}
-#emailImage {
-  display: inline;
-}
+
 .divider {
   display: none;
 }
+
 #horizontalDivider {
   display: block;
 }
+
 .footerSection {
   display:block; 
   height: 33%;
   width: 100%;
 }
-#homelogo {
-  /*left:0px;*/
-  /*padding-left: 7px;*/
-}
-#tourButton {
-  padding-left: 0px;
-}
-#aboutButton {
+
+.animatedButton {
   padding-left: 0px;
 }
 
-#dataButton {
-  padding-left: 0px;
-}
-
-body {
-  font-size: 14px;
-}
-
-#mission {
-  top: -138px; 
-}
 #tab {
   top: -138px; 
 }
