@@ -34,6 +34,26 @@
     window.onresize = function(evt) {
       var viewportHeight = $(window).height();
       $('#content').css("margin-top", viewportHeight);
+
+      var ratio = viewportWidth/viewportHeight;
+      var offset = 0;
+      if (ratio > 1.6) {
+        offset = (viewportWidth/1.6 - viewportHeight)* 1/2;
+      }
+      //Get the scoll position of the page
+      var scrollPos = jQuery(this).scrollTop();
+
+      //Scroll and fade out the banner text
+      jQuery('#bannerText').css({
+        'margin-top' : -(scrollPos/3)+"px",
+        'opacity' : 1-(scrollPos/300)
+      });
+    
+      //Scroll the background of the banner
+      var val = -offset + (-scrollPos/8)
+      jQuery('#homeBanner').css({
+        'background-position' : 'center ' + val +'px'
+      });    
     }
     
 
@@ -56,7 +76,7 @@
     }
     function scrollBanner() {
       //Get the scoll position of the page
-      scrollPos = jQuery(this).scrollTop();
+      var scrollPos = jQuery(this).scrollTop();
 
       //Scroll and fade out the banner text
       jQuery('#bannerText').css({
