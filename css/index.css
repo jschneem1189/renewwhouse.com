@@ -178,11 +178,12 @@ h3{
   #content #copyright {
     font-size:14px;
     -webkit-margin-after: 0.25em; 
-    color:#5f5f5f; 
+    color:#9f9f9f; 
     text-align:right; 
     padding-right:5px;
   }
 
+/*  mainNav */
 #mainNav {
   position: fixed;     
   -webkit-transform: translateZ(0); 
@@ -205,6 +206,15 @@ h3{
   text-decoration: none;
   padding-left: 10px;
 }
+
+#homelogo {
+  left: 10px;
+  height:30px;
+  width: auto;
+  position: fixed;
+  padding: 5px 0px 0px 15px;
+}
+/*  mainNav */
 
 .highlightedText {
   font-family:'FreeStyle'; 
@@ -247,14 +257,6 @@ h3{
   margin-right: auto;
   height: 65%;
   top:17.5%;
-}
-
-#homelogo {
-  left: 10px;
-  height:30px;
-  width: auto;
-  position: fixed;
-  padding: 5px 0px 0px 15px;
 }
 
 .divider {
