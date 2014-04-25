@@ -207,12 +207,21 @@ h3{
   padding-left: 10px;
 }
 
+#horizontalMenu {
+  padding-top:5px;
+  display: inline-block;
+}
+
 #homelogo {
   left: 10px;
   height:30px;
   width: auto;
   position: fixed;
   padding: 5px 0px 0px 15px;
+}
+
+#hamburgerIcon {
+  display: none;
 }
 /*  mainNav */
 

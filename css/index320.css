@@ -111,3 +111,15 @@ h3 {
 #tab {
   top: -138px; 
 }
+
+#hamburgerIcon {
+  display: inline-block;
+  top: 5px;
+  height:30px;
+  width: auto;
+  padding: 5px 10px 0px 0px;
+}
+
+#horizontalMenu {
+  display: none;
+}
