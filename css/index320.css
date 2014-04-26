@@ -113,7 +113,8 @@ h3 {
 }
 
 #hamburgerIcon {
-  display: inline-block;
+  /*display: inline-block;*/
+  display: none;
   top: 5px;
   height:30px;
   width: auto;
@@ -121,5 +122,5 @@ h3 {
 }
 
 #horizontalMenu {
-  display: none;
+  /*display: none;*/
 }

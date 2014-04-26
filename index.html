@@ -21,12 +21,12 @@
   <link rel="stylesheet" type="text/css" media="screen and (max-height: 320px)" href="css/index320_landscape.css" />
   <script>
     $(function(){
-        var R1 = Raphael("dataButton", 80, 30);
-        var R2 = Raphael("tourButton", 80, 30);
+        // var R1 = Raphael("dataButton", 80, 30);
+        // var R2 = Raphael("tourButton", 80, 30);
         var R3 = Raphael("aboutButton", 80, 30);
         var R4 = Raphael("sponsorButton", 90, 30);
-        var dataButton = new AnimatedButton(R1, "DATA", 80, 30);
-        var tourButton = new AnimatedButton(R2, "TOUR", 80, 30);
+        // var dataButton = new AnimatedButton(R1, "DATA", 80, 30);
+        // var tourButton = new AnimatedButton(R2, "TOUR", 80, 30);
         var aboutButton = new AnimatedButton(R3, "ABOUT", 80, 30);
         var sponsorButton = new AnimatedButton(R4, "SPONSORS", 90, 30);
       });
@@ -91,8 +91,6 @@
       jQuery('#homeBanner').css({
         'background-position' : 'center ' + val +'px'
       });    
-      // console.debug('center ' + (-offset + (-scrollPos/8))+'px')
-      //jQuery("#homeBanner h2").fitText(1.7, { minFontSize: '24px', maxFontSize: '64px' });  
     }
 
     var is_touch_device = 'ontouchstart' in document.documentElement;
@@ -143,7 +141,7 @@
           <h3>WASTE</h3>
         </div>
       </div>
-      <p id="copyright">© 2014 Whirlpool Corporation. Web Design & Development by <a href="http://www.thomasbottonari.com">TJB</a></p>
+      <p id="copyright">© 2014 Whirlpool Corporation. Web Design & Development by <a href="http://www.thomasbottonari.com">thomasbottonari.com</a></p>
       <div id="footer">
         <div class="footerSection" id="footer1">
           <a href="https://www.google.com/maps/place/545+Hayes+Street,+West+Lafayette,+IN+47906" style="height:100%;display:block;" target="_blank"><img src="images/address.png" class="footerImage" id="contact"></a>
@@ -173,8 +171,8 @@
   <div id="mainNav" class="clearfix" style="z-index:2000;">
     <a href="index.html"><img src="images/grayhouse.png" id="homelogo"></a>
     <div id="horizontalMenu" >
-      <a href="" id="dataButton" class="animatedButton"></a>
-      <a href="" id="tourButton" class="animatedButton"></a>
+      <!-- <a href="" id="dataButton" class="animatedButton"></a> -->
+      <!-- <a href="" id="tourButton" class="animatedButton"></a> -->
       <a href="sponsors.html" id="sponsorButton" class="animatedButton"></a>
       <a href="" id="aboutButton" class="animatedButton"></a>
     </div>

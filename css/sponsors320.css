@@ -1,0 +1,45 @@
+#mainPage {
+  background-image: url(../images/backgrounds/concrete.jpg); 
+  background-repeat: no-repeat;
+  background-position: center;  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-transform: translateZ(0); 
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  display: block;
+}
+
+#sponsors {
+  width:100%;
+}
+  #greenbg {
+    width: 100%;
+  }
+
+.sponsor {
+  width: 100%;
+}
+  .sponsor img {
+    height: auto;
+    margin: 0px 0px 0px 0px;
+  }
+
+.logo {
+  width: 95%;
+  left: 2.5%;
+  height: auto;
+}
+
+.sponsor .photo {
+  clear: both;
+  height: 100px;
+  pos
+}
