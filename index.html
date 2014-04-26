@@ -38,7 +38,7 @@
 
       $('#content').css("margin-top", viewportHeight);
 
-      if (Modernizr.touch) {
+      if (!Modernizr.touch) {
         var ratio = viewportWidth/viewportHeight;
         var offset = 0;
         if (ratio > 1.6) {
@@ -98,7 +98,8 @@
 
     // var is_touch_device = 'ontouchstart' in document.documentElement;
     $(window).scroll(function() {
-        if (Modernizr.touch) {
+      console.debug(Modernizr.touch)
+        if (!Modernizr.touch) {
           scrollBanner();
         }
         // document.getElementById('content').style.display = 'none';
