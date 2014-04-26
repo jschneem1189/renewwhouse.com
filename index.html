@@ -38,25 +38,27 @@
 
       $('#content').css("margin-top", viewportHeight);
 
-      var ratio = viewportWidth/viewportHeight;
-      var offset = 0;
-      if (ratio > 1.6) {
-        offset = (viewportWidth/1.6 - viewportHeight)* 1/2;
-      }
-      //Get the scoll position of the page
-      var scrollPos = jQuery(this).scrollTop();
+      if (Modernizr.touch) {
+        var ratio = viewportWidth/viewportHeight;
+        var offset = 0;
+        if (ratio > 1.6) {
+          offset = (viewportWidth/1.6 - viewportHeight)* 1/2;
+        }
+        //Get the scoll position of the page
+        var scrollPos = jQuery(this).scrollTop();
 
-      //Scroll and fade out the banner text
-      jQuery('#bannerText').css({
-        'margin-top' : -(scrollPos/3)+"px",
-        'opacity' : 1-(scrollPos/300)
-      });
-    
-      //Scroll the background of the banner
-      var val = -offset// + (-scrollPos/8)
-      jQuery('#homeBanner').css({
-        'background-position' : 'center ' + val +'px'
-      });
+        //Scroll and fade out the banner text
+        jQuery('#bannerText').css({
+          'margin-top' : -(scrollPos/3)+"px",
+          'opacity' : 1-(scrollPos/300)
+        });
+      
+        //Scroll the background of the banner
+        var val = -offset// + (-scrollPos/8)
+        jQuery('#homeBanner').css({
+          'background-position' : 'center ' + val +'px'
+        });
+      }
     }
     
 
@@ -97,7 +99,7 @@
     // var is_touch_device = 'ontouchstart' in document.documentElement;
     $(window).scroll(function() {
         if (Modernizr.touch) {
-          //scrollBanner();
+          scrollBanner();
         }
         // document.getElementById('content').style.display = 'none';
         // document.getElementById('content').style.display = 'block';    
