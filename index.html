@@ -35,7 +35,6 @@
 
     this.viewportHeight = $(window).height();
     this.viewportWidth = $(window).width();
-    // console.debug(jQuery('#homeBanner').height)
     this.goldenRatio = 1.6;
     // this.goldenRatio = jQuery('#homeBanner').css('background-size').width() / jQuery('#homeBanner').css('background-image').height();
     var ratio = this.viewportWidth/this.viewportHeight;
@@ -70,22 +69,22 @@
 
       $('#content').css("margin-top", this.viewportHeight);
 
-      if (ratio > this.goldenRatio) {
-        jQuery('#homeBanner').css({
-          'background-size' : this.viewportWidth + 'px ' + this.viewportWidth/this.goldenRatio + 'px'
-        });
-      } else {
-        jQuery('#homeBanner').css({
-          'background-size' : this.viewportHeight*this.goldenRatio + 'px ' + this.viewportHeight + 'px'
-        });
-      }
+      // if (ratio > this.goldenRatio) {
+      //   jQuery('#homeBanner').css({
+      //     'background-size' : this.viewportWidth + 'px ' + this.viewportWidth/this.goldenRatio + 'px'
+      //   });
+      // } else {
+      //   jQuery('#homeBanner').css({
+      //     'background-size' : this.viewportHeight*this.goldenRatio + 'px ' + this.viewportHeight + 'px'
+      //   });
+      // }
     }.bind(this)
 
     window.onresize = function(evt) {
       this.viewportHeight = $(window).height();
       this.viewportWidth = $(window).width();
       
-      // this.resetPosition();
+      this.resetPosition();
 
       if (!Modernizr.touch) {
         this.scrollBanner();

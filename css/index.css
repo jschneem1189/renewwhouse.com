@@ -39,11 +39,11 @@ body {
 #homeBanner {
   background-image: url(../images/backgrounds/welcome.jpg); 
   background-repeat: no-repeat;
-  /*background-position: center;  */
-  /*-webkit-background-size: cover;
+  background-position: center;  
+  -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;*/
+  background-size: cover;
   -webkit-transform: translateZ(0); 
   bottom: 0;
   left: 0;
