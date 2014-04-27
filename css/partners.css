@@ -50,7 +50,7 @@
   display: block;
 }
 
-#sponsors {
+#partners {
   display: block;
   position: relative;
   top: 60px;
@@ -66,7 +66,7 @@
     width:400px;
     background-color: #92D050;
   }
-  #sponsors h2 {
+  #partners h2 {
     padding: 10px 0px 0px 20px;
     font-family: 'Lora', serif;
     font-size:20px; 
@@ -74,7 +74,7 @@
     -webkit-margin-before: 0em;
     -webkit-margin-after: 0em;
   }
-  #sponsors h1 {
+  #partners h1 {
     padding: 0px 0px 0px 20px;
     font-family: 'Duru Sans', sans-serif;
     font-size:50px; 
@@ -83,14 +83,14 @@
     -webkit-margin-after: 0em;
   }
 
-.sponsor {
+.partner {
   display: block;
   position: relative;
   text-align: center;
   clear: both;
   top: 100px;
 }
-  .sponsor img {
+  .partner img {
     height: 143px;
     margin: 0px 10px 0px 10px;
   }

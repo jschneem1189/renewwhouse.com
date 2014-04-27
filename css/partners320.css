@@ -17,17 +17,17 @@
   display: block;
 }
 
-#sponsors {
+#partners {
   width:100%;
 }
   #greenbg {
     width: 100%;
   }
 
-.sponsor {
+.partner {
   width: 100%;
 }
-  .sponsor img {
+  .partner img {
     height: auto;
     margin: 0px 0px 0px 0px;
   }
@@ -38,7 +38,7 @@
   height: auto;
 }
 
-.sponsor .photo {
+.partner .photo {
   clear: both;
   height: 100px;
   pos
