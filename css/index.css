@@ -39,7 +39,7 @@ body {
 #homeBanner {
   background-image: url(../images/backgrounds/welcome.jpg); 
   background-repeat: no-repeat;
-  background-position: center;  
+  /*background-position: center;  */
   /*-webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
