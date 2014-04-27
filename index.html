@@ -21,6 +21,7 @@
   <link rel="stylesheet" type="text/css" media="screen and (max-width: 320px)" href="css/index320.css" />
   <link rel="stylesheet" type="text/css" media="screen and (max-height: 320px)" href="css/index320_landscape.css" />
   <script>
+    // init
     $(function(){
         // var R1 = Raphael("dataButton", 80, 30);
         // var R2 = Raphael("tourButton", 80, 30);
@@ -32,54 +33,18 @@
         var sponsorButton = new AnimatedButton(R4, "SPONSORS", 90, 30);
       });
 
-    window.onresize = function(evt) {
-      var viewportHeight = $(window).height();
-      var viewportWidth = $(window).width();
-
-      $('#content').css("margin-top", viewportHeight);
-
-      if (!Modernizr.touch) {
-        var ratio = viewportWidth/viewportHeight;
-        var offset = 0;
-        if (ratio > 1.6) {
-          offset = (viewportWidth/1.6 - viewportHeight)* 1/2;
-        }
-        //Get the scoll position of the page
-        var scrollPos = jQuery(this).scrollTop();
-
-        //Scroll and fade out the banner text
-        jQuery('#bannerText').css({
-          'margin-top' : -(scrollPos/3)+"px",
-          'opacity' : 1-(scrollPos/300)
-        });
-      
-        //Scroll the background of the banner
-        var val = -offset// + (-scrollPos/8)
-        jQuery('#homeBanner').css({
-          'background-position' : 'center ' + val +'px'
-        });
-      }
+    this.viewportHeight = $(window).height();
+    this.viewportWidth = $(window).width();
+    // console.debug(jQuery('#homeBanner').height)
+    this.goldenRatio = 1.6;
+    // this.goldenRatio = jQuery('#homeBanner').css('background-size').width() / jQuery('#homeBanner').css('background-image').height();
+    var ratio = this.viewportWidth/this.viewportHeight;
+    this.offset = 0;
+    if (ratio > this.goldenRatio) {
+      this.offset = (this.viewportWidth/this.goldenRatio - this.viewportHeight)* 1/2;
     }
-    
 
-    $(document).ready(function(evt) {
-        var viewportHeight = $(window).height();
-        $('#content').css("margin-top", viewportHeight);
-        $('#wrapper').show();
-    });
-
-    $(window).unload(function(evt) {
-        // for some reason if this function is not implemented the AnimatedButtons get stuck when using the back button in Safari
-    });
-
-    var viewportHeight = $(window).height();
-    var viewportWidth = $(window).width();
-    var ratio = viewportWidth/viewportHeight;
-    var offset = 0;
-    if (ratio > 1.6) {
-      offset = (viewportWidth/1.6 - viewportHeight)* 1/2;
-    }
-    function scrollBanner() {
+    this.scrollBanner = function() {
       //Get the scoll position of the page
       var scrollPos = jQuery(this).scrollTop();
 
@@ -90,15 +55,62 @@
       });
     
       //Scroll the background of the banner
-      var val = -offset + (-scrollPos/8)
+      var val = -this.offset + (-scrollPos/8)
       jQuery('#homeBanner').css({
         'background-position' : 'center ' + val +'px'
       });    
-    }
+    }.bind(this)
+
+    this.resetPosition = function() {
+      var ratio = this.viewportWidth/this.viewportHeight;
+      this.offset = 0;
+      if (ratio > this.goldenRatio) {
+        this.offset = (this.viewportWidth/this.goldenRatio - this.viewportHeight)* 1/2;
+      }
+
+      $('#content').css("margin-top", this.viewportHeight);
+
+      if (ratio > this.goldenRatio) {
+        jQuery('#homeBanner').css({
+          'background-size' : this.viewportWidth + 'px ' + this.viewportWidth/this.goldenRatio + 'px'
+        });
+      } else {
+        jQuery('#homeBanner').css({
+          'background-size' : this.viewportHeight*this.goldenRatio + 'px ' + this.viewportHeight + 'px'
+        });
+      }
+    }.bind(this)
+
+    window.onresize = function(evt) {
+      this.viewportHeight = $(window).height();
+      this.viewportWidth = $(window).width();
+      
+      this.resetPosition();
+
+      if (!Modernizr.touch) {
+        this.scrollBanner();
+      }
+    }.bind(this);
+
+    $(document).ready(function(evt) {
+      
+        this.viewportHeight = $(window).height();
+        this.viewportWidth = $(window).width();
+
+        this.resetPosition();
+        
+        $('#wrapper').show();
+    }.bind(this));
+
+    $(window).unload(function(evt) {
+        // for some reason if this function is not implemented the AnimatedButtons get stuck when using the back button in Safari
+    });
+
+    
+    
 
     // var is_touch_device = 'ontouchstart' in document.documentElement;
     $(window).scroll(function() {
-      console.debug(Modernizr.touch)
         if (!Modernizr.touch) {
           scrollBanner();
         }
