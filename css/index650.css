@@ -35,6 +35,7 @@ body {
 
 #homeBanner h2{ 
   font-size:50px;
+  padding-top: 20px;
 }
   #homeBanner #houseText {
     font-size: 55px;
@@ -51,13 +52,20 @@ body {
 }*/
 
 h3 {
-  font-size: 36px;
+  font-size: 30px;
 }
 
 #mission {
   top: -88px; 
 }
+  #mission h3 {
+    padding-bottom: 0px;
+  }
 
 #tab {
   top: -88px; 
+}
+
+#content #copyright {
+  font-size:10px;
 }

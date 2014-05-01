@@ -6,6 +6,10 @@ body {
   line-height: 24px; 
   font-size:20px;
 }
+  #content #copyright {
+    font-size:10px;
+    line-height: 12px;
+  }
 
 #homeBanner {
   position: absolute;
