@@ -54,20 +54,22 @@
   display: block;
   position: relative;
   top: 60px;
-  height: 120px;
-  width:410px;
+  height: 160px;
+  width:100%;
+  /*width:410px;*/
   background-color:rgba(255,255,255,0.65);
 }
   #greenbg {
     display: block;
     position: absolute;
     top: 10px;
-    height: 100px;
-    width:400px;
-    background-color: #92D050;
+    height: 140px;
+    width:100%;
+    /*width:400px;*/
+    background-color:rgba(70,70,70,0.65);
   }
   #partners h2 {
-    padding: 10px 0px 0px 20px;
+    padding: 0px 0px 0px 20px;
     font-family: 'Lora', serif;
     font-size:20px; 
     color:#fff;
@@ -78,7 +80,7 @@
     padding: 0px 0px 0px 20px;
     font-family: 'Duru Sans', sans-serif;
     font-size:50px; 
-    color:#fff;
+    color:#92D050;
     -webkit-margin-before: 0em;
     -webkit-margin-after: 0em;
   }
