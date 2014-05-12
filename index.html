@@ -67,7 +67,11 @@
         this.offset = (this.viewportWidth/this.goldenRatio - this.viewportHeight)* 1/2;
       }
 
-      $('#content').css("margin-top", this.viewportHeight);
+      // offset the content such that just the tab peeks at the bottom
+      var missionOffset = parseInt($('#mission').css("top").split("px")[0],10) + 28;
+      $('#content').css("margin-top", parseInt(this.viewportHeight-missionOffset,10));
+      // ensure that the bkg image is the proper height
+      $('#homeBanner').css("bottom", missionOffset + "px");
 
       // if (ratio > this.goldenRatio) {
       //   jQuery('#homeBanner').css({
@@ -140,9 +144,9 @@
           <h3><span id="acronymText" style="color:#73be44">Re</span>trofit <br class="break"><span id="acronymText">N</span>et Zero: <br class="break"><span id="acronymText">E</span>nergy. <br class="break"><span id="acronymText">W</span>ater. <br class="break"><span id="acronymText">W</span>aste.</h3>
         </div>
         <div style="position:absolute; background-color:#e1e1e1; height:1px; width:90%; left: 5%;"></div>
-        <p>Whirlpool Corporation, along with Purdue University, will transform an existing home near Purdue’s campus into a world class research laboratory and sustainable living showcase. ReNEWW House will provide valuable insights for our homebuilder partners and customers on technologies that enable sustainable living. We will leverage the world class facilities and collaborate with Purdue researchers to accelerate the development of the next generation of ultra-high efficiency appliances that increase core performance while lowering their impact on the environment and cost to operate.</p>
+        <p>Our mission is to transform an existing home into a world class research laboratory and sustainable living showcase!</p>
       </div>
-      <div style="text-align:center; position:relative; padding:10px 0px 150px 0px">
+      <div style="text-align:center; position:relative; padding:20px 0px 150px 0px">
         <div class="image">
           <img src="images/light.jpg" />
           <h3>ENERGY</h3>
