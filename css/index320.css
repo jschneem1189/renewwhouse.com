@@ -35,10 +35,6 @@ body {
 #mission {
   top: -138px; 
 }
-  #mission h3 {
-    /*this is a hack - need to figure out how to center based on the top item*/
-    padding-left: 25px;
-  }
 
 .image {
   clear: both;
@@ -52,8 +48,8 @@ body {
 }
 
 h3 {
-  font-size: 30px;
-  text-align: left;
+  font-size: 18px;
+  /*text-align: left;*/
   padding-top: 10px;
 }
 
@@ -129,4 +125,12 @@ h3 {
 
 #horizontalMenu {
   /*display: none;*/
+}
+
+#houseLogo {
+  height: 50px;
+}
+
+#acronymText {
+  font-size:24px; 
 }

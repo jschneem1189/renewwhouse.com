@@ -52,7 +52,7 @@ body {
 }*/
 
 h3 {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 #mission {
@@ -61,6 +61,9 @@ h3 {
   #mission h3 {
     padding-bottom: 0px;
   }
+  #mission p {
+    font-size: 20px;
+  }
 
 #tab {
   top: -88px; 
@@ -68,4 +71,12 @@ h3 {
 
 #content #copyright {
   font-size:10px;
+}
+
+#houseLogo {
+  height: 60px;
+}
+
+#acronymText {
+  font-size:30px; 
 }
