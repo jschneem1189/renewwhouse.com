@@ -45,6 +45,11 @@
   height: auto;
 }
 
+p {
+  font-family: 'Lora', serif;
+  font-size: 20px; 
+}
+
 #bluebg {
   display: block;
   position: relative;
@@ -67,9 +72,13 @@
     display: block;
     text-align: center;
     position: relative;
-    margin-top: auto;
-    margin-bottom: auto;
+    padding-top: 55px;
   }
+
+#sustainabilityWrapper {
+  background-color: #fff;
+  border-radius:10px; 
+}
 
 #sustainabilityLogo {
   width: 200px;
@@ -77,3 +86,40 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+#textWrapper {
+  width: 80%;
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.leftFloat {
+  display: block;
+  clear: both;
+}
+  .leftFloat img {
+    height: 200px;
+    float: left;
+    padding-bottom: 25px;
+    padding-right: 25px;
+  }
+  .leftFloat p {
+    text-align: left;
+  }
+
+.rightFloat {
+  display: block;
+  clear: both;
+}
+  .rightFloat img {
+    height: 200px;
+    float: right;
+    padding-bottom: 25px;
+    padding-left: 25px;
+  }
+  .rightFloat p {
+    text-align: right;
+  }
