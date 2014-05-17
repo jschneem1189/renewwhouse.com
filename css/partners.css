@@ -39,14 +39,6 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  /*-webkit-transform: translateZ(0); */
-  /*bottom: 0;*/
-  /*left: 0;*/
-  /*margin: auto;*/
-  /*overflow: auto;*/
-  /*position: fixed;*/
-  /*right: 0;*/
-  /*top: 0;*/
   width: 100%;
   position: relative;
   display: block;
@@ -59,9 +51,7 @@
   top: 60px;
   height: 160px;
   width:100%;
-  /*width:410px;*/
-  /*background-color:rgba(255,255,255,0.65);*/
-  padding-top: 150px;
+  padding-top: 160px;
 }
   #bluebg {
     display: block;
@@ -69,11 +59,7 @@
     top: 10px;
     height: 140px;
     width:80%;
-    /*left: 50%;*/
-    /*width:400px;*/
-    /*background-color:rgba(70,70,70,0.65);*/
     background-color: #0aa3df;
-    /*margin-left: -450px;*/
     border-radius:30px; 
     left: 10%;
   }
@@ -104,8 +90,7 @@
   clear: both;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 20px;
-  /*top: 200px;*/
+  padding-bottom: 100px;
 }
   .partner .photo {
     /*transform:rotate(-7deg);
