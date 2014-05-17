@@ -23,10 +23,35 @@
         // var tourButton = new AnimatedButton(R2, "TOUR", 80, 30);
         var aboutButton = new AnimatedButton(R3, "ABOUT", 80, 30);
         var partnerButton = new AnimatedButton(R4, "PARTNERS", 90, 30);
+
+        var fixFormatting = function() {
+          var viewportHeight = $(window).height();
+          var mainPageHeight = $('#mainPage').height();
+          if (mainPageHeight <= viewportHeight) {
+            // $('#spacer').css('height', offset + 'px');
+            $('#more').css('position','absolute');
+          } else {
+            // $('#spacer').css('height', '0px');
+            $('#more').css('position','relative');
+          }
+
+          var photoHeight = $('.photo').height();
+          var logoHeight = $('.logo').height();
+          $('.logo').css('margin-bottom', (photoHeight-logoHeight)/2);
+          $('#mainPage').css('min-height',viewportHeight);
+        }
+
+        window.onresize = function(evt) {
+          fixFormatting();
+        }
+
+        $(document).ready(function(evt) {
+          fixFormatting();
+        })
       });
   </script>
 </head>
-<body>
+<body style="margin:0;">
   <div id="mainPage">
     <div id="partners">
       <div id="greenbg">
@@ -36,16 +61,17 @@
       </div>
     </div>
     <div class="partner">
-      <img src="images/insulation.png" class="photo"/>
+      <img src="images/insulation.jpg" class="photo"/>
       <img src="images/Honeywell-Logo.jpg" class="logo"/>
     </div>
   </div>
+  <p id="more">...and more to come.</p>
   <div id="mainNav" class="clearfix" style="z-index:2000;">
     <a href="index.html"><img src="images/grayhouse.png" id="homelogo"></a>
     <div style="padding-top:5px;" >
       <!-- <a href="" id="dataButton" class="animatedButton"></a> -->
       <!-- <a href="" id="tourButton" class="animatedButton"></a> -->
-      <a href="partner.html" id="partnerButton" class="animatedButton"></a>
+      <a href="partners.html" id="partnerButton" class="animatedButton"></a>
       <a href="" id="aboutButton" class="animatedButton"></a>
     </div>
     <!-- <img src="images/hamburger.png" id="hamburgerIcon"/> -->
