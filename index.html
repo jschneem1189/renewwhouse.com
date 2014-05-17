@@ -68,7 +68,7 @@
       }
 
       // offset the content such that just the tab peeks at the bottom
-      var missionOffset = parseInt($('#mission').css("top").split("px")[0],10) + 28;
+      var missionOffset = parseInt($('#mission').css("top").split("px")[0],10) + $('#tab').height();
       $('#content').css("margin-top", parseInt(this.viewportHeight-missionOffset,10));
       // ensure that the bkg image is the proper height
       $('#homeBanner').css("bottom", missionOffset + "px");
@@ -95,14 +95,19 @@
       }
     }.bind(this);
 
-    $(document).ready(function(evt) {
+    $(window).load(function(evt) {
 
         this.viewportHeight = $(window).height();
         this.viewportWidth = $(window).width();
 
-        this.resetPosition();
+        // this.resetPosition();
         
         $('#wrapper').show();
+
+        // important to call this after showing the wrapper of the tab image won't have a height
+        this.resetPosition();
+        // get the bg image in the correct position
+        this.scrollBanner();
     }.bind(this));
 
     $(window).unload(function(evt) {

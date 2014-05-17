@@ -58,7 +58,7 @@ body {
     color:#fff;
     font-size: 24px;
     text-shadow: -5px 5px 8px rgba(0,0,0,.4);
-    position: absolute;
+    position: relative;
     text-align: center;
     font-family: 'Lora', serif;
     -webkit-margin-before: 0em;
@@ -74,7 +74,7 @@ body {
     color:#fff;
     font-size: 100px;
     text-shadow: -5px 5px 8px rgba(0,0,0,.4);
-    position: absolute;
+    position: relative;
     font-family: 'Duru Sans', sans-serif;
     top:75%;
     width:100%;
