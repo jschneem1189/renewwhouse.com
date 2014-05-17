@@ -1,0 +1,25 @@
+#mainPage {
+  background-image: url(../images/backgrounds/whitepaper.jpg); 
+  background-repeat: no-repeat;
+  background-position: center;  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-transform: translateZ(0); 
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  display: block;
+}
+
+#bluebg {
+  width: 100%;
+  left: 0;
+  margin-left: 0;
+  border-radius:0px; 
+}

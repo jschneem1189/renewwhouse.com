@@ -8,11 +8,11 @@
   <script src="libraries/raphael.js"></script>
   <script src="components/AnimatedButton.js"></script>
   <link rel="shortcut icon" href="images/32x32 logo.ico">
-  <link rel="stylesheet" type="text/css" media="screen" href="css/partners.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/about.css" />
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
   <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Duru+Sans' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" media="screen and (max-width: 320px)" href="css/partners320.css" />
+  <link rel="stylesheet" type="text/css" media="screen and (max-width: 320px)" href="css/about320.css" />
   <script>
       $(function(){
         // var R1 = Raphael("dataButton", 80, 30);
@@ -24,48 +24,17 @@
         var aboutButton = new AnimatedButton(R3, "ABOUT", 80, 30);
         var partnerButton = new AnimatedButton(R4, "PARTNERS", 90, 30);
 
-        var fixFormatting = function() {
-          var viewportHeight = $(window).height();
-          var mainPageHeight = $('#mainPage').height();
-          if (mainPageHeight <= viewportHeight) {
-            // $('#spacer').css('height', offset + 'px');
-            $('#more').css('position','absolute');
-          } else {
-            // $('#spacer').css('height', '0px');
-            $('#more').css('position','relative');
-          }
-
-          var photoHeight = $('.photo').height();
-          var logoHeight = $('.logo').height();
-          $('.logo').css('margin-bottom', (photoHeight-logoHeight)/2);
-          $('#mainPage').css('min-height',viewportHeight);
-        }
-
-        window.onresize = function(evt) {
-          fixFormatting();
-        }
-
-        $(document).ready(function(evt) {
-          fixFormatting();
-        })
-      });
+      })
   </script>
 </head>
 <body style="margin:0;">
   <div id="mainPage">
-    <div id="partners">
-      <div id="bluebg">
-        <h2 style="padding-top: 15px;">a special</h2>
-        <h1>THANK YOU</h1>
-        <h2>to our PARTNERS</h2>
-      </div>
+    <div id="bluebg">
+      <h1>ABOUT</h1>
     </div>
-    <div class="partner">
-      <img src="images/insulation.jpg" class="photo"/>
-      <img src="images/Honeywell-Logo.jpg" href="http://www.honeywell.com" class="logo"/>
-    </div>
+    <img id="sustainabilityLogo" src="images/SustainabilityLogo.jpeg" />
+    <p>Whirlpool Corporation, along with Purdue University, will transform an existing home near Purdue’s campus into a world class research laboratory and sustainable living showcase. ReNEWW House will provide valuable insights for our homebuilder partners and customers on technologies that enable sustainable living. We will leverage the world class facilities and collaborate with Purdue researchers to accelerate the development of the next generation of ultra-high efficiency appliances that increase core performance while lowering their impact on the environment and cost to operate.</p>
   </div>
-  <p id="more">...and more to come.</p>
   <div id="mainNav" class="clearfix" style="z-index:2000;">
     <a href="index.html"><img src="images/grayhouse.png" id="homelogo"></a>
     <div style="padding-top:5px;" >

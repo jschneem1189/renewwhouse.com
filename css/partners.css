@@ -51,12 +51,12 @@
   top: 60px;
   height: 160px;
   width:100%;
-  padding-top: 160px;
+  padding-bottom: 160px;
 }
   #bluebg {
     display: block;
-    position: absolute;
-    top: 10px;
+    position: relative;
+    top: 0px;
     height: 140px;
     width:80%;
     background-color: #0aa3df;
