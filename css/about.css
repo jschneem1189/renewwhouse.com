@@ -44,6 +44,8 @@
 p {
   font-family: 'Lora', serif;
   font-size: 20px; 
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
 }
 
 #bluebg {
