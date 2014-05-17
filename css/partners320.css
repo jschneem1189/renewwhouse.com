@@ -1,5 +1,5 @@
 #mainPage {
-  background-image: url(../images/backgrounds/mobileconcrete.jpg); 
+  background-image: url(../images/backgrounds/whitepaper.jpg); 
   background-repeat: no-repeat;
   background-position: center;  
   -webkit-background-size: cover;
@@ -20,26 +20,22 @@
 #partners {
   width:100%;
 }
-  #greenbg {
+  #bluebg {
     width: 100%;
+    left: 0;
+    margin-left: 0;
+    border-radius:0px; 
   }
 
 .partner {
-  width: 100%;
+  /*width: 80%;*/
 }
   .partner img {
     height: auto;
     margin: 0px 0px 0px 0px;
   }
-
-.logo {
-  width: 95%;
-  left: 2.5%;
-  height: auto;
-}
-
-.partner .photo {
-  clear: both;
-  height: 100px;
-  pos
-}
+  .partner .logo {
+  }
+  .partner .photo {
+    margin-right: 0px;
+  }
