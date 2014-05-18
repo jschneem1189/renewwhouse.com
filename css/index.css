@@ -349,3 +349,14 @@ h3 {
   position:relative;
   clear:both;
 }
+
+#unsupportedBrowser {
+  position: absolute;
+  height: 80%;
+  top: 10%;
+  width: 90%;
+  left: 5%;
+  background-color: #0000ff;
+  border-radius: 15px;
+  display: none;
+}
