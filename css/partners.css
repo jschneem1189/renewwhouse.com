@@ -44,7 +44,7 @@
   left: 0;
   margin: auto;
   overflow: auto;
-  position: fixed;
+  /*position: fixed;*/
   right: 0;
   top: 0;
   display: block;
