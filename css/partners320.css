@@ -1,9 +1,11 @@
 #mainPage {
   background-image: url(../images/backgrounds/brickwall_mobile.jpg); 
+  position: relative;
 }
 
 #partners {
   width:100%;
+  padding-bottom: 80px;
 }
   #bluebg {
     width: 100%;
@@ -20,6 +22,7 @@
 
 .partner {
   width: 100%;
+  padding-bottom: 40px;
 }
   .partner img {
     height: auto;
@@ -33,3 +36,7 @@
     margin-right: 0px;
     width: 60%;
   }
+
+#special {
+  display: none;
+}
