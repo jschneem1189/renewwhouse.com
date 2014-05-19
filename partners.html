@@ -25,16 +25,15 @@
         var partnerButton = new AnimatedButton(R4, "PARTNERS", 90, 30);
 
         var fixFormatting = function() {
+          $('#more').css('position','relative');
+          $('#more').css('right','0%');
+
           var viewportHeight = $(window).height();
           var mainPageHeight = $('#content').height();
           if (mainPageHeight <= viewportHeight) {
             // $('#spacer').css('height', offset + 'px');
             $('#more').css('position','absolute');
             $('#more').css('right','10%');
-          } else {
-            // $('#spacer').css('height', '0px');
-            $('#more').css('position','relative');
-            $('#more').css('right','0%');
           }
 
           var photoHeight = $('.photo').height();
