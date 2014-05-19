@@ -75,20 +75,20 @@
     /*border-radius:30px; */
     left: 10%;
   }
-  #partners h2 {
-    padding: 0px 0px 0px 0px;
-    font-family: 'Lora', serif;
-    font-size:28px; 
-    color:#fff;
-    -webkit-margin-before: 0em;
-    -webkit-margin-after: 0em;
-    text-align: center;
-  }
   #partners h1 {
     padding: 0px 0px 0px 0px;
     font-family: 'Duru Sans', sans-serif;
     font-size:85px; 
     /*color:#92D050;*/
+    color:#fff;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    text-align: center;
+  }
+  #partners h2 {
+    padding: 0px 0px 0px 0px;
+    font-family: 'Lora', serif;
+    font-size:28px; 
     color:#fff;
     -webkit-margin-before: 0em;
     -webkit-margin-after: 0em;

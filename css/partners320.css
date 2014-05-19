@@ -1,5 +1,5 @@
 #mainPage {
-  background-image: url(../images/backgrounds/whitepaper.jpg); 
+  background-image: url(../images/backgrounds/brickwall.jpg); 
   background-repeat: no-repeat;
   background-position: center;  
   -webkit-background-size: cover;
@@ -26,16 +26,25 @@
     margin-left: 0;
     border-radius:0px; 
   }
+  #partners h1 {
+    font-size:40px; 
+  }
+  #partners h2 {
+    font-size:20px; 
+  }
 
 .partner {
-  /*width: 80%;*/
+  width: 100%;
 }
   .partner img {
     height: auto;
     margin: 0px 0px 0px 0px;
   }
   .partner .logo {
+    width: 100%;
+    margin: 0;
   }
   .partner .photo {
     margin-right: 0px;
+    width: 60%;
   }
