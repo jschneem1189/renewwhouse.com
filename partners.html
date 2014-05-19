@@ -26,19 +26,21 @@
 
         var fixFormatting = function() {
           var viewportHeight = $(window).height();
-          var mainPageHeight = $('#mainPage').height();
+          var mainPageHeight = $('#content').height();
           if (mainPageHeight <= viewportHeight) {
             // $('#spacer').css('height', offset + 'px');
             $('#more').css('position','absolute');
+            $('#more').css('right','10%');
           } else {
             // $('#spacer').css('height', '0px');
             $('#more').css('position','relative');
+            $('#more').css('right','0%');
           }
 
           var photoHeight = $('.photo').height();
           var logoHeight = $('.logo').height();
           $('.logo').css('margin-bottom', (photoHeight-logoHeight)/2);
-          $('#mainPage').css('min-height',viewportHeight);
+          $('#content').css('min-height',viewportHeight);
         }
 
         window.onresize = function(evt) {
@@ -53,19 +55,22 @@
 </head>
 <body style="margin:0;">
   <div id="mainPage">
-    <div id="partners">
-      <div id="bluebg">
-        <h2 style="padding-top: 15px;">a special</h2>
-        <h1>THANK YOU</h1>
-        <h2>to our PARTNERS</h2>
+    <div id="content">
+      <div id="partners">
+        <div id="bluebg">
+          <h2 style="padding-top: 15px;">a special thank you to our</h2>
+          <!-- <h1>THANK YOU</h1> -->
+          <h1>PARTNERS</h1>
+        </div>
       </div>
-    </div>
-    <div class="partner">
-      <img src="images/insulation.jpg" class="photo"/>
-      <img src="images/Honeywell-Logo.jpg" href="http://www.honeywell.com" class="logo"/>
+      <div class="partner">
+        <img src="images/insulation.jpg" class="photo"/>
+        <img src="images/Honeywell-Logo.jpg" href="http://www.honeywell.com" class="logo"/>
+      </div>
+      <p id="more">...and more to come.</p>
     </div>
   </div>
-  <p id="more">...and more to come.</p>
+  <!-- <p id="more">...and more to come.</p> -->
   <div id="mainNav" class="clearfix" style="z-index:2000;">
     <a href="index.html"><img src="images/grayhouse.png" id="homelogo"></a>
     <div style="padding-top:5px;" >

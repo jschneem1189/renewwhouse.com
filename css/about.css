@@ -97,6 +97,7 @@ p {
 .leftFloat {
   display: block;
   clear: both;
+  padding-bottom: 25px;
 }
   .leftFloat img {
     height: 200px;
@@ -111,6 +112,7 @@ p {
 .rightFloat {
   display: block;
   clear: both;
+  padding-bottom: 25px;
 }
   .rightFloat img {
     height: 200px;
