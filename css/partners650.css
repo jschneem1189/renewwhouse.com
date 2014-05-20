@@ -1,0 +1,31 @@
+#partners {
+  width:100%;
+  padding-bottom: 80px;
+}
+  #partners h1 {
+    font-size:50px; 
+  }
+  #partners h2 {
+    font-size:20px; 
+  }
+
+.partner {
+  width: 100%;
+  padding-bottom: 40px;
+}
+  .partner img {
+    height: auto;
+    margin: 0px 0px 0px 0px;
+  }
+  .partner .logo {
+    width: 75%;
+    margin: 0;
+  }
+  .partner .photo {
+    margin-right: 0px;
+    width: 40%;
+  }
+
+#special {
+  display: none;
+}

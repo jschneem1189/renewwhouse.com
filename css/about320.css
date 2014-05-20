@@ -31,3 +31,7 @@ p {
 .rightFloat p {
   text-align: left;
 }
+
+#whatIs {
+  font-size:30px;
+}
