@@ -117,7 +117,11 @@
     }.bind(this));
 
     
-    
+    if (Modernizr.touch) {
+      $('#homeBanner').css('position','absolute');
+    } else {
+      $('#homeBanner').css('position','fixed');
+    }
 
     // var is_touch_device = 'ontouchstart' in document.documentElement;
     $(window).scroll(function() {
