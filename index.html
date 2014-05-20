@@ -104,6 +104,12 @@
         
         $('#wrapper').show();
 
+        if (Modernizr.touch) {
+          $('#homeBanner').css('position','absolute');
+        } else {
+          $('#homeBanner').css('position','fixed');
+        }
+
         // important to call this after showing the wrapper of the tab image won't have a height
         this.resetPosition();
         // get the bg image in the correct position
@@ -115,13 +121,6 @@
         this.partnerButton.reset();
         this.aboutButton.reset();
     }.bind(this));
-
-    
-    if (Modernizr.touch) {
-      $('#homeBanner').css('position','absolute');
-    } else {
-      $('#homeBanner').css('position','fixed');
-    }
 
     // var is_touch_device = 'ontouchstart' in document.documentElement;
     $(window).scroll(function() {
