@@ -129,7 +129,7 @@ h3 {
 }
 
 #bannerText {
-  position: fixed;
+  position: absolute;
   -webkit-transform: translateZ(0); 
   width: 100%;  
   top: 40%;
