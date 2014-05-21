@@ -51,24 +51,30 @@
         $(document).ready(function(evt) {
           fixFormatting();
         })
+
+        $(window).load(function(evt) {
+          $('#wrapper').show();
+        });
       });
   </script>
 </head>
 <body style="margin:0;">
-  <div id="mainPage">
-    <div id="content">
-      <div id="partners">
-        <div id="bluebg">
-          <h2 style="padding-top: 15px;"><span id="special">a special </span>thank you to our</h2>
-          <!-- <h1>THANK YOU</h1> -->
-          <h1>PARTNERS</h1>
+  <div id="wrapper" style="display:none">
+    <div id="mainPage">
+      <div id="content">
+        <div id="partners">
+          <div id="bluebg">
+            <h2 style="padding-top: 15px;"><span id="special">a special </span>thank you to our</h2>
+            <!-- <h1>THANK YOU</h1> -->
+            <h1>PARTNERS</h1>
+          </div>
         </div>
+        <div class="partner">
+          <img src="images/insulation.jpg" class="photo"/>
+          <img src="images/Honeywell-Logo.jpg" href="http://www.honeywell.com" class="logo"/>
+        </div>
+        <p id="more">...and more to come.</p>
       </div>
-      <div class="partner">
-        <img src="images/insulation.jpg" class="photo"/>
-        <img src="images/Honeywell-Logo.jpg" href="http://www.honeywell.com" class="logo"/>
-      </div>
-      <p id="more">...and more to come.</p>
     </div>
   </div>
   <!-- <p id="more">...and more to come.</p> -->

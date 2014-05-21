@@ -28,6 +28,8 @@
       })
 
       $(window).load(function(evt) {
+        $('#wrapper').show();
+
         var imageHeight = $('#riverview').height();
         var position = imageHeight/2 - $('#heading').height()/2;
         // $('#bluebg').css('top',position+'px');
@@ -46,34 +48,36 @@
   </script>
 </head>
 <body style="margin:0;">
-  <div id="mainPage">
-    <div id="riverWrapper">
-      <img id="riverview" src="images/backgrounds/riverview.jpg"/>
-    </div>
-    <div id="bluebg">
-      <h1 id="heading"><span id="whatIs">What is </span>ReNEWW?</h1>
-    </div>
-    <div id="textWrapper">
-      <!-- <div class="leftFloat"> -->
-        <!-- <img src="images/light.jpg"/> -->
-        <p id="aboutMission">Whirlpool Corporation, along with Purdue University, will transform an existing home near Purdue’s campus into a world class research laboratory and sustainable living showcase. ReNEWW House will provide valuable insights for our homebuilder partners and customers on technologies that enable sustainable living. We will leverage the world class facilities and collaborate with Purdue researchers to accelerate the development of the next generation of ultra-high efficiency appliances that increase core performance while lowering their impact on the environment and cost to operate.<br></p>
-      <!-- </div> -->
-      <div class="leftFloat">
-        <img src="images/smartgrid.jpeg"/>
-        <p id="aboutSustainability">At Whirlpool, we are passionate about improving the quality of life for our consumers while minimizing our impact on the environment. And we are combining the power of innovation with our environmental commitment to create solutions that delight consumers – today and tomorrow.<br><br>Check out our <a href="http://vimeo.com/65311959" style="text-decoration:none" target="_blank">Whirlpool Sustainability video.</a></p>
+  <div id="wrapper" style="display:none">
+    <div id="mainPage">
+      <div id="riverWrapper">
+        <img id="riverview" src="images/backgrounds/riverview.jpg"/>
       </div>
-      <div class="rightFloat">
-        <img src="images/appliances.png"/>
-        <p id="aboutWhirlpool">Whirlpool Corporation is the world's leading global manufacturer and marketer of major home appliances, with annual sales of approximately $19 billion in 2013, 69,000 employees and 59 manufacturing and technology research centers around the world. The company markets Whirlpool, Maytag, KitchenAid, Jenn-Air, Amana, Brastemp, Consul, Bauknecht and other major brand names. Additional information about the company can be found at <a style="text-decoration:none;" href="http://www.whirlpoolcorp.com" target="_blank">http://www.whirlpoolcorp.com.</a></p>
+      <div id="bluebg">
+        <h1 id="heading"><span id="whatIs">What is </span>ReNEWW?</h1>
       </div>
-      <div class="leftFloat">
-        <img src="images/werld.png"/>
-        <p id="aboutWerld">The WERLD (Whirlpool Engineering Rotational Leadership Development) Program is a premier training program that has been developing world-class engineering leaders through challenging assignments, global team projects, integrated training and development, and formal coaching and mentoring programs. WERLD Engineers go through four 6-month rotations and after which they have the opportunity to pursue a technical Masters degree at Purdue University.<br><br>WERLD engineers have the opportunity to participate in the ReNEWW House program. Up to three WERLD engineers can live in the ReNEWW House while on campus and leverage the laboratory for their research.</p>
+      <div id="textWrapper">
+        <!-- <div class="leftFloat"> -->
+          <!-- <img src="images/light.jpg"/> -->
+          <p id="aboutMission">Whirlpool Corporation, along with Purdue University, will transform an existing home near Purdue’s campus into a world class research laboratory and sustainable living showcase. ReNEWW House will provide valuable insights for our homebuilder partners and customers on technologies that enable sustainable living. We will leverage the world class facilities and collaborate with Purdue researchers to accelerate the development of the next generation of ultra-high efficiency appliances that increase core performance while lowering their impact on the environment and cost to operate.<br></p>
+        <!-- </div> -->
+        <div class="leftFloat">
+          <img src="images/smartgrid.jpeg"/>
+          <p id="aboutSustainability">At Whirlpool, we are passionate about improving the quality of life for our consumers while minimizing our impact on the environment. And we are combining the power of innovation with our environmental commitment to create solutions that delight consumers – today and tomorrow.<br><br>Check out our <a href="http://vimeo.com/65311959" style="text-decoration:none" target="_blank">Whirlpool Sustainability video.</a></p>
+        </div>
+        <div class="rightFloat">
+          <img src="images/appliances.png"/>
+          <p id="aboutWhirlpool">Whirlpool Corporation is the world's leading global manufacturer and marketer of major home appliances, with annual sales of approximately $19 billion in 2013, 69,000 employees and 59 manufacturing and technology research centers around the world. The company markets Whirlpool, Maytag, KitchenAid, Jenn-Air, Amana, Brastemp, Consul, Bauknecht and other major brand names. Additional information about the company can be found at <a style="text-decoration:none;" href="http://www.whirlpoolcorp.com" target="_blank">http://www.whirlpoolcorp.com.</a></p>
+        </div>
+        <div class="leftFloat">
+          <img src="images/werld.png"/>
+          <p id="aboutWerld">The WERLD (Whirlpool Engineering Rotational Leadership Development) Program is a premier training program that has been developing world-class engineering leaders through challenging assignments, global team projects, integrated training and development, and formal coaching and mentoring programs. WERLD Engineers go through four 6-month rotations and after which they have the opportunity to pursue a technical Masters degree at Purdue University.<br><br>WERLD engineers have the opportunity to participate in the ReNEWW House program. Up to three WERLD engineers can live in the ReNEWW House while on campus and leverage the laboratory for their research.</p>
+        </div>
       </div>
+      <!-- <div id="sustainabilityWrapper">
+        <img id="sustainabilityLogo" src="images/SustainabilityLogo.jpeg" />
+      </div> -->
     </div>
-    <!-- <div id="sustainabilityWrapper">
-      <img id="sustainabilityLogo" src="images/SustainabilityLogo.jpeg" />
-    </div> -->
   </div>
   
   <div id="mainNav" class="clearfix" style="z-index:2000;">
