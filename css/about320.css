@@ -1,6 +1,17 @@
 #mainPage {
-  background-image: url(../images/backgrounds/whitepaper.jpg); 
+  /*background-image: url(../images/backgrounds/whitepaper.jpg); */
   /*position: relative;*/
+}
+
+#riverview {
+  height: 300px;
+  left: -50%;
+  width: auto;
+}
+
+#riverWrapper {
+  width: 100%;
+  overflow: hidden;
 }
 
 p {
@@ -13,6 +24,7 @@ p {
   margin-left: 0;
   border-radius:0px; 
   margin-bottom: 100px;
+  background-color:rgba(0,0,0,0.0);
 }
   #bluebg h1 {
     padding-top: 25px;
@@ -22,15 +34,24 @@ p {
   display: block;
   float: none;
   clear: both;
-  padding: 10px 0 0 0;
+  padding: 10px 0 20px 0;
   position: relative;
   margin-left: auto;
   margin-right: auto;
+  width: 90%;
+  height: auto;
 }
 
-.rightFloat p {
-  text-align: left;
+.leftFloat {
+  padding-bottom: 50px;
 }
+
+.rightFloat {
+  padding-bottom: 50px;
+}
+  .rightFloat p {
+    text-align: left;
+  }
 
 #whatIs {
   font-size:30px;
