@@ -62,9 +62,9 @@ p {
   height: 160px;
   width:60%;
   /*background-color: #0aa3df;*/
-  border-radius:30px; 
+  /*border-radius:30px; */
   left: 20%;
-  top: 60px;
+  top: 0px;
   /*margin-bottom: 160px;*/
   background-color:rgba(0,0,0,0.50);
 }
@@ -79,7 +79,7 @@ p {
     display: block;
     text-align: center;
     position: relative;
-    padding-top: 55px;
+    /*padding-top: 55px;*/
   }
 
 #sustainabilityWrapper {

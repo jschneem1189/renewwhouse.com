@@ -29,14 +29,18 @@
 
       $(window).load(function(evt) {
         var imageHeight = $('#riverview').height();
-        var position = imageHeight/2 - $('#bluebg').height()/2;
-        $('#bluebg').css('top',position+'px');
+        var position = imageHeight/2 - $('#heading').height()/2;
+        // $('#bluebg').css('top',position+'px');
+        $('#bluebg').css('height',imageHeight+'px');
+        $('#heading').css('top',position+'px');
       });
 
       window.onresize = function(evt) {
         var imageHeight = $('#riverview').height();
-        var position = imageHeight/2 - $('#bluebg').height()/2;
-        $('#bluebg').css('top',position+'px');
+        var position = imageHeight/2 - $('#heading').height()/2;
+        // $('#bluebg').css('top',position+'px');
+        $('#bluebg').css('height',imageHeight+'px');
+        $('#heading').css('top',position+'px');
       };
 
   </script>
@@ -47,7 +51,7 @@
       <img id="riverview" src="images/backgrounds/riverview.jpg"/>
     </div>
     <div id="bluebg">
-      <h1><span id="whatIs">What is </span>ReNEWW?</h1>
+      <h1 id="heading"><span id="whatIs">What is </span>ReNEWW?</h1>
     </div>
     <div id="textWrapper">
       <!-- <div class="leftFloat"> -->
