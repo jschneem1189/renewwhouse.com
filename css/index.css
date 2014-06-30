@@ -28,6 +28,7 @@ body {
   margin-right: 3%;
   transform: scale(1);
   -webkit-transition: all .2s;
+  -moz-transition: all .2s;
   transition: all .2s;
 }
 .image:hover {
