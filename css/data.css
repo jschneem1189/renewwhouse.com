@@ -1,3 +1,45 @@
+/*  mainNav */
+#mainNav {
+  position: fixed;     
+  -webkit-transform: translateZ(0); 
+  top:0;
+  right: 0; 
+  width: 100%;
+  height:40px;
+  margin: 0px 0px 0px 0px;   
+  text-align: right;   
+  display: inline-block;  
+  /*background-color: white;*/
+  background-color:rgba(10,163,223,0.65);
+} 
+
+.animatedButton {
+  height: 30px;
+  width: 90px;
+  position: relative;
+  display:inline;
+  text-decoration: none;
+  padding-left: 10px;
+}
+
+#horizontalMenu {
+  padding-top:5px;
+  display: inline-block;
+}
+
+#homelogo {
+  left: 10px;
+  height:30px;
+  width: auto;
+  position: fixed;
+  padding: 5px 0px 0px 15px;
+}
+
+#hamburgerIcon {
+  display: none;
+}
+/*  mainNav */
+
 .fullscreen {
 	position: fixed;
 	right:0;
@@ -9,4 +51,24 @@
 	height: auto;
 	background: url(polina.jpg) no-repeat;
 	background-size: cover;
+}
+
+#frame {
+	position: absolute;
+	height: 100%;
+	width: 100px;
+	left: 0px;
+	top:0px;
+	background-color:rgba(0,0,0,0.65);
+}
+
+#content {
+	width: 100%;
+	left: 120px;
+	top: 40px;
+	position: absolute;
+}
+
+#energy {
+	
 }

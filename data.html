@@ -18,6 +18,16 @@
   <!-- <link rel="stylesheet" type="text/css" media="screen and (max-width: 400px)" href="css/mobile.css" /> -->
   <script>
   $(function() {
+    $(function(){
+        // var R1 = Raphael("dataButton", 80, 30);
+        // var R2 = Raphael("tourButton", 80, 30);
+        var R3 = Raphael("aboutButton", 80, 30);
+        var R4 = Raphael("partnerButton", 90, 30);
+        // var dataButton = new AnimatedButton(R1, "DATA", 80, 30);
+        // var tourButton = new AnimatedButton(R2, "TOUR", 80, 30);
+        this.aboutButton = new AnimatedButton(R3, "ABOUT", 80, 30);
+        this.partnerButton = new AnimatedButton(R4, "PARTNERS", 90, 30);
+      }.bind(this));
     // initialize pie
     // var values = [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8],
     //   labels = ["Vic1", "Nsw1", "Wa1", "Nt1", "Sa1", "qld1", "Tas1", "Vic2", "Nsw2", "Wa2", "Nt2", "Sa2", "Qld2", "Tas2"],
@@ -29,29 +39,78 @@
     // var graph = new Analytics("graph",labels, data);
 
     var barData = {
-      labels : ["January","February","March","April","May","June"],
-      datasets : [
-        {
-          fillColor : "#48A497",
-          strokeColor : "#48A4D1",
-          data : [456,479,324,569,702,600]
-        },
-        {
-          fillColor : "rgba(73,188,170,0.4)",
-          strokeColor : "rgba(72,174,209,0.4)",
-          data : [364,504,605,400,345,320]
-        }
+      labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(220,220,220,0.5)",
+                strokeColor: "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                data: [65, 59, 80, 81, 56, 55, 40]
+            },
+            {
+                label: "My Second dataset",
+                fillColor: "rgba(151,187,205,0.5)",
+                strokeColor: "rgba(151,187,205,0.8)",
+                highlightFill: "rgba(151,187,205,0.75)",
+                highlightStroke: "rgba(151,187,205,1)",
+                data: [28, 48, 40, 19, 86, 27, 90]
+            }
+        ]
+    }
 
-      ]
+    var options = {
+        //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+        scaleBeginAtZero : true,
+
+        //Boolean - Whether grid lines are shown across the chart
+        scaleShowGridLines : true,
+
+        //String - Colour of the grid lines
+        scaleGridLineColor : "rgba(0,0,0,.05)",
+
+        //Number - Width of the grid lines
+        scaleGridLineWidth : 1,
+
+        //Boolean - If there is a stroke on each bar
+        barShowStroke : true,
+
+        //Number - Pixel width of the bar stroke
+        barStrokeWidth : 2,
+
+        //Number - Spacing between each of the X value sets
+        barValueSpacing : 5,
+
+        //Number - Spacing between data sets within X values
+        barDatasetSpacing : 1,
+
+        //String - A legend template
+        legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
     }
 
     var energy = document.getElementById("energy").getContext("2d");
-    new Chart(energy).Bar(barData);
+    new Chart(energy).Bar(barData, options);
   });
   </script>
 </head>
 <body>
     <!-- <div id="graph"></div> -->
-    <canvas id="energy" width="600" height="400"></canvas>
+    <div id="frame" class="clearfix">
+    </div>
+    <div id="content">
+      <canvas id="energy" width="600" height="400"></canvas>
+    </div>
+    <div id="mainNav" class="clearfix" style="z-index:2000;">
+      <a href="index.html"><img src="images/grayhouse.png" id="homelogo"></a>
+      <div id="horizontalMenu" >
+        <!-- <a href="" id="dataButton" class="animatedButton"></a> -->
+        <!-- <a href="" id="tourButton" class="animatedButton"></a> -->
+        <a href="partners.html" id="partnerButton" class="animatedButton"></a>
+        <a href="about.html" id="aboutButton" class="animatedButton"></a>
+      </div>
+      <img src="images/houselogo_small.png" id="hamburgerIcon" />
+    </div>
 </body>
 </html>
