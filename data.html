@@ -11,6 +11,7 @@
   <script src="components/graph.js"></script>
   <script src="components/house-hover.js"></script>
   <script src="components/AnimatedButton.js"></script>
+  <script src="libraries/Chart.min.js"></script>
   <link rel="shortcut icon" href="images/32x32 logo.ico">
   <link rel="stylesheet" type="text/css" media="screen" href="css/data.css" />
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
@@ -18,23 +19,39 @@
   <script>
   $(function() {
     // initialize pie
-    var values = [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8],
-      labels = ["Vic1", "Nsw1", "Wa1", "Nt1", "Sa1", "qld1", "Tas1", "Vic2", "Nsw2", "Wa2", "Nt2", "Sa2", "Qld2", "Tas2"],
-      map = {vic1:0,nsw1:1,wa1:2,nt1:3,sa1:4,qld1:5,tas1:6,vic2:7,nsw2:8,wa2:9,nt2:10,sa2:11,qld2:12,tas2:13};
+    // var values = [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8],
+    //   labels = ["Vic1", "Nsw1", "Wa1", "Nt1", "Sa1", "qld1", "Tas1", "Vic2", "Nsw2", "Wa2", "Nt2", "Sa2", "Qld2", "Tas2"],
+    //   map = {vic1:0,nsw1:1,wa1:2,nt1:3,sa1:4,qld1:5,tas1:6,vic2:7,nsw2:8,wa2:9,nt2:10,sa2:11,qld2:12,tas2:13};
 
-    // Grab the data
-    var labels = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
-        data = [8,25,27,25,54,59,79,47,27,44,44,51,56,83,12,91,52,12,40,8,60,29,7,33];
-    var graph = new Analytics("graph",labels, data);
+    // // Grab the data
+    // var labels = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+    //     data = [8,25,27,25,54,59,79,47,27,44,44,51,56,83,12,91,52,12,40,8,60,29,7,33];
+    // var graph = new Analytics("graph",labels, data);
+
+    var barData = {
+      labels : ["January","February","March","April","May","June"],
+      datasets : [
+        {
+          fillColor : "#48A497",
+          strokeColor : "#48A4D1",
+          data : [456,479,324,569,702,600]
+        },
+        {
+          fillColor : "rgba(73,188,170,0.4)",
+          strokeColor : "rgba(72,174,209,0.4)",
+          data : [364,504,605,400,345,320]
+        }
+
+      ]
+    }
+
+    var energy = document.getElementById("energy").getContext("2d");
+    new Chart(energy).Bar(barData);
   });
   </script>
 </head>
 <body>
-    <video class='fullscreen' autoplay loop muted='muted'>
-      <source src="videos/polina.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
-      <!-- <source src="videos/sample1.ogv" type="video/ogg"> -->
-      <!-- <source src="videos/sample1.webmhd.webm" type="video/webm"> -->
-    </video>
-    <div id="graph"></div>
+    <!-- <div id="graph"></div> -->
+    <canvas id="energy" width="600" height="400"></canvas>
 </body>
 </html>
