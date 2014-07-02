@@ -114,6 +114,10 @@ h3 {
   top: -138px; 
 }
 
+#tab-arrow {
+  top: -128px; 
+}
+
 #hamburgerIcon {
   /*display: inline-block;*/
   display: none;

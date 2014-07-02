@@ -69,6 +69,10 @@ h3 {
   top: -88px; 
 }
 
+#tab-arrow {
+  top: -78px; 
+}
+
 #content #copyright {
   font-size:10px;
 }
