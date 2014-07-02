@@ -3,17 +3,6 @@
   /*position: relative;*/
 }
 
-#riverview {
-  height: 300px;
-  left: -50%;
-  width: auto;
-}
-
-#riverWrapper {
-  width: 100%;
-  overflow: hidden;
-}
-
 p {
   font-size: 16px;
 }
