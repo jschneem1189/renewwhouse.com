@@ -18,11 +18,11 @@
   <script>
   $(function() {
     $(function(){
-        // var R1 = Raphael("dataButton", 80, 30);
+        var R1 = Raphael("dataButton", 80, 30);
         // var R2 = Raphael("tourButton", 80, 30);
         var R3 = Raphael("aboutButton", 80, 30);
         var R4 = Raphael("partnerButton", 90, 30);
-        // var dataButton = new AnimatedButton(R1, "DATA", 80, 30);
+        var dataButton = new AnimatedButton(R1, "DATA", 80, 30);
         // var tourButton = new AnimatedButton(R2, "TOUR", 80, 30);
         this.aboutButton = new AnimatedButton(R3, "ABOUT", 80, 30);
         this.partnerButton = new AnimatedButton(R4, "PARTNERS", 90, 30);
@@ -163,7 +163,7 @@
     <div id="mainNav" class="clearfix" style="z-index:2000;">
       <a href="index.html"><img src="images/grayhouse.png" id="homelogo"></a>
       <div id="horizontalMenu" >
-        <!-- <a href="" id="dataButton" class="animatedButton"></a> -->
+        <a href="data.html" id="dataButton" class="animatedButton"></a>
         <!-- <a href="" id="tourButton" class="animatedButton"></a> -->
         <a href="partners.html" id="partnerButton" class="animatedButton"></a>
         <a href="about.html" id="aboutButton" class="animatedButton"></a>
