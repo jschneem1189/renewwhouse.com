@@ -1,3 +1,21 @@
+@font-face
+{
+font-family: 'Oswald';
+src: url(../fonts/Oswald-Regular.ttf);
+}
+
+@font-face
+{
+font-family: 'Duru Sans';
+src: url(../fonts/DuruSans-Regular.ttf);
+}
+
+@font-face
+{
+font-family: 'Lora';
+src: url(../fonts/Lora-Regular.ttf);
+}
+
 /*  mainNav */
 #mainNav {
   position: fixed;     
@@ -73,6 +91,7 @@ body {
   position: relative;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 40px;
 }
 
 #energyUsedPieChart {

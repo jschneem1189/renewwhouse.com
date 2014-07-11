@@ -10,6 +10,24 @@ font-family: 'Impact';
 src: url(../fonts/impact.ttf);
 }
 
+@font-face
+{
+font-family: 'Oswald';
+src: url(../fonts/Oswald-Regular.ttf);
+}
+
+@font-face
+{
+font-family: 'Duru Sans';
+src: url(../fonts/DuruSans-Regular.ttf);
+}
+
+@font-face
+{
+font-family: 'Lora';
+src: url(../fonts/Lora-Regular.ttf);
+}
+
 body {
   width:auto; height:auto;  
   padding: 0 0 0 0;
