@@ -10,7 +10,7 @@
   text-align: right;   
   display: inline-block;  
   /*background-color: white;*/
-  background-color:rgba(10,163,223,0.65);
+  background-color:rgba(255,255,255,0.65);
 } 
 
 .animatedButton {
@@ -40,17 +40,8 @@
 }
 /*  mainNav */
 
-.fullscreen {
-	position: fixed;
-	right:0;
-	bottom:0;
-	z-index:-1;
-	min-width: 100%;
-	min-height: 100%;
-	width: auto;
-	height: auto;
-	background: url(polina.jpg) no-repeat;
-	background-size: cover;
+body {
+  margin: 0px;
 }
 
 #frame {
@@ -64,11 +55,26 @@
 
 #content {
 	width: 100%;
-	left: 120px;
-	top: 40px;
+	/*left: 120px;*/
+	/*top: 40px;*/
 	position: absolute;
 }
 
-#energy {
-	
+.section {
+  width: 100%;
+  height: auto;
+  padding: 40px 0px 40px 0px;
+  text-align: center;
+
+}
+
+#energyBarChart {
+	display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#energyUsedPieChart {
+
 }
