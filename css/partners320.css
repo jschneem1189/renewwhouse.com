@@ -3,6 +3,10 @@
   position: relative;
 }
 
+.animatedButton {
+  padding-left: 0px;
+}
+
 #partners {
   width:100%;
   padding-bottom: 80px;
