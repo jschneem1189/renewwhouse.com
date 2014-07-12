@@ -37,26 +37,50 @@
     //     data = [8,25,27,25,54,59,79,47,27,44,44,51,56,83,12,91,52,12,40,8,60,29,7,33];
     // var graph = new Analytics("graph",labels, data);
 
-    var barData = {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
+    var barYearData = {
+      labels: ["2014", "2015", "2016", "2017"],
         datasets: [
             {
-                label: "My First dataset",
+                label: "Energy Used by Year",
                 fillColor: "rgba(4,72,95,1)",
                 strokeColor: "rgba(220,220,220,0)",
                 highlightFill: "rgba(4,72,95,0.75)",
                 highlightStroke: "rgba(255,255,255,1)",
-                data: [65, 59, 80, 81, 56, 55, 40]
+                data: [175, 185, 165, 170]
             },
             {
-                label: "My Second dataset",
+                label: "Energy Harvested by Year",
                 fillColor: "rgba(10,168,223,1)",
                 strokeColor: "rgba(151,187,205,0)",
                 highlightFill: "rgba(10,168,223,0.75)",
                 highlightStroke: "rgba(255,255,255,1)",
-                data: [28, 48, 40, 19, 86, 27, 90]
+                data: [150, 190, 175, 160]
             }
         ]
+    }
+
+    var barMonthData = {
+        2014: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(4,72,95,1)",
+                    strokeColor: "rgba(220,220,220,0)",
+                    highlightFill: "rgba(4,72,95,0.75)",
+                    highlightStroke: "rgba(255,255,255,1)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+                {
+                    label: "My Second dataset",
+                    fillColor: "rgba(10,168,223,1)",
+                    strokeColor: "rgba(151,187,205,0)",
+                    highlightFill: "rgba(10,168,223,0.75)",
+                    highlightStroke: "rgba(255,255,255,1)",
+                    data: [28, 48, 40, 19, 86, 27, 90]
+                }
+            ]
+        }
     }
 
     var barOptions = {
@@ -64,7 +88,7 @@
         scaleBeginAtZero : true,
 
         //Boolean - Whether grid lines are shown across the chart
-        scaleShowGridLines : true,
+        scaleShowGridLines : false,
 
         //String - Colour of the grid lines
         scaleGridLineColor : "rgba(0,0,0,.05)",
@@ -79,7 +103,7 @@
         barStrokeWidth : 2,
 
         //Number - Spacing between each of the X value sets
-        barValueSpacing : 5,
+        barValueSpacing : 10,
 
         //Number - Spacing between data sets within X values
         barDatasetSpacing : 1,
@@ -90,7 +114,23 @@
     }
 
     var energy = document.getElementById("energyBarChart").getContext("2d");
-    new Chart(energy).Bar(barData, barOptions);
+    var barChart = new Chart(energy).Bar(barYearData, barOptions);
+
+    document.getElementById("energyBarChart").onclick = function(evt){
+        var activePoints = barChart.getBarsAtEvent(evt);
+        // => activePoints is an array of points on the canvas that are at the same position as the click event.
+        var year = activePoints[0].label;
+        barChart.destroy();
+        energy.canvas.width = 600;
+        energy.canvas.height = 300;
+        barChart = new Chart(energy).Bar(barMonthData[year], barOptions);
+        // $('#energyBarChart').width = 600
+        // $('#energyBarChart').height = 300
+        // barChart.resize();
+        // barChart.scale.height = 300;
+        // barChart.scale.width = 600;
+        barChart.update();
+    };
 
     var pieData = [
       {
