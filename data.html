@@ -46,7 +46,8 @@
                 strokeColor: "rgba(220,220,220,0)",
                 highlightFill: "rgba(4,72,95,0.75)",
                 highlightStroke: "rgba(255,255,255,1)",
-                data: [175, 185, 165, 170]
+                data: [175, 185, 165, 170],
+                title: "Energy Used"
             },
             {
                 label: "Energy Harvested by Year",
@@ -54,8 +55,9 @@
                 strokeColor: "rgba(151,187,205,0)",
                 highlightFill: "rgba(10,168,223,0.75)",
                 highlightStroke: "rgba(255,255,255,1)",
-                data: [150, 190, 175, 160]
-            }
+                data: [150, 190, 175, 160],
+                title: "Energy Harvested"
+            },
         ]
     }
 
@@ -114,21 +116,37 @@
     }
 
     var energy = document.getElementById("energyBarChart").getContext("2d");
+    // Chart.defaults.global.responsive = true;
     var barChart = new Chart(energy).Bar(barYearData, barOptions);
+
+    // var legend = barChart.generateLegend();
+    // var legendHolder = document.createElement('div');
+    // legendHolder.innerHTML = barChart.generateLegend();
+    // Include a html legend template after the module doughnut itself
+    // Chart.helpers.each(legendHolder.firstChild.childNodes, function(legendNode, index){
+      // Chart.helpers.addEvent(legendNode, 'mouseover', function(){
+      //   var activeSegment = barChart.bars[index];
+      //   activeSegment.save();
+      //   activeSegment.fillColor = activeSegment.highlightColor;
+      //   console.debug(activeSegment.fillColor)
+      //   barChart.showTooltip([activeSegment]);
+      //   activeSegment.restore();
+      // });
+    // });
+    // Chart.helpers.addEvent(legendHolder.firstChild, 'mouseout', function(){
+      // barChart.draw();
+    // });
+    // document.getElementById("energyBarChart").parentNode.appendChild(legendHolder.firstChild);
 
     document.getElementById("energyBarChart").onclick = function(evt){
         var activePoints = barChart.getBarsAtEvent(evt);
         // => activePoints is an array of points on the canvas that are at the same position as the click event.
         var year = activePoints[0].label;
         barChart.destroy();
+        // the below two lines are necessary to fix an issue where the canvas size keeps doubling
         energy.canvas.width = 600;
         energy.canvas.height = 300;
-        barChart = new Chart(energy).Bar(barMonthData[year], barOptions);
-        // $('#energyBarChart').width = 600
-        // $('#energyBarChart').height = 300
-        // barChart.resize();
-        // barChart.scale.height = 300;
-        // barChart.scale.width = 600;
+        barChart = new Chart(energy).Bar(barMonthData[2014], barOptions);
         barChart.update();
     };
 
@@ -137,19 +155,19 @@
           value: 300,
           color:"#F7464A",
           highlight: "#FF5A5E",
-          label: "Red"
+          label: "Kitchen"
       },
       {
           value: 50,
           color: "#46BFBD",
           highlight: "#5AD3D1",
-          label: "Green"
+          label: "Laundry"
       },
       {
           value: 100,
           color: "#FDB45C",
           highlight: "#FFC870",
-          label: "Yellow"
+          label: "Bedroom"
       }
     ]
     var pieOptions = {
@@ -194,6 +212,10 @@
     <div id="content">
       <div class="section" style="background-color:rgba(171,214,228,1);">
         <canvas id="energyBarChart" width="600" height="300"></canvas>
+        <ul class="energyBarChart-legend">
+          <li><span style="background-color:rgba(4,72,95,1)"></span>Energy Consumed</li>
+          <li><span style="background-color:rgba(10,168,223,1)"></span>Energy Harvested</li>
+        </ul>
       </div>
       <div class="section" style="background-color:rgba(75,161,191,1);">
         <canvas id="energyUsedPieChart" width="200" height="150" ></canvas>

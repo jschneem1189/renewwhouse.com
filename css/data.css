@@ -87,13 +87,55 @@ body {
 }
 
 #energyBarChart {
-	display: block;
+	display: inline-block;
   position: relative;
   margin-left: auto;
   margin-right: auto;
   margin-top: 40px;
 }
 
+#legendWrapper {
+  display: inline-block;
+  position: relative;
+  /*width: 100%;*/
+  /*height: 100%;*/
+}
+
+.energyBarChart-legend {
+  list-style: none;
+  display: inline-block;
+  position: absolute;
+  top: 190px;
+}
+  .energyBarChart-legend li {
+    display: block;
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 4px;
+    border-radius: 5px;
+    padding: 2px 8px 2px 28px;
+    font-family: 'Lora';
+    font-size: 14px;
+    cursor: default;
+    -webkit-transition: background-color 200ms ease-in-out;
+    -moz-transition: background-color 200ms ease-in-out;
+    -o-transition: background-color 200ms ease-in-out;
+    transition: background-color 200ms ease-in-out;
+  }
+  .energyBarChart-legend li:hover {
+    background-color: #fafafa;
+  }
+  .energyBarChart-legend li span {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    border-radius: 5px;
+  }
+
 #energyUsedPieChart {
 
 }
+
