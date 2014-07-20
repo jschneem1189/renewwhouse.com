@@ -9,7 +9,6 @@
   <script src="components/pie.js"></script>
   <script src="components/popup.js"></script>
   <script src="components/AnimatedButton.js"></script>
-  <script src="libraries/stellar.js"></script>
   <script src="libraries/modernizr.custom.46375.js"></script>
   <link rel="shortcut icon" href="images/32x32 logo.ico">
   <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
@@ -122,10 +121,8 @@
     // var is_touch_device = 'ontouchstart' in document.documentElement;
     $(window).scroll(function() {
         if (!Modernizr.touch) {
-          scrollBanner();
+          this.scrollBanner();
         }
-        // document.getElementById('content').style.display = 'none';
-        // document.getElementById('content').style.display = 'block';    
     });
 
     var spinArrow = function() {

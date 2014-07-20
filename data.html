@@ -27,15 +27,24 @@
         this.aboutButton = new AnimatedButton(R3, "ABOUT", 80, 30);
         this.partnerButton = new AnimatedButton(R4, "PARTNERS", 90, 30);
       }.bind(this));
-    // initialize pie
-    // var values = [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8],
-    //   labels = ["Vic1", "Nsw1", "Wa1", "Nt1", "Sa1", "qld1", "Tas1", "Vic2", "Nsw2", "Wa2", "Nt2", "Sa2", "Qld2", "Tas2"],
-    //   map = {vic1:0,nsw1:1,wa1:2,nt1:3,sa1:4,qld1:5,tas1:6,vic2:7,nsw2:8,wa2:9,nt2:10,sa2:11,qld2:12,tas2:13};
 
-    // // Grab the data
-    // var labels = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
-    //     data = [8,25,27,25,54,59,79,47,27,44,44,51,56,83,12,91,52,12,40,8,60,29,7,33];
-    // var graph = new Analytics("graph",labels, data);
+    var query = "SELECT * FROM tempdata WHERE id=1";
+    var getData = function(start, end) {
+      if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+      } else { // code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+          console.debug(xmlhttp.responseText);
+        }
+      }
+      xmlhttp.open("GET","http://localhost/data/getdata.php?q=1",true);
+      xmlhttp.send();
+    }
+    getData(0,1);
 
     var barYearData = {
       labels: ["2014", "2015", "2016", "2017"],
@@ -116,27 +125,7 @@
     }
 
     var energy = document.getElementById("energyBarChart").getContext("2d");
-    // Chart.defaults.global.responsive = true;
     var barChart = new Chart(energy).Bar(barYearData, barOptions);
-
-    // var legend = barChart.generateLegend();
-    // var legendHolder = document.createElement('div');
-    // legendHolder.innerHTML = barChart.generateLegend();
-    // Include a html legend template after the module doughnut itself
-    // Chart.helpers.each(legendHolder.firstChild.childNodes, function(legendNode, index){
-      // Chart.helpers.addEvent(legendNode, 'mouseover', function(){
-      //   var activeSegment = barChart.bars[index];
-      //   activeSegment.save();
-      //   activeSegment.fillColor = activeSegment.highlightColor;
-      //   console.debug(activeSegment.fillColor)
-      //   barChart.showTooltip([activeSegment]);
-      //   activeSegment.restore();
-      // });
-    // });
-    // Chart.helpers.addEvent(legendHolder.firstChild, 'mouseout', function(){
-      // barChart.draw();
-    // });
-    // document.getElementById("energyBarChart").parentNode.appendChild(legendHolder.firstChild);
 
     document.getElementById("energyBarChart").onclick = function(evt){
         var activePoints = barChart.getBarsAtEvent(evt);

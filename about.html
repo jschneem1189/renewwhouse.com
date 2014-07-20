@@ -6,6 +6,8 @@
   <title>ReNEWW</title>
   <script src="libraries/jquery-1.9.1.js"></script>
   <script src="libraries/raphael.js"></script>
+  <script src="libraries/modernizr.custom.46375.js"></script>
+  <script src="libraries/stellar.js"></script>
   <script src="components/AnimatedButton.js"></script>
   <link rel="shortcut icon" href="images/32x32 logo.ico">
   <link rel="stylesheet" type="text/css" media="screen" href="css/about.css" />
@@ -21,8 +23,13 @@
         // var tourButton = new AnimatedButton(R2, "TOUR", 80, 30);
         var aboutButton = new AnimatedButton(R3, "ABOUT", 80, 30);
         var partnerButton = new AnimatedButton(R4, "PARTNERS", 90, 30);
-        
+    
+        $('#bannerWrapper').stellar({
+          verticalOffset: 150
+        });  
       })
+
+      
 
       $(window).load(function(evt) {
         $('#wrapper').show();
@@ -47,14 +54,15 @@
 <body style="margin:0;">
   <div id="wrapper" style="display:none">
     <div id="mainPage">
-      <div id="bannerWrapper">
-        <img id="houseRendering" src="images/house-rendering2_small.jpg"/>
+      <div id="bannerWrapper" data-stellar-ratio="2">
+        <img id="houseRendering" src="images/house-rendering1.png"/>
       </div>
-      <div style="width:100%;height:1px;background-color:#595959;">
-      </div>
+      <!-- <div style="width:100%;height:1px;background-color:#595959;"> -->
+      <!-- </div> -->
       <!-- <div id="bluebg">
         <h1 id="heading"><span id="whatIs">What is </span>ReNEWW?</h1>
       </div> -->
+      <img class="cutout" src="images/cream-cutout.png"/>
       <div id="textWrapper">
         <!-- <div class="leftFloat"> -->
           <!-- <img src="images/light.jpg"/> -->
