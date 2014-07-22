@@ -6,10 +6,10 @@ p {
   font-size: 14px; 
 }
 
-.leftFloat img {
+.leftFloat .leftImg {
     height: 150px;
 }
 
-.rightFloat img {
+.rightFloat .rightImg {
     height: 150px;
 }
