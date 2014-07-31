@@ -146,7 +146,8 @@ h1 {
   display: block;
   clear: both;
   padding-bottom: 100px;
-  background-color: #EBF8FF;
+  /*background-color: #EBF8FF;*/
+  background-color: #ffffff;
 }
   .rightFloat .rightImg {
     height: 200px;
