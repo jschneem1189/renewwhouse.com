@@ -123,7 +123,7 @@
         if (!Modernizr.touch) {
           this.scrollBanner();
         }
-    });
+    }.bind(this));
 
     var spinArrow = function() {
       // caching the object for performance reasons
