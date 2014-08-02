@@ -1,22 +1,4 @@
-<?php
-// header("Access-Control-Allow-Origin : *");
-$month_from = intval($_GET['month_from']);
-$month_to = intval($_GET['month_to']);
-$year_from = intval($_GET['year_from']);
-$year_to = intval($_GET['year_to']);
-
-$con = mysqli_connect('localhost','root','','house_data');
-// Check connection
-if (mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-
-$link = mysqli_select_db($con,"house_data");
-if (!$link) {
-	echo "not connected";
-}
-//$sql="SELECT Basement FROM tempdata WHERE id = '".$q."'";
-$sql="SELECT SUM(`CH1-Inactive`) + 
+SELECT SUM(`CH1-Inactive`) + 
 	SUM(`CH2-Main Power`) + 
 	SUM(`CH3-Main Power`) + 
 	SUM(`CH4-Oven`) + 
@@ -61,22 +43,5 @@ $sql="SELECT SUM(`CH1-Inactive`) +
 	SUM(`CH43-Inactive`) + 
 	SUM(`CH44-Inactive`) + 
 	SUM(`CH45-Inactive`) / 1000 AS sum FROM eMonitor 
-	WHERE `Date/Time` >= '".$year_from."-".$month_from."-01'
-	AND `Date/Time` <= '".$year_to."-".$month_to."-31'";
-$result = mysqli_query($con,$sql);
-
-// while($row = mysqli_fetch_array($result)) {
-//   echo "<tr>";
-//   echo "<td>" . $row['FirstName'] . "</td>";
-//   echo "<td>" . $row['LastName'] . "</td>";
-//   echo "<td>" . $row['Age'] . "</td>";
-//   echo "<td>" . $row['Hometown'] . "</td>";
-//   echo "<td>" . $row['Job'] . "</td>";
-//   echo "</tr>";
-// }
-
-$row = $result->fetch_row();
-echo $row[0];
-
-mysqli_close($con);
-?>
+WHERE `Date/Time` >= '2013-01-01'
+AND `Date/Time` <= '2013-12-31'
