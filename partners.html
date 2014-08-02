@@ -50,6 +50,11 @@
       var scrollBanner = function() {
         //Get the scoll position of the page
         var scrollPos = jQuery(this).scrollTop();
+
+        jQuery('#partners').css({
+          'margin-top' : -(scrollPos/3)+"px",
+          'opacity' : 1-(scrollPos/300)
+        });
       
         //Scroll the background of the banner
         var val = (-scrollPos/8);
@@ -61,21 +66,19 @@
       $(window).load(function(evt) {
         $('#wrapper').show();
         fixFormatting();
-        scrollBanner();
+        //scrollBanner();
       });
 
-      $(window).scroll(function() {
-          if (!Modernizr.touch) {
-            scrollBanner();
-          }
-      });
+      // $(window).scroll(function() {
+      //     if (!Modernizr.touch) {
+      //       scrollBanner();
+      //     }
+      // });
   </script>
 </head>
 <body style="margin:0;">
   <div id="wrapper" style="display:none">
       <div id="mainPage" style="z-index:-1">
-      </div>
-      <div id="content">
         <div id="partners">
           <div id="bluebg">
             <h2 style="padding-top: 15px; color:#73be44">a special thank you to our</h2>
@@ -83,6 +86,9 @@
             <h1>PARTNERS</h1>
           </div>
         </div>
+      </div>
+      <div id="content">
+        
         <div class="partner">
           <img src="images/partners/insulation2.jpg" class="photoLeft"/>
           <a href="http://www.honeywell.com" target="_blank"><img src="images/partners/Honeywell-Logo.jpg" class="logo"/></a>
