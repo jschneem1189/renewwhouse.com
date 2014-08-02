@@ -199,16 +199,22 @@
 <body>
     <!-- <div id="graph"></div> -->
     <div id="content">
-      <div class="section" style="background-color:rgba(171,214,228,1);">
+      <div class="section odd">
+        <img class="icon" src="images/blue_lightbulb.jpg"/>
         <canvas id="energyBarChart" width="600" height="300"></canvas>
         <ul class="energyBarChart-legend">
           <li><span style="background-color:rgba(4,72,95,1)"></span>Energy Consumed</li>
           <li><span style="background-color:rgba(10,168,223,1)"></span>Energy Harvested</li>
         </ul>
       </div>
-      <div class="section" style="background-color:rgba(75,161,191,1);">
+      <div class="section even">
+        <img class="icon" src="images/lightblue_lightbulb.jpg"/>
         <canvas id="energyUsedPieChart" width="200" height="150" ></canvas>
         <canvas id="energyGainedPieChart" width="200" height="150"></canvas>
+      </div>
+      <div class="section odd">
+      </div>
+      <div class="section even">
       </div>
     </div>
     <div id="mainNav" class="clearfix" style="z-index:2000;">
