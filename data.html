@@ -39,12 +39,11 @@
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
           // console.debug(xmlhttp.responseText);
           var responseObj = JSON.parse(xmlhttp.responseText);
-          console.debug(responseObj);
           this.refreshChart(["2013","2014"],responseObj,[0,0]);
         }
       }.bind(this);
       var date = new Date();
-      xmlhttp.open("GET","http://localhost/data/getdata.php?cur_year="+date.getFullYear()+"&month=&year=&day=",true);
+      xmlhttp.open("GET","http://localhost/data/getbardata.php?cur_year="+date.getFullYear()+"&month=&year=&day=",true);
       xmlhttp.send();
     }.bind(this);
 
@@ -187,8 +186,8 @@
         <img class="icon" src="images/blue_lightbulb.jpg"/>
         <canvas id="energyBarChart" width="600" height="300"></canvas>
         <ul class="energyBarChart-legend">
-          <li><span style="background-color:rgba(4,72,95,1)"></span>Energy Consumed</li>
-          <li><span style="background-color:rgba(10,168,223,1)"></span>Energy Harvested</li>
+          <li><span style="background-color:rgba(4,72,95,1)"></span>Energy Consumed (MW)</li>
+          <li><span style="background-color:rgba(10,168,223,1)"></span>Energy Harvested (MW)</li>
         </ul>
       </div>
       <div class="section even">
