@@ -43,7 +43,7 @@
         }
       }.bind(this);
       var date = new Date();
-      xmlhttp.open("GET","http://localhost/data/getbardata.php?cur_year="+date.getFullYear()+"&month=&year=&day=",true);
+      xmlhttp.open("GET","http://localhost/data/getEnergyData.php?cur_year="+date.getFullYear()+"&month=&year=&day=",true);
       xmlhttp.send();
     }.bind(this);
 
