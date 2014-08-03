@@ -28,8 +28,7 @@
         this.partnerButton = new AnimatedButton(R4, "PARTNERS", 90, 30);
       }.bind(this));
 
-    var query = "SELECT * FROM tempdata WHERE id=1";
-    var getData = function(start, end) {
+    this.getData = function(start, end) {
       if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp=new XMLHttpRequest();
@@ -38,99 +37,84 @@
       }
       xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-          console.debug(xmlhttp.responseText);
+          // console.debug(xmlhttp.responseText);
+          var responseObj = JSON.parse(xmlhttp.responseText);
+          console.debug(responseObj);
+          this.refreshChart(["2013","2014"],responseObj,[0,0]);
         }
-      }
-      xmlhttp.open("GET","http://localhost/data/getdata.php?year_from=2013&month_from=1&year_to=2013&month_to=12",true);
+      }.bind(this);
+      var date = new Date();
+      xmlhttp.open("GET","http://localhost/data/getdata.php?cur_year="+date.getFullYear()+"&month=&year=&day=",true);
       xmlhttp.send();
-    }
-    getData(0,1);
+    }.bind(this);
 
-    var barYearData = {
-      labels: ["2014", "2015", "2016", "2017"],
-        datasets: [
-            {
-                label: "Energy Used by Year",
-                fillColor: "rgba(4,72,95,1)",
-                strokeColor: "rgba(220,220,220,0)",
-                highlightFill: "rgba(4,72,95,0.75)",
-                highlightStroke: "rgba(255,255,255,1)",
-                data: [175, 185, 165, 170],
-                title: "Energy Used"
-            },
-            {
-                label: "Energy Harvested by Year",
-                fillColor: "rgba(10,168,223,1)",
-                strokeColor: "rgba(151,187,205,0)",
-                highlightFill: "rgba(10,168,223,0.75)",
-                highlightStroke: "rgba(255,255,255,1)",
-                data: [150, 190, 175, 160],
-                title: "Energy Harvested"
-            },
-        ]
-    }
-
-    var barMonthData = {
-        2014: {
-          labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [
-                {
-                    label: "My First dataset",
-                    fillColor: "rgba(4,72,95,1)",
-                    strokeColor: "rgba(220,220,220,0)",
-                    highlightFill: "rgba(4,72,95,0.75)",
-                    highlightStroke: "rgba(255,255,255,1)",
-                    data: [65, 59, 80, 81, 56, 55, 40]
-                },
-                {
-                    label: "My Second dataset",
-                    fillColor: "rgba(10,168,223,1)",
-                    strokeColor: "rgba(151,187,205,0)",
-                    highlightFill: "rgba(10,168,223,0.75)",
-                    highlightStroke: "rgba(255,255,255,1)",
-                    data: [28, 48, 40, 19, 86, 27, 90]
-                }
-            ]
-        }
-    }
+    var barData = {
+        labels: ["2014", "2015", "2016", "2017"],
+          datasets: [
+              {
+                  // label: "Energy Used by Year",
+                  fillColor: "rgba(4,72,95,1)",
+                  strokeColor: "rgba(220,220,220,0)",
+                  highlightFill: "rgba(4,72,95,0.75)",
+                  highlightStroke: "rgba(255,255,255,1)",
+                  data: [175, 185, 165, 170],
+                  // title: "Energy Used"
+              },
+              {
+                  // label: "Energy Harvested by Year",
+                  fillColor: "rgba(10,168,223,1)",
+                  strokeColor: "rgba(151,187,205,0)",
+                  highlightFill: "rgba(10,168,223,0.75)",
+                  highlightStroke: "rgba(255,255,255,1)",
+                  data: [150, 190, 175, 160],
+                  // title: "Energy Harvested"
+              },
+          ]
+      }
 
     var barOptions = {
         //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
         scaleBeginAtZero : true,
-
         //Boolean - Whether grid lines are shown across the chart
         scaleShowGridLines : false,
-
         //String - Colour of the grid lines
         scaleGridLineColor : "rgba(0,0,0,.05)",
-
         //Number - Width of the grid lines
         scaleGridLineWidth : 1,
-
         //Boolean - If there is a stroke on each bar
         barShowStroke : true,
-
         //Number - Pixel width of the bar stroke
         barStrokeWidth : 2,
-
         //Number - Spacing between each of the X value sets
         barValueSpacing : 10,
-
         //Number - Spacing between data sets within X values
         barDatasetSpacing : 1,
-
         //String - A legend template
         legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
     }
 
-    var energy = document.getElementById("energyBarChart").getContext("2d");
-    var barChart = new Chart(energy).Bar(barYearData, barOptions);
+    this.refreshChart = function(labels, series1, series2) {
+      barData.labels = labels;
+      barData.datasets[0].data = series1;
+      barData.datasets[1].data = series2;
+
+      var energy = document.getElementById("energyBarChart").getContext("2d");
+      if (this.barChart) {
+        this.barChart.destroy();
+        // the below two lines are necessary to fix an issue where the canvas size keeps doubling
+        energy.canvas.width = 600;
+        energy.canvas.height = 300;
+      }
+      this.barChart = new Chart(energy).Bar(barData, barOptions);
+    }.bind(this);
+
+    this.getData();
 
     document.getElementById("energyBarChart").onclick = function(evt){
         var activePoints = barChart.getBarsAtEvent(evt);
         // => activePoints is an array of points on the canvas that are at the same position as the click event.
         var year = activePoints[0].label;
+
         barChart.destroy();
         // the below two lines are necessary to fix an issue where the canvas size keeps doubling
         energy.canvas.width = 600;
