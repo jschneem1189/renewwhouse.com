@@ -3,10 +3,20 @@ p {
   font-size: 14px; 
 }
 
-.leftFloat .leftImg {
-    height: 150px;
+#textWrapper .sectionImg {
+  display: block;
+  float: none;
+  clear: both;
+  margin: 10px 0 20px 0;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius:3px;
 }
 
-.rightFloat .rightImg {
-    height: 150px;
+.section {
+  padding-bottom: 50px;
 }
+  .section p {
+    font-size: 12px;
+  }

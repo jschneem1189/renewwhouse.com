@@ -7,8 +7,9 @@
   padding-left: 0px;
 }
 
-p {
+#aboutMission {
   font-size: 12px;
+  line-height: 30px;
 }
 
 h1 {
@@ -19,37 +20,26 @@ h1 {
   padding-top: 50px;
 }
 
-#textWrapper .leftImg {
+#textWrapper .sectionImg {
   display: block;
   float: none;
   clear: both;
-  padding: 10px 0 20px 0;
+  margin: 10px 0 20px 0;
   position: relative;
   margin-left: auto;
   margin-right: auto;
   width: 90%;
   height: auto;
+  border-radius:3px;
 }
 
-#textWrapper .rightImg {
-  display: block;
-  float: none;
-  clear: both;
-  padding: 10px 0 20px 0;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-  height: auto;
-}
-
-.leftFloat {
+.section {
   padding-bottom: 50px;
 }
-
-.rightFloat {
-  padding-bottom: 50px;
-}
-  .rightFloat p {
-    text-align: left;
+  .section p {
+    font-size: 12px;
   }
+
+#aboutMission {
+  line-height: 
+}
