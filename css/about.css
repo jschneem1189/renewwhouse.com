@@ -118,47 +118,41 @@ h1 {
 }
 
 .centered {
-  width: 80%;
+  width: 90%;
   margin-left: auto;
   margin-right: auto;
   padding-top: 50px;
 }
 
-.leftFloat {
+.section {
   display: block;
   clear: both;
   padding-bottom: 100px;
-  background-color: #D6EEFF;
 }
-  .leftFloat .leftImg {
+  .primary {
+    background-color: #D6EEFF;
+  }
+  .secondary {
+    background-color: #ffffff;
+  }
+  .sectionImg {
     height: 200px;
     float: left;
     margin-bottom: 25px;
     margin-right: 25px;
     border-radius:3px;
+    display: inline-block;
+    position: relative;
+    clear: both;
   }
-  .leftFloat p {
+  .aboutText {
     text-align: left;
     color: black;
-  }
-
-.rightFloat {
-  display: block;
-  clear: both;
-  padding-bottom: 100px;
-  /*background-color: #EBF8FF;*/
-  background-color: #ffffff;
-}
-  .rightFloat .rightImg {
-    height: 200px;
-    float: right;
-    margin-bottom: 25px;
-    margin-left: 25px;
-    border-radius:3px;
-  }
-  .rightFloat p {
-    text-align: right;
-    color: black;
+    font-size: 16px;
+    line-height: 30px;
+    display: block;
+    position: relative;
+    overflow: auto;
   }
 
 #aboutMission {
@@ -167,8 +161,4 @@ h1 {
   width: 80%;
   margin-right: auto;
   margin-left: auto;
-}
-
-#aboutWerld {
-  padding-bottom: 60px;
 }

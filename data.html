@@ -28,7 +28,7 @@
         this.partnerButton = new AnimatedButton(R4, "PARTNERS", 90, 30);
       }.bind(this));
 
-    this.getData = function(start, end) {
+    this.getData = function(year, month, day) {
       if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp=new XMLHttpRequest();
@@ -37,13 +37,12 @@
       }
       xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-          // console.debug(xmlhttp.responseText);
           var responseObj = JSON.parse(xmlhttp.responseText);
-          this.refreshChart(["2013","2014"],responseObj,[0,0]);
+          this.refreshChart(responseObj.labels,responseObj.values,[0,0]);
         }
       }.bind(this);
       var date = new Date();
-      xmlhttp.open("GET","http://localhost/data/getEnergyData.php?cur_year="+date.getFullYear()+"&month=&year=&day=",true);
+      xmlhttp.open("GET","http://localhost/data/getEnergyData.php?cur_year="+date.getFullYear()+"&year="+year+"&month="+month+"&day="+day,true);
       xmlhttp.send();
     }.bind(this);
 
@@ -107,20 +106,15 @@
       this.barChart = new Chart(energy).Bar(barData, barOptions);
     }.bind(this);
 
-    this.getData();
+    this.getData(0, 0, 0);
 
     document.getElementById("energyBarChart").onclick = function(evt){
-        var activePoints = barChart.getBarsAtEvent(evt);
+        var activePoints = this.barChart.getBarsAtEvent(evt);
         // => activePoints is an array of points on the canvas that are at the same position as the click event.
         var year = activePoints[0].label;
 
-        barChart.destroy();
-        // the below two lines are necessary to fix an issue where the canvas size keeps doubling
-        energy.canvas.width = 600;
-        energy.canvas.height = 300;
-        barChart = new Chart(energy).Bar(barMonthData[2014], barOptions);
-        barChart.update();
-    };
+        this.getData(year);
+    }.bind(this);
 
     var pieData = [
       {
