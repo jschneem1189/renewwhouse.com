@@ -137,7 +137,7 @@ h1 {
   }
   .sectionImg {
     height: 200px;
-    float: left;
+    /*float: left;*/
     margin-bottom: 25px;
     margin-right: 25px;
     border-radius:3px;
