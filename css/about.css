@@ -128,6 +128,8 @@ h1 {
   display: block;
   clear: both;
   padding-bottom: 100px;
+  float: left;
+  width: 100%;
 }
   .primary {
     background-color: #D6EEFF;
@@ -137,7 +139,7 @@ h1 {
   }
   .sectionImg {
     height: 200px;
-    /*float: left;*/
+    float: left;
     margin-bottom: 25px;
     margin-right: 25px;
     border-radius:3px;
