@@ -17,6 +17,10 @@ h1 {
   line-height: 50px;
 }
 
+h2 {
+  margin-left: 20px;
+}
+
 h3 {
   font-size: 30px; 
 }
