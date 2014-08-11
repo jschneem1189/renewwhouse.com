@@ -18,9 +18,12 @@ h1 {
 
 #houseRendering {
   padding-top: 50px;
+  content:url("../images/house-rendering1_gray.jpg");
 }
 
 #textWrapper .sectionImg {
+  width: auto;
+  height: 175px;
   display: block;
   float: none;
   clear: both;

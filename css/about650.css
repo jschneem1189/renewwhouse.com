@@ -1,6 +1,20 @@
+#textWrapper .sectionImg {
+  display: block;
+  float: none;
+  clear: both;
+  margin: 10px 0 20px 0;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius:3px;
+}
 
-p {
-  font-size: 14px; 
+h3 {
+  font-size: 40px; 
+}
+
+#renewwText {
+  font-size: 37px; 
 }
 
 #houseRendering {
@@ -18,7 +32,7 @@ p {
 
 #textWrapper .sectionImg {
   width: auto;
-  height: 200px;
+  height: 175px;
   display: block;
   float: none;
   clear: both;
@@ -27,6 +41,10 @@ p {
   margin-left: auto;
   margin-right: auto;
   border-radius:3px;
+}
+
+p {
+  font-size: 14px; 
 }
 
 .section {
