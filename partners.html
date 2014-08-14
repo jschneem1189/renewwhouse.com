@@ -25,80 +25,58 @@
         var partnerButton = new AnimatedButton(R4, "PARTNERS", 90, 30);
       });
 
-      var fixFormatting = function() {
-        $('#more').css('position','relative');
-        $('#more').css('right','0%');
-
-        var viewportHeight = $(window).height();
-        var mainPageHeight = $('#content').height();
-        if (mainPageHeight <= viewportHeight) {
-          // $('#spacer').css('height', offset + 'px');
-          $('#more').css('position','absolute');
-          $('#more').css('right','10%');
-        }
-
-        var photoHeight = $('.photoLeft').height();
-        var logoHeight = $('.logo').height();
-        $('.logo').css('margin-bottom', (photoHeight-logoHeight)/2);
-        $('#content').css('min-height',viewportHeight);
-      }
 
       window.onresize = function(evt) {
-        fixFormatting();
+        $('#wrapper').css('min-height',$(window).height());
       }
 
-      var scrollBanner = function() {
-        //Get the scoll position of the page
-        var scrollPos = jQuery(this).scrollTop();
-      
-        //Scroll the background of the banner
-        var val = (-scrollPos/8);
-        jQuery('#mainPage').css({
-          'background-position' : 'center ' + val +'px'
-        });    
-      }.bind(this);
-
       $(window).load(function(evt) {
+        $('#wrapper').css('min-height',$(window).height());
         $('#wrapper').show();
-        fixFormatting();
-        scrollBanner();
       });
 
       $(window).scroll(function() {
           if (!Modernizr.touch) {
-            scrollBanner();
+            // scrollBanner();
           }
       });
   </script>
 </head>
 <body style="margin:0;">
   <div id="wrapper" style="display:none">
-      <div id="mainPage" style="z-index:-1">
-      </div>
       <div id="content">
-        <div id="partners">
-          <div id="bluebg">
-            <h2 style="padding-top: 15px; color:#73be44">a special thank you to our</h2>
-            <!-- <h1>THANK YOU</h1> -->
-            <h1>PARTNERS</h1>
-          </div>
-        </div>
-        <div class="partner">
-          <img src="images/partners/insulation2.jpg" class="photoLeft"/>
-          <a href="http://www.honeywell.com" target="_blank"><img src="images/partners/Honeywell-Logo.jpg" class="logo"/></a>
-        </div>
-        <div class="partner">
-          <a href="http://www.szna-usa.com" target="_blank"><img src="images/partners/SZNA.png" class="logo" style="background-color:white; padding:10px;"/></a>
-          <img src="images/partners/pvpanels2.jpg" class="photoRight"/>
-        </div>
-        <div class="partner">
-          <!-- <img src="images/partners/insulation2.jpg" class="photoLeft"/> -->
-          <a href="http://www.enertechgeo.com" target="_blank"><img src="images/partners/enertech_logo.jpg" class="logo"/></a>
-        </div>
-        <div class="partner">
-          <!-- <img src="images/partners/insulation2.jpg" class="photoLeft"/> -->
-          <a href="http://www.greengoosehomes.com" target="_blank"><img src="images/partners/GGH_Logo_FINAL.jpg" class="logo"/></a>
-        </div>
+        <ul class="tiles">
+          <a href="http://www.honeywell.com" target="_blank">
+            <li>
+              <img class="logo" src="images/partners/Honeywell-Logo.jpg"/>
+            </li>
+          </a>
+          <a href="http://www.szna-usa.com" target="_blank">
+            <li>
+              <img class="logo" src="images/partners/SZNA.jpg"/>
+            </li>
+          </a>
+          <a href="http://www.enertechgeo.com" target="_blank">
+            <li>
+              <img class="logo" src="images/partners/enertech_logo.jpg"/>
+            </li>
+          </a>
+          <a href="http://www.greengoosehomes.com" target="_blank">
+            <li>
+              <img class="logo" src="images/partners/GGH_Logo_FINAL.jpg"/>
+            </li>
+          </a>
+          <a href="http://www.solar-trac.com" target="_blank">
+            <li>
+              <img class="logo" src="images/partners/Solar-Trac Logo.jpg"/>
+            </li>
+          </a>
+          <a href="http://www.schletter.us" target="_blank">
+            <li>
+              <img class="logo" src="images/partners/SchletterInc..jpg"/>
+            </li>
+          </a>
+        </ul>
         <p id="more">...and more to come.</p>
       </div>
     </div>
