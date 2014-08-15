@@ -183,6 +183,7 @@ h3 {
   padding-bottom: 100px;
   float: left;
   width: 100%;
+  position: relative;
 }
   .primary {
     background-color: #c5ecba;
