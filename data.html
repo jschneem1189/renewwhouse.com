@@ -43,7 +43,7 @@
       xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
           // console.debug(xmlhttp.responseText);
-          alert(xmlhttp.responseText)
+          alert(xmlhttp.responseText);
           var chartData = JSON.parse(xmlhttp.responseText);
           // this.refreshChart(responseObj.labels,responseObj.values,[0,0]);
           this.buildChart(chartData);
