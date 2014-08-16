@@ -73,6 +73,14 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  font-family: 'Duru Sans', sans-serif;
+  color:#3e3e3e;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  padding-top: 75px;
+}
+
 #frame {
 	position: absolute;
 	height: 100%;
@@ -93,16 +101,16 @@ h1 {
 .section {
   width: 100%;
   height: auto;
-  padding: 40px 0px 40px 0px;
+  padding: 0px 0px 40px 0px;
   text-align: center;
   min-height: 200px;
   position: relative;
 }
   .odd {
-    background-color:rgba(171,214,228,1);
+    background-color:#abd6e4;
   }
   .even {
-    background-color:rgba(75,161,191,1);
+    background-color:#4ba1bf;
   }
   .section .icon {
     height: 200px;
@@ -112,14 +120,6 @@ h1 {
     margin-top: -100px; 
     margin-left: 20px;
   }
-
-#energyBarChart {
-	display: inline-block;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40px;
-}
 
 #legendWrapper {
   display: inline-block;
@@ -162,14 +162,20 @@ h1 {
     border-radius: 5px;
   }
 
-#energyUsedPieChart {
-
-}
-
 #stockChart {
   width:70%; 
   height:400px;
   margin: 50px 100px 50px auto;
   /*position: absolute;*/
   /*right: 0px;*/
+}
+
+#ball {
+  text-align: right;
+  color:#3e3e3e;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  background-color:#4ba1bf;
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
 }
