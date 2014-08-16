@@ -37,6 +37,7 @@
       }
       xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+          console.debug(xmlhttp.responseText);
           var responseObj = JSON.parse(xmlhttp.responseText);
           this.refreshChart(responseObj.labels,responseObj.values,[0,0]);
         }
@@ -106,7 +107,9 @@
       this.barChart = new Chart(energy).Bar(barData, barOptions);
     }.bind(this);
 
-    this.getData(0, 0, 0);
+    var date = new Date();
+    this.getData(date.getFullYear(), 0, 0);
+    // this.getData(0, 0, 0);
 
     document.getElementById("energyBarChart").onclick = function(evt){
         var activePoints = this.barChart.getBarsAtEvent(evt);
