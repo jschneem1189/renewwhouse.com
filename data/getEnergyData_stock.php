@@ -1,6 +1,6 @@
 <?php
 // ini_set('memory_limit', '-1');
-$con = mysqli_connect('23.229.157.253','reneww','renewwhouse','house_data');
+$con = mysqli_connect('localhost','reneww','renewwhouse','house_data');
 // Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
