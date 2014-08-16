@@ -14,7 +14,7 @@ if (!$link) {
 $labels = array();
 $values = array();
 
-$sql="SELECT `Date/Time` as date, `CH1-Inactive` + 
+$sql="SELECT date(`Date/Time`) as date, SUM(`CH1-Inactive` + 
 	`CH2-Main Power` + 
 	`CH3-Main Power` + 
 	`CH4-Oven` + 
@@ -58,7 +58,7 @@ $sql="SELECT `Date/Time` as date, `CH1-Inactive` +
 	`CH42-Inactive` + 
 	`CH43-Inactive` + 
 	`CH44-Inactive` + 
-	`CH45-Inactive` AS val FROM eMonitor WHERE id < 100";
+	`CH45-Inactive`) AS val FROM eMonitor GROUP BY date(`Date/Time`)";
 
 $result = mysqli_query($con,$sql);
 // $row = $result->fetch_row();

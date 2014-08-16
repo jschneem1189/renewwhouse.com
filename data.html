@@ -32,7 +32,7 @@
         this.partnerButton = new AnimatedButton(R4, "PARTNERS", 90, 30);
       }.bind(this));
 
-    this.getData = function(year, month, day) {
+    this.getData = function() {
       if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp=new XMLHttpRequest();
@@ -41,7 +41,7 @@
       }
       xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-          console.debug(xmlhttp.responseText);
+          // console.debug(xmlhttp.responseText);
           var chartData = JSON.parse(xmlhttp.responseText);
           // this.refreshChart(responseObj.labels,responseObj.values,[0,0]);
           this.buildChart(chartData);
@@ -50,78 +50,6 @@
       var date = new Date();
       xmlhttp.open("GET","http://localhost/data/getEnergyData_stock.php",true);
       xmlhttp.send();
-    }.bind(this);
-
-    var barData = {
-        labels: ["2014", "2015", "2016", "2017"],
-          datasets: [
-              {
-                  // label: "Energy Used by Year",
-                  fillColor: "rgba(4,72,95,1)",
-                  strokeColor: "rgba(220,220,220,0)",
-                  highlightFill: "rgba(4,72,95,0.75)",
-                  highlightStroke: "rgba(255,255,255,1)",
-                  data: [175, 185, 165, 170],
-                  // title: "Energy Used"
-              },
-              {
-                  // label: "Energy Harvested by Year",
-                  fillColor: "rgba(10,168,223,1)",
-                  strokeColor: "rgba(151,187,205,0)",
-                  highlightFill: "rgba(10,168,223,0.75)",
-                  highlightStroke: "rgba(255,255,255,1)",
-                  data: [150, 190, 175, 160],
-                  // title: "Energy Harvested"
-              },
-          ]
-      }
-
-    var barOptions = {
-        //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-        scaleBeginAtZero : true,
-        //Boolean - Whether grid lines are shown across the chart
-        scaleShowGridLines : false,
-        //String - Colour of the grid lines
-        scaleGridLineColor : "rgba(0,0,0,.05)",
-        //Number - Width of the grid lines
-        scaleGridLineWidth : 1,
-        //Boolean - If there is a stroke on each bar
-        barShowStroke : true,
-        //Number - Pixel width of the bar stroke
-        barStrokeWidth : 2,
-        //Number - Spacing between each of the X value sets
-        barValueSpacing : 10,
-        //Number - Spacing between data sets within X values
-        barDatasetSpacing : 1,
-        //String - A legend template
-        legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-    }
-
-    this.refreshChart = function(labels, series1, series2) {
-      barData.labels = labels;
-      barData.datasets[0].data = series1;
-      barData.datasets[1].data = series2;
-
-      var energy = document.getElementById("energyBarChart").getContext("2d");
-      if (this.barChart) {
-        this.barChart.destroy();
-        // the below two lines are necessary to fix an issue where the canvas size keeps doubling
-        energy.canvas.width = 600;
-        energy.canvas.height = 300;
-      }
-      this.barChart = new Chart(energy).Bar(barData, barOptions);
-    }.bind(this);
-
-    var date = new Date();
-    this.getData(date.getFullYear(), 0, 0);
-    // this.getData(0, 0, 0);
-
-    document.getElementById("energyBarChart").onclick = function(evt){
-        var activePoints = this.barChart.getBarsAtEvent(evt);
-        // => activePoints is an array of points on the canvas that are at the same position as the click event.
-        var year = activePoints[0].label;
-
-        this.getData(year);
     }.bind(this);
 
     var pieData = [
@@ -180,19 +108,6 @@
     var myPieChart2 = new Chart(pie2).Pie(pieData,pieOptions);
 
     //AMCHARTS
-    var chartData= [
-      {date: new Date(2011, 5, 1, 0, 0, 0, 0), val:10},
-      {date: new Date(2011, 5, 2, 0, 0, 0, 0), val:11},
-      {date: new Date(2011, 5, 3, 0, 0, 0, 0), val:12},
-      {date: new Date(2011, 5, 4, 0, 0, 0, 0), val:11},
-      {date: new Date(2011, 5, 5, 0, 0, 0, 0), val:10},
-      {date: new Date(2011, 5, 6, 0, 0, 0, 0), val:11},
-      {date: new Date(2011, 5, 7, 0, 0, 0, 0), val:13},
-      {date: new Date(2011, 5, 8, 0, 0, 0, 0), val:14},
-      {date: new Date(2011, 5, 9, 0, 0, 0, 0), val:17},
-      {date: new Date(2011, 5, 10, 0, 0, 0, 0), val:13}
-    ];
-
     this.buildChart = function(data){
       // create chart
       var chart = new AmCharts.AmStockChart();
@@ -217,20 +132,16 @@
       graph.valueField = "value";
       graph.type = "column";
       graph.fillAlphas = 1;
-      graph.title = "Value";
+      graph.title = "Energy Usage (W)";
+      graph.periodValue = "Sum";
       stockPanel.addStockGraph(graph);
 
-      // set min period
+      // category axis settings
       var categoryAxesSettings = new AmCharts.CategoryAxesSettings();
       categoryAxesSettings.minPeriod = "hh";
-      chart.categoryAxesSettings = categoryAxesSettings;
-
-      // gaps in data
       categoryAxesSettings.equalSpacing = true;
-
-      // more settings
-      var categoryAxesSettings = new AmCharts.CategoryAxesSettings();
       categoryAxesSettings.dashLength = 5;
+      categoryAxesSettings.groupToPeriods = ["hh", "DD", "WW", "MM", "YYYY"];
       chart.categoryAxesSettings = categoryAxesSettings;
 
       var valueAxesSettings = new AmCharts.ValueAxesSettings();
@@ -256,30 +167,32 @@
       var periodSelector = new AmCharts.PeriodSelector();
       chart.periodSelector = periodSelector;
       periodSelector.periods = [
-         {period:"DD", count:1, label:"1 day"}, 
-         {period:"DD", selected:true, count:5, label:"5 days"},
+         {period:"DD", count:5, label:"5 days"},
          {period:"MM", count:1, label:"1 month"},
          {period:"YYYY", count:1, label:"1 year"},
-         {period:"YTD", label:"YTD"},
+         {period:"YTD", selected:true, label:"YTD"},
          {period:"MAX", label:"MAX"}
       ];
 
       // draw chart
       chart.write("stockChart");
     };
+
+    this.getData();
   });
   </script>
 </head>
 <body>
     <!-- <div id="graph"></div> -->
     <div id="content">
+      <h1>OUR DATA</h1>
       <div class="section odd">
         <img class="icon" src="images/blue_lightbulb.jpg"/>
-        <canvas id="energyBarChart" width="600" height="300"></canvas>
-        <ul class="energyBarChart-legend">
-          <li><span style="background-color:rgba(4,72,95,1)"></span>Energy Consumed (MW)</li>
-          <li><span style="background-color:rgba(10,168,223,1)"></span>Energy Harvested (MW)</li>
-        </ul>
+        <div id="stockChart"></div>
+        <!-- <ul class="energyBarChart-legend"> -->
+          <!-- <li><span style="background-color:rgba(4,72,95,1)"></span>Energy Consumed (MW)</li> -->
+          <!-- <li><span style="background-color:rgba(10,168,223,1)"></span>Energy Harvested (MW)</li> -->
+        <!-- </ul> -->
       </div>
       <div class="section even">
         <img class="icon" src="images/lightblue_lightbulb.jpg"/>
@@ -287,7 +200,6 @@
         <canvas id="energyGainedPieChart" width="200" height="150"></canvas>
       </div>
       <div class="section odd">
-        <div id="stockChart"></div>
       </div>
       <div class="section even">
       </div>
