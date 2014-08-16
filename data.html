@@ -101,11 +101,11 @@
         legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
 
     }
-    var pie1 = document.getElementById("energyUsedPieChart").getContext("2d");
-    var myPieChart1 = new Chart(pie1).Pie(pieData,pieOptions);
+    // var pie1 = document.getElementById("energyUsedPieChart").getContext("2d");
+    // var myPieChart1 = new Chart(pie1).Pie(pieData,pieOptions);
 
-    var pie2 = document.getElementById("energyGainedPieChart").getContext("2d");
-    var myPieChart2 = new Chart(pie2).Pie(pieData,pieOptions);
+    // var pie2 = document.getElementById("energyGainedPieChart").getContext("2d");
+    // var myPieChart2 = new Chart(pie2).Pie(pieData,pieOptions);
 
     //AMCHARTS
     this.buildChart = function(data){
@@ -116,8 +116,10 @@
       // create data set
       var dataSet = new AmCharts.DataSet();
       dataSet.dataProvider = data;
-      dataSet.fieldMappings = [{fromField:"val", toField:"value"}];
+      dataSet.fieldMappings = [{fromField:"val", toField:"value"},{fromField:"val2", toField:"value2"}];
       dataSet.categoryField = "date";
+      dataSet.title = "Energy Consumed";
+
       chart.dataSets = [dataSet];
       var stockPanel = new AmCharts.StockPanel();
       chart.panels = [stockPanel];
@@ -136,12 +138,22 @@
       graph.periodValue = "Sum";
       stockPanel.addStockGraph(graph);
 
+      var graph2 = new AmCharts.StockGraph();
+      graph2.valueField = "value2";
+      graph2.fillAlphas = 0.5;
+      graph2.title = "Energy Harvested (W)";
+      graph2.lineThickness = 3;
+      graph2.lineColor = "#00cc00";
+      graph2.useDataSetColors = false;
+      graph2.periodValue = "Sum";
+      stockPanel.addStockGraph(graph2);
+
       // category axis settings
       var categoryAxesSettings = new AmCharts.CategoryAxesSettings();
-      categoryAxesSettings.minPeriod = "hh";
+      categoryAxesSettings.minPeriod = "DD";
       categoryAxesSettings.equalSpacing = true;
       categoryAxesSettings.dashLength = 5;
-      categoryAxesSettings.groupToPeriods = ["hh", "DD", "WW", "MM", "YYYY"];
+      categoryAxesSettings.groupToPeriods = ["DD", "WW", "MM", "YYYY"];
       chart.categoryAxesSettings = categoryAxesSettings;
 
       var valueAxesSettings = new AmCharts.ValueAxesSettings();
@@ -196,8 +208,9 @@
       </div>
       <div class="section even">
         <img class="icon" src="images/lightblue_lightbulb.jpg"/>
-        <canvas id="energyUsedPieChart" width="200" height="150" ></canvas>
-        <canvas id="energyGainedPieChart" width="200" height="150"></canvas>
+        <!-- <canvas id="energyUsedPieChart" width="200" height="150" ></canvas> -->
+        <!-- <canvas id="energyGainedPieChart" width="200" height="150"></canvas> -->
+        <h2>Circuit breakdown coming soon</h2>
       </div>
       <div class="section odd">
       </div>
