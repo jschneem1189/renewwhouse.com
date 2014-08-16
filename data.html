@@ -12,6 +12,10 @@
   <script src="components/house-hover.js"></script>
   <script src="components/AnimatedButton.js"></script>
   <script src="libraries/Chart.min.js"></script>
+  <script src="libraries/amcharts_stocks/amcharts.js" type="text/javascript"></script> 
+  <script src="libraries/amcharts_stocks/serial.js" type="text/javascript"></script> 
+  <script src="libraries/amcharts_stocks/amstock.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="libraries/amcharts_stocks/style.css" type="text/css">
   <link rel="shortcut icon" href="images/32x32 logo.ico">
   <link rel="stylesheet" type="text/css" media="screen" href="css/data.css" />
   <link rel="stylesheet" type="text/css" media="screen and (max-width: 320px)" href="css/data320.css" />
@@ -38,12 +42,13 @@
       xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
           console.debug(xmlhttp.responseText);
-          var responseObj = JSON.parse(xmlhttp.responseText);
-          this.refreshChart(responseObj.labels,responseObj.values,[0,0]);
+          var chartData = JSON.parse(xmlhttp.responseText);
+          // this.refreshChart(responseObj.labels,responseObj.values,[0,0]);
+          this.buildChart(chartData);
         }
       }.bind(this);
       var date = new Date();
-      xmlhttp.open("GET","http://localhost/data/getEnergyData.php?cur_year="+date.getFullYear()+"&year="+year+"&month="+month+"&day="+day,true);
+      xmlhttp.open("GET","http://localhost/data/getEnergyData_stock.php",true);
       xmlhttp.send();
     }.bind(this);
 
@@ -173,6 +178,95 @@
 
     var pie2 = document.getElementById("energyGainedPieChart").getContext("2d");
     var myPieChart2 = new Chart(pie2).Pie(pieData,pieOptions);
+
+    //AMCHARTS
+    var chartData= [
+      {date: new Date(2011, 5, 1, 0, 0, 0, 0), val:10},
+      {date: new Date(2011, 5, 2, 0, 0, 0, 0), val:11},
+      {date: new Date(2011, 5, 3, 0, 0, 0, 0), val:12},
+      {date: new Date(2011, 5, 4, 0, 0, 0, 0), val:11},
+      {date: new Date(2011, 5, 5, 0, 0, 0, 0), val:10},
+      {date: new Date(2011, 5, 6, 0, 0, 0, 0), val:11},
+      {date: new Date(2011, 5, 7, 0, 0, 0, 0), val:13},
+      {date: new Date(2011, 5, 8, 0, 0, 0, 0), val:14},
+      {date: new Date(2011, 5, 9, 0, 0, 0, 0), val:17},
+      {date: new Date(2011, 5, 10, 0, 0, 0, 0), val:13}
+    ];
+
+    this.buildChart = function(data){
+      // create chart
+      var chart = new AmCharts.AmStockChart();
+      chart.pathToImages = "libraries/amcharts_stocks/images/";
+
+      // create data set
+      var dataSet = new AmCharts.DataSet();
+      dataSet.dataProvider = data;
+      dataSet.fieldMappings = [{fromField:"val", toField:"value"}];
+      dataSet.categoryField = "date";
+      chart.dataSets = [dataSet];
+      var stockPanel = new AmCharts.StockPanel();
+      chart.panels = [stockPanel];
+
+      // change settings
+      var panelsSettings = new AmCharts.PanelsSettings();
+      panelsSettings.startDuration = 1;
+      chart.panelsSettings = panelsSettings;
+
+      // create graph
+      var graph = new AmCharts.StockGraph();
+      graph.valueField = "value";
+      graph.type = "column";
+      graph.fillAlphas = 1;
+      graph.title = "Value";
+      stockPanel.addStockGraph(graph);
+
+      // set min period
+      var categoryAxesSettings = new AmCharts.CategoryAxesSettings();
+      categoryAxesSettings.minPeriod = "hh";
+      chart.categoryAxesSettings = categoryAxesSettings;
+
+      // gaps in data
+      categoryAxesSettings.equalSpacing = true;
+
+      // more settings
+      var categoryAxesSettings = new AmCharts.CategoryAxesSettings();
+      categoryAxesSettings.dashLength = 5;
+      chart.categoryAxesSettings = categoryAxesSettings;
+
+      var valueAxesSettings = new AmCharts.ValueAxesSettings();
+      valueAxesSettings .dashLength = 5;
+      chart.valueAxesSettings  = valueAxesSettings;
+
+      // add graph to the scrollbar
+      var chartScrollbarSettings = new AmCharts.ChartScrollbarSettings();
+      chartScrollbarSettings.graph = graph;
+      chartScrollbarSettings.graphType = "line";
+      chart.chartScrollbarSettings = chartScrollbarSettings;
+
+      // add legend
+      var legend = new AmCharts.StockLegend();
+      stockPanel.stockLegend = legend;
+
+      // add tooltips
+      var chartCursorSettings = new AmCharts.ChartCursorSettings();
+      chartCursorSettings.valueBalloonsEnabled = true;
+      chart.chartCursorSettings = chartCursorSettings;
+
+      // add period selector
+      var periodSelector = new AmCharts.PeriodSelector();
+      chart.periodSelector = periodSelector;
+      periodSelector.periods = [
+         {period:"DD", count:1, label:"1 day"}, 
+         {period:"DD", selected:true, count:5, label:"5 days"},
+         {period:"MM", count:1, label:"1 month"},
+         {period:"YYYY", count:1, label:"1 year"},
+         {period:"YTD", label:"YTD"},
+         {period:"MAX", label:"MAX"}
+      ];
+
+      // draw chart
+      chart.write("stockChart");
+    };
   });
   </script>
 </head>
@@ -193,6 +287,7 @@
         <canvas id="energyGainedPieChart" width="200" height="150"></canvas>
       </div>
       <div class="section odd">
+        <div id="stockChart"></div>
       </div>
       <div class="section even">
       </div>

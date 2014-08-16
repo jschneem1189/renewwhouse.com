@@ -154,3 +154,9 @@ body {
 
 }
 
+#stockChart {
+  width:80%; 
+  height:400px;
+  /*position: absolute;*/
+  /*right: 0px;*/
+}
