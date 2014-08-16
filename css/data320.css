@@ -1,3 +1,30 @@
 .animatedButton {
   padding-left: 0px;
 }
+
+.section .icon {
+	height: 150px;
+	float: none;
+	/*display: block;*/
+	clear: both;
+
+}
+
+#stockChart {
+  height:400px;
+  margin: 0px auto 50px auto;
+  width: 90%;
+
+}
+
+#energySection .icon {
+    margin: 40px 0px 0px 0px;
+}
+
+#circuitSection .icon {
+    margin: 20px 0px 0px 0px;
+}
+
+h1 {
+  font-size:50px; 
+}

@@ -1,0 +1,16 @@
+.section .icon {
+	height: 150px;
+}
+
+#stockChart {
+  height:300px;
+  margin: 50px 20px 50px auto;
+}
+
+#energySection .icon {
+    margin: 100px 30px 0px 20px;
+}
+
+#circuitSection .icon {
+    margin: 20px 30px 0px 20px;
+}

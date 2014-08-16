@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="libraries/amcharts_stocks/style.css" type="text/css">
   <link rel="shortcut icon" href="images/32x32 logo.ico">
   <link rel="stylesheet" type="text/css" media="screen" href="css/data.css" />
+  <link rel="stylesheet" type="text/css" media="screen and (min-width:321px) and (max-width: 650px)" href="css/data650.css" />
   <link rel="stylesheet" type="text/css" media="screen and (max-width: 320px)" href="css/data320.css" />
   <script>
   $(function() {
@@ -198,7 +199,7 @@
     <!-- <div id="graph"></div> -->
     <div id="content">
       <h1>OUR DATA</h1>
-      <div class="section odd">
+      <div id="energySection" class="section odd">
         <img class="cutout" src="images/white-blue_cutout.jpg"/>
         <img class="icon" src="images/blue_lightbulb.jpg"/>
         <div id="stockChart"></div>
@@ -207,7 +208,7 @@
           <!-- <li><span style="background-color:rgba(10,168,223,1)"></span>Energy Harvested (MW)</li> -->
         <!-- </ul> -->
       </div>
-      <div class="section even">
+      <div id="circuitSection" class="section even">
         <img class="icon" src="images/lightblue_lightbulb.jpg"/>
         <!-- <canvas id="energyUsedPieChart" width="200" height="150" ></canvas> -->
         <!-- <canvas id="energyGainedPieChart" width="200" height="150"></canvas> -->
