@@ -50,8 +50,10 @@
         }
       }.bind(this);
       var date = new Date();
+      alert(1)
       xmlhttp.open("GET","http://localhost/data/getEnergyData_stock.php",true);
       xmlhttp.send();
+      alert(2)
     }.bind(this);
 
     var pieData = [
