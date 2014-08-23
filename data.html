@@ -34,23 +34,19 @@
       }.bind(this));
 
     this.getData = function() {
-      if (window.XMLHttpRequest) {
-        // code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
-      } else { // code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-      }
-      xmlhttp.onreadystatechange=function() {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-          // console.debug(xmlhttp.responseText);
-          var chartData = JSON.parse(xmlhttp.responseText);
+      $.ajax({
+        url:"data/getEnergyData_stock.php",  // live site
+        // url:"http://localhost/data/getEnergyData_stock.php",     // local testing
+        success: function(responseText) {
+          // console.debug(responseText);
+          var chartData = JSON.parse(responseText);
           // this.refreshChart(responseObj.labels,responseObj.values,[0,0]);
           this.buildChart(chartData);
+        }.bind(this),
+        error: function() {
+          alert("error fetching php script");
         }
-      }.bind(this);
-      var date = new Date();
-      xmlhttp.open("GET","http://localhost/data/getEnergyData_stock.php",true);
-      xmlhttp.send();
+      });
     }.bind(this);
 
     var pieData = [
@@ -128,6 +124,7 @@
       // change settings
       var panelsSettings = new AmCharts.PanelsSettings();
       panelsSettings.startDuration = 1;
+      panelsSettings.panEventsEnabled = false;
       chart.panelsSettings = panelsSettings;
 
       // create graph
@@ -165,6 +162,7 @@
       var chartScrollbarSettings = new AmCharts.ChartScrollbarSettings();
       chartScrollbarSettings.graph = graph;
       chartScrollbarSettings.graphType = "line";
+      chartScrollbarSettings.dragIconWidth = 40;
       chart.chartScrollbarSettings = chartScrollbarSettings;
 
       // add legend
