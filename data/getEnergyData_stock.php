@@ -16,10 +16,10 @@ $labels = array();
 $values = array();
 
 $sql="SELECT date(`Date/Time`) as date, 
-	SUM((`CH2-Main Power` + 
-		`CH3-Main Power`) / 60 / 1000) AS val, 
-	SUM((`CH2-Main Power` + 
-		`CH3-Main Power`) * 0.5 / 60 / 1000) AS val2 FROM eMonitor GROUP BY date(`Date/Time`)";
+	CAST(SUM((`CH2-Main Power` + 
+		`CH3-Main Power`) / 60 / 1000) AS DECIMAL(10,2)) AS val, 
+	CAST(SUM((`CH2-Main Power` + 
+		`CH3-Main Power`) * 0.5 / 60 / 1000) AS DECIMAL(10,2)) AS val2 FROM eMonitor GROUP BY date(`Date/Time`)";
 
 $result = mysqli_query($con,$sql);
 // $row = $result->fetch_row();
