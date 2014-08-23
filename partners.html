@@ -4,26 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=yes" />
   <title>ReNEWW</title>
-  <script src="libraries/jquery-1.9.1.js"></script>
-  <script src="libraries/raphael.js"></script>
-  <script src="libraries/modernizr.custom.46375.js"></script>
-  <script src="components/AnimatedButton.js"></script>
+  <script src="js/lib/jquery.js"></script>
+  <script src="js/lib/modernizr.js"></script>
+  <script data-main="js/app/header" src="js/lib/require.js"></script>
   <link rel="shortcut icon" href="images/32x32 logo.ico">
   <link rel="stylesheet" type="text/css" media="screen" href="css/partners.css" />
   <link rel="stylesheet" type="text/css" media="screen and (max-width: 320px)" href="css/partners320.css" />
   <link rel="stylesheet" type="text/css" media="screen and (min-width:321px) and (max-width: 650px)" href="css/partners650.css" />
   <script>
-      $(function(){
-        var R1 = Raphael("dataButton", 80, 30);
-        // var R2 = Raphael("tourButton", 80, 30);
-        var R3 = Raphael("aboutButton", 80, 30);
-        var R4 = Raphael("partnerButton", 90, 30);
-        var dataButton = new AnimatedButton(R1, "DATA", 80, 30);
-        // var tourButton = new AnimatedButton(R2, "TOUR", 80, 30);
-        var aboutButton = new AnimatedButton(R3, "ABOUT", 80, 30);
-        var partnerButton = new AnimatedButton(R4, "PARTNERS", 90, 30);
-      });
-
 
       window.onresize = function(evt) {
         $('#wrapper').css('min-height',$(window).height());

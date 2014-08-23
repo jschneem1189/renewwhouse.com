@@ -4,12 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=yes" />
   <title>ReNEWW</title>
-  <script src="libraries/jquery-1.9.1.js"></script>
-  <script src="libraries/raphael.js"></script>
-  <script src="components/pie.js"></script>
-  <script src="components/popup.js"></script>
-  <script src="components/AnimatedButton.js"></script>
-  <script src="libraries/modernizr.custom.46375.js"></script>
+  <script src="js/lib/jquery.js"></script>
+  <script src="js/lib/modernizr.js"></script>
+  <script data-main="js/app/header" src="js/lib/require.js"></script>
   <link rel="shortcut icon" href="images/32x32 logo.ico">
   <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
   <link rel="stylesheet" type="text/css" media="screen and (min-width: 651px) and (max-width: 1000px)" href="css/index650.css" />
@@ -17,18 +14,6 @@
   <link rel="stylesheet" type="text/css" media="screen and (max-width: 320px)" href="css/index320.css" />
   <link rel="stylesheet" type="text/css" media="screen and (max-height: 320px)" href="css/index320_landscape.css" />
   <script>
-    // init
-    $(function(){
-        var R1 = Raphael("dataButton", 80, 30);
-        // var R2 = Raphael("tourButton", 80, 30);
-        var R3 = Raphael("aboutButton", 80, 30);
-        var R4 = Raphael("partnerButton", 90, 30);
-        var dataButton = new AnimatedButton(R1, "DATA", 80, 30);
-        // var tourButton = new AnimatedButton(R2, "TOUR", 80, 30);
-        this.aboutButton = new AnimatedButton(R3, "ABOUT", 80, 30);
-        this.partnerButton = new AnimatedButton(R4, "PARTNERS", 90, 30);
-      }.bind(this));
-
     this.viewportHeight = $(window).height();
     this.viewportWidth = $(window).width();
     this.goldenRatio = 1.6;
@@ -110,12 +95,6 @@
         this.resetPosition();
         // get the bg image in the correct position
         this.scrollBanner();
-    }.bind(this));
-
-    $(window).unload(function(evt) {
-        // for some reason if this function is not implemented the AnimatedButtons get stuck when using the back button in Safari
-        this.partnerButton.reset();
-        this.aboutButton.reset();
     }.bind(this));
 
     // var is_touch_device = 'ontouchstart' in document.documentElement;
