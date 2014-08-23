@@ -1,4 +1,4 @@
-require(["../lib/jquery", "../lib/modernizr"], function(util) {
+require(["../lib/jquery", "../lib/modernizr", "header"], function(jquery, modernizr, header) {
   // grab the viewport width/height
   var viewportHeight = $(window).height();
   var viewportWidth = $(window).width();

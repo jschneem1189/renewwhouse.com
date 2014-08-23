@@ -1,4 +1,4 @@
-require(["../lib/raphael", "AnimatedButton", "../lib/jquery"], function(util) {
+require(["../lib/raphael", "AnimatedButton", "../lib/jquery"], function() {
 	var R1 = Raphael("dataButton", 80, 30);
 	// var R2 = Raphael("tourButton", 80, 30);
 	var R3 = Raphael("aboutButton", 80, 30);

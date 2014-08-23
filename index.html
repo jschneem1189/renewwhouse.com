@@ -4,128 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=yes" />
   <title>ReNEWW</title>
-  <script src="js/lib/jquery.js"></script>
-  <script src="js/lib/modernizr.js"></script>
-  <script data-main="js/app/header" src="js/lib/require.js"></script>
+  <script data-main="js/app/main" src="js/lib/require.js"></script>
   <link rel="shortcut icon" href="images/32x32 logo.ico">
   <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
   <link rel="stylesheet" type="text/css" media="screen and (min-width: 651px) and (max-width: 1000px)" href="css/index650.css" />
   <link rel="stylesheet" type="text/css" media="screen and (min-width:321px) and (max-width: 650px)" href="css/index650.css" />
   <link rel="stylesheet" type="text/css" media="screen and (max-width: 320px)" href="css/index320.css" />
   <link rel="stylesheet" type="text/css" media="screen and (max-height: 320px)" href="css/index320_landscape.css" />
-  <script>
-    this.viewportHeight = $(window).height();
-    this.viewportWidth = $(window).width();
-    this.goldenRatio = 1.6;
-    // this.goldenRatio = jQuery('#homeBanner').css('background-size').width() / jQuery('#homeBanner').css('background-image').height();
-    var ratio = this.viewportWidth/this.viewportHeight;
-    this.offset = 0;
-    if (ratio > this.goldenRatio) {
-      this.offset = (this.viewportWidth/this.goldenRatio - this.viewportHeight)* 1/2;
-    }
-
-    this.scrollBanner = function() {
-      //Get the scoll position of the page
-      var scrollPos = jQuery(this).scrollTop();
-
-      //Scroll and fade out the banner text
-      jQuery('#bannerText').css({
-        'margin-top' : -(scrollPos/3)+"px",
-        'opacity' : 1-(scrollPos/300)
-      });
-    
-      //Scroll the background of the banner
-      var val = -this.offset + (-scrollPos/8)
-      jQuery('#homeBanner').css({
-        'background-position' : 'center ' + val +'px'
-      });    
-    }.bind(this)
-
-    this.resetPosition = function() {
-      var ratio = this.viewportWidth/this.viewportHeight;
-      this.offset = 0;
-      if (ratio > this.goldenRatio) {
-        this.offset = (this.viewportWidth/this.goldenRatio - this.viewportHeight)* 1/2;
-      }
-
-      // offset the content such that just the tab peeks at the bottom
-      var missionOffset = parseInt($('#mission').css("top").split("px")[0],10) + $('#tab').height();
-      $('#content').css("margin-top", parseInt(this.viewportHeight-missionOffset,10));
-      // ensure that the bkg image is the proper height
-      $('#homeBanner').css("bottom", missionOffset + "px");
-
-      // if (ratio > this.goldenRatio) {
-      //   jQuery('#homeBanner').css({
-      //     'background-size' : this.viewportWidth + 'px ' + this.viewportWidth/this.goldenRatio + 'px'
-      //   });
-      // } else {
-      //   jQuery('#homeBanner').css({
-      //     'background-size' : this.viewportHeight*this.goldenRatio + 'px ' + this.viewportHeight + 'px'
-      //   });
-      // }
-    }.bind(this)
-
-    window.onresize = function(evt) {
-      this.viewportHeight = $(window).height();
-      this.viewportWidth = $(window).width();
-      
-      this.resetPosition();
-
-      if (!Modernizr.touch) {
-        this.scrollBanner();
-      }
-    }.bind(this);
-
-    $(window).load(function(evt) {
-
-        this.viewportHeight = $(window).height();
-        this.viewportWidth = $(window).width();
-
-        // this.resetPosition();
-        
-        $('#wrapper').show();
-
-        if (Modernizr.touch) {
-          $('#homeBanner').css('position','absolute');
-        } else {
-          $('#homeBanner').css('position','fixed');
-        }
-
-        // important to call this after showing the wrapper of the tab image won't have a height
-        this.resetPosition();
-        // get the bg image in the correct position
-        this.scrollBanner();
-    }.bind(this));
-
-    // var is_touch_device = 'ontouchstart' in document.documentElement;
-    $(window).scroll(function() {
-        if (!Modernizr.touch) {
-          this.scrollBanner();
-        }
-    }.bind(this));
-
-    var spinArrow = function() {
-      // caching the object for performance reasons
-      var $elem = $('#tab-arrow');
-      var angle = 360;
-
-      // we use a pseudo object for the animation
-      // (starts from `0` to `angle`), you can name it as you want
-      $({deg: 0}).animate({deg: angle}, {
-          duration: 1000,
-          step: function(now) {
-              // in the step-callback (that is fired each step of the animation),
-              // you can use the `now` paramter which contains the current
-              // animation-position (`0` up to `angle`)
-              $elem.css({
-                  transform: 'rotate(' + now + 'deg)'
-              });
-          }
-      });
-    }
-    setInterval(spinArrow,5000);
-
-  </script>
 </head>
 <body>
   <div id="wrapper" style="display:none">
