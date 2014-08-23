@@ -150,3 +150,30 @@ h2 {
   font-family: 'Arial', sans-serif;
   font-size: 14px;
 }
+
+#activityContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -53px;
+  margin-left: -48px;
+}
+
+#activityText {
+  display: block;
+  font-family: 'Duru Sans', sans-serif;
+  font-size: 16px;
+  line-height: 40px;
+}
+
+#activityIndicator {
+  
+  -webkit-animation-duration: 1.25s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-name: spinnerAnim;
+}
+@-webkit-keyframes spinnerAnim {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}

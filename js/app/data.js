@@ -85,20 +85,38 @@ require(["../lib/jquery", "header", "../lib/Chart.min", "../lib/amcharts_stocks/
     chart.write("stockChart");
   };
 
-  // get data
-  $.ajax({
-    url:"data/getEnergyData_stock.php",  // live site
-    // url:"http://localhost/data/getEnergyData_stock.php",     // local testing
-    success: function(responseText) {
-      // console.debug(responseText);
-      var chartData = JSON.parse(responseText);
-      // this.refreshChart(responseObj.labels,responseObj.values,[0,0]);
-      this.buildChart(chartData);
-    }.bind(this),
-    error: function() {
-      // alert("error fetching php script");
+// kickoff the activity indicator
+require(["../lib/jquery"], function(jquery) {
+  var count = 0;
+  var animateDots = function() {
+    if (count == 0) {
+      $('#dot1').hide();
+      $('#dot2').hide();
+      $('#dot3').hide();
+    } else {
+      $('#dot'+count).show();
     }
-  });
+
+    count = (count < 3) ? count+1 : 0;
+  }
+  animateDots();
+  setInterval(animateDots,750);
+});
+
+  // get data
+  // $.ajax({
+  //   url:"data/getEnergyData_stock.php",  // live site
+  //   // url:"http://localhost/data/getEnergyData_stock.php",     // local testing
+  //   success: function(responseText) {
+  //     // console.debug(responseText);
+  //     var chartData = JSON.parse(responseText);
+  //     // this.refreshChart(responseObj.labels,responseObj.values,[0,0]);
+  //     this.buildChart(chartData);
+  //   }.bind(this),
+  //   error: function() {
+  //     // alert("error fetching php script");
+  //   }
+  // });
 });
 
 // require([], function() {
