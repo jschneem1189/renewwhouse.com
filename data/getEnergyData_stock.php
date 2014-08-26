@@ -1,6 +1,7 @@
 <?php
 // header('Access-Control-Allow-Origin: *');
 // ini_set('memory_limit', '-1');
+// $con = mysqli_connect('localhost','root',null,'house_data');
 // $con = mysqli_connect('localhost','reneww','renewwhouse','house_data');
 $con = mysqli_connect('23.229.157.253','reneww','renewwhouse','house_data');
 // Check connection

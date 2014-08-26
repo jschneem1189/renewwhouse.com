@@ -1,10 +1,39 @@
-require(["../lib/jquery", "header", "../lib/Chart.min", "../lib/amcharts_stocks/amcharts", "../lib/amcharts_stocks/amstock", "../lib/amcharts_stocks/serial"], 
-          function(jquery, header, Chart, amcharts, amstock, serial) {
+// SETUP CONFIG
+requirejs.config({
+
+    // Define paths; relative from js folder
+    paths: {
+        'amcharts'          : '../lib/amcharts_stocks/amcharts',
+        'amcharts.serial'   : '../lib/amcharts_stocks/serial',
+        'amcharts.amstock'       : '../lib/amcharts_stocks/amstock'
+    },
+
+    // Define dependencies
+    shim: {
+        'amcharts.serial'   : {
+            deps: ['amcharts'],
+            exports: 'AmCharts',
+            init: function() {
+                AmCharts.isReady = true;
+            }
+        },
+        'amcharts.amstock'       : {
+            deps: ['amcharts.serial'],
+            exports: 'AmStockChart',
+            init: function() {
+                AmCharts.isReady = true;
+            }
+        }
+    } 
+});
+
+require(["../lib/jquery", "header", "amcharts.amstock"], 
+          function() {
   //AMCHARTS
   this.buildChart = function(data){
     // create chart
     var chart = new AmCharts.AmStockChart();
-    chart.pathToImages = "libraries/amcharts_stocks/images/";
+    chart.pathToImages = "js/lib/amcharts_stocks/images/";
 
     // create data set
     var dataSet = new AmCharts.DataSet();
@@ -85,8 +114,27 @@ require(["../lib/jquery", "header", "../lib/Chart.min", "../lib/amcharts_stocks/
     chart.write("stockChart");
   };
 
-// kickoff the activity indicator
-require(["../lib/jquery"], function(jquery) {
+  // get data
+  $.ajax({
+    // url:"data/getEnergyData_stock.php",  // live site
+    url:"http://localhost/data/getEnergyData_stock.php",     // local testing
+    success: function(responseText) {
+      // console.debug(responseText);
+      var chartData = JSON.parse(responseText);
+
+      //hide activity indicator
+      clearInterval(this.timer);
+      $('#activityIndicator').css("-webkit-animation-play-state", "paused");
+      $('#activityContainer').hide();
+
+      // build the amchart
+      this.buildChart(chartData);
+    }.bind(this),
+    error: function() {
+      // alert("error fetching php script");
+    }
+  });
+
   var count = 0;
   var animateDots = function() {
     if (count == 0) {
@@ -100,24 +148,9 @@ require(["../lib/jquery"], function(jquery) {
     count = (count < 3) ? count+1 : 0;
   }
   animateDots();
-  setInterval(animateDots,750);
+  this.timer = setInterval(animateDots,750);
 });
 
-  // get data
-  // $.ajax({
-  //   url:"data/getEnergyData_stock.php",  // live site
-  //   // url:"http://localhost/data/getEnergyData_stock.php",     // local testing
-  //   success: function(responseText) {
-  //     // console.debug(responseText);
-  //     var chartData = JSON.parse(responseText);
-  //     // this.refreshChart(responseObj.labels,responseObj.values,[0,0]);
-  //     this.buildChart(chartData);
-  //   }.bind(this),
-  //   error: function() {
-  //     // alert("error fetching php script");
-  //   }
-  // });
-});
 
 // require([], function() {
 //   var pieData = [

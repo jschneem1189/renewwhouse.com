@@ -3,8 +3,12 @@ require(["../lib/jquery", "header"], function(jquery, header) {
     $('#wrapper').css('min-height',$(window).height());
   }
 
-  $(window).load(function(evt) {
+  var loadComplete = function(evt) {
     $('#wrapper').css('min-height',$(window).height());
-    $('#wrapper').show();
-  });
+    $('#wrapper').css('visibility','visible');
+  };
+
+  // register loadComplete with ready and load because requirejs fails at calling load
+  $(document).ready(loadComplete);
+  $(window).load(loadComplete);
 });

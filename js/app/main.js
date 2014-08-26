@@ -53,26 +53,29 @@ require(["../lib/jquery", "../lib/modernizr", "header"], function(jquery, modern
     }
   }.bind(this);
 
-  $(window).load(function(evt) {
+  var loadComplete = function() {
+    viewportHeight = $(window).height();
+    viewportWidth = $(window).width();
 
-      viewportHeight = $(window).height();
-      viewportWidth = $(window).width();
+    // this.resetPosition();
+    
+    $('#wrapper').css('visibility','visible');
 
-      // this.resetPosition();
-      
-      $('#wrapper').show();
+    if (Modernizr.touch) {
+      $('#homeBanner').css('position','absolute');
+    } else {
+      $('#homeBanner').css('position','fixed');
+    }
 
-      if (Modernizr.touch) {
-        $('#homeBanner').css('position','absolute');
-      } else {
-        $('#homeBanner').css('position','fixed');
-      }
+    // important to call this after showing the wrapper of the tab image won't have a height
+    this.resetPosition();
+    // get the bg image in the correct position
+    this.scrollBanner();
+  }.bind(this);
 
-      // important to call this after showing the wrapper of the tab image won't have a height
-      this.resetPosition();
-      // get the bg image in the correct position
-      this.scrollBanner();
-  }.bind(this));
+  // register loadComplete with ready and load because requirejs fails at calling load
+  $(document).ready(loadComplete);
+  $(window).load(loadComplete);
 
   // var is_touch_device = 'ontouchstart' in document.documentElement;
   $(window).scroll(function() {

@@ -164,10 +164,10 @@ h2 {
   font-family: 'Duru Sans', sans-serif;
   font-size: 16px;
   line-height: 40px;
+  color:#3e3e3e;
 }
 
 #activityIndicator {
-  
   -webkit-animation-duration: 1.25s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
