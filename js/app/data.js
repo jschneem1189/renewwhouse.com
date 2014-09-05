@@ -66,7 +66,8 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
     graph2.fillAlphas = 0.5;
     graph2.title = "Energy Harvested (kWh)";
     graph2.lineThickness = 3;
-    graph2.lineColor = "#00cc00";
+    // graph2.lineColor = "#00cc00";
+    graph2.lineColor = "#fff";
     graph2.useDataSetColors = false;
     graph2.periodValue = "Sum";
     stockPanel.addStockGraph(graph2);
@@ -138,11 +139,11 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
   var count = 0;
   var animateDots = function() {
     if (count == 0) {
-      $('#dot1').hide();
-      $('#dot2').hide();
-      $('#dot3').hide();
+      $('#dot1').css('visibility','hidden');
+      $('#dot2').css('visibility','hidden');
+      $('#dot3').css('visibility','hidden');
     } else {
-      $('#dot'+count).show();
+      $('#dot'+count).css('visibility','visible');
     }
 
     count = (count < 3) ? count+1 : 0;
