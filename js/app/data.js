@@ -38,7 +38,7 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
     // create data set
     var dataSet = new AmCharts.DataSet();
     dataSet.dataProvider = data;
-    dataSet.fieldMappings = [{fromField:"val", toField:"value"},{fromField:"val2", toField:"value2"}];
+    dataSet.fieldMappings = [{fromField:"val", toField:"value"},{fromField:"val2", toField:"value2"},{fromField:"gas_val", toField:"gas_value"}];
     dataSet.categoryField = "date";
     dataSet.title = "Energy Consumed";
 
@@ -56,17 +56,30 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
     var graph = new AmCharts.StockGraph();
     graph.valueField = "value";
     graph.type = "column";
+    graph.newStack = true;
     graph.fillAlphas = 1;
-    graph.title = "Energy Usage (kWh)";
+    graph.title = "Total Energy Usage (kWh)";
     graph.periodValue = "Sum";
     stockPanel.addStockGraph(graph);
 
+    var gas_graph = new AmCharts.StockGraph();
+    gas_graph.valueField = "gas_value";
+    gas_graph.type = "column";
+    gas_graph.newStack = true;
+    gas_graph.lineColor = "#ffcc00";
+    gas_graph.useDataSetColors = false;
+    gas_graph.fillAlphas = 1;
+    gas_graph.title = "Gas Usage (kWh)";
+    gas_graph.periodValue = "Sum";
+    stockPanel.addStockGraph(gas_graph);
+
     var graph2 = new AmCharts.StockGraph();
     graph2.valueField = "value2";
+    graph2.type = "line";
+    // graph2.newStack = true;
     graph2.fillAlphas = 0.5;
     graph2.title = "Energy Harvested (kWh)";
     graph2.lineThickness = 3;
-    // graph2.lineColor = "#00cc00";
     graph2.lineColor = "#fff";
     graph2.useDataSetColors = false;
     graph2.periodValue = "Sum";
@@ -102,14 +115,15 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
 
     // add period selector
     var periodSelector = new AmCharts.PeriodSelector();
-    chart.periodSelector = periodSelector;
+    // periodSelector.position = "bottom";
     periodSelector.periods = [
        {period:"DD", count:5, label:"5 days"},
-       {period:"MM", count:1, label:"1 month"},
+       {period:"MM", selected:true, count:1, label:"1 month"},
        {period:"YYYY", count:1, label:"1 year"},
-       {period:"YTD", selected:true, label:"YTD"},
+       {period:"YTD", label:"YTD"},
        {period:"MAX", label:"MAX"}
     ];
+    chart.periodSelector = periodSelector;
 
     // draw chart
     chart.write("stockChart");
@@ -120,7 +134,7 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
     // url:"data/getEnergyData_stock.php",  // live site
     url:"http://localhost/data/getEnergyData_stock.php",     // local testing
     success: function(responseText) {
-      // console.debug(responseText);
+      console.debug(responseText);
       var chartData = JSON.parse(responseText);
 
       //hide activity indicator
