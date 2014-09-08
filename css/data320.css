@@ -28,3 +28,8 @@
 h1 {
   font-size:50px; 
 }
+
+#activityContainer {
+  margin-top: -53px;
+  margin-left: -68px;
+}
