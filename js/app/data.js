@@ -88,7 +88,12 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
     // category axis settings
     var categoryAxesSettings = new AmCharts.CategoryAxesSettings();
     categoryAxesSettings.minPeriod = "DD";
-    categoryAxesSettings.equalSpacing = true;
+    // categoryAxesSettings.equalSpacing = true;
+    if ($(window).width() > 950) {
+      categoryAxesSettings.maxSeries = 100;
+    } else {
+      categoryAxesSettings.maxSeries = 50;
+    }
     categoryAxesSettings.dashLength = 5;
     categoryAxesSettings.groupToPeriods = ["DD", "WW", "MM", "YYYY"];
     chart.categoryAxesSettings = categoryAxesSettings;
@@ -117,7 +122,7 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
     var periodSelector = new AmCharts.PeriodSelector();
     // periodSelector.position = "bottom";
     periodSelector.periods = [
-       {period:"DD", count:5, label:"5 days"},
+       {period:"WW", count:1, label:"1 week"},
        {period:"MM", selected:true, count:1, label:"1 month"},
        {period:"YYYY", count:1, label:"1 year"},
        {period:"YTD", label:"YTD"},
@@ -127,12 +132,23 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
 
     // draw chart
     chart.write("stockChart");
+    this.chart = chart;
   };
+
+  // register resize
+  window.onresize = function(evt) {
+    if ($(window).width() > 950) {
+      this.chart.categoryAxesSettings.maxSeries = 100;
+    } else {
+      this.chart.categoryAxesSettings.maxSeries = 50;
+    }
+    this.chart.validateNow();
+  }.bind(this);
 
   // get data
   $.ajax({
-    // url:"data/getEnergyData_stock.php",  // live site
-    url:"http://localhost/data/getEnergyData_stock.php",     // local testing
+    url:"data/getEnergyData_stock.php",  // live site
+    // url:"http://localhost/data/getEnergyData_stock.php",     // local testing
     success: function(responseText) {
       // console.debug(responseText);
       var chartData = JSON.parse(responseText);
