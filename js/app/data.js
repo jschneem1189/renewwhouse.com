@@ -128,6 +128,7 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
        {period:"YTD", label:"YTD"},
        {period:"MAX", label:"MAX"}
     ];
+    periodSelector.dateFormat = "MM-DD-YYYY";
     chart.periodSelector = periodSelector;
 
     // draw chart
