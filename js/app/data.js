@@ -208,11 +208,12 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
         "type": "column",
         "valueField": "energy"
     }],
+    "fontFamily": "Oswald Light",
     "titles": [
     {
       "size": 15,
-      "color": "white",
-      "bold": false,
+      // "color": "white",
+      "bold": true,
       "text": "HVAC Energy Consumption"
     }
   ],
