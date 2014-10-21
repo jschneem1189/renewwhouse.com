@@ -57,7 +57,7 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
     graph.valueField = "value";
     graph.type = "column";
     graph.newStack = true;
-    graph.fillAlphas = 1;
+    graph.fillAlphas = 0.8;
     graph.title = "Total Energy Usage (kWh)";
     graph.periodValue = "Sum";
     stockPanel.addStockGraph(graph);
@@ -148,8 +148,8 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
 
   // get data
   $.ajax({
-    url:"data/getEnergyData_stock.php",  // live site
-    // url:"http://localhost/data/getEnergyData_stock.php",     // local testing
+    // url:"data/getEnergyData_stock.php",  // live site
+    url:"http://localhost/data/getEnergyData_stock.php",     // local testing
     success: function(responseText) {
       // console.debug(responseText);
       var chartData = JSON.parse(responseText);
@@ -181,6 +181,61 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
   }
   animateDots();
   this.timer = setInterval(animateDots,750);
+
+
+  // temp chart
+  var chart = AmCharts.makeChart("tempChart", {
+    "type": "serial",
+    "theme": "none",
+    "dataProvider": [{
+        "timeframe": "Before Retrofit",
+        "energy": 250
+    }, {
+        "timeframe": "After Retrofit",
+        "energy": 100
+    }],
+    "valueAxes": [{
+        "gridColor":"#FFFFFF",
+    "gridAlpha": 0.2,
+    "dashLength": 0
+    }],
+    "gridAboveGraphs": true,
+    "startDuration": 1,
+    "graphs": [{
+        "balloonText": "[[category]]: <b>[[value]]</b>",
+        "fillAlphas": 0.8,
+        "lineAlpha": 0.2,
+        "type": "column",
+        "valueField": "energy"
+    }],
+    "titles": [
+    {
+      "size": 15,
+      "color": "white",
+      "bold": false,
+      "text": "HVAC Energy Consumption"
+    }
+  ],
+    "chartCursor": {
+        "categoryBalloonEnabled": false,
+        "cursorAlpha": 0,
+        "zoomable": false
+    },
+    "categoryField": "timeframe",
+    "categoryAxis": {
+        "gridPosition": "start",
+        "gridAlpha": 0,
+         "tickPosition":"start",
+         "tickLength":20
+    },
+    "exportConfig":{
+      "menuTop": 0,
+      "menuItems": [{
+        "icon": '/lib/3/images/export.png',
+        "format": 'png'   
+        }]  
+    }
+  });
 });
 
 
