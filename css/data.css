@@ -155,14 +155,21 @@ h3 {
 
 #rightHalf {
   height: 100%;
+  width: 400px;
   display: inline-block;
-  position: relative;
+  position: absolute;
   overflow: hidden;
 }
+  #rightHalf h3 {
+    position: relative;
+    margin-left: 0px;
+    left: 0;
+    font-size: 24px;
+  }
 
 #tempChart {
   height:400px;
-  width: 400px;
+  width: auto;
   margin: 150px 50px 100px 50px;
 }
 
@@ -239,6 +246,7 @@ h3 {
   }
 
 #temperatureSection {
+  overflow: hidden;
   height: 700px;
 }
 #temperatureSection .icon {
@@ -284,19 +292,19 @@ h3 {
 #southBedroomTemp {
   position: absolute;
   top: 90px;
-  right: 260px;
+  right: 250px;
 }
 
 #northBedroomTemp {
   position: absolute;
   top: 130px;
-  right: 190px;
+  right: 180px;
 }
 
 #eastBedroomTemp {
   position: absolute;
   top: 155px;
-  right: 295px;
+  right: 285px;
 }
 
 #secondBathTemp {
