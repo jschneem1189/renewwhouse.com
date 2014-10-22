@@ -80,7 +80,7 @@ h1 {
 }
 
 h2 {
-  font-family: 'Duru Sans', sans-serif;
+  font-family: 'Oswald Light', sans-serif;
   color:#3e3e3e;
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em;
@@ -153,13 +153,17 @@ h3 {
   margin: 50px 100px 50px auto;
 }
 
-#tempChart {
+#rightHalf {
+  height: 100%;
   display: inline-block;
   position: relative;
   overflow: hidden;
+}
+
+#tempChart {
   height:400px;
   width: 400px;
-  margin: 0px 50px 100px 50px;
+  margin: 150px 50px 100px 50px;
 }
 
 .cutout {
@@ -304,7 +308,7 @@ h3 {
 #atticTemp {
   position: absolute;
   top: 65px;
-  right: 190px;
+  right: 160px;
 }
 
 .preRetro {
