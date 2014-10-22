@@ -189,10 +189,10 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
     "theme": "none",
     "dataProvider": [{
         "timeframe": "Before Retrofit",
-        "energy": 250
+        "energy": 77.18
     }, {
         "timeframe": "After Retrofit",
-        "energy": 100
+        "energy": 12.59
     }],
     "valueAxes": [{
         "gridColor":"#FFFFFF",
@@ -209,12 +209,13 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
         "valueField": "energy"
     }],
     "fontFamily": "Oswald Light",
+    "fontSize":16,
     "titles": [
     {
-      "size": 15,
+      "size": 20,
       // "color": "white",
       "bold": true,
-      "text": "HVAC Energy Consumption"
+      "text": "HVAC Energy Consumption (kWh)"
     }
   ],
     "chartCursor": {
