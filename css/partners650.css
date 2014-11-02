@@ -8,3 +8,10 @@
   #title h2 {
     font-size:20px; 
   }
+
+#tiles li {
+  width: 150px;
+  height: 150px;
+  line-height: 150px;
+  margin: 10px;
+}
