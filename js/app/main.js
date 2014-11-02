@@ -62,7 +62,7 @@ require(["../lib/jquery", "../lib/modernizr", "header"], function(jquery, modern
 
     // this.resetPosition();
     
-    $('#wrapper').css('visibility','visible');
+    $('#content').css('visibility','visible');
 
     if (Modernizr.touch) {
       $('#homeBanner').css('position','absolute');
