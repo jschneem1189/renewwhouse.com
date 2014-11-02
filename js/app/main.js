@@ -5,28 +5,33 @@ require(["../lib/jquery", "../lib/modernizr", "header"], function(jquery, modern
   var goldenRatio = 1.6;
   var actualRatio = viewportWidth/viewportHeight;
   var offset = 0;
-  // determine if we need to offset the image
+  // determine if we need to offset the image based on aspect ratio of the viewport
   if (actualRatio > goldenRatio) {
     offset = (viewportWidth/goldenRatio - viewportHeight)* 1/2;
   }
 
+  // this function well get called on scroll events to handle banner Parallax
   this.scrollBanner = function() {
-    //Get the scoll position of the page
-    var scrollPos = $(this).scrollTop();
+    // only scroll if we are not a touch device 
+    if (!Modernizr.touch) {
+      //Get the scoll position of the page
+      var scrollPos = $(this).scrollTop();
 
-    //Scroll and fade out the banner text
-    $('#bannerText').css({
-      'margin-top' : -(scrollPos/3)+"px",
-      'opacity' : 1-(scrollPos/300)
-    });
-  
-    //Scroll the background of the banner
-    var val = -offset + (-scrollPos/8)
-    $('#homeBanner').css({
-      'background-position' : 'center ' + val +'px'
-    });    
+      //Scroll and fade out the banner text
+      $('#bannerText').css({
+        'margin-top' : -(scrollPos/3)+"px",
+        'opacity' : 1-(scrollPos/300)
+      });
+    
+      //Scroll the background of the banner
+      var val = -offset + (-scrollPos/8)
+      $('#homeBanner').css({
+        'background-position' : 'center ' + val +'px'
+      });  
+    }  
   };
 
+  // reposition the "content" below the banner
   this.resetPosition = function() {
     var ratio = viewportWidth/viewportHeight;
     offset = 0;
@@ -48,9 +53,7 @@ require(["../lib/jquery", "../lib/modernizr", "header"], function(jquery, modern
     
     this.resetPosition();
 
-    if (!Modernizr.touch) {
-      this.scrollBanner();
-    }
+    this.scrollBanner();
   }.bind(this);
 
   var loadComplete = function() {
@@ -79,9 +82,7 @@ require(["../lib/jquery", "../lib/modernizr", "header"], function(jquery, modern
 
   // var is_touch_device = 'ontouchstart' in document.documentElement;
   $(window).scroll(function() {
-      if (!Modernizr.touch) {
-        this.scrollBanner();
-      }
+      this.scrollBanner();
   }.bind(this));
 
   var spinArrow = function() {
