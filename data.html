@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="js/lib/amcharts_stocks/style.css" type="text/css">
   <link rel="shortcut icon" href="images/32x32 logo.ico">
   <link rel="stylesheet" type="text/css" media="screen" href="css/data.css" />
-  <link rel="stylesheet" type="text/css" media="screen and (min-width:321px) and (max-width: 650px)" href="css/data650.css" />
-  <link rel="stylesheet" type="text/css" media="screen and (max-width: 320px)" href="css/dataMobile.css" />
+  <link rel="stylesheet" type="text/css" media="screen and (min-width:501px) and (max-width: 650px)" href="css/data650.css" />
+  <link rel="stylesheet" type="text/css" media="screen and (max-width: 500px)" href="css/dataMobile.css" />
 </head>
 <body>
     <!-- <div id="graph"></div> -->
@@ -39,41 +39,43 @@
         <img class="icon" src="images/thermometer.jpg"/>
         <div id="explodedContainer">
           <h3>OCT 18, 2014 Temps <span id="preText">pre-retrofit temps</span></h3>
-          <img class="explodedView" id="top" src="images/second_floor.png" />
-          <img class="explodedView" id="middle" src="images/first_floor.png" />
-          <img class="explodedView" id="bottom" src="images/basement.png" />
-          <div id="basementTemp">
-            <p class="postRetro">71.5°<span class="preRetro">64.4°</span></p>
-          </div>
-          <div id="officeTemp">
-            <p class="postRetro">70.3°<span class="preRetro">67.7°</span></p>
-          </div>
-          <div id="kitchenTemp">
-            <p class="postRetro">70.1°<span class="preRetro">68.9°</span></p>
-          </div>
-          <div id="diningTemp">
-            <p class="postRetro">70.3°<span class="preRetro">65°</span></p>
-          </div>
-          <div id="livingTemp">
-            <p class="postRetro">69.4°<span class="preRetro">68.2°</span></p>
-          </div>
-          <div id="firstBathTemp">
-            <p class="postRetro">73.6°<span class="preRetro">65.7°</span></p>
-          </div>
-          <div id="southBedroomTemp">
-            <p class="postRetro">68.3°<span class="preRetro">68.2°</span></p>
-          </div>
-          <div id="northBedroomTemp">
-            <p class="postRetro">69.3°<span class="preRetro">68.2°</span></p>
-          </div>
-          <div id="secondBathTemp">
-            <p class="postRetro">69.4°<span class="preRetro">69°</span></p>
-          </div>
-          <div id="eastBedroomTemp">
-            <p class="postRetro">69.7°<span class="preRetro">68.2°</span></p>
-          </div>
-          <div id="atticTemp">
-            <p class="postRetro">57.1°<span class="preRetro">61.2°(attic)</span></p>
+          <div id="referencePoint">
+            <img class="explodedView" id="top" src="images/second_floor.png" />
+            <img class="explodedView" id="middle" src="images/first_floor.png" />
+            <img class="explodedView" id="bottom" src="images/basement.png" />
+            <div id="basementTemp">
+              <p class="postRetro">71.5°<span class="preRetro">64.4°</span></p>
+            </div>
+            <div id="officeTemp">
+              <p class="postRetro">70.3°<span class="preRetro">67.7°</span></p>
+            </div>
+            <div id="kitchenTemp">
+              <p class="postRetro">70.1°<span class="preRetro">68.9°</span></p>
+            </div>
+            <div id="diningTemp">
+              <p class="postRetro">70.3°<span class="preRetro">65°</span></p>
+            </div>
+            <div id="livingTemp">
+              <p class="postRetro">69.4°<span class="preRetro">68.2°</span></p>
+            </div>
+            <div id="firstBathTemp">
+              <p class="postRetro">73.6°<span class="preRetro">65.7°</span></p>
+            </div>
+            <div id="southBedroomTemp">
+              <p class="postRetro">68.3°<span class="preRetro">68.2°</span></p>
+            </div>
+            <div id="northBedroomTemp">
+              <p class="postRetro">69.3°<span class="preRetro">68.2°</span></p>
+            </div>
+            <div id="secondBathTemp">
+              <p class="postRetro">69.4°<span class="preRetro">69°</span></p>
+            </div>
+            <div id="eastBedroomTemp">
+              <p class="postRetro">69.7°<span class="preRetro">68.2°</span></p>
+            </div>
+            <div id="atticTemp">
+              <p class="postRetro">57.1°<span class="preRetro">61.2°(attic)</span></p>
+            </div>
           </div>
         </div>
         <div id="rightHalf">

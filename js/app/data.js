@@ -133,18 +133,47 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
 
     // draw chart
     chart.write("stockChart");
-    this.chart = chart;
+    this.energychart = chart;
   };
 
   // register resize
   window.onresize = function(evt) {
-    if ($(window).width() > 950) {
-      this.chart.categoryAxesSettings.maxSeries = 100;
-    } else {
-      this.chart.categoryAxesSettings.maxSeries = 50;
+    if (this.energychart) {
+      if ($(window).width() > 950) {
+        this.energychart.categoryAxesSettings.maxSeries = 100;
+      } else {
+        this.energychart.categoryAxesSettings.maxSeries = 50;
+      }
+      this.energychart.validateNow();
     }
-    this.chart.validateNow();
+
+    // reposition temperatures
+    var imgHeight = $('.explodedView').height();
+    $('#middle').css('top',imgHeight/2);
+    $('#bottom').css('top',imgHeight + 50);
+    var sectionHeight = imgHeight*2 + 50;
+    $('#temperatureSection').css('height', sectionHeight);
+
+    $('#temperatureSection .icon').css('margin-top', sectionHeight/2 - $('#temperatureSection .icon').height()/2);
+    $('#atticTemp').css('top',imgHeight*.05);
+    $('#secondBathTemp').css('top',imgHeight*.34);
+    $('#eastBedroomTemp').css('top',imgHeight*.31);
+    $('#northBedroomTemp').css('top',imgHeight*.24);
+    $('#southBedroomTemp').css('top',imgHeight*.11);
+
+    $('#firstBathTemp').css('top',imgHeight/2 + imgHeight*.32);
+    $('#livingTemp').css('top',imgHeight/2 + imgHeight*.57);
+    $('#diningTemp').css('top',imgHeight/2 + imgHeight*.49);
+    $('#kitchenTemp').css('top',imgHeight/2 + imgHeight*.36);
+    $('#officeTemp').css('top',imgHeight/2 + imgHeight*.26);
+    $('#basementTemp').css('top',imgHeight + 50 + imgHeight*.49);
+
+    // redraw the temperature chart based on new size
+    if (this.tempchart)
+      this.tempchart.validateNow();
   }.bind(this);
+
+  $(window).load(window.onresize());
 
   // get data
   $.ajax({
@@ -163,7 +192,7 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
       this.buildChart(chartData);
     }.bind(this),
     error: function() {
-      // alert("error fetching php script");
+      alert("error fetching php script");
     }
   });
 
@@ -184,7 +213,7 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
 
 
   // temp chart
-  var chart = AmCharts.makeChart("tempChart", {
+  this.tempchart = AmCharts.makeChart("tempChart", {
     "type": "serial",
     "theme": "none",
     "dataProvider": [{
