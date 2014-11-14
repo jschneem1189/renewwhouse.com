@@ -49,7 +49,7 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
     // change settings
     var panelsSettings = new AmCharts.PanelsSettings();
     panelsSettings.startDuration = 1;
-    // panelsSettings.panEventsEnabled = false;
+    panelsSettings.panEventsEnabled = false;
     chart.panelsSettings = panelsSettings;
 
     // create graph
@@ -190,8 +190,8 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
 
   // get data
   $.ajax({
-    // url:"data/getEnergyData_stock.php",  // live site
-    url:"http://localhost/data/getEnergyData_stock.php",     // local testing
+    url:"data/getEnergyData_stock.php",  // live site
+    // url:"http://localhost/data/getEnergyData_stock.php",     // local testing
     success: function(responseText) {
       // console.debug(responseText);
       var chartData = JSON.parse(responseText);
@@ -278,7 +278,8 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
         "icon": '/lib/3/images/export.png',
         "format": 'png'   
         }]  
-    }
+    },
+    "panEventsEnabled":false
   });
 });
 
