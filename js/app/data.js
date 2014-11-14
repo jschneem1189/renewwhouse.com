@@ -151,10 +151,23 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
     var imgHeight = $('.explodedView').height();
     $('#middle').css('top',imgHeight/2);
     $('#bottom').css('top',imgHeight + 50);
-    var sectionHeight = imgHeight*2 + 50;
+    var sectionHeight = imgHeight*2 + 100;
+    // set the height of the exploded container explicitly since its contents are 'absolute'
+    $('#explodedContainer').css('height', sectionHeight);
+    // if items are stacked, add to the height
+    if ($('#rightHalf').css('clear') == 'both') {
+      sectionHeight += 450;
+    }
+
+    // don't center the icon for mobile (check clear attr)
+    if ($('#temperatureSection .icon').css('clear') == 'both') {
+      sectionHeight += $('#temperatureSection .icon').height() + parseInt($('#temperatureSection .icon').css('margin-top').split('px')[0],10);
+      $('#temperatureSection .icon').css('margin-top', 40);
+    } else {
+      $('#temperatureSection .icon').css('margin-top', sectionHeight/2 - $('#temperatureSection .icon').height()/2);
+    }
     $('#temperatureSection').css('height', sectionHeight);
 
-    $('#temperatureSection .icon').css('margin-top', sectionHeight/2 - $('#temperatureSection .icon').height()/2);
     $('#atticTemp').css('top',imgHeight*.05);
     $('#secondBathTemp').css('top',imgHeight*.34);
     $('#eastBedroomTemp').css('top',imgHeight*.31);
