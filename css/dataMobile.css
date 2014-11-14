@@ -87,3 +87,10 @@ h3 {
   margin-right: auto;
 }
 
+.preRetro {
+  font-size: 10px;
+}
+
+.postRetro {
+  font-size: 18px;
+}

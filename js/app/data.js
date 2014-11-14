@@ -168,18 +168,18 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
     }
     $('#temperatureSection').css('height', sectionHeight);
 
-    $('#atticTemp').css('top',imgHeight*.05);
-    $('#secondBathTemp').css('top',imgHeight*.34);
-    $('#eastBedroomTemp').css('top',imgHeight*.31);
-    $('#northBedroomTemp').css('top',imgHeight*.24);
-    $('#southBedroomTemp').css('top',imgHeight*.11);
+    $('#atticTemp').css('top',imgHeight*.04);
+    $('#secondBathTemp').css('top',imgHeight*.30);
+    $('#eastBedroomTemp').css('top',imgHeight*.29);
+    $('#northBedroomTemp').css('top',imgHeight*.22);
+    $('#southBedroomTemp').css('top',imgHeight*.09);
 
-    $('#firstBathTemp').css('top',imgHeight/2 + imgHeight*.32);
-    $('#livingTemp').css('top',imgHeight/2 + imgHeight*.57);
-    $('#diningTemp').css('top',imgHeight/2 + imgHeight*.49);
-    $('#kitchenTemp').css('top',imgHeight/2 + imgHeight*.36);
-    $('#officeTemp').css('top',imgHeight/2 + imgHeight*.26);
-    $('#basementTemp').css('top',imgHeight + 50 + imgHeight*.49);
+    $('#firstBathTemp').css('top',imgHeight/2 + imgHeight*.30);
+    $('#livingTemp').css('top',imgHeight/2 + imgHeight*.50);
+    $('#diningTemp').css('top',imgHeight/2 + imgHeight*.42);
+    $('#kitchenTemp').css('top',imgHeight/2 + imgHeight*.32);
+    $('#officeTemp').css('top',imgHeight/2 + imgHeight*.20);
+    $('#basementTemp').css('top',imgHeight + 50 + imgHeight*.42);
 
     // redraw the temperature chart based on new size
     if (this.tempchart)
