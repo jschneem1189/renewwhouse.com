@@ -5,7 +5,9 @@ requirejs.config({
     paths: {
         'amcharts'          : '../lib/amcharts_stocks/amcharts',
         'amcharts.serial'   : '../lib/amcharts_stocks/serial',
-        'amcharts.amstock'       : '../lib/amcharts_stocks/amstock'
+        'amcharts.amstock'  : '../lib/amcharts_stocks/amstock',
+        'jquery'            : '../lib/jquery',
+        'waypoints'         : '../lib/waypoints.min'
     },
 
     // Define dependencies
@@ -27,7 +29,7 @@ requirejs.config({
     } 
 });
 
-require(["../lib/jquery", "header", "amcharts.amstock"], 
+require(["../lib/jquery", "header", "amcharts.amstock", "waypoints"], 
           function() {
   //AMCHARTS
   this.buildChart = function(data){
@@ -149,8 +151,12 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
 
     // reposition temperatures
     var imgHeight = $('.explodedView').height();
-    $('#middle').css('top',imgHeight/2);
-    $('#bottom').css('top',imgHeight + 50);
+    var topTop = 0;
+    var middleTop = imgHeight/2;
+    var bottomTop = imgHeight + 50;
+    $('#top').css('top', middleTop);
+    $('#middle').css('top', middleTop);
+    $('#bottom').css('top', middleTop);
     var sectionHeight = imgHeight*2 + 100;
     // set the height of the exploded container explicitly since its contents are 'absolute'
     $('#explodedContainer').css('height', sectionHeight);
@@ -184,14 +190,42 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
     // redraw the temperature chart based on new size
     if (this.tempchart)
       this.tempchart.validateNow();
+
+    this.explodeHouse = function() {
+      $('#top').animate({
+        top:topTop
+      },400, function() {
+        // animation complete
+        $('#tempWrapper').fadeIn(250);
+      });
+      $('#bottom').animate({
+        top:bottomTop
+      },400, function() {
+        // animation complete
+      });
+    }
+    this.implodeHouse = function() {
+      $('#tempWrapper').fadeOut(250);
+      $('#top').animate({
+        top:middleTop
+      },400, function() {
+        // animation complete
+        $('#tempWrapper').fadeOut(0);
+      });
+      $('#bottom').animate({
+        top:middleTop
+      },400, function() {
+        // animation complete
+      });
+    }
   }.bind(this);
 
   $(window).load(window.onresize());
 
   // get data
   $.ajax({
-    url:"data/getEnergyData_stock.php",  // live site
-    // url:"http://localhost/data/getEnergyData_stock.php",     // local testing
+    // url:"data/getEnergyData_stock.php",  // live site
+    url:"http://localhost/data/getEnergyData_stock.php",     // local testing
     success: function(responseText) {
       // console.debug(responseText);
       var chartData = JSON.parse(responseText);
@@ -281,8 +315,27 @@ require(["../lib/jquery", "header", "amcharts.amstock"],
     },
     "panEventsEnabled":false
   });
-});
 
+  // Add Waypoints
+  $('#middle').waypoint(function(direction) {
+    if (direction == "down") {
+      this.implodeHouse();
+    } else {
+      this.explodeHouse();
+    }
+  }.bind(this),{
+    offset:'0%'
+  });
+  $('#middle').waypoint(function(direction) {
+    if (direction == "down") {
+      this.explodeHouse();
+    } else {
+      this.implodeHouse();
+    }
+  }.bind(this),{
+    offset:'50%'
+  });
+});
 
 // require([], function() {
 //   var pieData = [
