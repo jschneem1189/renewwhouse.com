@@ -16,7 +16,7 @@ require(["../lib/jquery", "header"], function(jquery, header) {
   $.ajax({
     url:"https://api.emonitor.us/customer/authenticate?login=Whirlpool&password=ReNEWWHouse&json=1",  // live site
     // url:"http://localhost/data/getEnergyData_stock.php",     // local testing
-    // crossDomain: true,
+    crossDomain: true,
     // dataType: 'jsonp',
     // jsonp: 'jsonp',
     // jsonpCallback: 'callback',
