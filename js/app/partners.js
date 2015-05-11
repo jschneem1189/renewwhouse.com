@@ -3,7 +3,7 @@ require(["../lib/jquery-2.1.4", "header"], function(jquery, header) {
     $('#wrapper').css('min-height',$(window).height());
   }
 
-  var loadComplete = function(evt) {
+  function loadComplete(evt) {
     $('#wrapper').css('min-height',$(window).height());
     // $('#wrapper').css('visibility','visible');
   };
