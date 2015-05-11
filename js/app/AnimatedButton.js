@@ -1,4 +1,4 @@
-define(["../lib/raphael", "../lib/jquery"], function (Raphael, jquery) {
+define(["../lib/raphael", "../lib/jquery-2.1.4"], function (Raphael, jquery) {
 	return function (element, label) {
 			var width = 90;
 			var height = 30;

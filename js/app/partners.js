@@ -1,4 +1,4 @@
-require(["../lib/jquery", "header"], function(jquery, header) {
+require(["../lib/jquery-2.1.4", "header"], function(jquery, header) {
 	window.onresize = function(evt) {
     $('#wrapper').css('min-height',$(window).height());
   }
