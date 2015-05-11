@@ -6,7 +6,7 @@ requirejs.config({
         'amcharts'          : '../lib/amcharts_stocks/amcharts',
         'amcharts.serial'   : '../lib/amcharts_stocks/serial',
         'amcharts.amstock'  : '../lib/amcharts_stocks/amstock',
-        'jquery'            : '../lib/jquery',
+        'jquery'            : '../lib/jquery-2.1.4',
         'waypoints'         : '../lib/waypoints.min'
     },
 
@@ -429,8 +429,8 @@ require(["../lib/jquery-2.1.4", "header", "amcharts.amstock", "waypoints"], func
   // Fetch the gas data from local db ------------------------------------------
   // ---------------------------------------------------------------------------
    $.ajax({
-    // url:"data/getGasData.php",  // live site
-    url:"http://localhost/data/getGasData.php",     // local testing
+    // url:"php/getGasData.php",  // live site
+    url:"http://localhost/php/getGasData.php",     // local testing
     success: function(responseText) {
       // console.debug(responseText);
       eMonitor.gasData = JSON.parse(responseText);
