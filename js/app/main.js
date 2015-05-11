@@ -10,29 +10,26 @@ require(["../lib/jquery-2.1.4", "../lib/modernizr.custom.29015", "header"], func
     offset = (viewportWidth/goldenRatio - viewportHeight)* 1/2;
   }
 
-  // this function well get called on scroll events to handle banner Parallax
-  this.scrollBanner = function() {
-    // only scroll if we are not a touch device 
-    if (!Modernizr.touch) {
-      //Get the scoll position of the page
-      var scrollPos = $(this).scrollTop();
+  // this function will get called on scroll events to handle banner Parallax
+  function scrollBanner() {
+    //Get the scoll position of the page
+    var scrollPos = $(this).scrollTop();
 
-      //Scroll and fade out the banner text
-      $('#bannerText').css({
-        'margin-top' : -(scrollPos/3)+"px",
-        'opacity' : 1-(scrollPos/300)
-      });
-    
-      //Scroll the background of the banner
-      var val = -offset + (-scrollPos/8)
-      $('#homeBanner').css({
-        'background-position' : 'center ' + val +'px'
-      });  
-    }  
+    //Scroll and fade out the banner text
+    $('#bannerText').css({
+      'margin-top' : -(scrollPos/3)+"px",
+      'opacity' : 1-(scrollPos/300)
+    });
+  
+    //Scroll the background of the banner
+    var val = -offset + (-scrollPos/8)
+    $('#homeBanner').css({
+      'background-position' : 'center ' + val +'px'
+    });  
   };
 
   // reposition the "content" below the banner
-  this.resetPosition = function() {
+  function resetPosition() {
     var ratio = viewportWidth/viewportHeight;
     offset = 0;
     // determine if we need to offset the image
@@ -51,16 +48,14 @@ require(["../lib/jquery-2.1.4", "../lib/modernizr.custom.29015", "header"], func
     viewportHeight = $(window).height();
     viewportWidth = $(window).width();
     
-    this.resetPosition();
+    resetPosition();
 
-    this.scrollBanner();
-  }.bind(this);
+    scrollBanner();
+  };
 
-  var loadComplete = function() {
+  function loadComplete() {
     viewportHeight = $(window).height();
     viewportWidth = $(window).width();
-
-    // this.resetPosition();
     
     $('#content').css('visibility','visible');
 
@@ -71,21 +66,23 @@ require(["../lib/jquery-2.1.4", "../lib/modernizr.custom.29015", "header"], func
     }
 
     // important to call this after showing the wrapper of the tab image won't have a height
-    this.resetPosition();
+    resetPosition();
     // get the bg image in the correct position
-    this.scrollBanner();
-  }.bind(this);
+    scrollBanner();
+  };
 
   // register loadComplete with ready and load because requirejs fails at calling load
   $(document).ready(loadComplete);
   $(window).load(loadComplete);
 
-  // var is_touch_device = 'ontouchstart' in document.documentElement;
-  $(window).scroll(function() {
-      this.scrollBanner();
-  }.bind(this));
+  // Add parallax if this is NOT a touchscreen device
+  if (!Modernizr.touch) {
+    $(window).scroll(function() {
+        scrollBanner();
+    });
+  }
 
-  var spinArrow = function() {
+  function spinArrow() {
     // caching the object for performance reasons
     var $elem = $('#tab-arrow');
     var angle = 360;

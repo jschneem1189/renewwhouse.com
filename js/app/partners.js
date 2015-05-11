@@ -5,7 +5,7 @@ require(["../lib/jquery-2.1.4", "header"], function(jquery, header) {
 
   var loadComplete = function(evt) {
     $('#wrapper').css('min-height',$(window).height());
-    $('#wrapper').css('visibility','visible');
+    // $('#wrapper').css('visibility','visible');
   };
 
   // register loadComplete with ready and load because requirejs fails at calling load
