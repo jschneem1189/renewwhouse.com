@@ -4,22 +4,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=yes" />
   <title>ReNEWW</title>
-  <script data-main="js/app/index" src="js/lib/require.js"></script>
   <link rel="shortcut icon" href="images/32x32 logo.ico">
   <link rel="stylesheet" type="text/css" media="screen" href="css/normalize.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
-  <link rel="stylesheet" type="text/css" media="screen and (min-width: 651px) and (max-width: 1000px)" href="css/index650.css" />
-  <link rel="stylesheet" type="text/css" media="screen and (min-width:501px) and (max-width: 650px)" href="css/index650.css" />
-  <link rel="stylesheet" type="text/css" media="screen and (max-width: 500px)" href="css/indexMobile.css" />
-  <link rel="stylesheet" type="text/css" media="screen and (max-height: 500px)" href="css/indexMobile_landscape.css" />
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" /> -->
+  <link href="css/index.less" type="text/css" rel="stylesheet/less"/>
+  <!-- <link rel="stylesheet" type="text/css" media="screen and (min-width: 651px) and (max-width: 1000px)" href="css/index650.css" /> -->
+  <link rel="stylesheet/less" type="text/css" media="screen and (min-width: 651px) and (max-width: 1000px)" href="css/index650.less" />
+  <!-- <link rel="stylesheet" type="text/css" media="screen and (min-width:501px) and (max-width: 650px)" href="css/index650.css" /> -->
+  <link rel="stylesheet/less" type="text/css" media="screen and (min-width:501px) and (max-width: 650px)" href="css/index650.less" />
+  <!-- <link rel="stylesheet" type="text/css" media="screen and (max-width: 500px)" href="css/indexMobile.css" /> -->
+  <link rel="stylesheet/less" type="text/css" media="screen and (max-width: 500px)" href="css/indexMobile.less" />
+  <!-- <link rel="stylesheet" type="text/css" media="screen and (max-height: 500px)" href="css/indexMobile_landscape.css" /> -->
+  <link rel="stylesheet/less" type="text/css" media="screen and (max-height: 500px)" href="css/indexMobile_landscape.less" />
+  <script src="js/lib/less.min.js" type="text/javascript"></script>
+  <script data-main="js/app/index" src="js/lib/require.js"></script>
 </head>
 <body>
   <div id="wrapper">
     <div>
       <div id="homeBanner">
         <div id="bannerText" >
-          <h1>welcome to the</h1>
-          <h2><span style="color:#73be44">Re</span>NEWW <span id="houseText">HOUSE</span></h2>
+          <h1 class="header">welcome to the</h1>
+          <h2 id="title1"><span class="greenText">Re</span>NEWW <span id="title2">HOUSE</span></h2>
         </div>    
       </div> 
     </div> 
@@ -33,7 +39,7 @@
       <img src="images/tab_arrow.png" id="tab-arrow" />
       <div id="mission">
         <img id="houseLogo" src="images/houselogo_small.png" />
-        <div style="display:table; height:100%; width:100%;">
+        <div class="table">
           <div class="quoteWrapper">
             <img class="quotes" id="openQuote" src="images/openQuote.png"</img>
           </div>
@@ -43,12 +49,12 @@
           </div>
         </div>
         <div id="readMore">
-          <img style="width:20px; height: 20px;"src="images/magnifying glass.png" />
-          <h2>Read more in <a style="color:#73be44; text-decoration: none;" href="about.html">About.</a></h2>
+          <img src="images/magnifying glass.png" />
+          <h2>Read more in <a class="link greenText" href="about.html">About.</a></h2>
         </div>
-        <h3><span id="acronymText" style="color:#73be44">Re</span>trofit <span id="acronymText">N</span>et Zero: <span id="acronymText">E</span>nergy. <span id="acronymText">W</span>ater. <span id="acronymText">W</span>aste.</h3>
+        <h3><span class="acronymText greenText">Re</span>trofit <span class="acronymText blueText">N</span>et Zero: <span class="acronymText blueText">E</span>nergy. <span class="acronymText blueText">W</span>ater. <span class="acronymText blueText">W</span>aste.</h3>
       </div>
-      <div style="text-align:center; position:relative; padding:0px 0px 150px 0px">
+      <div id="threeButtonContainer">
         <div class="image">
           <a href="http://www.homeenergysaver.lbl.gov/consumer/" target="_blank"><img src="images/energy_flat.png" /></a>
           <h3>ENERGY</h3>
@@ -65,15 +71,15 @@
       <p id="copyright">© 2014 Whirlpool Corporation. Web Design & Development by <a href="mailto:thomas.bottonari@gmail.com" target="_blank">Thomas Bottonari</a>.<!-- <a href="http://www.thomasbottonari.com">thomasbottonari.com</a> --></p>
       <div id="footer">
         <div class="footerSection" id="footer1">
-          <a href="https://www.google.com/maps/place/545+Hayes+Street,+West+Lafayette,+IN+47906" style="height:100%;display:block;" target="_blank"><img src="images/address.png" class="footerImage" id="contact"></a>
+          <a href="https://www.google.com/maps/place/545+Hayes+Street,+West+Lafayette,+IN+47906" target="_blank"><img src="images/address.png" id="contact"></a>
         </div>
         <div class="divider">
         </div>
         <div class="footerSection" id="footer2">
-          <div style="display:block; position:relative; width:auto; height:100%; text-align:center;">
-            <a href="mailto:gcg-reneww_house@whirlpool.com" target="_blank"><img src="images/email.png" class="footerImage"/></a>
-            <a href="https://www.facebook.com/whirlpoolusa" target="_blank"><img src="images/facebook.png" class="footerImage" /></a>
-            <a href="https://twitter.com/search?f=realtime&q=%23renewwhouse%20from%3Awhirlpoolcorp&src=typd" target="_blank"><img src="images/twitter.png" class="footerImage" /></a>
+          <div class="innerFooter">
+            <a href="mailto:gcg-reneww_house@whirlpool.com" target="_blank"><img src="images/email.png"/></a>
+            <a href="https://www.facebook.com/whirlpoolusa" target="_blank"><img src="images/facebook.png"/></a>
+            <a href="https://twitter.com/search?f=realtime&q=%23renewwhouse%20from%3Awhirlpoolcorp&src=typd" target="_blank"><img src="images/twitter.png"/></a>
           </div>
         </div>
         <div id="horizontalDivider">
@@ -81,15 +87,15 @@
         <div class="divider">
         </div>
         <div class="footerSection" id="footer3">
-          <div style="display:block; position:relative; width:auto; height:100%; text-align:center;">
-            <a href="http://www.whirlpool.com" target="_blank"><img src="images/whirlpoollogo.png" class="footerImage" id="whirlpoollogo"></a>
-            <a href="http://purdue.edu" target="_blank"><img src="images/purduelogo.png" class="footerImage" id="purduelogo"></a>
+          <div class="innerFooter">
+            <a href="http://www.whirlpool.com" target="_blank"><img src="images/whirlpoollogo.png" id="whirlpoollogo"></a>
+            <a href="http://purdue.edu" target="_blank"><img src="images/purduelogo.png" id="purduelogo"></a>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div id="mainNav" class="clearfix" style="z-index:2000;">
+  <div id="mainNav" class="clearfix">
     <a href="index.html"><img src="images/grayhouse.png" id="homelogo"></a>
     <div id="horizontalMenu" >
       <a href="data.html" id="dataButton" class="animatedButton"></a>
