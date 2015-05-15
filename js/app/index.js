@@ -50,7 +50,9 @@ require(["../lib/jquery-2.1.4", "../lib/modernizr.custom.29015", "header"], func
     
     resetPosition();
 
-    scrollBanner();
+    if (!Modernizr.touch) {
+      scrollBanner();
+    }
   };
 
   function loadComplete() {
@@ -67,8 +69,10 @@ require(["../lib/jquery-2.1.4", "../lib/modernizr.custom.29015", "header"], func
 
     // important to call this after showing the wrapper of the tab image won't have a height
     resetPosition();
-    // get the bg image in the correct position
-    scrollBanner();
+    // get the bg image in the correct position if touchscreen device
+    if (!Modernizr.touch) {
+      scrollBanner();
+    }
   };
 
   // register loadComplete with ready and load because requirejs fails at calling load
