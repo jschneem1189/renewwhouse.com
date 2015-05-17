@@ -426,7 +426,7 @@ require(["../lib/jquery-2.1.4", "header", "amcharts.amstock", "waypoints"], func
     url:"php/getGasData.php",  // live site
     // url:"http://localhost/php/getGasData.php",     // local testing
     success: function(responseText) {
-      console.debug(responseText);
+      // console.debug(responseText);
       try {
         eMonitor.gasData = JSON.parse(responseText);
       } catch (e) {
