@@ -2,41 +2,33 @@
   /*background-image: url(../images/backgrounds/whitepaper.jpg); */
   /*position: relative;*/
 }
-
 .animatedButton {
   padding-left: 0px;
 }
-
-#aboutMission {
+#about p {
   font-size: 12px;
   line-height: 30px;
 }
-
 h1 {
   font-size: 20px;
   line-height: 50px;
   text-align: center;
 }
-
 h2 {
   margin-left: 20px;
 }
-
 h3 {
-  font-size: 30px; 
+  font-size: 30px;
 }
-
 #renewwText {
-  font-size: 27px; 
+  font-size: 27px;
 }
-
 #houseRendering {
   width: 100%;
   margin-bottom: 0px;
   padding-top: 50px;
-  content:url("../images/house-rendering1_gray.jpg");
+  content: url("../images/house-rendering1_gray.jpg");
 }
-
 #titleBlock {
   position: relative;
   display: block;
@@ -44,33 +36,32 @@ h3 {
   bottom: 0;
   height: 120px;
 }
-
-#textWrapper .sectionImg {
+.centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+.leftThumbnail {
   width: auto;
   height: 175px;
-  display: block;
   float: none;
   clear: both;
   margin: 10px 0 20px 0;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
   width: 90%;
   height: auto;
-  border-radius:3px;
+  border-radius: 3px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
 }
-
 p {
-  font-size: 14px; 
+  font-size: 14px;
 }
-
 .section {
   padding-bottom: 50px;
 }
-  .section p {
-    font-size: 12px;
-  }
-
-#aboutMission {
-  line-height: 
+.section p {
+  font-size: 12px;
 }

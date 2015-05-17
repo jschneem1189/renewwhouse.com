@@ -1,34 +1,28 @@
 body {
   font-size: 14px;
 }
-
-#homeBanner h2 {
+#homeBanner #title1 {
   font-size: 50px;
 }
-  #homeBanner #houseText {
-    font-size: 55px;
-  }
-
+#homeBanner #title2 {
+  font-size: 55px;
+}
 h3 {
   font-size: 26px;
 }
-
-#acronymText {
-  font-size:40px; 
-  line-height:26px;
+.acronymText {
+  font-size: 40px;
+  line-height: 26px;
 }
-
 #mission {
-  top: -88px; 
+  top: -88px;
 }
-  #mission h3 {
-    padding-bottom: 5px;
-  }
-
+#mission h3 {
+  padding-bottom: 5px;
+}
 #tab {
-  top: -88px; 
+  top: -88px;
 }
-
 #tab-arrow {
-  top: -78px; 
+  top: -78px;
 }

@@ -1,45 +1,37 @@
 body {
   font-size: 14px;
 }
-
 #footer {
-  height:120px;
+  height: 120px;
 }
-
 .footerSection {
   height: 50%;
 }
-
 #footer1 {
   width: 49%;
 }
-
 #footer2 {
   width: 49%;
 }
-
 #footer3 {
   display: block;
   width: 100%;
 }
-
 .divider {
   display: none;
 }
-
 #horizontalDivider {
   display: block;
   width: 90%;
-  left:5%;
+  left: 5%;
 }
-
-#homeBanner h2{ 
-  font-size:50px;
+#homeBanner #title1 {
+  font-size: 50px;
   padding-top: 20px;
 }
-  #homeBanner #houseText {
-    font-size: 55px;
-  }
+#homeBanner #title2 {
+  font-size: 55px;
+}
 /*.image {
   clear: both;
   text-align: center;
@@ -50,37 +42,30 @@ body {
   margin-left: auto;
   margin-right: auto;
 }*/
-
 h3 {
   font-size: 20px;
 }
-
 #mission {
-  top: -88px; 
+  top: -88px;
 }
-  #mission h3 {
-    padding-bottom: 0px;
-  }
-  #mission p {
-    font-size: 20px;
-  }
-
+#mission h3 {
+  padding-bottom: 0px;
+}
+#mission p {
+  font-size: 20px;
+}
 #tab {
-  top: -88px; 
+  top: -88px;
 }
-
 #tab-arrow {
-  top: -78px; 
+  top: -78px;
 }
-
 #content #copyright {
-  font-size:10px;
+  font-size: 10px;
 }
-
 #houseLogo {
   height: 60px;
 }
-
-#acronymText {
-  font-size:30px; 
+.acronymText {
+  font-size: 30px;
 }
