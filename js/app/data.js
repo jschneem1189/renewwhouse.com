@@ -450,7 +450,7 @@ require(["../lib/jquery-2.1.4", "header", "amcharts.amstock", "waypoints"], func
       for (var date in eMonitor.energyData) {
         var obj = {};
         var push = false;
-        var adjustedDate = new Date(date);
+        var adjustedDate = new Date(Date.parse(date.split(' ').join('T')));
         adjustedDate.setDate(adjustedDate.getDate() + 1);
         var dateString = adjustedDate.toISOString().split('T')[0];
         if (eMonitor.energyData.hasOwnProperty(date)) {
