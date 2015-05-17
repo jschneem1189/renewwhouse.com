@@ -1,0 +1,244 @@
+@font-face
+{
+font-family: 'Oswald';
+src: url(../fonts/Oswald-Regular.ttf);
+}
+
+@font-face
+{
+font-family: 'Duru Sans';
+src: url(../fonts/DuruSans-Regular.ttf);
+}
+
+@font-face
+{
+font-family: 'Lora';
+src: url(../fonts/Lora-Regular.ttf);
+}
+
+@font-heading: 'Duru Sans', sans-serif;
+@font-heading-serif: 'Lora', serif;
+@color-gray: #7f7f7f;
+@color-blue: #0aa3df;
+@color-green: #73be44;
+@color-cream: #f2f2f2;
+@color-lightgray: #cdcdcd;
+@color-highlightedgray: #3e3e3e;
+@color-whitebg: #f8f8f8;
+@color-paleblue: #b2e0fc;
+@color-palegreen: #c5ecba;
+@color-palegray: #d9d9d9;
+
+.noWebkitMargin {
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+body {
+  font-family: @font-heading;
+  color: @color-gray;
+  .noWebkitMargin;
+}
+
+/*  mainNav */
+#mainNav {
+  position: fixed;     
+  -webkit-transform: translateZ(0); 
+  top:0;
+  right: 0; 
+  width: 100%;
+  height:40px;
+  margin: 0px 0px 0px 0px;   
+  text-align: right;   
+  display: inline-block;  
+  /*background-color: white;*/
+  background-color:rgba(255,255,255,0.65);
+  z-index:20;
+} 
+
+#horizontalMenu {
+  padding-top:5px;
+  display: inline-block;
+}
+
+.animatedButton {
+  height: 30px;
+  width: 90px;
+  position: relative;
+  display:inline;
+  text-decoration: none;
+  padding-left: 10px;
+}
+
+#homelogo {
+  left: 10px;
+  height:30px;
+  width: auto;
+  position: fixed;
+  padding: 5px 0px 0px 15px;
+}
+/*  mainNav */
+
+#mainPage {
+  background-color: white;
+  width: 100%;
+  position: relative;
+  display: block;
+  height: auto;
+}
+
+.highlight {
+  color: @color-highlightedgray;
+}
+
+.link {
+  text-decoration:none;
+}
+
+p {
+  .noWebkitMargin;
+  text-align: left;
+  color: @color-gray;
+  font-size: 18px;
+  line-height: 35px;
+  display: block;
+  position: relative;
+  overflow: auto;
+}
+
+h1 {
+  font-size: 25px; 
+  line-height: 80px;
+  text-align: left;
+  margin-left: 10px;
+  .noWebkitMargin;
+}
+
+h2 {
+  position: relative;
+  font-size: 20px; 
+  display: block;
+  margin-left: 40px;
+  .noWebkitMargin;
+}
+
+h3 {
+  position: relative;
+  font-family: @font-heading-serif;
+  font-size: 45px; 
+  display: block;
+  margin-left: 20px;
+  .noWebkitMargin;
+}
+
+#renewwText {
+  font-size: 42px; 
+  font-family: @font-heading;
+}
+
+#houseRendering {
+  position:relative;
+  display: block;
+  margin-left: auto;
+  margin-right: 0px;
+  width: 75%;
+  padding-top: 25px;
+  margin-bottom: -50px;
+  z-index: 10;
+  content:url("../images/house-rendering1.png");
+}
+
+#titleBlock {
+  background-color: @color-whitebg;
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  height: 150px;
+}
+
+#titleAnchor {
+  position: absolute;
+  /*bottom: 0px;*/
+  bottom: 30px;
+}
+
+#bannerWrapper {
+  position: relative;
+  background-color: @color-cream;
+}
+
+.centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+#about {
+  background-color: @color-paleblue;
+
+  p {
+    padding-bottom: 40px;
+    text-align: justify;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    line-height: 40px;
+    .noWebkitMargin;
+  }
+}
+
+#sustainabilityWrapper {
+  background-color: white;
+  border-radius:10px; 
+}
+
+#sustainabilityLogo {
+  width: 200px;
+  .centered;
+}
+
+.leftThumbnail {
+  /*height: 200px;*/
+  width: 300px;
+  float: left;
+  margin-bottom: 25px;
+  margin-right: 25px;
+  border-radius:3px;
+  display: inline-block;
+  position: relative;
+  clear: both;
+}
+
+.centeredSection {
+  width: 90%;
+  .centered;
+}
+
+.spacer {
+  width: 100%;
+  background-color: white;
+  height: 3px;
+}
+
+.section {
+  display: block;
+  clear: both;
+  padding-bottom: 100px;
+  float: left;
+  width: 100%;
+  position: relative;
+}
+
+.primary {
+  background-color: @color-palegreen;
+}
+
+.secondary {
+  background-color: @color-palegray;
+}
+
+.tertiary {
+  background-color: @color-paleblue;
+}
+

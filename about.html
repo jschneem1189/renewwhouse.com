@@ -4,16 +4,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=yes" />
   <title>ReNEWW</title>
-  <script src="js/lib/jquery.js"></script>
-  <script src="js/lib/modernizr.js"></script>
-  <script data-main="js/app/header" src="js/lib/require.js"></script>
+  <script src="js/lib/jquery-2.1.4.js"></script>
   <link rel="shortcut icon" href="images/32x32 logo.ico">
   <link rel="stylesheet" type="text/css" media="screen" href="css/normalize.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="css/about.css" />
-  <link rel="stylesheet" type="text/css" media="screen and (min-width:501px) and (max-width: 650px)" href="css/about650.css" />
-  <link rel="stylesheet" type="text/css" media="screen and (min-width:651px) and (max-width: 900px)" href="css/about900.css" />
-  <link rel="stylesheet" type="text/css" media="screen and (min-width:901px) and (max-width: 1200px)" href="css/about1200.css" />
-  <link rel="stylesheet" type="text/css" media="screen and (max-width: 500px)" href="css/aboutMobile.css" />
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="css/about.css" /> -->
+  <link rel="stylesheet/less" type="text/css" media="screen" href="css/about.less" />
+  <!-- <link rel="stylesheet" type="text/css" media="screen and (min-width:501px) and (max-width: 650px)" href="css/about650.css" /> -->
+  <link rel="stylesheet/less" type="text/css" media="screen and (min-width:501px) and (max-width: 650px)" href="css/about650.less" />
+  <!-- <link rel="stylesheet" type="text/css" media="screen and (min-width:651px) and (max-width: 900px)" href="css/about900.css" /> -->
+  <link rel="stylesheet/less" type="text/css" media="screen and (min-width:651px) and (max-width: 900px)" href="css/about900.less" />
+  <!-- <link rel="stylesheet" type="text/css" media="screen and (min-width:901px) and (max-width: 1200px)" href="css/about1200.css" /> -->
+  <link rel="stylesheet/less" type="text/css" media="screen and (min-width:901px) and (max-width: 1200px)" href="css/about1200.less" />
+  <!-- <link rel="stylesheet" type="text/css" media="screen and (max-width: 500px)" href="css/aboutMobile.css" /> -->
+  <link rel="stylesheet/less" type="text/css" media="screen and (max-width: 500px)" href="css/aboutMobile.less" />
+  <script src="js/lib/less.min.js" type="text/javascript"></script>
+  <script data-main="js/app/header" src="js/lib/require.js"></script>
   <script>
       $(window).load(function(evt) {
         $('#wrapper').css('visibility','visible');
@@ -33,41 +38,34 @@
           </div>
         </div>
       </div>
-      <div id="textWrapper">
+      <div class="centered">
         <div id="about">
-          <!-- <img class="cutout" src="images/cream-darkblue_cutout.jpg"/> -->
           <h1>THE OBJECTIVE</h1>
-          <p id="aboutMission"><span style="color:#3e3e3e;">Whirlpool Corporation, along with Purdue University, will transform an existing home near Purdue’s campus into a world class research laboratory and sustainable living showcase.</span> ReNEWW House will provide valuable insights for our homebuilder partners and customers on technologies that enable sustainable living. We will leverage the world class facilities and collaborate with Purdue researchers to accelerate the development of the next generation of ultra-high efficiency appliances that increase core performance while lowering their impact on the environment and cost to operate.<br></p>
+          <p><span class="highlight">Whirlpool Corporation, along with Purdue University, will transform an existing home near Purdue’s campus into a world class research laboratory and sustainable living showcase.</span> ReNEWW House will provide valuable insights for our homebuilder partners and customers on technologies that enable sustainable living. We will leverage the world class facilities and collaborate with Purdue researchers to accelerate the development of the next generation of ultra-high efficiency appliances that increase core performance while lowering their impact on the environment and cost to operate.<br></p>
         </div>
         <div class="section primary">
-          <!-- <img class="cutout" src="images/darkblue-blue_cutout.jpg"/> -->    
-          <div class="spacer">
-          </div>      
+          <div class="spacer"></div>      
           <h1>WHIRLPOOL SUSTAINABILITY</h1>
-          <div class="centered">
-            <!-- <img class="sectionImg" src="images/smartgrid.jpeg"/> -->
-            <iframe class="sectionImg" src="http://player.vimeo.com/video/65311959?byline=0&amp;portrait=0" width="300" height="169" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            <p class="aboutText">At Whirlpool, we are passionate about improving the quality of life for our consumers while minimizing our impact on the environment. And we are combining the power of innovation with our environmental commitment to create solutions that delight consumers – today and tomorrow.</p>
+          <div class="centeredSection">
+            <iframe class="leftThumbnail" src="http://player.vimeo.com/video/65311959?byline=0&amp;portrait=0" width="300" height="169" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <p>At Whirlpool, we are passionate about improving the quality of life for our consumers while minimizing our impact on the environment. And we are combining the power of innovation with our environmental commitment to create solutions that delight consumers – today and tomorrow.</p>
           </div>
         </div>
         <div class="section secondary">
-          <!-- <img class="cutout" src="images/blue-white_cutout.jpg"/> -->
-          <div class="spacer">
-          </div>
+          <div class="spacer"></div>
           <h1>WHIRLPOOL CORPORATION</h1>
-          <div class="centered">
-            <img class="sectionImg" src="images/appliances.jpg"/>
-            <p class="aboutText">Whirlpool Corporation is the world's leading global manufacturer and marketer of major home appliances, with annual sales of approximately $19 billion in 2013, 69,000 employees and 59 manufacturing and technology research centers around the world. The company markets Whirlpool, Maytag, KitchenAid, Jenn-Air, Amana, Brastemp, Consul, Bauknecht and other major brand names. Additional information about the company can be found at <a style="text-decoration:none;" href="http://www.whirlpoolcorp.com" target="_blank">http://www.whirlpoolcorp.com.</a></p>
+          <div class="centeredSection">
+            <img class="leftThumbnail" src="images/appliances.jpg"/>
+            <p>Whirlpool Corporation is the world's leading global manufacturer and marketer of major home appliances, with annual sales of approximately $19 billion in 2013, 69,000 employees and 59 manufacturing and technology research centers around the world. The company markets Whirlpool, Maytag, KitchenAid, Jenn-Air, Amana, Brastemp, Consul, Bauknecht and other major brand names. Additional information about the company can be found at <a class="link" href="http://www.whirlpoolcorp.com" target="_blank">http://www.whirlpoolcorp.com.</a></p>
           </div>
         </div>
         <div class="section tertiary">
-          <!-- <img class="cutout" src="images/white-blue_cutout.jpg"/> -->
           <div class="spacer">
           </div>
           <h1>THE WERLD PROGRAM</h1>
-          <div class="centered">
-            <a href="http://werld.whirlpoolcareers.com" target="_blank"><img class="sectionImg" src="images/werld.jpg"/></a>
-            <p class="aboutText">The WERLD (Whirlpool Engineering Rotational Leadership Development) Program is a premier training program that has been developing world-class engineering leaders through challenging assignments, global team projects, integrated training and development, and formal coaching and mentoring programs. WERLD Engineers go through four 6-month rotations and after which they have the opportunity to pursue a technical Masters degree at Purdue University.<br><br>WERLD engineers have the opportunity to participate in the ReNEWW House program. Up to three WERLD engineers can live in the ReNEWW House while on campus and leverage the laboratory for their research.<br><br>See more at <a href="http://werld.whirlpoolcareers.com" target="_blank">http://werld.whirlpoolcareers.com</a></p>
+          <div class="centeredSection">
+            <a href="http://werld.whirlpoolcareers.com" target="_blank"><img class="leftThumbnail" src="images/werld.jpg"/></a>
+            <p>The WERLD (Whirlpool Engineering Rotational Leadership Development) Program is a premier training program that has been developing world-class engineering leaders through challenging assignments, global team projects, integrated training and development, and formal coaching and mentoring programs. WERLD Engineers go through four 6-month rotations and after which they have the opportunity to pursue a technical Masters degree at Purdue University.<br><br>WERLD engineers have the opportunity to participate in the ReNEWW House program. Up to three WERLD engineers can live in the ReNEWW House while on campus and leverage the laboratory for their research.<br><br>See more at <a class="link" href="http://werld.whirlpoolcareers.com" target="_blank">http://werld.whirlpoolcareers.com</a></p>
           </div>
         </div>
       </div>
@@ -77,9 +75,9 @@
     </div>
   </div>
   
-  <div id="mainNav" class="clearfix" style="z-index:2000;">
+  <div id="mainNav" class="clearfix">
     <a href="index.html"><img src="images/grayhouse.png" id="homelogo"></a>
-    <div style="padding-top:5px;" >
+    <div id="horizontalMenu" >
       <a href="data.html" id="dataButton" class="animatedButton"></a>
       <!-- <a href="" id="tourButton" class="animatedButton"></a> -->
       <a href="partners.html" id="partnerButton" class="animatedButton"></a>
