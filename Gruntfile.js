@@ -18,9 +18,9 @@ module.exports = function(grunt) {
           {expand: true, src: ['*.html'], dest: 'build/', filter: 'isFile'},
         ],
       },
-      normalize: {
+      csslibs: {
         files: [
-          {expand: true, src: ['css/normalize.css'], dest: 'build/css/normalize.css', filter: 'isFile'}
+          {expand: true, src: ['css/lib/*.css'], dest: 'build/', filter: 'isFile'}
         ]
       }
     },
@@ -124,6 +124,6 @@ module.exports = function(grunt) {
     'uglify:prod', 
     'less:prod', 
     'cssmin:prod',
-    'copy:normalize'
+    'copy:csslibs'
   ]);
 };
