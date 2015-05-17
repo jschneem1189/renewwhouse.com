@@ -370,8 +370,6 @@ require(["../lib/jquery-2.1.4", "header", "amcharts.amstock", "waypoints"], func
     }
   };
 
-  eMonitor['gasData'] = [];
-
   // get security key
  $.ajax({
     url:"https://api.emonitor.us/customer/authenticate?login=Whirlpool&password=ReNEWWHouse&json=1",
@@ -423,20 +421,20 @@ require(["../lib/jquery-2.1.4", "header", "amcharts.amstock", "waypoints"], func
   // ---------------------------------------------------------------------------
   // Fetch the gas data from local db ------------------------------------------
   // ---------------------------------------------------------------------------
-  //  $.ajax({
-  //   url:"php/getGasData.php",  // live site
-  //   // url:"http://localhost/php/getGasData.php",     // local testing
-  //   success: function(responseText) {
-  //     // console.debug(responseText);
-  //     eMonitor.gasData = JSON.parse(responseText);
+   $.ajax({
+    url:"php/getGasData.php",  // live site
+    // url:"http://localhost/php/getGasData.php",     // local testing
+    success: function(responseText) {
+      // console.debug(responseText);
+      eMonitor.gasData = JSON.parse(responseText);
 
-  //     // check if we are ready to build the amchart
-  //     tryToBuildChart();
-  //   }.bind(this),
-  //   error: function() {
-  //     alert(errorMsg+"Gas");
-  //   }
-  // });
+      // check if we are ready to build the amchart
+      tryToBuildChart();
+    }.bind(this),
+    error: function() {
+      alert(errorMsg+"Gas");
+    }
+  });
 
   function tryToBuildChart() {
     if (typeof eMonitor.gasData != "undefined" && typeof eMonitor.energyData != "undefined") {
