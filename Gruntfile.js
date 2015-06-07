@@ -16,6 +16,7 @@ module.exports = function(grunt) {
           {expand: true, src: ['images/**'], dest: 'build/'},
           {expand: true, src: ['php/*'], dest: 'build/'},
           {expand: true, src: ['*.html'], dest: 'build/', filter: 'isFile'},
+          {expand: true, src: ['css/lib/default-skin/**'], dest: 'build/'},
         ],
       },
       csslibs: {
@@ -63,7 +64,8 @@ module.exports = function(grunt) {
           "css/indexMobile_landscape.css": "css/indexMobile_landscape.less",
           "css/partners.css": "css/partners.less",
           "css/partners650.css": "css/partners650.less",
-          "css/partnersMobile.css": "css/partnersMobile.less"
+          "css/partnersMobile.css": "css/partnersMobile.less",
+          "css/gallery.css": "css/gallery.less"
         }
       },
       prod: {
@@ -89,7 +91,8 @@ module.exports = function(grunt) {
           "build/css/indexMobile_landscape.css": "css/indexMobile_landscape.less",
           "build/css/partners.css": "css/partners.less",
           "build/css/partners650.css": "css/partners650.less",
-          "build/css/partnersMobile.css": "css/partnersMobile.less"
+          "build/css/partnersMobile.css": "css/partnersMobile.less",
+          "build/css/gallery.css": "css/gallery.less"
         }
       }
     },
