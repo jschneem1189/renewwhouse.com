@@ -81,7 +81,7 @@ body {
   top: 60px;
   height: 160px;
   width:100%;
-  padding-bottom: 100px;
+  margin-bottom: 100px;
 
   h1 {
     padding: 0px 0px 0px 0px;
@@ -107,10 +107,21 @@ body {
   /*min-height: 100%;*/
 }
 
+@column-count: 8;
 .my-gallery {
   position:relative;
   width: 95%;
   margin:0 auto; 
+  padding-bottom: 50px;
+  /* Prevent vertical gaps */
+  line-height: 0;
+   
+  // -webkit-column-count: @column-count;
+  // -webkit-column-gap:   0px;
+  // -moz-column-count:    @column-count;
+  // -moz-column-gap:      0px;
+  // column-count:         @column-count;
+  // column-gap:           0px; 
 
   .thumbnail {
     display:inline-block; 
@@ -119,7 +130,10 @@ body {
     list-style-image: none;
     .noWebkitMargin;
     -webkit-padding-start: 0px;
-    padding: 5px;
+    // padding: 1px;
+    width: 190px;
+    margin: 1px;
+    float: left;
   }
   // li {
   //   width: 200px;
@@ -143,6 +157,9 @@ body {
     max-width: 100%;
     max-height: 100%;
     vertical-align: middle;
+    /* Just in case there are inline attributes */
+    // width: 100% !important;
+    // height: auto !important;
   }
   a {
     text-decoration: none;
