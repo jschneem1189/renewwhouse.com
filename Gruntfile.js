@@ -65,7 +65,9 @@ module.exports = function(grunt) {
           "css/partners.css": "css/partners.less",
           "css/partners650.css": "css/partners650.less",
           "css/partnersMobile.css": "css/partnersMobile.less",
-          "css/gallery.css": "css/gallery.less"
+          "css/gallery.css": "css/gallery.less",
+          "css/gallery650.css": "css/gallery650.less",
+          "css/galleryMobile.css": "css/galleryMobile.less"
         }
       },
       prod: {
@@ -92,7 +94,9 @@ module.exports = function(grunt) {
           "build/css/partners.css": "css/partners.less",
           "build/css/partners650.css": "css/partners650.less",
           "build/css/partnersMobile.css": "css/partnersMobile.less",
-          "build/css/gallery.css": "css/gallery.less"
+          "build/css/gallery.css": "css/gallery.less",
+          "build/css/gallery650.css": "css/gallery650.less",
+          "build/css/galleryMobile.css": "css/galleryMobile.less"
         }
       }
     },
