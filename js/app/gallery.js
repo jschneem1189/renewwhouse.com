@@ -13,10 +13,10 @@ require([ "../lib/jquery-2.1.4",
     $.bridget( 'masonry', Masonry );
     var $container = $('#gallery');
 
-    $container.imagesLoaded( function(){
+    imagesLoaded($container, function(){
       $container.masonry({
         itemSelector : '.thumbnail',
-        columnWidth : 192,
+        columnWidth : 194,
         isFitWidth: true
       });
     });
