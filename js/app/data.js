@@ -181,8 +181,8 @@ require(["../lib/jquery-2.1.4", "header", "amcharts.amstock", "waypoints"], func
           parseInt($('#temperatureSection .icon').css('margin-top').split('px')[0],10);
       $('#temperatureSection .icon').css('margin-top', 40);
     } else {
-      $('#temperatureSection .icon').css('margin-top', sectionHeight/2 - 
-          $('#temperatureSection .icon').height()/2);
+      // $('#temperatureSection .icon').css('margin-top', sectionHeight/2 - 
+      //     $('#temperatureSection .icon').height()/2);
     }
     $('#temperatureSection').css('height', sectionHeight);
 
