@@ -37,10 +37,15 @@ body {
 }
 
 /*  mainNav */
-#mainNav {
-  position: fixed;     
+.nav {
+  top: 0;
+  position: fixed;
   -webkit-transform: translateZ(0); 
-  top:0;
+  z-index: 20;
+}
+
+#mainNav {
+  .nav;
   right: 0; 
   width: 100%;
   height:40px;
@@ -49,20 +54,25 @@ body {
   display: inline-block;  
   /*background-color: white;*/
   background-color:rgba(255,255,255,0.65);
-  z-index:20;
 } 
 
 #hamburgerIcon {
+  .nav;
   right: 10px;
   height:30px;
   width: auto;
-  position: fixed;
   padding: 5px 0px 0px 15px;
+  display: none;
 }
 
 #horizontalMenu {
+  .nav;
   padding-top:5px;
   display: inline-block;
+  visibility: visible;
+  text-align: right;
+  width: 100%;
+  left: 0px;
 }
 
 .animatedButton {
@@ -81,13 +91,23 @@ body {
   position: fixed;
   padding: 5px 0px 0px 15px;
 }
+
+#screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: none;
+}
 /*  mainNav */
 
 #title {
   display: block;
   position: relative;
   top: 60px;
-  height: 160px;
+  // height: 160px;
   width:100%;
   margin-bottom: 100px;
 
@@ -151,4 +171,18 @@ body {
   a {
     text-decoration: none;
   }
+}
+
+.icon {
+  width: 300px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.line {
+  width: 100%;
+  height: 3px;
+  background-color: @color-gray;
 }
