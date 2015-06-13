@@ -39,7 +39,7 @@ module.exports = function(grunt) {
           'build/js/app/index.js': 'js/app/index.js',
           'build/js/app/AnimatedButton.js': 'js/app/AnimatedButton.js',
           'build/js/app/data.js': 'js/app/data.js',
-          'build/js/app/header.js': 'js/app/header.js',
+          'build/js/app/mainNav.js': 'js/app/mainNav.js',
           'build/js/app/partners.js': 'js/app/partners.js'
         }
       }
@@ -67,7 +67,9 @@ module.exports = function(grunt) {
           "css/partnersMobile.css": "css/partnersMobile.less",
           "css/gallery.css": "css/gallery.less",
           "css/gallery650.css": "css/gallery650.less",
-          "css/galleryMobile.css": "css/galleryMobile.less"
+          "css/galleryMobile.css": "css/galleryMobile.less",
+          "css/mainNav.css": "css/mainNav.less",
+          "css/mainNavMobile.css": "css/mainNavMobile.less"
         }
       },
       prod: {
@@ -96,7 +98,9 @@ module.exports = function(grunt) {
           "build/css/partnersMobile.css": "css/partnersMobile.less",
           "build/css/gallery.css": "css/gallery.less",
           "build/css/gallery650.css": "css/gallery650.less",
-          "build/css/galleryMobile.css": "css/galleryMobile.less"
+          "build/css/galleryMobile.css": "css/galleryMobile.less",
+          "build/css/mainNav.css": "css/mainNav.less",
+          "build/css/mainNavMobile.css": "css/mainNavMobile.less"
         }
       }
     },

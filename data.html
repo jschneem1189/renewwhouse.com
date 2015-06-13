@@ -9,89 +9,92 @@
   <link rel="stylesheet" href="js/lib/amcharts_stocks/style.css" type="text/css">
   <link rel="shortcut icon" href="images/32x32 logo.ico">
   <link rel="stylesheet" type="text/css" media="screen" href="css/data.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/mainNav.css" />
   <link rel="stylesheet" type="text/css" media="screen and (min-width:551px) and (max-width: 775px)" href="css/data775.css" />
   <link rel="stylesheet" type="text/css" media="screen and (max-width: 550px)" href="css/dataMobile.css" />
+  <link rel="stylesheet" type="text/css" media="screen and (max-width: 550px)" href="css/mainNavMobile.css" />
   <script data-main="js/app/data" src="js/lib/require.js"></script>
 </head>
 <body>
-    <!-- <div id="graph"></div> -->
-    <div id="content">
-      <h1>OUR DATA</h1>
-      <div id="energySection" class="section odd">
-        <img class="centered" src="images/white-blue_cutout.jpg"/>
-        <img class="icon" src="images/lightbulb_bubble.jpg"/>
-        <div id="stockChart"></div>
-        <div id="activityContainer"/>
-            <img id="activityIndicator" src="images/recycling-arrows.png"/>
-            <span id="activityText">Retrieving data<span id="dot1">.</span><span id="dot2">.</span><span id="dot3">.</span></span>
-          </div>
-      </div>
-      <div class="section even" id="temperatureSection">
-        <img class="icon" src="images/thermometer_bubble.jpg"/>
-        <div id="explodedContainer">
-          <h3>OCT 18, 2014 Temps <span id="preText">pre-retrofit temps</span></h3>
-          <div id="referencePoint">
-            <img class="explodedView" id="bottom" src="images/basement.png" />
-            <img class="explodedView" id="middle" src="images/first_floor.png" />
-            <img class="explodedView" id="top" src="images/second_floor.png" />
-            <div id="tempWrapper">
-              <div id="basementTemp">
-                <p class="postRetro">71.5°<span class="preRetro">64.4°</span></p>
-              </div>
-              <div id="officeTemp">
-                <p class="postRetro">70.3°<span class="preRetro">67.7°</span></p>
-              </div>
-              <div id="kitchenTemp">
-                <p class="postRetro">70.1°<span class="preRetro">68.9°</span></p>
-              </div>
-              <div id="diningTemp">
-                <p class="postRetro">70.3°<span class="preRetro">65°</span></p>
-              </div>
-              <div id="livingTemp">
-                <p class="postRetro">69.4°<span class="preRetro">68.2°</span></p>
-              </div>
-              <div id="firstBathTemp">
-                <p class="postRetro">73.6°<span class="preRetro">65.7°</span></p>
-              </div>
-              <div id="southBedroomTemp">
-                <p class="postRetro">68.3°<span class="preRetro">68.2°</span></p>
-              </div>
-              <div id="northBedroomTemp">
-                <p class="postRetro">69.3°<span class="preRetro">68.2°</span></p>
-              </div>
-              <div id="secondBathTemp">
-                <p class="postRetro">69.4°<span class="preRetro">69°</span></p>
-              </div>
-              <div id="eastBedroomTemp">
-                <p class="postRetro">69.7°<span class="preRetro">68.2°</span></p>
-              </div>
-              <div id="atticTemp">
-                <p class="postRetro">57.1°<span class="preRetro">61.2°(attic)</span></p>
-              </div>
+  <!-- <div id="graph"></div> -->
+  <div id="content">
+    <h1>OUR DATA</h1>
+    <div id="energySection" class="section odd">
+      <img class="centered" src="images/white-blue_cutout.jpg"/>
+      <img class="icon" src="images/lightbulb_bubble.jpg"/>
+      <div id="stockChart"></div>
+      <div id="activityContainer"/>
+          <img id="activityIndicator" src="images/recycling-arrows.png"/>
+          <span id="activityText">Retrieving data<span id="dot1">.</span><span id="dot2">.</span><span id="dot3">.</span></span>
+        </div>
+    </div>
+    <div class="section even" id="temperatureSection">
+      <img class="icon" src="images/thermometer_bubble.jpg"/>
+      <div id="explodedContainer">
+        <h3>OCT 18, 2014 Temps <span id="preText">pre-retrofit temps</span></h3>
+        <div id="referencePoint">
+          <img class="explodedView" id="bottom" src="images/basement.png" />
+          <img class="explodedView" id="middle" src="images/first_floor.png" />
+          <img class="explodedView" id="top" src="images/second_floor.png" />
+          <div id="tempWrapper">
+            <div id="basementTemp">
+              <p class="postRetro">71.5°<span class="preRetro">64.4°</span></p>
+            </div>
+            <div id="officeTemp">
+              <p class="postRetro">70.3°<span class="preRetro">67.7°</span></p>
+            </div>
+            <div id="kitchenTemp">
+              <p class="postRetro">70.1°<span class="preRetro">68.9°</span></p>
+            </div>
+            <div id="diningTemp">
+              <p class="postRetro">70.3°<span class="preRetro">65°</span></p>
+            </div>
+            <div id="livingTemp">
+              <p class="postRetro">69.4°<span class="preRetro">68.2°</span></p>
+            </div>
+            <div id="firstBathTemp">
+              <p class="postRetro">73.6°<span class="preRetro">65.7°</span></p>
+            </div>
+            <div id="southBedroomTemp">
+              <p class="postRetro">68.3°<span class="preRetro">68.2°</span></p>
+            </div>
+            <div id="northBedroomTemp">
+              <p class="postRetro">69.3°<span class="preRetro">68.2°</span></p>
+            </div>
+            <div id="secondBathTemp">
+              <p class="postRetro">69.4°<span class="preRetro">69°</span></p>
+            </div>
+            <div id="eastBedroomTemp">
+              <p class="postRetro">69.7°<span class="preRetro">68.2°</span></p>
+            </div>
+            <div id="atticTemp">
+              <p class="postRetro">57.1°<span class="preRetro">61.2°(attic)</span></p>
             </div>
           </div>
         </div>
-        <div id="rightHalf">
-          <h3>External AVG: 49.7°F</h3>
-          <div id="tempChart"></div>
-        </div>
       </div>
-      <div class="section odd">
-        <h2 style="text-align: center">Water flow graphs coming soon...</h2>
-      </div>
-      <div id="ball">
-        data powered by Ball Systems
+      <div id="rightHalf">
+        <h3>External AVG: 49.7°F</h3>
+        <div id="tempChart"></div>
       </div>
     </div>
-    <div id="mainNav" class="clearfix">
-      <a href="index.html"><img src="images/grayhouse.png" id="homelogo"></a>
-      <div id="horizontalMenu" >
-        <a href="data.html" id="dataButton" class="animatedButton"></a>
-        <!-- <a href="" id="tourButton" class="animatedButton"></a> -->
-        <a href="partners.html" id="partnerButton" class="animatedButton"></a>
-        <a href="about.html" id="aboutButton" class="animatedButton"></a>
-      </div>
-      <img src="images/houselogo_small.png" id="hamburgerIcon" />
+    <div class="section odd">
+      <h2 style="text-align: center">Water flow graphs coming soon...</h2>
     </div>
+    <div id="ball">
+      data powered by Ball Systems
+    </div>
+  </div>
+  <div id="mainNav" class="clearfix" >
+    <a href="index.html"><img src="images/grayhouse.png" id="homelogo"></a>
+  </div>
+  <div id="screen" ></div>
+  <div id="horizontalMenu" >
+    <a href="data.html" id="dataButton" class="animatedButton"></a>
+    <a href="partners.html" id="partnerButton" class="animatedButton"></a>
+    <a href="gallery.html" id="galleryButton" class="animatedButton"></a>
+    <a href="about.html" id="aboutButton" class="animatedButton"></a>
+  </div>
+  <img src="images/hamburgerIcon.png" id="hamburgerIcon"/>
 </body>
 </html>

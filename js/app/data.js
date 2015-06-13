@@ -29,7 +29,7 @@ requirejs.config({
     } 
 });
 
-require(["../lib/jquery-2.1.4", "header", "amcharts.amstock", "waypoints"], function() {
+require(["../lib/jquery-2.1.4", "mainNav", "amcharts.amstock", "waypoints"], function() {
   
   // ---------------------------------------------------------------------------
   // Build AMCHART given a data set --------------------------------------------

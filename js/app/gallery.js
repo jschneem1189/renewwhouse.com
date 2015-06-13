@@ -1,10 +1,10 @@
 require([ "../lib/jquery-2.1.4", 
-    "header",
+    "mainNav",
     "../lib/photoswipe.min", 
     "../lib/photoswipe-ui-default.min",
     "../lib/imagesloaded.pkgd.min",
     "../lib/masonry.pkgd.min"
-  ], function( jquery, header, PhotoSwipe, PhotoSwipeUI_Default, imagesLoaded, Masonry) {
+  ], function( jquery, mainNav, PhotoSwipe, PhotoSwipeUI_Default, imagesLoaded, Masonry) {
 
   // require jquery-bridget, it's included in masonry.pkgd.js
   require( [ 'jquery-bridget/jquery.bridget' ],
