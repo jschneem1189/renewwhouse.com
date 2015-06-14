@@ -40,7 +40,8 @@ module.exports = function(grunt) {
           'build/js/app/AnimatedButton.js': 'js/app/AnimatedButton.js',
           'build/js/app/data.js': 'js/app/data.js',
           'build/js/app/mainNav.js': 'js/app/mainNav.js',
-          'build/js/app/partners.js': 'js/app/partners.js'
+          'build/js/app/partners.js': 'js/app/partners.js',
+          'build/js/app/gallery.js': 'js/app/gallery.js'
         }
       }
     },
@@ -121,6 +122,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-responsive-images');
 
   // Development task(s).
   grunt.registerTask('debug', [
