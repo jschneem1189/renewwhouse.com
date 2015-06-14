@@ -112,6 +112,22 @@ module.exports = function(grunt) {
         src: ['*.css'],
         dest: 'build/css'
       }
+    },
+    responsive_images: {
+      options: {
+        newFilesOnly: true,
+        sizes: [{
+          name: "medium",
+          width: 1024
+        }],
+        rename: false
+      },
+      files: {
+        expand: true,
+        src: ['**.{JPG,jpg,PNG,png}'],
+        cwd: 'images/gallery/',
+        custom_dest: 'images/gallery/{%= name %}/'
+      },
     }
   });
 
@@ -132,6 +148,7 @@ module.exports = function(grunt) {
   // Production task(s).
   grunt.registerTask('release', [
     'clean:build',
+    'responsive_images',
     'copy:prod',
     'jshint:prod', 
     'uglify:prod', 
