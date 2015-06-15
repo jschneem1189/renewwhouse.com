@@ -267,7 +267,7 @@ require([ "../lib/jquery-2.1.4",
 
             // Set image source & size based on real viewport width
             if( useLargeImages ) {
-                item.src = item.originalImage.src;
+                item.src = item.mediumImage.src;
                 item.w = item.originalImage.w;
                 item.h = item.originalImage.h;
             } else {
