@@ -266,8 +266,9 @@ require([ "../lib/jquery-2.1.4",
         gallery.listen('gettingData', function(index, item) {
 
             // Set image source & size based on real viewport width
-            if( useLargeImages ) {
-                item.src = item.mediumImage.src;
+            // if( useLargeImages ) {
+            if (false) {
+                item.src = item.originalImage.src;
                 item.w = item.originalImage.w;
                 item.h = item.originalImage.h;
             } else {
