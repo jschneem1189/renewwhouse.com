@@ -455,8 +455,8 @@ require(["../lib/jquery-2.1.4", "mainNav", "amcharts.amstock", "waypoints"], fun
           obj['kwh'] = +eMonitor.energyData[date][eMonitor.channelIds.mains].kWh - 
               +eMonitor.energyData[date][eMonitor.channelIds.solar1].kWh - 
               +eMonitor.energyData[date][eMonitor.channelIds.solar2].kWh;
-          obj['solar'] = (+eMonitor.energyData[date][eMonitor.channelIds.solar1].kWh +
-              +eMonitor.energyData[date][eMonitor.channelIds.solar2].kWh) * -1;
+          obj['solar'] = Math.max(0, (+eMonitor.energyData[date][eMonitor.channelIds.solar1].kWh +
+              +eMonitor.energyData[date][eMonitor.channelIds.solar2].kWh) * -1);
           push = true;
         }
         if (typeof eMonitor.gasData[dateString] != "undefined") {
