@@ -119,6 +119,9 @@ module.exports = function(grunt) {
         sizes: [{
           name: "medium",
           width: 1024
+        }, {
+          name: "thumb",
+          width: 190
         }],
         rename: false
       },
@@ -127,7 +130,7 @@ module.exports = function(grunt) {
         src: ['**.{JPG,jpg,PNG,png}'],
         cwd: 'images/gallery/',
         custom_dest: 'images/gallery/{%= name %}/'
-      },
+      }
     }
   });
 
