@@ -158,11 +158,21 @@ h3 {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
   -webkit-animation-name: spinnerAnim;
+  -moz-animation-duration: 1.25s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -moz-animation-name: spinnerAnim;
 }
 @-webkit-keyframes spinnerAnim {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(-360deg); }
 }
+
+@-moz-keyframes spinnerAnim {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
 
 /* TEMPERATURE SECTION */
 
