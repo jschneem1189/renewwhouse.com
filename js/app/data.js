@@ -367,21 +367,40 @@ require(["../lib/jquery-2.1.4", "mainNav", "amcharts.amstock", "waypoints"], fun
     }
   };
 
-  // get security key
- $.ajax({
-    url:"https://api.emonitor.us/customer/authenticate?login=Whirlpool&password=ReNEWWHouse&json=1",
-    crossDomain: true,
-    // dataType: 'jsonp',    // TO BE REMOVED
-   success: function(responseObj) {
-    eMonitor['key'] = responseObj.securitykey;
-    getHistoricalData();
-   },
-   error: function(e) {
-     alert(errorMsg+"SECURITY KEY");
-   }
- });
-
   var errorMsg = "Oops, there was an error retrieving the following data: ";
+
+  this.connectToEmonitor = function() {
+    $.ajax({
+      url:"php/getEmonitorLogin.php",
+      success: function(responseText) {
+        console.debug(responseText);
+        try {
+          var creds = JSON.parse(responseText);
+          // get security key
+          $.ajax({
+            url:"https://api.emonitor.us/customer/authenticate?login="+creds.login+"&password="+
+              creds.password+"&json=1",
+            crossDomain: true,
+            // dataType: 'jsonp',    // TO BE REMOVED
+            success: function(responseObj) {
+              eMonitor['key'] = responseObj.securitykey;
+              getHistoricalData();
+            },
+            error: function(e) {
+              alert(errorMsg+"SECURITY KEY");
+            }
+          });
+        } catch (e) {
+          alert("There was an error locating credentials to the eMonitor service.");
+        } finally {
+
+        }
+      }.bind(this),
+      error: function() {
+        alert("There was an error locating credentials to the eMonitor service.");
+      }
+    });
+  }
 
   // get historical energy data
   function getHistoricalData() {
@@ -400,6 +419,8 @@ require(["../lib/jquery-2.1.4", "mainNav", "amcharts.amstock", "waypoints"], fun
       }
     });
   }
+
+  this.connectToEmonitor();
 
   // get historical temperature data
   // $.ajax({
