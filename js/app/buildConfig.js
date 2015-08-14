@@ -1,6 +1,1 @@
-define([], function() {
-    return {
-        debug: true
-    }
-});
-
+define([], function() {return {debug: true}});
