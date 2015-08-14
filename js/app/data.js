@@ -373,7 +373,6 @@ require(["../lib/jquery-2.1.4", "mainNav", "amcharts.amstock", "waypoints"], fun
     $.ajax({
       url:"php/getEmonitorLogin.php",
       success: function(responseText) {
-        console.debug(responseText);
         try {
           var creds = JSON.parse(responseText);
           // get security key
