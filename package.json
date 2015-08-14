@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thomasbottonari/thomasbottonari.github.io.git"
+    "url": "git+https://github.com/thomasbottonari/renewwhouse.com"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
