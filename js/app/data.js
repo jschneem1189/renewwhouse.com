@@ -386,6 +386,7 @@ require(["jquery", "mainNav", "amcharts.amstock", "waypoints", "buildConfig"],
         })
     }
 
+    // conditionally define the server addresses based on if we are debugging or not
     var loginAddr = (buildConfig.debug) ? "http://localhost/php/getEmonitorLogin.php" : "php/getEmonitorLogin.php";
     var gasAddr = (buildConfig.debug) ? "http://localhost/php/getGasData.php" : "php/getGasData.php";
     get(loginAddr).then(JSON.parse).then(function(creds) {
@@ -401,7 +402,7 @@ require(["jquery", "mainNav", "amcharts.amstock", "waypoints", "buildConfig"],
     }).then(function(response) {
         eMonitor.energyData = response[eMonitor.locationId].data;
         return get(gasAddr);
-    }, function(e) {
+    }).catch(function(e) {
         alert(errorMsg+"ELECTRICITY");
         eMonitor.energyData = [];
     }).then(JSON.parse).then(function(response) {
@@ -409,7 +410,6 @@ require(["jquery", "mainNav", "amcharts.amstock", "waypoints", "buildConfig"],
         tryToBuildChart();
     }).catch(function (e) {
         alert(errorMsg+"GAS");
-        console.debug(e);
         eMonitor.gasData = [];
         tryToBuildChart();
     });
