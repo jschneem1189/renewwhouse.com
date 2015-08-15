@@ -371,97 +371,139 @@ require(["jquery", "mainNav", "amcharts.amstock", "waypoints", "buildConfig"],
 
     var errorMsg = "Oops, there was an error retrieving the following data: ";
 
-    var loginAddr = (buildConfig.debug) ? "http://localhost/php/getEmonitorLogin.php" : "php/getEmonitorLogin.php";
-    this.connectToEmonitor = function() {
-        $.ajax({
-            url: loginAddr,
-            success: function(responseText) {
-                try {
-                    var creds = JSON.parse(responseText);
-                    // get security key
-                    $.ajax({
-                        url:"https://api.emonitor.us/customer/authenticate?login="+creds.login+"&password="+
-                            creds.password+"&json=1",
-                        crossDomain: true,
-                        // dataType: 'jsonp',    // TO BE REMOVED
-                        success: function(responseObj) {
-                            eMonitor['key'] = responseObj.securitykey;
-                            getHistoricalData();
-                        },
-                        error: function(e) {
-                            alert(errorMsg+"SECURITY KEY");
-                        }
-                    });
-                } catch (e) {
-                    alert("There was an error locating credentials to the eMonitor service.");
-                } finally {
-
+    function get(url) {
+        // Return a new promise.
+        return new Promise(function(resolve, reject) {
+            $.ajax({
+                url: url,
+                success: function(response) {
+                    resolve(response);
+                },
+                error: function(err) {
+                    reject(Error(err));
                 }
-            }.bind(this),
-            error: function() {
-                alert("There was an error locating credentials to the eMonitor service.");
-            }
-        });
+            });
+        })
     }
 
-    // get historical energy data
-    function getHistoricalData() {
-        $.ajax({
-            url:"https://api.emonitor.us/location/getHistoricalData?security_key="+eMonitor.key+
-                "&period=days&startTime=2013-10-01T00:00&json=1",
-            crossDomain: true,
-            // dataType: 'jsonp',    // TO BE REMOVED
-            success: function(responseObj) {
-                eMonitor.energyData = responseObj[eMonitor.locationId].data;
-                tryToBuildChart();
-            },
-            error: function(e) {
-                alert(errorMsg+"ELECTRICITY");
-                eMonitor.energyData = [];
-            }
-        });
-    }
-
-    this.connectToEmonitor();
-
-    // get historical temperature data
-    // $.ajax({
-    //   url:"https://api.emonitor.us/location/getThermostatData?security_key=" + eMonitor.key +
-    //       "&period=days&startTime=2013-10-01T00:00&json=1",
-    //   crossDomain: true,
-    //   dataType: 'jsonp',    // TO BE REMOVED
-    //   success: function(responseText) {
-    //     eMonitor.energyData = JSON.parse(responseText)[eMonitor.locationId].data;
-    //     tryToBuildChart();
-    //   },
-    //   error: function(e) {
-    //     alert(errorMsg);
-    //   }
-    // });
-
-    // ---------------------------------------------------------------------------
-    // Fetch the gas data from local db ------------------------------------------
-    // ---------------------------------------------------------------------------
+    var loginAddr = (buildConfig.debug) ? "http://localhost/php/getEmonitorLogin.php" : "php/getEmonitorLogin.php";
     var gasAddr = (buildConfig.debug) ? "http://localhost/php/getGasData.php" : "php/getGasData.php";
-     $.ajax({
-        url: gasAddr,
-        success: function(responseText) {
-            // console.debug(responseText);
-            try {
-                eMonitor.gasData = JSON.parse(responseText);
-            } catch (e) {
-                alert(errorMsg+"GAS");
-                eMonitor.gasData = [];
-            } finally {
-                // check if we are ready to build the amchart
-                tryToBuildChart();
-            }
-        }.bind(this),
-        error: function() {
-            alert(errorMsg+"GAS");
-            eMonitor.gasData = [];
-        }
+    get(loginAddr).then(JSON.parse).then(function(creds) {
+        return get("https://api.emonitor.us/customer/authenticate?login="+creds.login+"&password="+
+            creds.password+"&json=1");
+    }).catch(function(err) {
+        alert("There was an error locating credentials to the eMonitor service.");
+        console.debug(err);
+    }).then(function(response) {
+        eMonitor['key'] = response.securitykey;
+        return get("https://api.emonitor.us/location/getHistoricalData?security_key="+eMonitor.key+
+            "&period=days&startTime=2013-10-01T00:00&json=1");
+    }).then(function(response) {
+        eMonitor.energyData = response[eMonitor.locationId].data;
+        return get(gasAddr);
+    }, function(e) {
+        alert(errorMsg+"ELECTRICITY");
+        eMonitor.energyData = [];
+    }).then(JSON.parse).then(function(response) {
+        eMonitor.gasData = response;
+        tryToBuildChart();
+    }).catch(function (e) {
+        alert(errorMsg+"GAS");
+        console.debug(e);
+        eMonitor.gasData = [];
+        tryToBuildChart();
     });
+
+    // this.connectToEmonitor = function() {
+    //     $.ajax({
+    //         url: loginAddr,
+    //         success: function(responseText) {
+    //             try {
+    //                 var creds = JSON.parse(responseText);
+    //                 // get security key
+    //                 $.ajax({
+    //                     url:"https://api.emonitor.us/customer/authenticate?login="+creds.login+"&password="+
+    //                         creds.password+"&json=1",
+    //                     // crossDomain: true,
+    //                     // dataType: 'jsonp',    // TO BE REMOVED
+    //                     success: function(responseObj) {
+    //                         eMonitor['key'] = responseObj.securitykey;
+    //                         getHistoricalData();
+    //                     },
+    //                     error: function(e) {
+    //                         alert(errorMsg+"SECURITY KEY");
+    //                     }
+    //                 });
+    //             } catch (e) {
+    //                 alert("There was an error locating credentials to the eMonitor service.");
+    //             } finally {
+
+    //             }
+    //         }.bind(this),
+    //         error: function() {
+    //             alert("There was an error locating credentials to the eMonitor service.");
+    //         }
+    //     });
+    // }
+
+    // // get historical energy data
+    // function getHistoricalData() {
+    //     $.ajax({
+    //         url:"https://api.emonitor.us/location/getHistoricalData?security_key="+eMonitor.key+
+    //             "&period=days&startTime=2013-10-01T00:00&json=1",
+    //         crossDomain: true,
+    //         // dataType: 'jsonp',    // TO BE REMOVED
+    //         success: function(responseObj) {
+    //             eMonitor.energyData = responseObj[eMonitor.locationId].data;
+    //             tryToBuildChart();
+    //         },
+    //         error: function(e) {
+    //             alert(errorMsg+"ELECTRICITY");
+    //             eMonitor.energyData = [];
+    //         }
+    //     });
+    // }
+
+    // this.connectToEmonitor();
+
+    // // get historical temperature data
+    // // $.ajax({
+    // //   url:"https://api.emonitor.us/location/getThermostatData?security_key=" + eMonitor.key +
+    // //       "&period=days&startTime=2013-10-01T00:00&json=1",
+    // //   crossDomain: true,
+    // //   dataType: 'jsonp',    // TO BE REMOVED
+    // //   success: function(responseText) {
+    // //     eMonitor.energyData = JSON.parse(responseText)[eMonitor.locationId].data;
+    // //     tryToBuildChart();
+    // //   },
+    // //   error: function(e) {
+    // //     alert(errorMsg);
+    // //   }
+    // // });
+
+    // // ---------------------------------------------------------------------------
+    // // Fetch the gas data from local db ------------------------------------------
+    // // ---------------------------------------------------------------------------
+    // var gasAddr = (buildConfig.debug) ? "http://localhost/php/getGasData.php" : "php/getGasData.php";
+    // $.ajax({
+    //     url: gasAddr,
+    //     success: function(responseText) {
+    //         // console.debug(responseText);
+    //         try {
+    //             eMonitor.gasData = JSON.parse(responseText);
+    //         } catch (e) {
+    //             alert(errorMsg+"GAS");
+    //             eMonitor.gasData = [];
+    //         } finally {
+    //             // check if we are ready to build the amchart
+    //             tryToBuildChart();
+    //         }
+    //     }.bind(this),
+    //     error: function() {
+    //         alert(errorMsg+"GAS");
+    //         eMonitor.gasData = [];
+    //     }
+    // });
 
     function tryToBuildChart() {
         if (typeof eMonitor.gasData != "undefined" && typeof eMonitor.energyData != "undefined") {
