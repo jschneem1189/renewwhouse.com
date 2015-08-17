@@ -9,31 +9,30 @@ requirejs.config({
                 'amcharts.amstock'  : '../lib/amcharts_stocks/amstock',
                 'waypoints'         : '../lib/waypoints.min',
                 'buildConfig'       : 'buildConfig',
-                'eMonitor'          : 'emonitorMappings' 
+                'eMonitor'          : 'emonitorMappings'
         },
 
         // Define dependencies
         shim: {
-                'amcharts.serial'   : {
-                        deps: ['amcharts'],
-                        exports: 'AmCharts',
-                        init: function() {
-                                AmCharts.isReady = true;
-                        }
-                },
-                'amcharts.amstock'       : {
-                        deps: ['amcharts.serial'],
-                        exports: 'AmStockChart',
-                        init: function() {
-                                AmCharts.isReady = true;
-                        }
+            'amcharts.serial'   : {
+                deps: ['amcharts'],
+                exports: 'AmCharts',
+                init: function() {
+                    AmCharts.isReady = true;
                 }
+            },
+            'amcharts.amstock'  : {
+                deps: ['amcharts.serial'],
+                exports: 'AmStockChart',
+                init: function() {
+                    AmCharts.isReady = true;
+                }
+            }
         } 
 });
 
-require(["jquery", "mainNav", "amcharts.amstock", "waypoints", "buildConfig", "eMonitor"], 
-    function($, mainNav, amcharts, waypoints, buildConfig, eMonitor) {
-    
+require(["../lib/jquery-2.1.4", "mainNav", "amcharts.amstock", "waypoints", "buildConfig", "eMonitor"], 
+function(jquery, mainNav, amcharts, waypoints, buildConfig, eMonitor) {
     // ---------------------------------------------------------------------------
     // Build AMCHART given a data set --------------------------------------------
     // ---------------------------------------------------------------------------
