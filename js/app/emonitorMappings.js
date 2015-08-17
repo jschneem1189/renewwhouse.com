@@ -1,0 +1,41 @@
+define([], function() {
+    return {
+        locationId:'2744',
+        channelIds: {
+            mains: 194882,
+            flashWaterHeater: 194884,
+            geothermal: 194885,
+            kitchenOutletRight: 194886,
+            kitchenOutletLeft: 194887,
+            bathroomOutlets: 194888,
+            firstFloorLights: 194889,
+            kitchenLights: 194890,
+            dishwasher: 194891,
+            washingMachine: 194892,
+            erv: 194893,
+            forcedAirFan: 194894,
+            waterHeater: 194895,
+            eastBasementLights: 194896,
+            westBasementLights: 194897,
+            utilitySinkOutlets: 194898,
+            bufferTank: 194899,
+            dryer: 194900,
+            bedroomSpaceConditioners: 194902,
+            refrigerator: 194903,
+            secondFloorLights: 194904,
+            eastBasementOutlets: 194905,
+            southNorthBedroomOutlets: 194906,
+            livingRoomOutletsClosetLights: 194907,
+            hallwayDiningKitchenOutlets: 194908,
+            westBasementOutlets: 194909,
+            oven: 194910,
+            lightNewUtilityCloset: 194912,
+            officeOutlet: 194913,
+            smokeDetector: 194914,
+            oven7: 194915,
+            solar1: 194916,
+            solar2: 194917,
+            oven2: 194918
+        }
+    };
+});
