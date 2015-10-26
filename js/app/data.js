@@ -123,6 +123,7 @@ function(jquery, mainNav, amcharts, waypoints, buildConfig, eMonitor) {
 
         // add legend
         var legend = new AmCharts.StockLegend();
+        legend.periodValueText = "[[value.sum]]";
         stockPanel.stockLegend = legend;
 
         // add tooltips
