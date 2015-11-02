@@ -34,8 +34,6 @@ requirejs.config({
 
 require(["../lib/jquery-2.1.4", "mainNav", "waypoints", "buildConfig", "eMonitor", "buildCharts"], 
 function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
-    buildCharts.waterChart();
-
     // ---------------------------------------------------------------------------
     // Setup Page behaviors ------------------------------------------------------
     // ---------------------------------------------------------------------------
@@ -186,6 +184,7 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
     // conditionally define the server addresses based on if we are debugging or not
     var loginAddr = (buildConfig.debug) ? "http://localhost/php/getEmonitorLogin.php" : "php/getEmonitorLogin.php";
     var gasAddr = (buildConfig.debug) ? "http://localhost/php/getGasData.php" : "php/getGasData.php";
+    var waterAddr = (buildConfig.debug) ? "http://localhost/php/getWaterData.php" : "php/getWaterData.php";
     // use Promise.all to download data in parallel
     Promise.all([
         get(loginAddr).then(JSON.parse).then(function(creds) {
@@ -210,6 +209,12 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
         }).catch(function (e) {
             alert(errorMsg+"GAS");
             eMonitor.gasData = [];
+        }),
+
+        get(waterAddr).then(JSON.parse).then(function(response) {
+            buildCharts.waterChart(response);
+        }).catch(function(e) {
+            alert(errorMsg+"WATER");
         })
     ]).then(function(response) {
         processChartData(eMonitor);

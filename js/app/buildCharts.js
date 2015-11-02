@@ -113,67 +113,32 @@ function(jquery, amcharts) {
             chart.write("energyChart");
             this.energychart = chart;
         },
-        waterChart: function() {
-            var chartData = [];
-            generateChartData();
-
-
-            function generateChartData() {
-              var firstDate = new Date();
-              firstDate.setHours( 0, 0, 0, 0 );
-              firstDate.setDate( firstDate.getDate() - 2000 );
-
-              for ( var i = 0; i < 2000; i++ ) {
-                var newDate = new Date( firstDate );
-                newDate.setDate( newDate.getDate() + i );
-                chartData[ i ] = ( {
-                  date: newDate,
-                  value1: Math.round( Math.random() * ( 30 ) + 100 ),
-                  value2: Math.round( Math.random() * ( 30 ) + 100 ),
-                  value3: Math.round( Math.random() * ( 30 ) + 100 ),
-                  volume1: Math.round( Math.random() * ( 1000 + i ) ) + 100 + i,
-                  volume2: Math.round( Math.random() * ( 1000 + i ) ) + 100 + i,
-                  volume3: Math.round( Math.random() * ( 1000 + i ) ) + 100 + i
-                } );
-              }
-            }
-
+        waterChart: function(data) {
             var chart = AmCharts.makeChart( "waterChart", {
-              type: "stock",
-              "theme": "light",
-              "path": "http://www.amcharts.com/lib/3/",
+                type: "stock",
+                // "theme": "light",
+                "pathToImages": "js/lib/amcharts_stocks/images/",
 
-              dataSets: [ {
-                fieldMappings: [ {
-                  fromField: "value1",
-                  toField: "value1"
-                }, {
-                  fromField: "value2",
-                  toField: "value2"
-                }, {
-                  fromField: "value3",
-                  toField: "value3"
-                }, {
-                  fromField: "volume1",
-                  toField: "volume1"
-                }, {
-                  fromField: "volume2",
-                  toField: "volume2"
-                }, {
-                  fromField: "volume3",
-                  toField: "volume3"
-                } ],
+                dataSets: [ {
+                    fieldMappings: [ {
+                        fromField: "PGW_Supply_vol",
+                        toField: "graywater"
+                    }, {
+                        fromField: "Rainwater_Main_vol",
+                        toField: "rainwater"
+                    }, {
+                        fromField: "City_Main_vol",
+                        toField: "citywater"
+                    }],
 
-                color: "#7f8da9",
-                dataProvider: chartData,
-                title: "West Stock",
-                categoryField: "date"
-              } ],
-
+                    color: "#7f8da9",
+                    dataProvider: data,
+                    title: "West Stock",
+                    categoryField: "TS"
+                }],
 
               panels: [ {
-                  title: "Value",
-                  showCategoryAxis: false,
+                  title: "Water Usage",
                   percentHeight: 70,
                   valueAxes: [ {
                     id: "v1",
@@ -188,7 +153,7 @@ function(jquery, amcharts) {
                   stockGraphs: [ {
                     type: "line",
                     id: "g1",
-                    valueField: "value1",
+                    valueField: "graywater",
                     lineThickness: 2,
                     fillAlphas: 0.5,
                     useDataSetColors: false,
@@ -197,7 +162,7 @@ function(jquery, amcharts) {
                   }, {
                     type: "line",
                     id: "g2",
-                    valueField: "value2",
+                    valueField: "rainwater",
                     lineThickness: 2,
                     fillAlphas: 0.3,
                     useDataSetColors: false,
@@ -206,7 +171,7 @@ function(jquery, amcharts) {
                   }, {
                     type: "line",
                     id: "g3",
-                    valueField: "value3",
+                    valueField: "citywater",
                     fillAlphas: 0.3,
                     lineThickness: 2,
                     useDataSetColors: false,
@@ -220,17 +185,13 @@ function(jquery, amcharts) {
                     periodValueText: "[[value.sum]]",
                   }
                 },
-
-                
               ],
 
               chartScrollbarSettings: {
-
                 graph: "g1",
                 graphType: "line",
                 usePeriod: "WW"
               },
-
 
               chartCursorSettings: {
                 valueLineBalloonEnabled: true,
@@ -269,37 +230,38 @@ function(jquery, amcharts) {
             return AmCharts.makeChart("tempChart", {
                 "type": "serial",
                 "theme": "none",
-                "dataProvider": [{
+                "dataProvider": [
+                    {
                         "timeframe": "Before Retrofit",
                         "energy": 77.18
-                }, {
-                        "timeframe": "After Retrofit",
-                        "energy": 12.59
-                }],
-                "valueAxes": [{
-                        "gridColor":"#FFFFFF",
-                "gridAlpha": 0.2,
-                "dashLength": 0
-                }],
-                "gridAboveGraphs": true,
-                "startDuration": 1,
-                "graphs": [{
-                        "balloonText": "[[category]]: <b>[[value]]</b>",
-                        "fillAlphas": 0.8,
-                        "lineAlpha": 0.2,
-                        "type": "column",
-                        "valueField": "energy"
-                }],
-                "fontFamily": "Oswald Light",
-                "fontSize":16,
-                "titles": [
-                {
-                    "size": 20,
-                    // "color": "white",
-                    "bold": true,
-                    "text": "HVAC Energy Consumption (kWh)"
-                }
-            ],
+                    }, {
+                            "timeframe": "After Retrofit",
+                            "energy": 12.59
+                    }],
+                    "valueAxes": [{
+                            "gridColor":"#FFFFFF",
+                    "gridAlpha": 0.2,
+                    "dashLength": 0
+                    }],
+                    "gridAboveGraphs": true,
+                    "startDuration": 1,
+                    "graphs": [{
+                            "balloonText": "[[category]]: <b>[[value]]</b>",
+                            "fillAlphas": 0.8,
+                            "lineAlpha": 0.2,
+                            "type": "column",
+                            "valueField": "energy"
+                    }],
+                    "fontFamily": "Oswald Light",
+                    "fontSize":16,
+                    "titles": [
+                    {
+                        "size": 20,
+                        // "color": "white",
+                        "bold": true,
+                        "text": "HVAC Energy Consumption (kWh)"
+                    }
+                ],
                 "chartCursor": {
                         "categoryBalloonEnabled": false,
                         "cursorAlpha": 0,
