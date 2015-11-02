@@ -32,10 +32,10 @@ requirejs.config({
         } 
 });
 
-require(["../lib/jquery-2.1.4", "mainNav", "amcharts.amstock", "waypoints", "buildConfig", "eMonitor", "buildCharts"], 
-function(jquery, mainNav, amcharts, waypoints, buildConfig, eMonitor, buildCharts) {
+require(["../lib/jquery-2.1.4", "mainNav", "waypoints", "buildConfig", "eMonitor", "buildCharts"], 
+function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
     buildCharts.waterChart();
-    
+
     // ---------------------------------------------------------------------------
     // Setup Page behaviors ------------------------------------------------------
     // ---------------------------------------------------------------------------
@@ -140,61 +140,7 @@ function(jquery, mainNav, amcharts, waypoints, buildConfig, eMonitor, buildChart
 
 
     // temp chart
-    this.tempchart = AmCharts.makeChart("tempChart", {
-        "type": "serial",
-        "theme": "none",
-        "dataProvider": [{
-                "timeframe": "Before Retrofit",
-                "energy": 77.18
-        }, {
-                "timeframe": "After Retrofit",
-                "energy": 12.59
-        }],
-        "valueAxes": [{
-                "gridColor":"#FFFFFF",
-        "gridAlpha": 0.2,
-        "dashLength": 0
-        }],
-        "gridAboveGraphs": true,
-        "startDuration": 1,
-        "graphs": [{
-                "balloonText": "[[category]]: <b>[[value]]</b>",
-                "fillAlphas": 0.8,
-                "lineAlpha": 0.2,
-                "type": "column",
-                "valueField": "energy"
-        }],
-        "fontFamily": "Oswald Light",
-        "fontSize":16,
-        "titles": [
-        {
-            "size": 20,
-            // "color": "white",
-            "bold": true,
-            "text": "HVAC Energy Consumption (kWh)"
-        }
-    ],
-        "chartCursor": {
-                "categoryBalloonEnabled": false,
-                "cursorAlpha": 0,
-                "zoomable": false
-        },
-        "categoryField": "timeframe",
-        "categoryAxis": {
-                "gridPosition": "start",
-                "gridAlpha": 0,
-                 "tickPosition":"start",
-                 "tickLength":20
-        },
-        "exportConfig":{
-            "menuTop": 0,
-            "menuItems": [{
-                "icon": '/lib/3/images/export.png',
-                "format": 'png'   
-                }]  
-        },
-        "panEventsEnabled":false
-    });
+    this.tempchart = buildCharts.tempChart();
 
     // Add Waypoints
     $('#middle').waypoint(function(direction) {
@@ -307,61 +253,3 @@ function(jquery, mainNav, amcharts, waypoints, buildConfig, eMonitor, buildChart
         }
     }
 });
-    
-
-// require([], function() {
-//   var pieData = [
-//     {
-//         value: 300,
-//         color:"#F7464A",
-//         highlight: "#FF5A5E",
-//         label: "Kitchen"
-//     },
-//     {
-//         value: 50,
-//         color: "#46BFBD",
-//         highlight: "#5AD3D1",
-//         label: "Laundry"
-//     },
-//     {
-//         value: 100,
-//         color: "#FDB45C",
-//         highlight: "#FFC870",
-//         label: "Bedroom"
-//     }
-//   ]
-//   var pieOptions = {
-//       //Boolean - Whether we should show a stroke on each segment
-//       segmentShowStroke : true,
-
-//       //String - The colour of each segment stroke
-//       segmentStrokeColor : "#fff",
-
-//       //Number - The width of each segment stroke
-//       segmentStrokeWidth : 2,
-
-//       //Number - The percentage of the chart that we cut out of the middle
-//       percentageInnerCutout : 0, // This is 0 for Pie charts
-
-//       //Number - Amount of animation steps
-//       animationSteps : 100,
-
-//       //String - Animation easing effect
-//       animationEasing : "easeOutBounce",
-
-//       //Boolean - Whether we animate the rotation of the Doughnut
-//       animateRotate : true,
-
-//       //Boolean - Whether we animate scaling the Doughnut from the centre
-//       animateScale : false,
-
-//       //String - A legend template
-//       legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-
-//   }
-//   var pie1 = document.getElementById("energyUsedPieChart").getContext("2d");
-//   var myPieChart1 = new Chart(pie1).Pie(pieData,pieOptions);
-
-//   var pie2 = document.getElementById("energyGainedPieChart").getContext("2d");
-//   var myPieChart2 = new Chart(pie2).Pie(pieData,pieOptions);
-// });

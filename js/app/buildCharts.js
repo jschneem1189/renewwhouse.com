@@ -1,37 +1,3 @@
-// SETUP CONFIG
-requirejs.config({
-
-        // Define paths; relative from js folder
-        paths: {
-                'jquery'            : '../lib/jquery-2.1.4',
-                'amcharts'          : '../lib/amcharts_stocks/amcharts',
-                'amcharts.serial'   : '../lib/amcharts_stocks/serial',
-                'amcharts.amstock'  : '../lib/amcharts_stocks/amstock',
-                'waypoints'         : '../lib/waypoints.min',
-                'buildConfig'       : 'buildConfig',
-                'eMonitor'          : 'emonitorMappings',
-                'buildCharts'       : 'buildCharts',
-        },
-
-        // Define dependencies
-        shim: {
-            'amcharts.serial'   : {
-                deps: ['amcharts'],
-                exports: 'AmCharts',
-                init: function() {
-                    AmCharts.isReady = true;
-                }
-            },
-            'amcharts.amstock'  : {
-                deps: ['amcharts.serial'],
-                exports: 'AmStockChart',
-                init: function() {
-                    AmCharts.isReady = true;
-                }
-            }
-        } 
-});
-
 define(["../lib/jquery-2.1.4", "amcharts.amstock"], 
 function(jquery, amcharts) {
     return {
@@ -298,6 +264,63 @@ function(jquery, amcharts) {
                 "enabled": true
               }
             } );
+        },
+        tempChart: function() {
+            return AmCharts.makeChart("tempChart", {
+                "type": "serial",
+                "theme": "none",
+                "dataProvider": [{
+                        "timeframe": "Before Retrofit",
+                        "energy": 77.18
+                }, {
+                        "timeframe": "After Retrofit",
+                        "energy": 12.59
+                }],
+                "valueAxes": [{
+                        "gridColor":"#FFFFFF",
+                "gridAlpha": 0.2,
+                "dashLength": 0
+                }],
+                "gridAboveGraphs": true,
+                "startDuration": 1,
+                "graphs": [{
+                        "balloonText": "[[category]]: <b>[[value]]</b>",
+                        "fillAlphas": 0.8,
+                        "lineAlpha": 0.2,
+                        "type": "column",
+                        "valueField": "energy"
+                }],
+                "fontFamily": "Oswald Light",
+                "fontSize":16,
+                "titles": [
+                {
+                    "size": 20,
+                    // "color": "white",
+                    "bold": true,
+                    "text": "HVAC Energy Consumption (kWh)"
+                }
+            ],
+                "chartCursor": {
+                        "categoryBalloonEnabled": false,
+                        "cursorAlpha": 0,
+                        "zoomable": false
+                },
+                "categoryField": "timeframe",
+                "categoryAxis": {
+                        "gridPosition": "start",
+                        "gridAlpha": 0,
+                         "tickPosition":"start",
+                         "tickLength":20
+                },
+                "exportConfig":{
+                    "menuTop": 0,
+                    "menuItems": [{
+                        "icon": '/lib/3/images/export.png',
+                        "format": 'png'   
+                        }]  
+                },
+                "panEventsEnabled":false
+            });
         }
     }
 });
