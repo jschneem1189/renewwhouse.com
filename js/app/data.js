@@ -185,6 +185,7 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
     var loginAddr = (buildConfig.debug) ? "http://localhost/php/getEmonitorLogin.php" : "php/getEmonitorLogin.php";
     var gasAddr = (buildConfig.debug) ? "http://localhost/php/getGasData.php" : "php/getGasData.php";
     var waterAddr = (buildConfig.debug) ? "http://localhost/php/getWaterData.php" : "php/getWaterData.php";
+    var that = this;
     // use Promise.all to download data in parallel
     Promise.all([
         get(loginAddr).then(JSON.parse).then(function(creds) {
@@ -218,7 +219,7 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
         })
     ]).then(function(response) {
         processChartData(eMonitor);
-        buildCharts.energyChart(eMonitor.chartData);
+        that.energyChart = buildCharts.energyChart(eMonitor.chartData);
         clearInterval(this.timer);
         $('#activityIndicator').css("-webkit-animation-play-state", "paused");
         $('#activityContainer').hide();

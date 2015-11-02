@@ -111,7 +111,7 @@ function(jquery, amcharts) {
 
             // draw chart
             chart.write("energyChart");
-            this.energychart = chart;
+            return chart;
         },
         waterChart: function(data) {
             var chart = AmCharts.makeChart( "waterChart", {
@@ -159,6 +159,7 @@ function(jquery, amcharts) {
                     useDataSetColors: false,
                     title: "Greywater",
                     lineColor: "#c0c0c0",
+                    precision: 2,
                   }, {
                     type: "line",
                     id: "g2",
@@ -168,6 +169,7 @@ function(jquery, amcharts) {
                     useDataSetColors: false,
                     title: "Rainwater",
                     lineColor: "#73be44",
+                    precision: 2,
                   }, {
                     type: "line",
                     id: "g3",
@@ -177,6 +179,7 @@ function(jquery, amcharts) {
                     useDataSetColors: false,
                     title: "City water",
                     lineColor: "#4ba1bf",
+                    precision: 2,
                   } ],
 
                   stockLegend: {
@@ -195,7 +198,7 @@ function(jquery, amcharts) {
 
               chartCursorSettings: {
                 valueLineBalloonEnabled: true,
-                valueLineEnabled: true
+                valueBalloonsEnabled: true,
               },
 
               periodSelector: {
@@ -263,16 +266,16 @@ function(jquery, amcharts) {
                     }
                 ],
                 "chartCursor": {
-                        "categoryBalloonEnabled": false,
-                        "cursorAlpha": 0,
-                        "zoomable": false
+                    "categoryBalloonEnabled": false,
+                    "cursorAlpha": 0,
+                    "zoomable": false
                 },
                 "categoryField": "timeframe",
                 "categoryAxis": {
-                        "gridPosition": "start",
-                        "gridAlpha": 0,
-                         "tickPosition":"start",
-                         "tickLength":20
+                    "gridPosition": "start",
+                    "gridAlpha": 0,
+                     "tickPosition":"start",
+                     "tickLength":20
                 },
                 "exportConfig":{
                     "menuTop": 0,
