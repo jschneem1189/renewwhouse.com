@@ -9,7 +9,8 @@ requirejs.config({
                 'amcharts.amstock'  : '../lib/amcharts_stocks/amstock',
                 'waypoints'         : '../lib/waypoints.min',
                 'buildConfig'       : 'buildConfig',
-                'eMonitor'          : 'emonitorMappings'
+                'eMonitor'          : 'emonitorMappings',
+                'buildCharts'       : 'buildCharts',
         },
 
         // Define dependencies
@@ -31,124 +32,10 @@ requirejs.config({
         } 
 });
 
-require(["../lib/jquery-2.1.4", "mainNav", "amcharts.amstock", "waypoints", "buildConfig", "eMonitor"], 
-function(jquery, mainNav, amcharts, waypoints, buildConfig, eMonitor) {
-    // ---------------------------------------------------------------------------
-    // Build AMCHART given a data set --------------------------------------------
-    // ---------------------------------------------------------------------------
-    function buildChart(data){
-        if (typeof data == "undefined") return;
-
-        // create chart
-        var chart = new AmCharts.AmStockChart();
-        chart.pathToImages = "js/lib/amcharts_stocks/images/";
-
-        // create data set
-        var dataSet = new AmCharts.DataSet();
-        dataSet.dataProvider = data;
-        dataSet.fieldMappings = [{fromField:"kwh", toField:"value"},{fromField:"solar", 
-                toField:"value2"},{fromField:"gas", toField:"gas_value"}];
-        dataSet.categoryField = "date";
-        dataSet.title = "Energy Consumed";
-
-        chart.dataSets = [dataSet];
-        var stockPanel = new AmCharts.StockPanel();
-        chart.panels = [stockPanel];
-
-        // change settings
-        var panelsSettings = new AmCharts.PanelsSettings();
-        panelsSettings.startDuration = 1;
-        panelsSettings.panEventsEnabled = false;
-        chart.panelsSettings = panelsSettings;
-
-        // create graph
-        var energy_graph = new AmCharts.StockGraph();
-        energy_graph.valueField = "value";
-        energy_graph.type = "column";
-        energy_graph.newStack = true;
-        energy_graph.fillAlphas = 0.8;
-        energy_graph.title = "Total Energy Usage (kWh)";
-        energy_graph.periodValue = "Sum";
-        energy_graph.precision = 2;
-        stockPanel.addStockGraph(energy_graph);
-
-        var gas_graph = new AmCharts.StockGraph();
-        gas_graph.valueField = "gas_value";
-        gas_graph.type = "column";
-        gas_graph.newStack = true;
-        gas_graph.lineColor = "#ffcc00";
-        gas_graph.useDataSetColors = false;
-        gas_graph.fillAlphas = 1;
-        gas_graph.title = "Gas Usage (kWh)";
-        gas_graph.periodValue = "Sum";
-        gas_graph.precision = 2;
-        stockPanel.addStockGraph(gas_graph);
-
-        var solar_graph = new AmCharts.StockGraph();
-        solar_graph.valueField = "value2";
-        solar_graph.type = "line";
-        // solar_graph.newStack = true;
-        solar_graph.fillAlphas = 0.5;
-        solar_graph.title = "Energy Harvested (kWh)";
-        solar_graph.lineThickness = 3;
-        solar_graph.lineColor = "#fff";
-        solar_graph.useDataSetColors = false;
-        solar_graph.periodValue = "Sum";
-        solar_graph.precision = 2;
-        stockPanel.addStockGraph(solar_graph);
-
-        // category axis settings
-        var categoryAxesSettings = new AmCharts.CategoryAxesSettings();
-        categoryAxesSettings.minPeriod = "DD";
-        // categoryAxesSettings.equalSpacing = true;
-        if ($(window).width() > 950) {
-            categoryAxesSettings.maxSeries = 100;
-        } else {
-            categoryAxesSettings.maxSeries = 50;
-        }
-        categoryAxesSettings.dashLength = 5;
-        categoryAxesSettings.groupToPeriods = ["DD", "WW", "MM", "YYYY"];
-        chart.categoryAxesSettings = categoryAxesSettings;
-
-        var valueAxesSettings = new AmCharts.ValueAxesSettings();
-        valueAxesSettings.dashLength = 5;
-        chart.valueAxesSettings  = valueAxesSettings;
-
-        // add graph to the scrollbar
-        var chartScrollbarSettings = new AmCharts.ChartScrollbarSettings();
-        chartScrollbarSettings.graph = energy_graph;
-        chartScrollbarSettings.graphType = "line";
-        chartScrollbarSettings.dragIconWidth = 40;
-        chart.chartScrollbarSettings = chartScrollbarSettings;
-
-        // add legend
-        var legend = new AmCharts.StockLegend();
-        legend.periodValueText = "[[value.sum]]";
-        stockPanel.stockLegend = legend;
-
-        // add tooltips
-        var chartCursorSettings = new AmCharts.ChartCursorSettings();
-        chartCursorSettings.valueBalloonsEnabled = true;
-        chart.chartCursorSettings = chartCursorSettings;
-
-        // add period selector
-        var periodSelector = new AmCharts.PeriodSelector();
-        // periodSelector.position = "bottom";
-        periodSelector.periods = [
-             {period:"WW", count:1, label:"1 week"},
-             {period:"MM", selected:true, count:1, label:"1 month"},
-             {period:"YYYY", count:1, label:"1 year"},
-             {period:"YTD", label:"YTD"},
-             {period:"MAX", label:"MAX"}
-        ];
-        periodSelector.dateFormat = "MM-DD-YYYY";
-        chart.periodSelector = periodSelector;
-
-        // draw chart
-        chart.write("stockChart");
-        this.energychart = chart;
-    };
-
+require(["../lib/jquery-2.1.4", "mainNav", "amcharts.amstock", "waypoints", "buildConfig", "eMonitor", "buildCharts"], 
+function(jquery, mainNav, amcharts, waypoints, buildConfig, eMonitor, buildCharts) {
+    buildCharts.waterChart();
+    
     // ---------------------------------------------------------------------------
     // Setup Page behaviors ------------------------------------------------------
     // ---------------------------------------------------------------------------
@@ -380,7 +267,7 @@ function(jquery, mainNav, amcharts, waypoints, buildConfig, eMonitor) {
         })
     ]).then(function(response) {
         processChartData(eMonitor);
-        buildChart(eMonitor.chartData);
+        buildCharts.energyChart(eMonitor.chartData);
         clearInterval(this.timer);
         $('#activityIndicator').css("-webkit-animation-play-state", "paused");
         $('#activityContainer').hide();
