@@ -138,7 +138,7 @@ function(jquery, amcharts) {
                 }],
 
               panels: [ {
-                  title: "Water Usage",
+                  title: "Water Usage (gal)",
                   percentHeight: 70,
                   valueAxes: [ {
                     id: "v1",

@@ -187,43 +187,43 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
     var waterAddr = (buildConfig.debug) ? "http://localhost/php/getWaterData.php" : "php/getWaterData.php";
     var that = this;
     // use Promise.all to download data in parallel
-    Promise.all([
-        get(loginAddr).then(JSON.parse).then(function(creds) {
-            return get("https://api.emonitor.us/customer/authenticate?login="+creds.login+"&password="+
-                creds.password+"&json=1");
-        }).catch(function(err) {
-            alert("There was an error locating credentials to the eMonitor service.");
-            console.debug(err);
-        }).then(function(response) {
-            eMonitor['key'] = response.securitykey;
-            return get("https://api.emonitor.us/location/getHistoricalData?security_key="+eMonitor.key+
-                "&period=days&startTime=2013-10-01T00:00&json=1");
-        }).then(function(response) {
-            eMonitor.energyData = response[eMonitor.locationId].data;
-        }).catch(function(e) {
-            alert(errorMsg+"ELECTRICITY");
-            eMonitor.energyData = [];
-        }),
+    // Promise.all([
+    //     get(loginAddr).then(JSON.parse).then(function(creds) {
+    //         return get("https://api.emonitor.us/customer/authenticate?login="+creds.login+"&password="+
+    //             creds.password+"&json=1");
+    //     }).catch(function(err) {
+    //         alert("There was an error locating credentials to the eMonitor service.");
+    //         console.debug(err);
+    //     }).then(function(response) {
+    //         eMonitor['key'] = response.securitykey;
+    //         return get("https://api.emonitor.us/location/getHistoricalData?security_key="+eMonitor.key+
+    //             "&period=days&startTime=2013-10-01T00:00&json=1");
+    //     }).then(function(response) {
+    //         eMonitor.energyData = response[eMonitor.locationId].data;
+    //     }).catch(function(e) {
+    //         alert(errorMsg+"ELECTRICITY");
+    //         eMonitor.energyData = [];
+    //     }),
 
-        get(gasAddr).then(JSON.parse).then(function(response) {
-            eMonitor.gasData = response;
-        }).catch(function (e) {
-            alert(errorMsg+"GAS");
-            eMonitor.gasData = [];
-        }),
+    //     get(gasAddr).then(JSON.parse).then(function(response) {
+    //         eMonitor.gasData = response;
+    //     }).catch(function (e) {
+    //         alert(errorMsg+"GAS");
+    //         eMonitor.gasData = [];
+    //     }),
 
-        get(waterAddr).then(JSON.parse).then(function(response) {
-            buildCharts.waterChart(response);
-        }).catch(function(e) {
-            alert(errorMsg+"WATER");
-        })
-    ]).then(function(response) {
-        processChartData(eMonitor);
-        that.energyChart = buildCharts.energyChart(eMonitor.chartData);
-        clearInterval(this.timer);
-        $('#activityIndicator').css("-webkit-animation-play-state", "paused");
-        $('#activityContainer').hide();
-    });
+    //     get(waterAddr).then(JSON.parse).then(function(response) {
+    //         buildCharts.waterChart(response);
+    //     }).catch(function(e) {
+    //         alert(errorMsg+"WATER");
+    //     })
+    // ]).then(function(response) {
+    //     processChartData(eMonitor);
+    //     that.energyChart = buildCharts.energyChart(eMonitor.chartData);
+    //     clearInterval(this.timer);
+    //     $('#activityIndicator').css("-webkit-animation-play-state", "paused");
+    //     $('#activityContainer').hide();
+    // });
 
     function processChartData(emonitorObj) {
         if (typeof emonitorObj.gasData != "undefined" && typeof emonitorObj.energyData != "undefined") {
