@@ -38,10 +38,10 @@ require(["../lib/jquery-2.1.4", "../lib/modernizr.custom.29015", "mainNav"], fun
     }
 
     // offset the content such that just the tab peeks at the bottom
-    var missionOffset = parseInt($('#mission').css("top").split("px")[0],10) + $('#tab').height();
-    $('#content').css("margin-top", parseInt(viewportHeight-missionOffset,10));
+    // var peekOffset = (+$('#mission').css("top").split("px")[0])*-1 + $('#tab').height();
+    $('#content').css("margin-top", viewportHeight);
     // ensure that the bkg image is the proper height
-    $('#homeBanner').css("bottom", missionOffset + "px");
+    // $('#homeBanner').css("bottom", missionOffset + "px");
   };
 
   window.onresize = function(evt) {
@@ -100,10 +100,13 @@ require(["../lib/jquery-2.1.4", "../lib/modernizr.custom.29015", "mainNav"], fun
             // you can use the `now` paramter which contains the current
             // animation-position (`0` up to `angle`)
             $elem.css({
-                transform: 'rotate(' + now + 'deg)'
+                '-webkit-transform': 'rotate(' + now + 'deg)',
+                '-ms-transform': 'rotate(' + now + 'deg)',
+                transform: 'rotate(' + now + 'deg)',
             });
         }
     });
   }
   setInterval(spinArrow,5000);
+  spinArrow();
 });

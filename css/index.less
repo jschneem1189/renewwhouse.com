@@ -79,7 +79,7 @@ body {
 }
 
 #homeBanner {
-  background-image: url(../images/backgrounds/welcome.jpg); 
+  background-image: url(../images/backgrounds/welcome_new.jpg); 
   background-repeat: no-repeat;
   background-position: center;  
   -webkit-background-size: cover;
@@ -101,7 +101,7 @@ body {
     font-family: @font-heading-serif;
     .noWebkitMargin;
     font-weight: normal;
-    display: inline-block;
+    display: block;
     width: 100%;
     font-size: 24px;
     letter-spacing: 10px;
@@ -121,6 +121,9 @@ body {
     font-size:105px; 
     letter-spacing:5px;
   }
+  // h1 {
+  //   white-space: nowrap;
+  // }
 }
 
 .table {
@@ -164,9 +167,18 @@ h3 {
 
 #bannerText {
   position: absolute;
-  -webkit-transform: translateZ(0); 
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -45%);
+      -ms-transform: translate(-50%, -45%);
+          transform: translate(-50%, -45%);
+  // background-color: rgba(50,50,50,0.8);
+  padding: 10px 10px 10px 10px;
+  border-radius: 5px;
+  // white-space: nowrap;
+  // -webkit-transform: translateZ(0); 
   width: 100%;  
-  top: 40%;
+  top: 50%;
   margin-top: 0px; 
   opacity: 1;
 }
@@ -354,18 +366,18 @@ h3 {
 }
 
 #tab {
-  top: -100px; 
+  top: -99px; 
   .relativeCentered;
   clear:both;
 }
 
 #tab-arrow {
-  top: -90px; 
-  margin-left: -7px;
+  top: -80px;
+  left: 50%;
+  margin-left: -15px;
   text-align:center;
   display:block;
   position:absolute;
-  left:50%;
   clear:both;
 }
 
