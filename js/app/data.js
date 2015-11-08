@@ -187,6 +187,46 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
     var waterAddr = (buildConfig.debug) ? "http://localhost/php/getWaterData.php" : "php/getWaterData.php";
     var that = this;
     // use Promise.all to download data in parallel
+    Promise.all([
+        get(loginAddr).then(JSON.parse).then(function(creds) {
+            return get("https://api.emonitor.us/customer/authenticate?login="+creds.login+"&password="+
+                creds.password+"&json=1");
+        }).catch(function(err) {
+            alert("There was an error locating credentials to the eMonitor service.");
+            console.debug(err);
+        }).then(function(response) {
+            eMonitor['key'] = response.securitykey;
+            return get("https://api.emonitor.us/location/getHistoricalData?security_key="+eMonitor.key+
+                "&period=days&startTime=2013-10-01T00:00&json=1");
+        }).then(function(response) {
+            eMonitor.energyData = response[eMonitor.locationId].data;
+        }).catch(function(e) {
+            alert(errorMsg+"ELECTRICITY");
+            eMonitor.energyData = [];
+        }),
+
+        get(gasAddr).then(JSON.parse).then(function(response) {
+            eMonitor.gasData = response;
+        }).catch(function (e) {
+            alert(errorMsg+"GAS");
+            eMonitor.gasData = [];
+        }),
+
+        get(waterAddr).then(JSON.parse).then(function(response) {
+            buildCharts.waterChart(response);
+            updateCisternChart(response[response.length-1].Rainwater_Cistern_water);
+        }).catch(function(e) {
+            alert(errorMsg+"WATER");
+        })
+    ]).then(function(response) {
+        processChartData(eMonitor);
+        that.energyChart = buildCharts.energyChart(eMonitor.chartData);
+        clearInterval(this.timer);
+        $('#activityIndicator').css("-webkit-animation-play-state", "paused");
+        $('#activityContainer').hide();
+    });
+
+    // the code below will query for the list of eMonitor channel IDs
     // Promise.all([
     //     get(loginAddr).then(JSON.parse).then(function(creds) {
     //         return get("https://api.emonitor.us/customer/authenticate?login="+creds.login+"&password="+
@@ -196,34 +236,15 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
     //         console.debug(err);
     //     }).then(function(response) {
     //         eMonitor['key'] = response.securitykey;
-    //         return get("https://api.emonitor.us/location/getHistoricalData?security_key="+eMonitor.key+
+    //         return get("https://api.emonitor.us/location/getCurrentData?security_key="+eMonitor.key+
     //             "&period=days&startTime=2013-10-01T00:00&json=1");
     //     }).then(function(response) {
-    //         eMonitor.energyData = response[eMonitor.locationId].data;
+    //         console.debug(response);
     //     }).catch(function(e) {
     //         alert(errorMsg+"ELECTRICITY");
     //         eMonitor.energyData = [];
-    //     }),
-
-    //     get(gasAddr).then(JSON.parse).then(function(response) {
-    //         eMonitor.gasData = response;
-    //     }).catch(function (e) {
-    //         alert(errorMsg+"GAS");
-    //         eMonitor.gasData = [];
-    //     }),
-
-    //     get(waterAddr).then(JSON.parse).then(function(response) {
-    //         buildCharts.waterChart(response);
-    //     }).catch(function(e) {
-    //         alert(errorMsg+"WATER");
     //     })
-    // ]).then(function(response) {
-    //     processChartData(eMonitor);
-    //     that.energyChart = buildCharts.energyChart(eMonitor.chartData);
-    //     clearInterval(this.timer);
-    //     $('#activityIndicator').css("-webkit-animation-play-state", "paused");
-    //     $('#activityContainer').hide();
-    // });
+    // ]);
 
     function processChartData(emonitorObj) {
         if (typeof emonitorObj.gasData != "undefined" && typeof emonitorObj.energyData != "undefined") {
@@ -236,12 +257,17 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
                 adjustedDate.setDate(adjustedDate.getDate() + 1);
                 var dateString = adjustedDate.toISOString().split('T')[0];
                 if (emonitorObj.energyData.hasOwnProperty(date)) {
+                    
                     obj['date'] = dateString;
-                    obj['kwh'] = +emonitorObj.energyData[date][emonitorObj.channelIds.mains].kWh - 
-                            +emonitorObj.energyData[date][emonitorObj.channelIds.solar1].kWh - 
-                            +emonitorObj.energyData[date][emonitorObj.channelIds.solar2].kWh;
-                    obj['solar'] = Math.max(0, (+emonitorObj.energyData[date][emonitorObj.channelIds.solar1].kWh +
-                            +emonitorObj.energyData[date][emonitorObj.channelIds.solar2].kWh) * -1);
+                    var mainsData = ((emonitorObj.channelIds.mains1 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][emonitorObj.channelIds.mains1].kWh : 0) +
+                        ((emonitorObj.channelIds.mains2 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][emonitorObj.channelIds.mains2].kWh : 0);
+                    var solarData = ((emonitorObj.channelIds.westSolar1 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][emonitorObj.channelIds.westSolar1].kWh : 0) +
+                        ((emonitorObj.channelIds.westSolar2 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][emonitorObj.channelIds.westSolar2].kWh : 0) +
+                        ((emonitorObj.channelIds.southSolar1 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][emonitorObj.channelIds.southSolar1].kWh : 0) +
+                        ((emonitorObj.channelIds.southSolar2 in emonitorObj.energyData[date]) ?+emonitorObj.energyData[date][emonitorObj.channelIds.southSolar2].kWh : 0);
+                    solarData = Math.max(0, solarData*-1);
+                    obj['kwh'] = mainsData + solarData;
+                    obj['solar'] = solarData;
                     push = true;
                 }
                 if (typeof emonitorObj.gasData[dateString] != "undefined") {
@@ -257,5 +283,23 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
                 }
             }
         }
+    }
+
+    function updateCisternChart(percentage) {
+        // bounds check
+        if (isNaN(percentage) || percentage < 0) {
+            percentage = 0;
+        } else if (percentage > 100) {
+            percentage = 100;
+        } else {
+            percentage = Math.round(+percentage);
+        }
+        console.debug(percentage);
+
+        $('#infoValue').html(percentage);
+        var feetHeight = $('#cisternImg').height() / 14.3;
+        var scaleFactor = $('#cisternImg').width() / 3.26797;           // height of the tank
+        var height = (percentage/100)*scaleFactor + feetHeight;
+        $('#waterfill').css('height', height);
     }
 });

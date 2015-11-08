@@ -1,4 +1,61 @@
+@font-heading: 'Oswald', sans-serif;
 @font-subheading: 'Oswald Light', sans-serif;
+@font-body: 'Duru Sans', sans-serif;
+@color-gray: #7f7f7f;
+@color-blue: #0aa3df;
+@color-green: #73be44;
+@color-highlightedgray: #3e3e3e;
+@color-preretrofit: #abd6d2;
+@color-paleblue: #abd6e4;
+@color-darkblue: #4ba1bf;
+@color-infographic: #e8e06a;
+
+@cistern-width: 300px;
+@cistern-height: 172px;
+
+#blueBg {
+    background-color: @color-paleblue;
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    margin-top: 50px;
+
+    #cisternBg {
+        width: (@cistern-width - 2);
+        height: (@cistern-height - 2);
+        margin: 0 auto;
+        background-color: white;
+        position: relative;
+
+        img {
+            width: @cistern-width;
+            height: @cistern-height;
+            z-index: 2;
+            position: relative;
+        }
+        #waterfill {
+            width: (@cistern-width - 2);
+            position: absolute;
+            bottom: 2px;
+            height: 0px;
+            background-color: @color-darkblue;
+        }
+    }
+    #infographic {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        position: absolute;
+        left: 50%;
+        bottom: 20px;
+        -webkit-transform: translate(-50%, 0);
+            -ms-transform: translate(-50%, 0);
+                transform: translate(-50%, 0);
+        color: @color-infographic;
+    }
+    #percent {
+        font-size: 40px;
+    }
+}
 
 .section {
   .icon {

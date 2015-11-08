@@ -26,6 +26,7 @@ src: url(../fonts/DuruSans-Regular.ttf);
 @color-preretrofit: #abd6d2;
 @color-paleblue: #abd6e4;
 @color-darkblue: #4ba1bf;
+@color-infographic: #e8e06a;
 
 .noWebkitMargin {
     -webkit-margin-before: 0em;
@@ -62,6 +63,14 @@ h3 {
     font-size: 30px;
     color: white;
     left: 80px;
+}
+
+h4 {
+    font-family: @font-subheading;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    .noWebkitMargin;
 }
 
 #preText {
@@ -369,6 +378,7 @@ h3 {
     width: 100%;
     display: inline-block;
     font-size: 0;
+    margin-top: 50px;
 
     #cisternBg {
         width: (@cistern-width - 2);
@@ -380,15 +390,29 @@ h3 {
         img {
             width: @cistern-width;
             height: @cistern-height;
-            z-index: 100;
+            z-index: 2;
             position: relative;
         }
         #waterfill {
             width: (@cistern-width - 2);
             position: absolute;
             bottom: 2px;
-            height: 100px;
+            height: 0px;
             background-color: @color-darkblue;
         }
+    }
+    #infographic {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        position: absolute;
+        left: 50%;
+        bottom: 40px;
+        -webkit-transform: translate(-50%, 0);
+            -ms-transform: translate(-50%, 0);
+                transform: translate(-50%, 0);
+        color: @color-infographic;
+    }
+    #percent {
+        font-size: 60px;
     }
 }
