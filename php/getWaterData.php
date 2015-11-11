@@ -21,7 +21,7 @@
         echo "not connected";
     }
 
-    $sql="SELECT TS, City_Main_vol, Rainwater_Main_vol, Rainwater_Cistern_water, PGW_Supply_vol FROM dailytotals;";
+    $sql="SELECT TS, (City_Main_vol + PGW_MakeUp_Rain_vol) AS City_Main_vol, Rainwater_Main_vol, Cistern_Level, PGW_Supply_vol FROM dailytotals;";
 
     $result = mysqli_query($con,$sql);
     // $row = $result->fetch_row();
@@ -31,7 +31,7 @@
         $obj .= '"TS":' . '"' . $r->TS . '",';
         $obj .= '"City_Main_vol":' . '"' . $r->City_Main_vol . '",';
         $obj .= '"Rainwater_Main_vol":' . '"' . $r->Rainwater_Main_vol . '",';
-        $obj .= '"Rainwater_Cistern_water":' . '"' . $r->Rainwater_Cistern_water . '",';
+        $obj .= '"Cistern_Level":' . '"' . $r->Cistern_Level . '",';
         $obj .= '"PGW_Supply_vol":' . '"' . $r->PGW_Supply_vol . '"';
         $obj .= "},";
     }
