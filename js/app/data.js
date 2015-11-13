@@ -185,48 +185,9 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
     var loginAddr = (buildConfig.debug) ? "http://localhost/php/getEmonitorLogin.php" : "php/getEmonitorLogin.php";
     var gasAddr = (buildConfig.debug) ? "http://localhost/php/getGasData.php" : "php/getGasData.php";
     var waterAddr = (buildConfig.debug) ? "http://localhost/php/getWaterData.php" : "php/getWaterData.php";
+    var energyAddr = (buildConfig.debug) ? "http://localhost/php/getEnergyData.php" : "php/getEnergyData.php";
     var that = this;
     // use Promise.all to download data in parallel
-    // Promise.all([
-    //     get(loginAddr).then(JSON.parse).then(function(creds) {
-    //         return get("https://api.emonitor.us/customer/authenticate?login="+creds.login+"&password="+
-    //             creds.password+"&json=1");
-    //     }).catch(function(err) {
-    //         alert("There was an error locating credentials to the eMonitor service.");
-    //         console.debug(err);
-    //     }).then(function(response) {
-    //         eMonitor['key'] = response.securitykey;
-    //         return get("https://api.emonitor.us/location/getHistoricalData?security_key="+eMonitor.key+
-    //             "&period=days&startTime=2013-10-01T00:00&json=1");
-    //     }).then(function(response) {
-    //         eMonitor.energyData = response[eMonitor.locationId].data;
-    //     }).catch(function(e) {
-    //         alert(errorMsg+"ELECTRICITY");
-    //         eMonitor.energyData = [];
-    //     }),
-
-    //     get(gasAddr).then(JSON.parse).then(function(response) {
-    //         eMonitor.gasData = response;
-    //     }).catch(function (e) {
-    //         alert(errorMsg+"GAS");
-    //         eMonitor.gasData = [];
-    //     }),
-
-    //     get(waterAddr).then(JSON.parse).then(function(response) {
-    //         buildCharts.waterChart(response);
-    //         updateCisternChart(response[response.length-1].Cistern_Level);
-    //     }).catch(function(e) {
-    //         alert(errorMsg+"WATER");
-    //     })
-    // ]).then(function(response) {
-    //     processChartData(eMonitor);
-    //     that.energyChart = buildCharts.energyChart(eMonitor.chartData);
-    //     clearInterval(this.timer);
-    //     $('#activityIndicator').css("-webkit-animation-play-state", "paused");
-    //     $('#activityContainer').hide();
-    // });
-
-    // the code below will query for the list of eMonitor channel IDs
     Promise.all([
         get(loginAddr).then(JSON.parse).then(function(creds) {
             return get("https://api.emonitor.us/customer/authenticate?login="+creds.login+"&password="+
@@ -236,43 +197,92 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
             console.debug(err);
         }).then(function(response) {
             eMonitor['key'] = response.securitykey;
-            return get("https://api.emonitor.us/location/getCurrentData?security_key="+eMonitor.key+
-                "&period=days&startTime=2013-10-01T00:00&json=1");
+            return get("https://api.emonitor.us/location/getHistoricalData?security_key="+eMonitor.key+
+                "&period=days&startTime=2015-11-12T00:00&json=1");
         }).then(function(response) {
-            console.debug(response);
+            eMonitor.energyData = response[eMonitor.locationId].data;
         }).catch(function(e) {
             alert(errorMsg+"ELECTRICITY");
             eMonitor.energyData = [];
+        }),
+
+        get(energyAddr).then(JSON.parse).then(function(response) {
+            eMonitor.databaseData = response;
+        }).catch(function(e) {
+            alert(errorMsg+"ELECTRICITY");
+            eMonitor.databaseData = [];
+        }),
+
+        get(gasAddr).then(JSON.parse).then(function(response) {
+            eMonitor.gasData = response;
+        }).catch(function (e) {
+            alert(errorMsg+"GAS");
+            eMonitor.gasData = [];
+        }),
+
+        get(waterAddr).then(JSON.parse).then(function(response) {
+            buildCharts.waterChart(response);
+            updateCisternChart(response[response.length-1].Cistern_Level);
+        }).catch(function(e) {
+            alert(errorMsg+"WATER");
         })
-    ]);
+    ]).then(function(response) {
+        processChartData(eMonitor);
+        that.energyChart = buildCharts.energyChart(eMonitor.chartData);
+        clearInterval(this.timer);
+        $('#activityIndicator').css("-webkit-animation-play-state", "paused");
+        $('#activityContainer').hide();
+    });
+
+    // the code below will query for the list of eMonitor channel IDs
+    // Promise.all([
+    //     get(loginAddr).then(JSON.parse).then(function(creds) {
+    //         return get("https://api.emonitor.us/customer/authenticate?login="+creds.login+"&password="+
+    //             creds.password+"&json=1");
+    //     }).catch(function(err) {
+    //         alert("There was an error locating credentials to the eMonitor service.");
+    //         console.debug(err);
+    //     }).then(function(response) {
+    //         eMonitor['key'] = response.securitykey;
+    //         return get("https://api.emonitor.us/location/getCurrentData?security_key="+eMonitor.key+
+    //             "&period=days&startTime=2013-10-01T00:00&json=1");
+    //     }).then(function(response) {
+    //         console.debug(response);
+    //     }).catch(function(e) {
+    //         alert(errorMsg+"ELECTRICITY");
+    //         eMonitor.energyData = [];
+    //     })
+    // ]);
 
     function processChartData(emonitorObj) {
-        if (typeof emonitorObj.gasData != "undefined" && typeof emonitorObj.energyData != "undefined") {
+        if (typeof emonitorObj.gasData != "undefined" && typeof emonitorObj.energyData != "undefined"
+            && typeof emonitorObj.databaseData != "undefined") {
             emonitorObj['chartData'] = [];
-            var nov7Date = new Date(2015, 10, 7);       // date for comparison of which set of channelIds to use
+            // var nov7Date = new Date(2015, 10, 7);       // date for comparison of which set of channelIds to use
 
-            for (var date in emonitorObj.energyData) {
-                var obj = {};
+            // FIRST -- add all of the historical data that is saved in the database. This data is no longer accurately sent form eMonitor's servers.
+            for (var i=0; i<emonitorObj.databaseData.length; i++) {
+                var dbRow = emonitorObj.databaseData[i];
+                var date = dbRow[emonitorObj.databaseChannelIds.date];
                 var push = false;
                 // the dates are off by 1 day, so we need to translate them to an adjustedDate
                 var adjustedDate = new Date(Date.parse(date.split(' ').join('T')));
                 adjustedDate.setDate(adjustedDate.getDate() + 1);
                 var dateString = adjustedDate.toISOString().split('T')[0];
-                // the channel labels were changed on Nov 6, we need to pull in a different list of IDs based on the date range
-                var channelIds = (adjustedDate < nov7Date) ? emonitorObj.preNov7ChannelIds : emonitorObj.postNov7ChannelIds;
-                if (emonitorObj.energyData.hasOwnProperty(date)) {
-                    obj['date'] = dateString;
-                    var mainsData = ((channelIds.mains1 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][channelIds.mains1].kWh : 0) +
-                        ((channelIds.mains2 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][channelIds.mains2].kWh : 0);
-                    var solarData = ((channelIds.westSolar1 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][channelIds.westSolar1].kWh : 0) +
-                        ((channelIds.westSolar2 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][channelIds.westSolar2].kWh : 0) +
-                        ((channelIds.southSolar1 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][channelIds.southSolar1].kWh : 0) +
-                        ((channelIds.southSolar2 in emonitorObj.energyData[date]) ?+emonitorObj.energyData[date][channelIds.southSolar2].kWh : 0);
-                    solarData = Math.max(0, solarData*-1);
-                    obj['kwh'] = mainsData + solarData;
-                    obj['solar'] = solarData;
-                    push = true;
-                }
+                console.debug(dateString);
+
+                var obj = {};
+                obj['date'] = dateString;
+                var mainsData = +dbRow[emonitorObj.databaseChannelIds.mains1] + +dbRow[emonitorObj.databaseChannelIds.mains2];
+                var solarData = +dbRow[emonitorObj.databaseChannelIds.westSolar1] + +dbRow[emonitorObj.databaseChannelIds.westSolar2] +
+                    +dbRow[emonitorObj.databaseChannelIds.southSolar1] + +dbRow[emonitorObj.databaseChannelIds.southSolar2];
+                // solar data comes in negative, so flip the sign
+                solarData = Math.max(0, solarData*-1);
+                // need to add solar panel energy to the main energy because it is subtracted out when we get it
+                obj['kwh'] = mainsData + solarData;
+                obj['solar'] = solarData;
+
+                // if there is gas data on this same day, add the converted kwh data to current val
                 if (typeof emonitorObj.gasData[dateString] != "undefined") {
                     obj['gas'] = +emonitorObj.gasData[dateString];
                     // if there is energy already for that day, add this number to get the total
@@ -280,6 +290,30 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
                         obj['kwh'] = 0;
                     }
                     obj['kwh'] += +emonitorObj.gasData[dateString];
+                }
+                emonitorObj['chartData'].push(obj);
+            }
+
+            // SECOND -- add all of the data grabbed from the eMonitor servers (post change to circuit names on Nov 6, 2015)
+            for (var date in emonitorObj.energyData) {
+                var obj = {};
+                var push = false;
+                // the dates are off by 1 day, so we need to translate them to an adjustedDate
+                var adjustedDate = new Date(Date.parse(date.split(' ').join('T')));
+                adjustedDate.setDate(adjustedDate.getDate() + 1);
+                var dateString = adjustedDate.toISOString().split('T')[0];
+                if (emonitorObj.energyData.hasOwnProperty(date)) {
+                    obj['date'] = dateString;
+                    var mainsData = ((emonitorObj.eMonitorChannelIds.mains1 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][emonitorObj.eMonitorChannelIds.mains1].kWh : 0) +
+                        ((emonitorObj.eMonitorChannelIds.mains2 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][emonitorObj.eMonitorChannelIds.mains2].kWh : 0);
+                    var solarData = ((emonitorObj.eMonitorChannelIds.westSolar1 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][emonitorObj.eMonitorChannelIds.westSolar1].kWh : 0) +
+                        ((emonitorObj.eMonitorChannelIds.westSolar2 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][emonitorObj.eMonitorChannelIds.westSolar2].kWh : 0) +
+                        ((emonitorObj.eMonitorChannelIds.southSolar1 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][emonitorObj.eMonitorChannelIds.southSolar1].kWh : 0) +
+                        ((emonitorObj.eMonitorChannelIds.southSolar2 in emonitorObj.energyData[date]) ?+emonitorObj.energyData[date][emonitorObj.eMonitorChannelIds.southSolar2].kWh : 0);
+                    solarData = Math.max(0, solarData*-1);
+                    obj['kwh'] = mainsData + solarData;
+                    obj['solar'] = solarData;
+                    push = true;
                 }
                 if (push) {
                     emonitorObj['chartData'].push(obj);
