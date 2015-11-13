@@ -269,7 +269,6 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
                 var adjustedDate = new Date(Date.parse(date.split(' ').join('T')));
                 adjustedDate.setDate(adjustedDate.getDate() + 1);
                 var dateString = adjustedDate.toISOString().split('T')[0];
-                console.debug(dateString);
 
                 var obj = {};
                 obj['date'] = dateString;
@@ -323,6 +322,7 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
     }
 
     function updateCisternChart(volume) {
+        console.debug(volume);
         var capacity = 2855.34;          // tank capacity
         // bounds check
         if (isNaN(volume) || volume < 0) {
