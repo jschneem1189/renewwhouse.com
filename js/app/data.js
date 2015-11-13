@@ -322,7 +322,6 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
     }
 
     function updateCisternChart(volume) {
-        console.debug(volume);
         var capacity = 2855.34;          // tank capacity
         // bounds check
         if (isNaN(volume) || volume < 0) {
