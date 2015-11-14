@@ -133,7 +133,7 @@ function(jquery, amcharts) {
 
                     color: "#7f8da9",
                     dataProvider: data,
-                    title: "West Stock",
+                    // title: "West Stock",
                     categoryField: "TS"
                 }],
 

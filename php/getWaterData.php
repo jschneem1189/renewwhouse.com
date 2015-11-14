@@ -21,7 +21,7 @@
         echo "not connected";
     }
 
-    $sql="SELECT TS, (City_Main_vol + PGW_MakeUp_Rain_vol) AS City_Main_vol, Rainwater_Main_vol, Cistern_Level, PGW_Supply_vol FROM dailytotals;";
+    $sql="SELECT DATE_FORMAT(TS, '%Y-%m-%d') as TS, (City_Main_vol + PGW_MakeUp_Rain_vol) AS City_Main_vol, Rainwater_Main_vol, Cistern_Level, PGW_Supply_vol FROM dailytotals;";
 
     $result = mysqli_query($con,$sql);
     // $row = $result->fetch_row();
