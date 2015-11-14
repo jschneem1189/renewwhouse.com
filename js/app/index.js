@@ -108,5 +108,5 @@ require(["../lib/jquery-2.1.4", "../lib/modernizr.custom.29015", "mainNav"], fun
     });
   }
   setInterval(spinArrow,5000);
-  spinArrow();
+  // spinArrow();
 });
