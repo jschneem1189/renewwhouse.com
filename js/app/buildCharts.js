@@ -118,7 +118,6 @@ function(jquery, amcharts) {
                 type: "stock",
                 // "theme": "light",
                 "pathToImages": "js/lib/amcharts_stocks/images/",
-
                 dataSets: [ {
                     fieldMappings: [ {
                         fromField: "PGW_Supply_vol",
@@ -134,7 +133,7 @@ function(jquery, amcharts) {
                     color: "#7f8da9",
                     dataProvider: data,
                     // title: "West Stock",
-                    categoryField: "TS"
+                    categoryField: "TS",
                 }],
 
               panels: [ {
