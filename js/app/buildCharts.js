@@ -131,7 +131,15 @@ function(jquery, amcharts) {
                     }],
 
                     color: "#7f8da9",
-                    dataProvider: data,
+                    // for some reason data is being shifted 1 day in amchart lib
+                    dataProvider: data.map(function(dataPoint) {
+                        var adjustedDate = new Date(dataPoint.TS);
+                        adjustedDate.setDate(adjustedDate.getDate() + 1);
+                        var dateString = adjustedDate.toISOString().split('T')[0];
+                        dataPoint.TS = dateString;
+                        return dataPoint;
+                    }),
+                    // dataDateFormat: "%Y-%m-%d",
                     // title: "West Stock",
                     categoryField: "TS",
                 }],
