@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=yes" />
+  <meta name="description" content="Take some time to take a tour around the ReNEWW house photo gallery" />
+  <title>ReNEWW House Photo Gallery</title>
+  <!-- Core CSS file -->
+  <!-- Skin CSS file (styling of UI - buttons, caption, etc.)
+       In the folder of skin CSS file there are also:
+       - .png and .svg icons sprite,
+       - preloader.gif (for browsers that do not support CSS animations) -->
+  <link rel="stylesheet" href="css/lib/default-skin/default-skin.css">
+  <link rel="shortcut icon" href="images/32x32 logo.ico">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/lib/normalize.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/gallery-albums.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/mainNav.css" />
+  <!-- <link rel="stylesheet" type="text/css" media="screen and (max-width: 500px)" href="css/galleryMobile.css" /> -->
+  <link rel="stylesheet" type="text/css" media="screen and (max-width: 500px)" href="css/mainNavMobile.css" />
+  <!-- <link rel="stylesheet" type="text/css" media="screen and (min-width:501px) and (max-width: 650px)" href="css/gallery650.css" /> -->
+  <script data-main="js/app/mainNav" src="js/lib/require.js"></script>
+</head>
+<body>
+  <div id="wrapper" style="visibility:visible">
+    <div id="title">
+      <h1>Photo Gallery</h1>
+      <img class="icon" src="images/galleryicon_wide.png" />
+    </div>
+    <div>
+      <div id="banner1" class="bannerImage"></div>
+      <div id="banner2" class="bannerImage"></div>
+      <div id="banner3" class="bannerImage"></div>
+    </div>
+    <br/>
+    <br/>
+    <ul class="album-group">
+        <li class="album">
+          <a href="http://www.savewateramerica.com" target="_blank">
+            <div class="img-frame">
+              <img class="album-img" src="images/gallery/thumb_large/DSC_5181(4928x3264).JPG" />
+            </div>
+            Exterior
+          </a>
+        </li>
+        <li class="album">
+          <a href="http://www.savewateramerica.com" target="_blank">
+            <div class="img-frame">
+              <img class="album-img" src="images/gallery/thumb_large/DSC_5219(4928x3264).JPG"/>
+            </div>
+            Interior
+          </a>
+        </li>
+        <li class="album">
+          <a href="http://www.savewateramerica.com" target="_blank">
+            <div class="img-frame">
+              <img class="album-img" src="images/gallery/thumb_large/DSC_5357(4928x3264).JPG"/>
+            </div>
+            The Lab
+          </a>
+        </li>
+        <li class="album">
+          <a href="http://www.savewateramerica.com" target="_blank">
+            <div class="img-frame">
+              <img class="album-img" src="images/gallery/thumb_large/ZE4U0034 copy(4992x3328).JPG"/>
+            </div>
+            Events
+          </a>
+        </li>
+    </ul>
+  </div>
+  <div id="mainNav" class="clearfix" >
+    <a href="index.html"><img src="images/grayhouse.png" id="homelogo"></a>
+  </div>
+  <div id="screen" ></div>
+  <div id="horizontalMenu" >
+    <a href="data.html" id="dataButton" class="animatedButton"></a>
+    <a href="partners.html" id="partnerButton" class="animatedButton"></a>
+    <a href="gallery.html" id="galleryButton" class="animatedButton"></a>
+    <a href="about.html" id="aboutButton" class="animatedButton"></a>
+  </div>
+  <img src="images/hamburgerIcon.png" id="hamburgerIcon"/>
+</body>
+</html>

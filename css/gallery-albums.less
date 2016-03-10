@@ -1,0 +1,148 @@
+@font-face
+{
+font-family: 'Oswald';
+src: url(../fonts/Oswald-Regular.ttf);
+}
+
+@font-face
+{
+font-family: 'Duru Sans';
+src: url(../fonts/DuruSans-Regular.ttf);
+}
+
+@font-face
+{
+font-family: 'Lora';
+src: url(../fonts/Lora-Regular.ttf);
+}
+
+@font-heading: 'Oswald', sans-serif;
+@font-subheading: 'Duru Sans', sans-serif;
+@font-heading-serif: 'Lora', serif;
+@color-gray: #7f7f7f;
+@color-blue: #0aa3df;
+@color-green: #73be44;
+@color-cream: #f2f2f2;
+@color-lightgray: #cdcdcd;
+
+body {
+  margin:0;
+  background-color: @color-cream;
+}
+
+.noWebkitMargin {
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+
+#title {
+  display: block;
+  position: relative;
+  top: 60px;
+  // height: 160px;
+  width:100%;
+  margin-bottom: 100px;
+
+  h1 {
+    padding: 0px 0px 0px 0px;
+    font-family: @font-heading;
+    font-size:80px;
+    color:@color-gray;
+    .noWebkitMargin;
+    text-align: center;
+  }
+  h2 {
+    padding: 0px 0px 0px 0px;
+    font-family: @font-subheading;
+    font-size:28px;
+    .noWebkitMargin;
+    text-align: center;
+    padding-top: 15px;
+    color:@color-green;
+  }
+}
+
+.icon {
+  width: 300px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.line {
+  width: 100%;
+  height: 3px;
+  background-color: @color-gray;
+}
+
+.bannerImage {
+  display: inline-block;
+  position: relative;
+  width: 33vw;
+  height: 33vw;
+  // -webkit-filter: contrast(1.0) sepia(0.2);
+  // filter: contrast(1.0) sepia(0.2);
+}
+
+#banner1 {
+  background: url("../images/gallery/medium/DSC_5176(4928x3264).JPG");
+  background-size: cover;
+  background-position: center;
+}
+#banner2 {
+  background: url("../images/gallery/medium/DSC_5408(4928x3264).JPG");
+  background-size: cover;
+  background-position: center;
+}
+#banner3 {
+  background: url("../images/gallery/medium/DSC_5260(4928x3264).JPG");
+  background-size: cover;
+  background-position: center;
+}
+
+.album {
+  width: 250px;
+  height: 200px;
+  display: inline-block;
+  margin: 15px;
+  background-color: white;
+  // border-radius: 4px;
+  border: 1px solid @color-lightgray;
+  box-shadow: 0px 0px 2px @color-gray;
+  overflow: hidden;
+  font-family: @font-subheading;
+  font-size: 20px;
+  text-align: center;
+
+  .img-frame {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+
+  .album-img {
+    width: 100%;
+  }
+}
+
+.album-group {
+  text-align: center;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0px;
+  padding-top: 25px;
+  padding-bottom: 150px;
+
+  a, a:link, a:visited, a:active {
+    color: @color-blue;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
