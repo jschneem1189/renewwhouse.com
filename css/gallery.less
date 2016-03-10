@@ -48,7 +48,7 @@ body {
   h1 {
     padding: 0px 0px 0px 0px;
     font-family: @font-heading;
-    font-size:80px; 
+    font-size:80px;
     color:@color-gray;
     .noWebkitMargin;
     text-align: center;
@@ -56,10 +56,10 @@ body {
   h2 {
     padding: 0px 0px 0px 0px;
     font-family: @font-subheading;
-    font-size:28px; 
+    font-size:28px;
     .noWebkitMargin;
     text-align: center;
-    padding-top: 15px; 
+    padding-top: 15px;
     color:@color-green;
   }
 }
@@ -67,35 +67,46 @@ body {
 .my-gallery {
   position:relative;
   width: 95%;
-  margin:0 auto; 
+  margin:0 auto;
   padding-bottom: 50px;
   /* Prevent vertical gaps */
   line-height: 0;
 
   .thumbnail {
-    display:inline-block; 
+    display:inline-block;
     text-align: center;
-    list-style-type: none; 
+    list-style-type: none;
     list-style-image: none;
     .noWebkitMargin;
     -webkit-padding-start: 0px;
-    // padding: 1px;
     width: 190px;
+    // height: 126px;
     margin: 2px;
     float: left;
-
-    // &:hover {
-    //   -webkit-transform: scale(1.1);
-    //   -moz-transform: scale(1.1);
-    //   transform: scale(1.1);
-    // }
   }
+  .thumbnail.large {
+    width: 384px;
+    // height: 256px;
+  }
+  .thumbnail.large img {
+    width: 384px;
+    // height: 256px;
+  }
+  // .thumbnail.portrait {
+  //   height: 190px;
+  //   width: 126px;
+  // }
+  // .thumbnail.portrait img {
+  //   height: 190px;
+  //   width: 126px;
+  // }
+
 
   img {
     max-width: 100%;
     max-height: 100%;
     vertical-align: middle;
-    border-radius:5px;
+    // border-radius:5px;
   }
   a {
     text-decoration: none;

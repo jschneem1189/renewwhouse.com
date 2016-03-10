@@ -1,0 +1,3 @@
+mogrify -auto-orient -path ./ *.JPG *.jpg
+convert * -set filename:myname "%t(%wx%h).%e" '%[filename:myname]'
+for f in *.JPG; do mv "$f" "${f/.JPG/(4928x3264).JPG}"; done

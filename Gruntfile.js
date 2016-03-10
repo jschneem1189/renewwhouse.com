@@ -78,8 +78,9 @@ module.exports = function(grunt) {
                     "css/gallery.css": "css/gallery.less",
                     "css/gallery650.css": "css/gallery650.less",
                     "css/galleryMobile.css": "css/galleryMobile.less",
+                    "css/gallery-albums.css": "css/gallery-albums.less",
                     "css/mainNav.css": "css/mainNav.less",
-                    "css/mainNavMobile.css": "css/mainNavMobile.less"
+                    "css/mainNavMobile.css": "css/mainNavMobile.less",
                 }
             },
             prod: {
@@ -109,6 +110,7 @@ module.exports = function(grunt) {
                     "build/css/gallery.css": "css/gallery.less",
                     "build/css/gallery650.css": "css/gallery650.less",
                     "build/css/galleryMobile.css": "css/galleryMobile.less",
+                    "build/css/gallery-albums.css": "css/gallery-albums.less",
                     "build/css/mainNav.css": "css/mainNav.less",
                     "build/css/mainNavMobile.css": "css/mainNavMobile.less"
                 }
@@ -129,14 +131,20 @@ module.exports = function(grunt) {
                     name: "medium",
                     width: 1024
                 }, {
-                    name: "thumb",
+                    name: "small",
+                    width: 512
+                }, {
+                    name: "thumb_large",
+                    width: 384
+                }, {
+                    name: "thumb_small",
                     width: 190
                 }],
                 rename: false
             },
             files: {
                 expand: true,
-                src: ['**.{JPG,jpg,PNG,png}'],
+                src: ['**.{JPG,jpg,JPEG,jpeg,PNG,png}'],
                 cwd: 'images/gallery/',
                 custom_dest: 'images/gallery/{%= name %}/'
             }
@@ -186,9 +194,9 @@ module.exports = function(grunt) {
         'clean:build',
         'responsive_images',
         'copy:prod',
-        'jshint:prod', 
-        'uglify:prod', 
-        'less:prod', 
+        'jshint:prod',
+        'uglify:prod',
+        'less:prod',
         'cssmin:prod',
         'copy:csslibs',
         'file-creator:releaseConfig'

@@ -1,29 +1,91 @@
-require([ "../lib/jquery-2.1.4", 
+require([ "../lib/jquery-2.1.4",
     "mainNav",
-    "../lib/photoswipe.min", 
+    "../lib/photoswipe.min",
     "../lib/photoswipe-ui-default.min",
     "../lib/imagesloaded.pkgd.min",
-    "../lib/masonry.pkgd.min"
-  ], function( jquery, mainNav, PhotoSwipe, PhotoSwipeUI_Default, imagesLoaded, Masonry) {
+    "../lib/masonry.pkgd.min",
+    "./buildConfig"
+  ], function( jquery, mainNav, PhotoSwipe, PhotoSwipeUI_Default, imagesLoaded, Masonry, buildConfig) {
 
   // require jquery-bridget, it's included in masonry.pkgd.js
   require( [ 'jquery-bridget/jquery.bridget' ],
   function() {
-    // make Masonry a jQuery plugin
-    $.bridget( 'masonry', Masonry );
-    var $container = $('#gallery');
 
-    imagesLoaded($container, function(){
-      $container.masonry({
-        itemSelector : '.thumbnail',
-        columnWidth : 194,
-        isFitWidth: true
-      });
+    var gallery = document.getElementById("gallery");
+
+    var scriptUrl = (buildConfig.debug) ? "http://localhost/php/getPhotoList.php?directory=../images/gallery"
+      : "php/getPhotoList.php?directory=../images/gallery?directory=../images/gallery";
+    $.ajax({
+      url: scriptUrl,
+      success: function(response) {
+        var photoArray = JSON.parse(response).filter(function(file) {
+          return (file.toLowerCase().endsWith('jpg')
+            || file.toLowerCase().endsWith('jpeg')
+            || file.toLowerCase().endsWith('png'));
+        });
+        photoArray.forEach(function(fileName, index) {
+          var regex = /\d*x\d*/;
+          var dims = fileName.match(regex)[0];
+          var width = dims.split('x')[0];
+          var height = dims.split('x')[1];
+          var randomNum = Math.floor(Math.random() * (10 - 1)) + 1;
+          var isLarge = (index % randomNum === 0);
+
+          var figure = document.createElement('figure');
+          var attr = document.createAttribute('class');
+          attr.value = (isLarge) ? 'thumbnail large' : 'thumbnail';
+          // if (width / height < 1) {
+          //   attr.value = 'thumbnail portrait';
+          // }
+          figure.setAttributeNode(attr);
+
+          var anchor = document.createElement('a');
+          attr = document.createAttribute('href');
+          attr.value = 'images/gallery/' + fileName;
+          anchor.setAttributeNode(attr);
+          attr = document.createAttribute('medium');
+          attr.value = 'images/gallery/medium/' + fileName;
+          anchor.setAttributeNode(attr);
+          attr = document.createAttribute('med-size');
+          attr.value = '1024x'+Math.round(1024/(width/height));
+          anchor.setAttributeNode(attr);
+          attr = document.createAttribute('data-size');
+          attr.value = dims;
+          anchor.setAttributeNode(attr);
+          figure.appendChild(anchor);
+
+          var image = document.createElement('img');
+          attr = document.createAttribute('src');
+          var suffix = (isLarge) ? '_large/' : '_small/';
+          attr.value = 'images/gallery/thumb' + suffix + fileName;
+          image.setAttributeNode(attr);
+          anchor.appendChild(image);
+
+          gallery.appendChild(figure);
+        });
+
+        // make Masonry a jQuery plugin
+        $.bridget( 'masonry', Masonry );
+        var $container = $('#gallery');
+
+        imagesLoaded($container, function(){
+          $container.masonry({
+            itemSelector : '.thumbnail',
+            columnWidth : 194,
+            fitWidth: true
+          });
+        });
+
+        initPhotoSwipeFromDOM('.my-gallery');
+      },
+      error: function(err) {
+          throw new Error(err);
+      }
     });
 
     var initPhotoSwipeFromDOM = function(gallerySelector) {
 
-      // parse slide data (url, title, size ...) from DOM elements 
+      // parse slide data (url, title, size ...) from DOM elements
       // (children of gallerySelector)
       var parseThumbnailElements = function(el) {
         var thumbElements = el.childNodes,
@@ -38,7 +100,7 @@ require([ "../lib/jquery-2.1.4",
 
           figureEl = thumbElements[i]; // <figure> element
 
-          // include only element nodes 
+          // include only element nodes
           if(figureEl.nodeType !== 1) {
             continue;
           }
@@ -69,13 +131,13 @@ require([ "../lib/jquery-2.1.4",
 
           if(figureEl.children.length > 1) {
             // <figcaption> content
-            item.title = figureEl.children[1].innerHTML; 
+            item.title = figureEl.children[1].innerHTML;
           }
 
           if(linkEl.children.length > 0) {
             // <img> thumbnail element, retrieving thumbnail url
             item.msrc = linkEl.children[0].getAttribute('src');
-          } 
+          }
 
           item.el = figureEl; // save link to element for getThumbBoundsFn
           items.push(item);
@@ -114,8 +176,8 @@ require([ "../lib/jquery-2.1.4",
           index;
 
         for (var i = 0; i < numChildNodes; i++) {
-          if(childNodes[i].nodeType !== 1) { 
-            continue; 
+          if(childNodes[i].nodeType !== 1) {
+            continue;
           }
 
           if(childNodes[i] === clickedListItem) {
@@ -148,10 +210,10 @@ require([ "../lib/jquery-2.1.4",
           if(!vars[i]) {
             continue;
           }
-          var pair = vars[i].split('=');  
+          var pair = vars[i].split('=');
           if(pair.length < 2) {
             continue;
-          }           
+          }
           params[pair[0]] = pair[1];
         }
 
@@ -180,7 +242,7 @@ require([ "../lib/jquery-2.1.4",
             // See Options -> getThumbBoundsFn section of documentation for more info
             var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
               pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-              rect = thumbnail.getBoundingClientRect(); 
+              rect = thumbnail.getBoundingClientRect();
 
             return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
           }
@@ -190,7 +252,7 @@ require([ "../lib/jquery-2.1.4",
         // PhotoSwipe opened from URL
         if(fromURL) {
           if(options.galleryPIDs) {
-            // parse real index when custom PIDs are used 
+            // parse real index when custom PIDs are used
             // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
             for(var j = 0; j < items.length; j++) {
               if(items[j].pid == index) {
@@ -277,9 +339,9 @@ require([ "../lib/jquery-2.1.4",
                 item.h = item.mediumImage.h;
             }
 
-            // It doesn't really matter what will you do here, 
+            // It doesn't really matter what will you do here,
             // as long as item.src, item.w and item.h have valid values.
-            // 
+            //
             // Just avoid http requests in this listener, as it fires quite often
 
         });
@@ -303,8 +365,5 @@ require([ "../lib/jquery-2.1.4",
         openPhotoSwipe( hashData.pid ,  galleryElements[ hashData.gid - 1 ], true, true );
       }
     };
-
-    // execute above function
-    initPhotoSwipeFromDOM('.my-gallery');
   });
 });
