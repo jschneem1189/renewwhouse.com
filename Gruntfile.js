@@ -21,6 +21,7 @@ module.exports = function(grunt) {
                     {expand: true, src: ['images/partners/*.JPG'], dest: 'build/'},
                     {expand: true, src: ['images/partners/*.JPEG'], dest: 'build/'},
                     {expand: true, src: ['images/partners/*.png'], dest: 'build/'},
+                    {expand: true, src: ['images/partners/*.PNG'], dest: 'build/'},
                     {expand: true, src: ['php/*'], dest: 'build/'},
                     {expand: true, src: ['*.html'], dest: 'build/', filter: 'isFile'},
                     {expand: true, src: ['css/lib/default-skin/**'], dest: 'build/'},
@@ -48,7 +49,10 @@ module.exports = function(grunt) {
                     'build/js/app/data.js': 'js/app/data.js',
                     'build/js/app/mainNav.js': 'js/app/mainNav.js',
                     'build/js/app/partners.js': 'js/app/partners.js',
-                    'build/js/app/gallery.js': 'js/app/gallery.js',
+                    'build/js/app/gallery-lab.js': 'js/app/gallery-lab.js',
+                    'build/js/app/gallery-exterior.js': 'js/app/gallery-exterior.js',
+                    'build/js/app/gallery-interior.js': 'js/app/gallery-interior.js',
+                    'build/js/app/gallery-events.js': 'js/app/gallery-events.js',
                     'build/js/app/emonitorMappings.js': 'js/app/emonitorMappings.js',
                     'build/js/app/buildCharts.js': 'js/app/buildCharts.js',
                 }
@@ -125,6 +129,7 @@ module.exports = function(grunt) {
             }
         },
         responsive_images: {
+          mytask: {
             options: {
                 newFilesOnly: true,
                 sizes: [{
@@ -142,12 +147,28 @@ module.exports = function(grunt) {
                 }],
                 rename: false
             },
-            files: {
+            files: [{
                 expand: true,
                 src: ['**.{JPG,jpg,JPEG,jpeg,PNG,png}'],
-                cwd: 'images/gallery/',
-                custom_dest: 'images/gallery/{%= name %}/'
-            }
+                cwd: 'images/gallery/lab/',
+                custom_dest: 'images/gallery/lab/{%= name %}/'
+            },{
+                expand: true,
+                src: ['**.{JPG,jpg,JPEG,jpeg,PNG,png}'],
+                cwd: 'images/gallery/exterior/',
+                custom_dest: 'images/gallery/exterior/{%= name %}/'
+            },{
+                expand: true,
+                src: ['**.{JPG,jpg,JPEG,jpeg,PNG,png}'],
+                cwd: 'images/gallery/interior/',
+                custom_dest: 'images/gallery/interior/{%= name %}/'
+            },{
+                expand: true,
+                src: ['**.{JPG,jpg,JPEG,jpeg,PNG,png}'],
+                cwd: 'images/gallery/events/',
+                custom_dest: 'images/gallery/events/{%= name %}/'
+            }]
+          }
         },
         "file-creator": {
             "debugConfig": {

@@ -13,8 +13,8 @@ require([ "../lib/jquery-2.1.4",
 
     var gallery = document.getElementById("gallery");
 
-    var scriptUrl = (buildConfig.debug) ? "http://localhost/php/getPhotoList.php?directory=../images/gallery"
-      : "php/getPhotoList.php?directory=../images/gallery?directory=../images/gallery";
+    var scriptUrl = (buildConfig.debug) ? "http://localhost/php/getPhotoList.php?directory=../images/gallery/exterior"
+      : "php/getPhotoList.php?directory=../images/gallery?directory=../images/gallery/exterior";
     $.ajax({
       url: scriptUrl,
       success: function(response) {
@@ -41,10 +41,10 @@ require([ "../lib/jquery-2.1.4",
 
           var anchor = document.createElement('a');
           attr = document.createAttribute('href');
-          attr.value = 'images/gallery/' + fileName;
+          attr.value = 'images/gallery/exterior/' + fileName;
           anchor.setAttributeNode(attr);
           attr = document.createAttribute('medium');
-          attr.value = 'images/gallery/medium/' + fileName;
+          attr.value = 'images/gallery/exterior/medium/' + fileName;
           anchor.setAttributeNode(attr);
           attr = document.createAttribute('med-size');
           attr.value = '1024x'+Math.round(1024/(width/height));
@@ -57,7 +57,7 @@ require([ "../lib/jquery-2.1.4",
           var image = document.createElement('img');
           attr = document.createAttribute('src');
           var suffix = (isLarge) ? '_large/' : '_small/';
-          attr.value = 'images/gallery/thumb' + suffix + fileName;
+          attr.value = 'images/gallery/exterior/thumb' + suffix + fileName;
           image.setAttributeNode(attr);
           anchor.appendChild(image);
 
