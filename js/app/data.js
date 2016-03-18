@@ -11,6 +11,7 @@ requirejs.config({
                 'buildConfig'       : 'buildConfig',
                 'eMonitor'          : 'emonitorMappings',
                 'buildCharts'       : 'buildCharts',
+                'moment'            : '../lib/moment.min'
         },
 
         // Define dependencies
@@ -29,11 +30,11 @@ requirejs.config({
                     AmCharts.isReady = true;
                 }
             }
-        } 
+        }
 });
 
-require(["../lib/jquery-2.1.4", "mainNav", "waypoints", "buildConfig", "eMonitor", "buildCharts"], 
-function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
+require(["../lib/jquery-2.1.4", "mainNav", "waypoints", "buildConfig", "eMonitor", "buildCharts", "moment"],
+function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts, moment) {
     // ---------------------------------------------------------------------------
     // Setup Page behaviors ------------------------------------------------------
     // ---------------------------------------------------------------------------
@@ -67,7 +68,7 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
 
         // don't center the icon for mobile (check clear attr)
         if ($('#temperatureSection .icon').css('clear') == 'both') {
-            sectionHeight += $('#temperatureSection .icon').height() + 
+            sectionHeight += $('#temperatureSection .icon').height() +
                     parseInt($('#temperatureSection .icon').css('margin-top').split('px')[0],10);
             $('#temperatureSection .icon').css('margin-top', 40);
         }
@@ -298,9 +299,8 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts) {
                 var obj = {};
                 var push = false;
                 // the dates are off by 1 day, so we need to translate them to an adjustedDate
-                var adjustedDate = new Date(Date.parse(date.split(' ').join('T')));
-                adjustedDate.setDate(adjustedDate.getDate() + 1);
-                var dateString = adjustedDate.toISOString().split('T')[0];
+                var adjustedDate = moment(date);
+                var dateString = adjustedDate.add(1, 'day').format('YYYY-MM-DD');
                 if (emonitorObj.energyData.hasOwnProperty(date)) {
                     obj['date'] = dateString;
                     var mainsData = ((emonitorObj.eMonitorChannelIds.mains1 in emonitorObj.energyData[date]) ? +emonitorObj.energyData[date][emonitorObj.eMonitorChannelIds.mains1].kWh : 0) +
