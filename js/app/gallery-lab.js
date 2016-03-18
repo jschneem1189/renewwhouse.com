@@ -14,7 +14,7 @@ require([ "../lib/jquery-2.1.4",
     var gallery = document.getElementById("gallery");
 
     var scriptUrl = (buildConfig.debug) ? "http://localhost/php/getPhotoList.php?directory=../images/gallery/lab"
-      : "php/getPhotoList.php?directory=../images/gallery?directory=../images/gallery/lab";
+      : "php/getPhotoList.php?directory=../images/gallery/lab";
     $.ajax({
       url: scriptUrl,
       success: function(response) {
