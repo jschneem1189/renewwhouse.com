@@ -1,4 +1,4 @@
-define(["../lib/jquery-2.1.4", "amcharts.amstock"], 
+define(["../lib/jquery-2.1.4", "amcharts.amstock"],
 function(jquery, amcharts) {
     return {
         energyChart: function (data) {
@@ -11,7 +11,7 @@ function(jquery, amcharts) {
             // create data set
             var dataSet = new AmCharts.DataSet();
             dataSet.dataProvider = data;
-            dataSet.fieldMappings = [{fromField:"kwh", toField:"value"},{fromField:"solar", 
+            dataSet.fieldMappings = [{fromField:"kwh", toField:"value"},{fromField:"solar",
                     toField:"value2"},{fromField:"gas", toField:"gas_value"}];
             dataSet.categoryField = "date";
             dataSet.title = "Energy Consumed";
@@ -132,13 +132,7 @@ function(jquery, amcharts) {
 
                     color: "#7f8da9",
                     // for some reason data is being shifted 1 day in amchart lib
-                    dataProvider: data.map(function(dataPoint) {
-                        var adjustedDate = new Date(dataPoint.TS);
-                        adjustedDate.setDate(adjustedDate.getDate() + 1);
-                        var dateString = adjustedDate.toISOString().split('T')[0];
-                        dataPoint.TS = dateString;
-                        return dataPoint;
-                    }),
+                    dataProvider: data,
                     // dataDateFormat: "%Y-%m-%d",
                     // title: "West Stock",
                     categoryField: "TS",
@@ -288,8 +282,8 @@ function(jquery, amcharts) {
                     "menuTop": 0,
                     "menuItems": [{
                         "icon": '/lib/3/images/export.png',
-                        "format": 'png'   
-                        }]  
+                        "format": 'png'
+                        }]
                 },
                 "panEventsEnabled":false
             });

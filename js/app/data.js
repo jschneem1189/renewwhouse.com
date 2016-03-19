@@ -222,7 +222,13 @@ function(jquery, mainNav, waypoints, buildConfig, eMonitor, buildCharts, moment)
         }),
 
         get(waterAddr).then(JSON.parse).then(function(response) {
-            buildCharts.waterChart(response);
+            buildCharts.waterChart(response.map(function(dataPoint) {
+                var adjustedDate = moment(dataPoint.TS);
+                var dateString = adjustedDate.add('day', 1).format('YYYY-MM-DD');
+                var newData = dataPoint;
+                newData.TS = dateString;
+                return newData;
+            }));
             updateCisternChart(response[response.length-1].Cistern_Level);
         }).catch(function(e) {
             alert(errorMsg+"WATER");
