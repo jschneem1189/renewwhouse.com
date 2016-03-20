@@ -12,9 +12,11 @@ require([ "../lib/jquery-2.1.4",
   function() {
 
     var gallery = document.getElementById("gallery");
+    var results = window.location.href.match(/gallery-(.*).html/);
+    var context = (results && results.length >= 2) ? results[1] : 'exterior';
 
-    var scriptUrl = (buildConfig.debug) ? "http://localhost/php/getPhotoList.php?directory=../images/gallery/lab"
-      : "php/getPhotoList.php?directory=../images/gallery/lab";
+    var scriptUrl = (buildConfig.debug) ? "http://localhost/php/getPhotoList.php?directory=../images/gallery/" + context
+      : "php/getPhotoList.php?directory=../images/gallery/" + context;
     $.ajax({
       url: scriptUrl,
       success: function(response) {
@@ -41,10 +43,10 @@ require([ "../lib/jquery-2.1.4",
 
           var anchor = document.createElement('a');
           attr = document.createAttribute('href');
-          attr.value = 'images/gallery/lab/' + fileName;
+          attr.value = 'images/gallery/' + context + '/' + fileName;
           anchor.setAttributeNode(attr);
           attr = document.createAttribute('medium');
-          attr.value = 'images/gallery/lab/medium/' + fileName;
+          attr.value = 'images/gallery/' + context + '/medium/' + fileName;
           anchor.setAttributeNode(attr);
           attr = document.createAttribute('med-size');
           attr.value = '1024x'+Math.round(1024/(width/height));
@@ -57,7 +59,7 @@ require([ "../lib/jquery-2.1.4",
           var image = document.createElement('img');
           attr = document.createAttribute('src');
           var suffix = (isLarge) ? '_large/' : '_small/';
-          attr.value = 'images/gallery/lab/thumb' + suffix + fileName;
+          attr.value = 'images/gallery/' + context + '/thumb' + suffix + fileName;
           image.setAttributeNode(attr);
           anchor.appendChild(image);
 
@@ -71,8 +73,9 @@ require([ "../lib/jquery-2.1.4",
         imagesLoaded($container, function(){
           $container.masonry({
             itemSelector : '.thumbnail',
-            columnWidth : 194,
-            fitWidth: true
+            columnWidth : 190,
+            isFitWidth: true,
+            gutter: 4
           });
         });
 
