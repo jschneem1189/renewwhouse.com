@@ -80,6 +80,7 @@ module.exports = function(grunt) {
                     "css/gallery650.css": "css/gallery650.less",
                     "css/galleryMobile.css": "css/galleryMobile.less",
                     "css/gallery-albums.css": "css/gallery-albums.less",
+                    "css/gallery-albums600.css": "css/gallery-albums600.less",
                     "css/mainNav.css": "css/mainNav.less",
                     "css/mainNavMobile.css": "css/mainNavMobile.less",
                 }
@@ -112,6 +113,7 @@ module.exports = function(grunt) {
                     "build/css/gallery650.css": "css/gallery650.less",
                     "build/css/galleryMobile.css": "css/galleryMobile.less",
                     "build/css/gallery-albums.css": "css/gallery-albums.less",
+                    "build/css/gallery-albums600.css": "css/gallery-albums600.less",
                     "build/css/mainNav.css": "css/mainNav.less",
                     "build/css/mainNavMobile.css": "css/mainNavMobile.less"
                 }
