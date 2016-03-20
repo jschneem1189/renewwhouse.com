@@ -9,6 +9,7 @@ do
     base=${BASH_REMATCH[1]};
     ext=${BASH_REMATCH[2]};
     if ! [[ $file =~ $re_dims ]]; then
+      mogrify -auto-orient $file
       width="$(sips -g pixelWidth "$file" | tail -n1 | cut -d" " -f4)"
       height="$(sips -g pixelHeight "$file" | tail -n1 | cut -d" " -f4)"
       echo "$base($width"x"$height)$ext"
