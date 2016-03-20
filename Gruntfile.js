@@ -191,7 +191,28 @@ module.exports = function(grunt) {
                     done();
                 }
             },
-        }
+        },
+        "run": {
+            "options": {
+                // execute node with additional arguments
+            },
+            "rename-images-exterior": {
+                cmd: 'scripts/rename-images.sh',
+                args: ['images/gallery/exterior']
+            },
+            "rename-images-interior": {
+              cmd: 'scripts/rename-images.sh',
+              args: ['images/gallery/interior']
+            },
+            "rename-images-lab": {
+              cmd: 'scripts/rename-images.sh',
+              args: ['images/gallery/lab']
+            },
+            "rename-images-events": {
+              cmd: 'scripts/rename-images.sh',
+              args: ['images/gallery/events']
+            }
+      	}
     });
 
     // Load the plugins
@@ -203,6 +224,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-responsive-images');
     grunt.loadNpmTasks('grunt-file-creator');
+    grunt.loadNpmTasks('grunt-run');
 
     // Development task(s).
     grunt.registerTask('debug', [
@@ -213,6 +235,10 @@ module.exports = function(grunt) {
     // Production task(s).
     grunt.registerTask('release', [
         'clean:build',
+        'run:rename-images-exterior',
+        'run:rename-images-interior',
+        'run:rename-images-lab',
+        'run:rename-images-events',
         'responsive_images',
         'copy:prod',
         'jshint:prod',

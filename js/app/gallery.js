@@ -31,7 +31,7 @@ require([ "../lib/jquery-2.1.4",
           var width = dims.split('x')[0];
           var height = dims.split('x')[1];
           var randomNum = Math.floor(Math.random() * (10 - 1)) + 1;
-          var isLarge = (index % randomNum === 0);
+          var isLarge = (width/height > 1) ? (index % randomNum === 0) : false;
 
           var figure = document.createElement('figure');
           var attr = document.createAttribute('class');
