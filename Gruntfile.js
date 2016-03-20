@@ -49,10 +49,7 @@ module.exports = function(grunt) {
                     'build/js/app/data.js': 'js/app/data.js',
                     'build/js/app/mainNav.js': 'js/app/mainNav.js',
                     'build/js/app/partners.js': 'js/app/partners.js',
-                    'build/js/app/gallery-lab.js': 'js/app/gallery-lab.js',
-                    'build/js/app/gallery-exterior.js': 'js/app/gallery-exterior.js',
-                    'build/js/app/gallery-interior.js': 'js/app/gallery-interior.js',
-                    'build/js/app/gallery-events.js': 'js/app/gallery-events.js',
+                    'build/js/app/gallery.js': 'js/app/gallery.js',
                     'build/js/app/emonitorMappings.js': 'js/app/emonitorMappings.js',
                     'build/js/app/buildCharts.js': 'js/app/buildCharts.js',
                 }
