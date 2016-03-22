@@ -30,7 +30,9 @@ require([ "../lib/jquery-2.1.4",
           var dims = fileName.match(regex)[0];
           var width = dims.split('x')[0];
           var height = dims.split('x')[1];
-          var randomNum = Math.floor(Math.random() * (10 - 1)) + 1;
+          var probability = $(document.getElementsByClassName('grid-sizer')).width()
+            === 150 ? 20 : 9;
+          var randomNum = Math.floor(Math.random() * (probability)) + 1;
           var isLarge = (width/height > 1) ? ((index+1) % randomNum === 0) : false;
 
           var figure = document.createElement('figure');
