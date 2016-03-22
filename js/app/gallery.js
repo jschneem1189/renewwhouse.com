@@ -73,7 +73,7 @@ require([ "../lib/jquery-2.1.4",
         imagesLoaded($container, function(){
           $container.masonry({
             itemSelector : '.thumbnail',
-            columnWidth : 190,
+            columnWidth : '.grid-sizer',
             isFitWidth: true,
             gutter: 4
           });
@@ -104,7 +104,7 @@ require([ "../lib/jquery-2.1.4",
           figureEl = thumbElements[i]; // <figure> element
 
           // include only element nodes
-          if(figureEl.nodeType !== 1) {
+          if(figureEl.nodeType !== 1 || figureEl.className === 'grid-sizer') {
             continue;
           }
 
@@ -179,7 +179,7 @@ require([ "../lib/jquery-2.1.4",
           index;
 
         for (var i = 0; i < numChildNodes; i++) {
-          if(childNodes[i].nodeType !== 1) {
+          if(childNodes[i].nodeType !== 1 || childNodes[i].className === 'grid-sizer') {
             continue;
           }
 
